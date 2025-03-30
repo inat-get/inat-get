@@ -1,13 +1,1 @@
-/.bundle/
-/.yardoc
-/_yardoc/
-/coverage/
-/doc/
-/pkg/
-/spec/reports/
-/tmp/
 *.gem
-*.htm
-*.log
-old/
-.vscode/
