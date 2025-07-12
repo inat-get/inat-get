@@ -7,3 +7,5 @@ doc/
 *_struct.md
 /spec/fixtures/vcr_cassettes/
 /coverage/
+/vendor/
+Gemfile.lock
