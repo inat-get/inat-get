@@ -1,1 +1,6 @@
 *.gem
+tmp/
+.vscode/
+.yardoc/
+./doc/
+doc/

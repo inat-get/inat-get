@@ -1,5 +1,5 @@
 
-module INatGet; end;
+require_relative 'core'
 
 module INatGet::Info
 
@@ -10,4 +10,5 @@ module INatGet::Info
 
   HOMEPAGE = 'http://github.com/shikhalev/inat-get'
   SOURCE_URL = 'https://github.com/shikhalev/inat-get'
+
 end
