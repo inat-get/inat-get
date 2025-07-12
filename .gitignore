@@ -5,3 +5,5 @@ tmp/
 ./doc/
 doc/
 *_struct.md
+/spec/fixtures/vcr_cassettes/
+/coverage/
