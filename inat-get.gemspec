@@ -27,4 +27,6 @@ Gem::Specification.new do |spec|
   spec.executables = [ 'inat-get' ]
   spec.require_paths = [ "lib" ]
 
+  spec.add_dependency "httparty", "~> 0.21"
+
 end
