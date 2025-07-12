@@ -1,1 +1,8 @@
 #!/usr/bin/ruby
+
+require_relative '../lib/inat-get'
+require_relative '../lib/inat-get/app'
+
+app = INatGet::App::Main::instance
+
+app.run

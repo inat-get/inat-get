@@ -2,29 +2,36 @@
 
 require_relative 'lib/inat-get/info'
 
-Gem::Specification.new do |spec|
-  spec.name = "inat-get"
-  spec.version = INatGet::Info::VERSION
-  spec.authors = [ INatGet::Info::AUTHOR ]
-  spec.email = [ INatGet::Info::EMAIL ]
+Gem::Specification::new do |spec|
+  spec.name     =   INatGet::Info::NAME
+  spec.version  =   INatGet::Info::VERSION
+  spec.authors  = [ INatGet::Info::AUTHOR ]
+  spec.email    = [ INatGet::Info::EMAIL  ]
+  spec.license  =   INatGet::Info::LICENSE
+  spec.summary  =   INatGet::Info::SUMMARY
+  spec.homepage =   INatGet::Info::HOMEPAGE
 
-  spec.summary = "Client for iNaturalist API."
-  # spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = INatGet::Info::HOMEPAGE
-  spec.license = "GPL-3.0-or-later"
-  spec.required_ruby_version = ">= 3.2.0"
+  spec.required_ruby_version = '>= 3.4'
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = INatGet::Info::SOURCE_URL
-
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      (File.expand_path(f) == __FILE__) ||
-        f.start_with?(*%w[test/ spec/ features/ samples/ .git .circleci appveyor Gemfile])
-    end
-  end
-  spec.bindir = "bin"
+  spec.files = Dir[ '{lib,bin}/**/*', 'README.md', 'LICENSE' ]
+  spec.bindir = 'bin'
   spec.executables = [ 'inat-get' ]
-  spec.require_paths = [ "lib" ]
 
+  spec.add_dependency 'sequel', '~> 5.100'
+  spec.add_dependency 'faraday', '~> 2.14'
+  spec.add_dependency 'faraday-retry', '~> 2.3'
+  spec.add_dependency 'is-dsl', '~> 0.8'
+  spec.add_dependency 'is-enum', '~> 0.8.8.6'
+  spec.add_dependency 'is-duration', '~> 0.8.4'
+  spec.add_dependency 'is-term', '~> 0.8.4.10'
+  spec.add_dependency 'is-range', '~> 0.8'
+  spec.add_dependency 'is-deep', '~> 0.8'
+
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'rake', '~> 13.3'
+  spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'sqlite3', '~> 2.9'
+  spec.add_development_dependency 'yard'
+  spec.add_development_dependency 'yard-is-sequel'
+  spec.add_development_dependency 'redcarpet'
 end

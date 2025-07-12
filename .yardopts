@@ -1,0 +1,10 @@
+--title "INatGet"
+--markup markdown
+--readme README.md
+--files share/inat-get/docs/*.md
+--protected
+--private
+--no-private
+--load .yardpreamble.rb
+--plugin is-sequel
+lib/**/*.rb

@@ -1,13 +1,23 @@
+# frozen_string_literal: true
 
-module INatGet; end;
+module INatGet; end
 
 module INatGet::Info
 
-  VERSION = '0.9.1'
+  NAME = 'inat-get'
+  VERSION = '0.9.0'
+  VERSION_ALIAS = 'Carduelis carduelis'
 
   AUTHOR = 'Ivan Shikhalev'
-  EMAIL = 'shikhalev@gmail.com'
+  AUTHOR_URL = 'https://github.com/shikhalev'
+  EMAIL  = 'shikhalev@gmail.com'
 
-  HOMEPAGE = 'http://github.com/shikhalev/inat-get'
-  SOURCE_URL = 'https://github.com/shikhalev/inat-get'
+  LICENSE = 'GPL-3.0-or-later'
+  LICENSE_URL = 'https://github.com/inat-get/inat-get/blob/main/LICENSE'
+
+  SUMMARY = 'iNaturalist API Query Tool'
+  DESCRIPTION = 'iNaturalist API query builder and analytics tool'
+
+  HOMEPAGE = 'https://github.com/inat-get/inat-get'
+  
 end
