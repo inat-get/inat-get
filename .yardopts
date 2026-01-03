@@ -1,5 +1,0 @@
---title "INatGet Tool"
---private
---hide-api internal
---no-cache
-lib/**/*.rb
