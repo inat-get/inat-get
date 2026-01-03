@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+require_relative 'lib/inat-get/info'
+
+Gem::Specification::new do |spec|
+  spec.name     =   INatGet::Info::NAME
+  spec.version  =   INatGet::Info::VERSION
+  spec.authors  = [ INatGet::Info::AUTHOR ]
+  spec.email    = [ INatGet::Info::EMAIL  ]
+  spec.license  =   INatGet::Info::LICENSE
+  spec.summary  =   INatGet::Info::SUMMARY
+  spec.homepage =   INatGet::Info::HOMEPAGE
+
+  spec.required_ruby_version = '>= 3.4'
+
+  spec.files = Dir[ '{lib,bin}/**/*', 'README.md', 'LICENSE' ]
+  spec.bindir = 'bin'
+  spec.executables = [ 'inat-get' ]
+
+  spec.add_dependency 'faraday', '~> 2.14'
+  spec.add_dependency 'faraday-retry', '~> 2.3'
+  spec.add_dependency 'is-dsl', '~> 0.8'
+
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'rake', '~> 13.3'
+  spec.add_development_dependency 'simplecov', '~> 0.22'
+end

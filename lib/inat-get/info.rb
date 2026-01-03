@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+module INatGet; end
+
+module INatGet::Info
+
+  NAME = 'inat-get'
+  VERSION = '0.9.0'
+
+  AUTHOR = 'Ivan Shikhalev'
+  EMAIL  = 'shikhalev@gmail.com'
+
+  LICENSE = 'GPL-3.0-or-later'
+
+  SUMMARY = 'iNaturalist API Query Tool'
+  DESCRIPTION = 'iNaturalist API query builder and analytics tool.'
+
+  HOMEPAGE = 'https://github.com/inat-get/inat-get'
+  
+end
