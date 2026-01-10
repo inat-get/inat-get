@@ -5,6 +5,7 @@ require 'singleton'
 
 require_relative '../info'
 require_relative '../objects'
+require_relative '../utils/enums'
 
 module INatGet::Logics; end
 
@@ -214,18 +215,44 @@ class INatGet::Logics::QueryCondition < INatGet::Logics::Condition
         when nil
           # do nothing
         else
-          raise ArgumentError, "Invalid value for 'project_id': #{ value.inspect }"
+          raise ArgumentError, "Invalid value for 'project_id': #{ value.inspect }" 
         end
       when :rank
         case value
-        when String, Symbol
-          normalized[:rank] = Set[ value.to_s.downcase ]
+        when INatGet::Enums::Rank, Symbol
+          normalized[:rank] = Set[ INatGet::Enums::Rank.from(value) ]
+        when Range, Set, nil
+          normalized[:rank] = INatGet::Enums::Rank.from(value)
         when Enumerable
-          normalized[:rank] = Set[*value.map { |v| v.to_s.downcase }]
-        when nil
-          # do nothing
+          normalized[:rank] = INatGet::Enums::Rank.from(value).to_set
         else
           raise ArgumentError, "Invalid value for 'rank': #{ value.inspect }"
+        end
+      when :hrank
+        val = case value
+        when INatGet::Enums::Rank, Symbol, nil
+          INatGet::Enums::Rank.from(value)
+        else
+          raise ArgumentError, "Invalid value for 'hrank': #{ value.inspect }"
+        end
+        case normalized[:rank]
+        when Range
+          normalized[:rank] = (normalized[:rank].begin .. val)
+        else 
+          normalized[:rank] = ( .. val)
+        end
+      when :lrank
+        val = case value
+        when INatGet::Enums::Rank, Symbol, nil
+          INatGet::Enums::Rank.from(value)
+        else
+          raise ArgumentError, "Invalid value for 'lrank': #{ value.inspect }"
+        end
+        case normalized[:rank]
+        when Range
+          normalized[:rank] = (val .. normalized[:rank].end)
+        else
+          normalized[:rank] = (val .. )
         end
       when :taxon_id, :taxon
         case value
@@ -239,6 +266,128 @@ class INatGet::Logics::QueryCondition < INatGet::Logics::Condition
           # do nothing
         else
           raise ArgumentError, "Invalid value for 'taxon_id': #{ value.inspect }"
+        end
+      when :user_id, :user_login, :user 
+        case value
+        when INatGet::Models::User
+          normalized[:user_id] = Set[ value.id ]
+        when Integer
+          normalized[:user_id] = Set[ value ]
+        when String
+          normalized[:user_login] = Set[ value ]
+        when Enumerable
+          value.each do |v|
+            case v
+            when INatGet::Models::User
+              normalized[:user_id] ||= Set[]
+              normalized[:user_id] << v.id
+            when Integer
+              normalized[:user_id] ||= Set[]
+              normalized[:user_id] << v
+            when String
+              normalized[:user_login] ||= Set[]
+              normalized[:user_login] << v
+            else 
+              raise ArgumentError, "Invalid value for '#{ key }': #{ v.inspect }"
+            end
+          end
+        when nil
+          # do nothing
+        else 
+          raise ArgumentError, "Invalid value for '#{ key }': #{ value.inspect }"
+        end
+      when :hour, :day, :month, :year
+        case value
+        when Integer
+          normalized[key] = Set[ value ]
+        when Enumerable
+          normalized[key] = Set[*value.map { |v| v.to_i }]
+        when nil
+          # do nothing
+        else
+          raise ArgumentError, "Invalid value for '#{ key }': #{ value.inspect }"
+        end
+      when :d1
+        val = case value
+        when Date
+          value.to_time
+        when Time
+          value
+        when nil
+          nil
+        else
+          raise ArgumentError, "Invalid value for 'd1': #{ value.inspect }"
+        end
+        if normalized.has_key?(:observed)
+          normalized[:observed] = (val .. normalized[:observed].end)
+        else
+          normalized[:observed] = (val .. )
+        end
+      when :d2
+        val = case value
+        when Date
+          (value + 1).to_time
+        when Time
+          value
+        when nil
+          nil
+        else
+          raise ArgumentError, "Invalid value for 'd2': #{ value.inspect }"
+        end
+        if normalized.has_key?(:observed)
+          normalized[:observed] = (normalized[:observed].begin .. val)
+        else
+          normalized[:observed] = ( .. val)
+        end
+      when :observed, :date
+        case value 
+        when Date
+          normalized[:observed] = (value.to_time .. (value + 1).to_time)
+        when Range, nil
+          normalized[:observed] = value
+        else
+          raise ArgumentError, "Invalid value for '#{ key }': #{ value.inspect }"
+        end
+      when :created_d1
+        val = case value
+        when Date
+          value.to_time
+        when Time
+          value
+        when nil
+          nil
+        else
+          raise ArgumentError, "Invalid value for 'created_d1': #{ value.inspect }"
+        end
+        if normalized.has_key?(:created)
+          normalized[:created] = (val .. normalized[:created].end)
+        else
+          normalized[:created] = (val .. )
+        end
+      when :created_d2
+        val = case value
+        when Date
+          (value + 1).to_time
+        when Time
+          value
+        when nil
+          nil
+        else
+          raise ArgumentError, "Invalid value for 'created_d2': #{ value.inspect }"
+        end
+        if normalized.has_key?(:created)
+          normalized[:created] = (normalized[:created].begin .. val)
+        else
+          normalized[:created] = ( .. val)
+        end
+      when :created, :created_date
+        case value
+        when Date
+          normalized[:created] = (value.to_time .. (value + 1).to_time)
+        when Range, nil
+          normalized[:created] = value
+        else
+          raise ArgumentError, "Invalid value for '#{ key }': #{ value.inspect }"
         end
       else
         raise ArgumentError, "Unsupported query parameter: #{ key }"

@@ -3,3 +3,4 @@
 require_relative 'objects/place'
 require_relative 'objects/project'
 require_relative 'objects/taxon'
+require_relative 'objects/rank'
