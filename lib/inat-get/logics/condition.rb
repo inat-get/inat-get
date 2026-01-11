@@ -118,7 +118,6 @@ class INatGet::Logics::QueryCondition < INatGet::Logics::Condition
   end
 
   def normalize
-    # TODO: implement
     normalized = {}
     @query.each do |key, value|
       key = key.to_sym
@@ -388,6 +387,15 @@ class INatGet::Logics::QueryCondition < INatGet::Logics::Condition
           normalized[:created] = value
         else
           raise ArgumentError, "Invalid value for '#{ key }': #{ value.inspect }"
+        end
+      when :quality_grade
+        case value
+        when String, Symbol
+          normalized[:quality_grade] = Set[ value.to_sym ]
+        when Enumerable
+          normalized[:quality_grade] = Set[*value.map { |v| v.to_sym }]
+        else
+          raise ArgumentError, "Invalid value for 'quality_grade': #{ value.inspect }"
         end
       else
         raise ArgumentError, "Unsupported query parameter: #{ key }"
