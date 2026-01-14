@@ -10,7 +10,7 @@ class INatGet::Condition::Q
 
   def initialize helper, **query
     @helper
-    @query = **query
+    @query = query
   end
 
   def helper
@@ -36,7 +36,7 @@ class INatGet::Condition::Q
 
   class << self
 
-    def maker helper
+    private def maker helper
       @makers ||= {}
       @makers[helper] ||= Maker::new(helper)
     end
