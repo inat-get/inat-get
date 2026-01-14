@@ -6,6 +6,7 @@ require 'singleton'
 require_relative '../info'
 require_relative '../objects'
 require_relative '../utils/enums'
+require_relative '../utils/ranges'
 
 module INatGet::Logics; end
 
@@ -56,11 +57,127 @@ class INatGet::Logics::Condition;
   end
 
   def queries_or *queries
-    # TODO: implement
+    hashes = queries.map { |q| q.query }
+    hashes = hash_queries_or(*hashes)
+    case hashes.size
+    when 0
+      # TODO: warning
+      NOTHING
+    when 1
+      INatGet::Logics::QueryCondition::new(**hashes.first)
+    else
+      INatGet::Logics::OrCondition::new(*hashes.map { |h| INatGet::Logics::QueryCondition::new(**h) })
+    end
+  end
+
+  def hash_queries_or *items
+    items = items.compact
+    return items if items.size <= 1
+    changes_flag = false
+    (0 .. items.size - 1).each do |idx|
+      current = items[idx]
+      items[idx] = nil
+      (0 .. items.size - 1).each do |i|
+        sample = items[i]
+        next if sample == nil
+        if hash_query_cover?(current, sample)
+          items[i] = nil
+          changes_flag = true
+        elsif hash_query_cover?(sample, current)
+          current = nil
+          changes_flag = true
+          break
+        elsif hash_query_try_merge!(current, sample)
+          changes_flag = true
+          items[i] = nil
+        end
+      end
+      items[idx] = (current.nil? || current.empty?) ? nil : current
+    end
+    items = hash_queries_or(*items) if changes_flag
+    items
+  end
+
+  def hash_query_cover? first, second
+    first.each do |key, value|
+      sec = second[key]
+      case sec 
+      when nil
+        return false
+      when Set
+        return false unless value.superset?(sec)
+      when Range
+        return false unless value.cover?(sec)
+      else
+        return false unless value == sec
+      end
+    end
+    true
+  end
+
+  def hash_query_try_merge! base, source
+    base.compact!
+    src = source.compact
+    tgt = {}
+    merged = false
+    base.each do |key, value|
+      src_val = src.delete key
+      if src_val == value
+        tgt[key] = value
+      else
+        return false if merged
+        case src_val
+        when nil
+          tgt[key] = nil
+        when Set
+          tgt[key] = value | src_val
+        when Range
+          range = value | src_val
+          return false if range == nil
+          tgt[key] = range
+        when true, false
+          tgt[key] = nil
+        else
+          return false     # TODO: warning
+        end
+        merged = true
+      end
+    end
+    base.merge! tgt
+    base.compact!
+    true
   end
 
   def queries_and *queries
-    # TODO: implement
+    return ANYTHING if queries.empty?  # TODO: warning
+    query = {}
+    queries.each do |q|
+      q.query.each do |key, value|
+        next if value.nil?
+        if query.has_key?(key)
+          current = query[key]
+          case current
+          when Set
+            val = current & value
+            return NOTHING if val.empty?
+            query[key] = val
+          when true
+            return NOTHING if value == false
+          when false
+            return NOTHING if value == true
+          when Range
+            val = current & value
+            return NOTHING if val.nil? || val.empty?
+            query[key] = val
+          else
+            return NOTHING if current != value
+          end
+        else
+          query[key] = value
+        end
+      end
+    end
+    INatGet::Logics::QueryCondition::new(**query)
   end
 
   def deep_or

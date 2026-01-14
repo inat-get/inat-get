@@ -19,7 +19,7 @@ class INatGet::Enums::Rank < IS::Enum
   define :infraclass,     45
   define :subterclass,    44
   define :superorder,     43
-  define :order.          40
+  define :order,          40
   define :suborder,       37
   define :infraorder,     36, level: 35
   define :parvorder,      35, level: 34.5
@@ -72,6 +72,6 @@ class INatGet::Enums::Rank < IS::Enum
     :species, 
     :subspecies, 
     :variety 
-  ].map { |v| Rank.of[v] }.to_set.freeze
+  ].map { |v| INatGet::Enums::Rank.of(v) }.to_set.freeze
 
 end
