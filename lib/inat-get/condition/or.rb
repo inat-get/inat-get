@@ -61,7 +61,7 @@ class INatGet::Condition::OR
     query_operands, other_operands = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Q) }
     not_operands = other_operands.select { |o| o.is_a?(NOT) }
     return ANYTHING if not_operands.any? { |o| query_operands.include?(o.operand) || other_operands.include?(o.operand) }
-    query_ops = or_merge(*query_operands)
+    query_ops = or_merge(*query_operands).map(&:merge_n_factor)
     OR[ *query_ops, *other_operands ]
   end
 

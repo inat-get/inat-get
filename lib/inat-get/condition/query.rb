@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../db/helper'
 
 class INatGet::Condition::Q
 
@@ -24,6 +25,9 @@ class INatGet::Condition::Q
   end
 
   class Maker
+
+    attr_reader :helper
+
     def initialize helper
       @helper = helper
     end
@@ -34,11 +38,13 @@ class INatGet::Condition::Q
     end
   end
 
+  private_constant :Maker
+
   class << self
 
     private def maker helper
       @makers ||= {}
-      @makers[helper] ||= Maker::new(helper)
+      @makers[helper] ||= Maker::new(helper).freeze
     end
 
     def [] helper, **query
@@ -51,17 +57,7 @@ class INatGet::Condition::Q
   end
 
   def merge_n_factor
-    Q[@helper][ **prepare_query(**@query) ]
-  end
-
-  private 
-
-  def prepare_query **query
-    # TODO: Enumerable => Set, scalar => Set[ scalar ], Symbol => Enum(?), Set<Symbol>, Range<Symbol> => Set<Enum>, Range<Enum>
-    #       подумать, как ввести енумы без передачи имени поля (ввести таблицу enum-полей?) Также подумать, как превращать даты в Range.
-    #       А возможно, добавить хелпер с учетом класса.
-    # TODO: логика таксонов [ ancestor_id, descendant_id ] => [ ancestor_id ]
-    # TODO: Парсинг проектов
+    Q[@helper][ **@helper.prepare_query(**@query) ]
   end
 
 end
