@@ -60,4 +60,12 @@ class INatGet::Condition::Q
     Q[@helper][ **@helper.prepare_query(**@query) ]
   end
 
+  def to_api
+    @helper.to_api(**@query)
+  end
+
+  def to_sequel
+    @helper.to_sequel(**@query)
+  end
+
 end

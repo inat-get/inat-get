@@ -65,6 +65,18 @@ class INatGet::Condition::OR
     OR[ *query_ops, *other_operands ]
   end
 
+  def simplify
+    OR[ *@operands.map(&:simplify) ].normalize
+  end
+
+  def to_api
+    @operands.map(&:to_api).flatten.compact
+  end
+
+  def to_sequel
+    Sequel.|(*@operands.map(&:to_sequel))
+  end
+
   private
 
   def or_merge *queries

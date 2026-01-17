@@ -86,4 +86,12 @@ class INatGet::Condition::NOT
     NOT[ @operand.merge_n_factor ]
   end
 
+  def simplify
+    ANYTHING
+  end
+
+  def to_sequel
+    Sequel.~(@operand.to_sequel)
+  end
+
 end

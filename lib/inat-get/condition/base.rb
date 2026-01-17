@@ -46,6 +46,26 @@ module INatGet::Condition::Base
     self
   end
 
+  def simplify
+    self
+  end
+
+  def api_query
+    normalize.simplify.to_api
+  end
+
+  def sequel_query
+    normalize.to_sequel
+  end
+
+  def to_api
+    raise TypeError, "Invalid condition type for API query", caller_locations
+  end
+
+  def to_sequel
+    raise TypeError, "Invalid condition type for DB query", caller_locations
+  end
+
 end
 
 class INatGet::Condition::Nothing
@@ -65,6 +85,14 @@ class INatGet::Condition::Nothing
     ANYTHING
   end
 
+  def to_api
+    []
+  end
+
+  def to_sequel
+    Sequel.lit 'false'
+  end
+
 end
 
 class INatGet::Condition::Anything
@@ -82,6 +110,10 @@ class INatGet::Condition::Anything
 
   def !
     NOTHING
+  end
+
+  def to_sequel
+    Sequel.lit 'true'
   end
 
 end

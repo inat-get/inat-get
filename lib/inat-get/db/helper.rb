@@ -46,11 +46,96 @@ module INatGet::Data::Helpers::Common
     result
   end
 
+  def to_api **query
+    hooks = self.api_hooks
+    result = {}
+    result[:entrypoint] = self.entrypoint
+    params = {}
+    query.each do |key, value|
+      next if value.nil?
+      if hooks.has_key?(key)
+        params.merge! hooks[key].call(key, value)
+      else
+        params[key] = api_param(value)
+      end
+    end
+    result[:params] = params
+    result
+  end
+
+  def to_sequel **query
+    model = self.model
+    hooks = self.sequel_hooks
+    exprs = []
+    query.each do |key, value|
+      if hooks.has_key?(key)
+        exprs << hooks[key].call(key, value)
+      else
+        exprs << sequel_param(key, value)
+      end
+    end
+    Sequel.&(*exprs)
+  end
+
   def query_funcs
     {}
   end
 
+  def api_hooks
+    {}
+  end
+
+  def sequel_hooks
+    {}
+  end
+
+  def entrypoint
+    nil
+  end
+
+  def model
+    nil
+  end
+
   private
+
+  def api_param value
+    case value
+    when Enumerable
+      value.map { |v| api_param(v) }.join(',')
+    when Date, Time
+      value.xmlschema
+    else
+      value.to_s
+    end
+  end
+
+  def sequel_param key, value
+    reflection = model.association_reflection key
+    if reflection
+      case reflection.associated_class
+      when INatGet::Models::Taxon
+        return taxon_to_sequel(reflection, value)
+      when INatGet::Models::Project
+        return project_to_sequel(reflection, value)
+      end
+    end
+    if value.is_a?(Range) && (value.begin.is_a?(IS::Enum) || value.end.is_a?(IS::Enum))
+      return sequel_param(key, value.entries)
+    end
+    { key => value }
+  end
+
+  def taxon_to_sequel reflection, value
+    target_ids = Array(value).map { |v| v.is_a?(Sequel::Model) ? v.pk : v }
+    subquery = model.db[:taxon_ancestors].where(ancestor_id: target_ids).select(:taxon_id)
+    return { reflection[:key] => subquery }
+  end
+
+  def project_to_sequel reflection, value
+    # TODO: implement
+    { project: value }  # FIXME
+  end
 
   def scalar_func check, convert = nil
     @funcs ||= {}
@@ -236,7 +321,7 @@ module INatGet::Data::Helpers::Common
 
   def rank_set_or_range_func
     convert = lambda do |value|
-      INatGet::Enums::Rank::of value
+      INatGet::Enums::Rank::from value
     end
     set_or_range_func(INatGet::Enums::Rank, convert, convert, convert)
   end
@@ -310,6 +395,14 @@ class INatGet::Data::Helpers::Observation
     }.freeze
   end
 
+  def entrypoint
+    :observations
+  end
+
+  def model
+    INatGet::Models::Observation
+  end
+
   private
 
   def date_field_func
@@ -334,6 +427,14 @@ class INatGet::Data::Helpers::Taxon
     }.freeze
   end
 
+  def entrypoint
+    :taxa
+  end
+
+  def model
+    INatGet::Models::Taxon
+  end
+
 end
 
 class INatGet::Data::Helpers::Project
@@ -354,6 +455,14 @@ class INatGet::Data::Helpers::Project
     }.freeze
   end
 
+  def entrypoint
+    :projects
+  end
+
+  def model
+    INatGet::Models::Project
+  end
+
 end
 
 class INatGet::Data::Helpers::Place
@@ -371,6 +480,14 @@ class INatGet::Data::Helpers::Place
     }.freeze
   end
 
+  def entrypoint
+    :places
+  end
+
+  def model
+    INatGet::Models::Place
+  end
+
 end
 
 class INatGet::Data::Helpers::User
@@ -383,6 +500,14 @@ class INatGet::Data::Helpers::User
          id: set_func(Integer),
       login: set_func(String, lambda { |v| v.is_a?(Symbol) ? v.to_s : v })
     }.freeze
+  end
+
+  def entrypoint
+    :users
+  end
+
+  def model
+    INatGet::Models::User
   end
 
 end

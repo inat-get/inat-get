@@ -30,6 +30,22 @@ class INatGet::Dataset
     self
   end
 
+  def connected?
+    !!@dataset
+  end
+
+  def connect!
+    return self if connected?
+    update!
+    @dataset = @condition.helper.model.where @condition.sequel_query
+    self
+  end
+
+  def reset!
+    @updated = false
+    @dataset = nil
+  end
+
   def + other
     INatGet::Dataset::new(self.key, self.condition | other.condition, self.updated? && other.updated?)
   end
@@ -60,12 +76,15 @@ class INatGet::Dataset
 
   include Enumerable
 
-  def each
-    # TODO: implement
+  def each &block
+    return to_enum(__method__) unless block_given?
+    connect!
+    @dataset.each(&block)
   end
 
   def count
-    # TODO: implement
+    connect!
+    @dataset.count
   end
 
   private

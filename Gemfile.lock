@@ -5,7 +5,7 @@ PATH
       faraday (~> 2.14)
       faraday-retry (~> 2.3)
       is-dsl (~> 0.8)
-      is-enum (~> 0.8.4)
+      is-enum (~> 0.8.6)
       sequel (~> 5.100)
 
 GEM
@@ -23,7 +23,7 @@ GEM
     faraday-retry (2.4.0)
       faraday (~> 2.0)
     is-dsl (0.8.0)
-    is-enum (0.8.4)
+    is-enum (0.8.6)
     json (2.18.0)
     logger (1.7.0)
     net-http (0.9.1)
@@ -50,10 +50,10 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
+    sqlite3 (2.9.0-x86_64-linux-gnu)
     uri (1.1.1)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -61,6 +61,7 @@ DEPENDENCIES
   rake (~> 13.3)
   rspec (~> 3.13)
   simplecov (~> 0.22)
+  sqlite3
 
 CHECKSUMS
   bigdecimal (4.0.1) sha256=8b07d3d065a9f921c80ceaea7c9d4ae596697295b584c296fe599dd0ad01c4a7
@@ -71,7 +72,7 @@ CHECKSUMS
   faraday-retry (2.4.0) sha256=7b79c48fb7e56526faf247b12d94a680071ff40c9fda7cf1ec1549439ad11ebe
   inat-get (0.9.0)
   is-dsl (0.8.0) sha256=fc66508e85da3c9f4cdcdc31e9bb078f2aef791dfe432db1db931c69c97020e6
-  is-enum (0.8.4) sha256=7bc0257b4128d336e2b54b1d8895db999b82e8767cd193bb8fddc7ae29b401f9
+  is-enum (0.8.6) sha256=fb9b92a3d046bb56d0c6e33c815262b302bcde6ad95965abebc3e607a763c638
   json (2.18.0) sha256=b10506aee4183f5cf49e0efc48073d7b75843ce3782c68dbeb763351c08fd505
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
@@ -85,6 +86,7 @@ CHECKSUMS
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
   simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   simplecov_json_formatter (0.1.4) sha256=529418fbe8de1713ac2b2d612aa3daa56d316975d307244399fa4838c601b428
+  sqlite3 (2.9.0-x86_64-linux-gnu) sha256=72fff9bd750070ba3af695511ba5f0e0a2d8a9206f84869640b3e99dfaf3d5a5
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
 
 BUNDLED WITH

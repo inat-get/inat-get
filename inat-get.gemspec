@@ -21,9 +21,10 @@ Gem::Specification::new do |spec|
   spec.add_dependency 'faraday', '~> 2.14'
   spec.add_dependency 'faraday-retry', '~> 2.3'
   spec.add_dependency 'is-dsl', '~> 0.8'
-  spec.add_dependency 'is-enum', '~> 0.8.4'
+  spec.add_dependency 'is-enum', '~> 0.8.6'
 
   spec.add_development_dependency 'rspec', '~> 3.13'
   spec.add_development_dependency 'rake', '~> 13.3'
   spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'sqlite3'
 end

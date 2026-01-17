@@ -74,6 +74,14 @@ class INatGet::Condition::AND
     AND[ query_op, not_op, *other_operands ]
   end
 
+  def simplify
+    AND[ *@operands.map(&:simplify) ].normalize
+  end
+
+  def to_sequel
+    Sequel.&(@operands.map(&:to_sequel))
+  end
+
   private
 
   def and_merge *queries
