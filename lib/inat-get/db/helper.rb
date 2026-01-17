@@ -133,8 +133,7 @@ module INatGet::Data::Helpers::Common
   end
 
   def project_to_sequel reflection, value
-    # TODO: implement
-    { project: value }  # FIXME
+    value.to_sequel
   end
 
   def scalar_func check, convert = nil
