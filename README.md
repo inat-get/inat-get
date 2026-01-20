@@ -2,9 +2,9 @@
 
 ## Usage
 
-```shell
+```
 $ bundle exec inat-get --help
-🌿 iNatGet v0.9.0: iNaturalist API query builder and analytics tool
+🌿 *iNatGet v0.9.0:* iNaturalist API query builder and analytics tool
           License: GNU GPLv3+ (https://github.com/inat-get/inat-get/blob/main/LICENSE)
            Author: Ivan Shikhalev (https://github.com/shikhalev)
          Homepage: https://github.com/inat-get/inat-get
