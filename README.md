@@ -2,9 +2,9 @@
 
 ## Usage
 
-```
-$ bundle exec inat-get --help
-🌿 *iNatGet v0.9.0:* iNaturalist API query builder and analytics tool
+
+<pre>$ bundle exec inat-get --help
+🌿 <b>iNatGet v0.9.0:</b> iNaturalist API query builder and analytics tool
           License: GNU GPLv3+ (https://github.com/inat-get/inat-get/blob/main/LICENSE)
            Author: Ivan Shikhalev (https://github.com/shikhalev)
          Homepage: https://github.com/inat-get/inat-get
@@ -34,4 +34,4 @@ $ bundle exec inat-get --help
    File Arguments:
         ‹task› [‹task› ...]          One or more names of task files or list files with '@' prefix (one task file per line).
                                      If task name has not extension try to read '‹task›' than '‹task›.inat' than '‹task›.rb'.
-```
+</pre>
