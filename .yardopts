@@ -1,0 +1,4 @@
+--title "INatGet"
+--markup markdown
+--readme README.md
+lib/**/*.rb

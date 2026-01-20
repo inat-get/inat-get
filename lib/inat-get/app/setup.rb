@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'yaml'
 require 'optparse'
@@ -7,13 +7,32 @@ require 'is-dsl'
 
 require_relative '../info'
 require_relative '../utils/deep_merge'
+require_relative 'maintenance'
 
 module INatGet::Setup
 
   DEFAULTS = {
-    :logger => {
-      :level => :info
-    }
+    logger: {
+      level: 'info'
+    },
+    database: {
+      connect: "sqlite://${HOME}/.cache/#{ INatGet::Info::NAME }/inat-cache.db",
+      user: nil,
+      password: nil
+    },
+    caching: {
+      update: '4h',
+      refresh: { 
+        interval: '4d',
+        depth: '40d'
+      },
+      recache: { 
+        count: 200,
+        method: 'oldest'          # oldest by cached, newest by updated, sample — random
+      }
+    },
+    offline: false,
+    workers: 4
   }
 
   class << self
@@ -26,7 +45,9 @@ module INatGet::Setup
       @config.deep_merge! config
       @config.deep_merge! options
       @config.deep_merge! opts
+      inject_env! @config
       unwrap_files!
+      INatGet::Maintenance.send @config[:maintenance], @config if @config[:maintenance]
     end
 
     def config
@@ -35,10 +56,27 @@ module INatGet::Setup
 
     private
 
+    def inject_env! data
+      case data
+      when Hash
+        data.transform_values! { |v| inject_env!(v) }
+      when Array
+        data.each_index do |idx|
+          data[idx] = inject_env!(data[idx])
+        end
+        data
+      when String
+        data.gsub!(/\$\{\s*(?<variable>[a-z_]\w*)\s*\}/i) do |match|
+          ENV["INATGET_#{ $~[:variable] }"] || ENV[$~[:variable]] || ''
+        end || data
+      else
+        data
+      end
+    end
+
     def parse_options!
       options = {
-        :config => "./inat-get.yml",
-        :log_level => :warn,
+        :config => "~/.config/#{ INatGet::Info::NAME }.yml",
         :maintenance => nil,
         :maintenance_params => nil
       }
@@ -67,20 +105,32 @@ module INatGet::Setup
           options[:maintenance] = :info
         end
 
-        o.separator ''
-        o.separator "\e[1m   Config Options:\e[0m"
+        o.on '--show-config', 'Show current configuration and exit.' do
+          options[:maintenance] = :show_config
+        end
 
-        o.on '-c', '--config FILE', String, 'Use this file as config (must be YAML) [default: ./inat-get.yml].' do |value|
+        o.separator ''
+        o.separator "\e[1m   Main Options:\e[0m"
+
+        o.on '-c', '--config FILE', String, 'Use this file as config (must be YAML) [default: ~/.config/inat-get.yml].' do |value|
           options[:config] = value
         end
 
         o.on '-l', '--log-level LEVEL', [ 'fatal', 'error', 'warn', 'info', 'debug' ], 'Log level (fatal, error, warn, info or debug) [default: warn].' do |value|
-          options[:log_level] = value
+          options[:logger] ||= {}
+          options[:logger][:level] = value
         end
 
         o.on '--debug', 'Set log level to debug.' do
-          options[:log_level] = :debug
+          options[:logger] ||= {}
+          options[:logger][:level] = :debug
         end
+
+        o.on '-o', '--offline', 'Offline mode: no updates, use local database only.' do 
+          options[:offline] = true
+        end
+
+        o.on '-O', '--online', 'Online mode [default], use this flag to cancel \'offline: true\' in config.'
 
         o.separator ''
         o.separator "\e[1m   DB Maintenance:\e[0m"
@@ -119,6 +169,7 @@ module INatGet::Setup
     end
 
     def load_config filename
+      filename = File.expand_path filename
       if File.exist?(filename)
         YAML::load_file filename, symbolize_names: true
       else
@@ -164,10 +215,3 @@ module INatGet::Setup
 
 end
 
-module ING
-
-  extend IS::DSL
-
-  encapsulate INatGet::Setup, :config!, :config
-
-end

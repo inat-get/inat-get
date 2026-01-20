@@ -247,6 +247,7 @@ Sequel.migration do
       column :taxon_id, Integer
       column :user_id, Integer, null: false
       column :uuid, String
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_observations'
       foreign_key [ :taxon_id ], :taxa, name: 'fk_observations_taxon_id', on_delete: :cascade, on_update: :cascade
@@ -278,6 +279,7 @@ Sequel.migration do
       index [ :taxon_id ], name: 'ix_observations_taxon_id'
       index [ :user_id ], name: 'ix_observations_user_id'
       index [ :uuid ], name: 'ix_observations_uuid'
+      index [ :cached ], name: 'ix_observations_cached'
     end
 
     create_table :observation_faves do
@@ -397,10 +399,12 @@ Sequel.migration do
       column :hash, String, fixed: true, size: 32, null: false
       column :query, String, text: true, null: false
       column :started, Time, null: false
+      column :freshed, Time, null: false
       column :finished, Time
 
       primary_key [ :hash ], name: 'pk_requests'
       index [ :started ], name: 'ix_requests_started'
+      index [ :freshed ], name: 'ix_requests_freshed'
       index [ :finished ], name: 'ix_requests_finished'
     end
 

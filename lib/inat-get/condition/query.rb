@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../db/helper'
+require_relative '../data/helper'
 
 class INatGet::Condition::Q
 
@@ -10,7 +10,7 @@ class INatGet::Condition::Q
   attr_reader :query
 
   def initialize helper, **query
-    @helper
+    @helper = helper
     @query = query
   end
 

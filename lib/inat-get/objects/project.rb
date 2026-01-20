@@ -34,25 +34,25 @@ class INatGet::Models::Project < Sequel::Model(:projects)
       return Sequel.|(*self.subprojects.map(&:to_sequel))
     elsif self.is_collection
       conditions = []
-      if !self.included_taxa.empty?
-        conditions << Sequel.|(*self.included_taxa.map { |taxon| { taxon: taxon.descendants } })
+      if !self.included_taxa_dataset.empty?
+        conditions << Sequel.|(*self.included_taxa.map { |taxon| { taxon: taxon.descendants_dataset } })
       end
-      if !self.excluded_taxa.empty?
-        conditions << Sequel.~(Sequel.|(*self.excluded_taxa.map { |taxon| { taxon: taxon.descendants } }))
+      if !self.excluded_taxa_dataset.empty?
+        conditions << Sequel.~(Sequel.|(*self.excluded_taxa.map { |taxon| { taxon: taxon.descendants_dataset } }))
       end
-      if !self.included_places.empty?
-        conditions << { place: self.included_places }
+      if !self.included_places_dataset.empty?
+        conditions << { place: self.included_places_dataset }
       end
-      if !self.excluded_places.empty?
-        conditions << Sequel.~({ place: self.excluded_places })
+      if !self.excluded_places_dataset.empty?
+        conditions << Sequel.~({ place: self.excluded_places_dataset })
       end
       if self.members_only
-        conditions << { user: self.members }
-      elsif !self.included_users.empty?
-        conditions << { user: self.included_users }
+        conditions << { user: self.members_dataset }
+      elsif !self.included_users_dataset.empty?
+        conditions << { user: self.included_users_dataset }
       end
-      if !self.excluded_users.empty?
-        conditions << Sequel.~({ user: self.excluded_users })
+      if !self.excluded_users_dataset.empty?
+        conditions << Sequel.~({ user: self.excluded_users_dataset })
       end
       # TODO: добавить Terms
       return Sequel.&(*conditions)

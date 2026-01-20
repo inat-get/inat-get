@@ -8,20 +8,125 @@ module INatGet::Data::Helpers; end
 
 module INatGet::Data::Helpers::Common
 
-  def get_project id_or_slug
-    # TODO: implement
+  def get_project id_or_slug, updated = false
+    query = case id_or_slug
+    when String, Symbol
+      { slug: id_or_slug.to_s }
+    when Integer
+      { id: id_or_slug }
+    else
+      raise ArgumentError, "Invalid id or slug for project: #{ id_or_slug.inspect }", caller_locations
+    end
+    ds = INatGet::Models::Project.where(**query)
+    if ds.empty?
+      parser = INatGet::Data::Parser::Project::instance
+      if updated
+        if id_or_slug.is_a?(Integer)
+          parser.fake id_or_slug
+        else
+          raise ArgumentError, "Project not found: #{ id_or_slug.inspect }", caller_locations[1..]
+        end
+      else
+        updater = INatGet::Data::Updater::instance
+        rq = {
+          entrypoint: :projects,
+          params: { id: id_or_slug },
+          parser: parser
+        }
+        updater.update! rq
+        get_project id_or_slug, true
+      end
+    else
+      ds.first
+    end
   end
 
-  def get_place id_or_slug
-    # TODO: implement
+  def get_place id_or_slug, updated = false
+    query = case id_or_slug
+    when String, Symbol
+      { slug: id_or_slug.to_s }
+    when Integer
+      { id: id_or_slug }
+    else
+      raise ArgumentError, "Invalid id or slug for place: #{ id_or_slug.inspect }", caller_locations
+    end
+    ds = INatGet::Models::Place.where(**query)
+    if ds.empty?
+      parser = INatGet::Data::Parser::Place::instance
+      if updated
+        if id_or_slug.is_a?(Integer)
+          parser.fake id_or_slug
+        else
+          raise ArgumentError, "Place not found: #{ id_or_slug.inspect }", caller_locations[1..]
+        end
+      else
+        updater = INatGet::Data::Updater::instance
+        rq = {
+          entrypoint: :places,
+          params: { id: id_or_slug },
+          parser: parser
+        }
+        updater.update! rq
+        get_place id_or_slug, true
+      end
+    else
+      ds.first
+    end
   end
 
-  def get_taxon id
-    # TODO: implement
+  def get_taxon id, updated = false
+    raise ArgumentError, "Invalid id for taxon: #{ id.inspect }", caller_locations unless id.is_a?(Integer)
+    ds = INatGet::Models::Taxon.where id: id
+    if ds.empty?
+      parser = INatGet::Data::Parser::Taxon::instance
+      if updated
+        parser.fake id
+      else
+        updater = INatGet::Data::Updater::instance
+        rq = {
+          entrypoint: :taxa,
+          params: { id: id },
+          parser: parser
+        }
+        updater.update! rq
+        get_taxon id, true
+      end
+    else
+      ds.first
+    end
   end
 
-  def get_user id_or_login
-    # TODO: implement
+  def get_user id_or_login, updated = false
+    query = case id_or_login
+    when String, Symbol
+      { login: id_or_login.to_s }
+    when Integer
+      { id: id_or_login }
+    else
+      raise ArgumentError, "Invalid id or login for user: #{ id_or_login.inspect }", caller_locations
+    end
+    ds = INatGet::Models::User.where(**query)
+    if ds.empty?
+      parser = INatGet::Data::Parser::User::instance
+      if updated
+        if id_or_login.is_a?(Integer)
+          parser.fake id_or_login
+        else
+          raise ArgumentError, "User not found: #{ id_or_login }", caller_locations[1..]
+        end
+      else
+        updater = INatGet::Data::Updater::instance
+        rq = {
+          entrypoint: "users/#{ id_or_login }",
+          params: {},
+          parser: parser
+        }
+        updater.update! rq
+        get_user id_or_login, true
+      end
+    else
+      ds.first
+    end
   end
 
   module_function :get_project, :get_place, :get_taxon, :get_user
@@ -64,7 +169,7 @@ module INatGet::Data::Helpers::Common
   end
 
   def to_sequel **query
-    model = self.model
+    # model = self.model
     hooks = self.sequel_hooks
     exprs = []
     query.each do |key, value|
@@ -509,6 +614,26 @@ class INatGet::Data::Helpers::User
     INatGet::Models::User
   end
 
+  def to_api **query
+    if query.has_key?(:id)
+      value = query[:id]
+      if value.is_a?(Enumerable)
+        value.map { |v| to_api({ id: v }) }
+      else
+        { entrypoint: "#{ self.entrypoint }/#{ value }", params: {} }
+      end
+    elsif query.has_key?(:login)
+      value = query[:login]
+      if value.is_a?(Enumerable)
+        value.map { |v| to_api({ id: v }) }
+      else
+        { entrypoint: "#{ self.entrypoint }/#{ value }", params: {} }
+      end
+    else
+      raise ArgumentError, "Invalid query: #{ query.inspect }", caller_locations
+    end
+  end
+
 end
 
 module INatGet::Data::Helpers
@@ -517,5 +642,7 @@ module INatGet::Data::Helpers
   TXN = INatGet::Data::Helpers::Taxon::instance
   PRJ = INatGet::Data::Helpers::Project::instance
   PLC = INatGet::Data::Helpers::Place::instance
+  USR = INatGet::Data::Helpers::User::instance
+  CMN = INatGet::Data::Helpers::Common
 
 end
