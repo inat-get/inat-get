@@ -65,3 +65,4 @@ module INatGet::Utils::Duration
   end
 
 end
+

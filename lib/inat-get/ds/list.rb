@@ -156,4 +156,24 @@ class INatGet::List
     result
   end
 
+  def self.commons num, *src
+    keys = {}
+    values = {}
+    src.each do |s|
+      s.each do |key, value|
+        if value
+          keys[key] ||= 0
+          keys[key] += 1
+          values[key] ||= []
+          values[key] << value
+        end
+      end
+    end
+    result = new
+    values.slice(keys.select { |_, value| value >= num }.keys).each_value do |value|
+      result.add value.reduce(:+)
+    end
+    result
+  end
+
 end

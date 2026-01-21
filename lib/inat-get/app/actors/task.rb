@@ -4,12 +4,13 @@ require_relative 'core'
 
 class INatGet::Actor::Task < INatGet::Actor::Core
 
-  attr_reader :api, :task
+  attr_reader :api, :task, :name
 
   def initialize main, api, config, task
     super main, config
     @api = api
     @task = task
+    @name = task.name
   end
 
   def execute
@@ -18,7 +19,8 @@ class INatGet::Actor::Task < INatGet::Actor::Core
     db_opts = { user: @config.dig(:database, :user), password: @config.dig(:database, :password) }.compact
     @db = Sequel.connect @config.dig(:database, :connect), **db_opts
     Sequel::Model.db = @db
-    require_relative "../../objects/observation"
+    require_relative '../../objects/request'
+    require_relative '../../objects/observation'
     # TODO: implement
   end
 

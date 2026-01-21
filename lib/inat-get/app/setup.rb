@@ -12,11 +12,22 @@ require_relative 'maintenance'
 module INatGet::Setup
 
   DEFAULTS = {
-    logger: {
-      level: 'info'
+    logs: {
+      screen: {
+        api: 'warn',
+        sys: 'warn',
+        wrk: 'info'
+      },
+      file: {
+        enable: false,
+        path: "./#{ INatGet::Info::NAME }.log",
+        api: 'info',
+        sys: 'info',
+        wrk: 'info'
+      }
     },
     database: {
-      connect: "sqlite://${HOME}/.cache/#{ INatGet::Info::NAME }/inat-cache.db",
+      connect: "sqlite://${HOME}/.cache/#{ INatGet::Info::NAME }/#{ INatGet::Info::NAME }.db",
       user: nil,
       password: nil
     },
@@ -32,7 +43,23 @@ module INatGet::Setup
       }
     },
     offline: false,
-    workers: 4
+    workers: {
+      limit: 4,
+      order: 'given'              # given, random, name
+    },
+    api: {
+      root: 'https://api.inaturalist.org/v1/',
+      locale: 'ru',
+      preferred_place: 7161,
+      retry: {
+        max: 5,
+        interval: '1s',
+        randomness: 0.5,
+        backoff: 2
+      },
+      delay: '1s',
+      pager: 200
+    }
   }
 
   class << self
@@ -116,21 +143,45 @@ module INatGet::Setup
           options[:config] = value
         end
 
-        o.on '-l', '--log-level LEVEL', [ 'fatal', 'error', 'warn', 'info', 'debug' ], 'Log level (fatal, error, warn, info or debug) [default: warn].' do |value|
-          options[:logger] ||= {}
-          options[:logger][:level] = value
+        o.on '-l', '--log-level LEVEL', [ 'fatal', 'error', 'warn', 'info', 'debug' ], 'Log level (fatal, error, warn, info or debug).' do |value|
+          options[:logs] ||= {}
+          options[:logs][:screen] ||= {}
+          options[:logs][:screen][:api] = value
+          options[:logs][:screen][:sys] = value
+          options[:logs][:screen][:wrk] = value
         end
 
-        o.on '--debug', 'Set log level to debug.' do
-          options[:logger] ||= {}
-          options[:logger][:level] = :debug
+        o.on '-L', '--log-file [FILE]', String, 'Set log file path (if specified) and enable logging to file.' do |value|
+          options[:logs] ||= {}
+          options[:logs][:file] ||= {}
+          options[:logs][:file][:path] = value if value
+          options[:logs][:file][:enable] = true
+        end
+
+        o.on '--file-log-level LEVEL', [ 'fatal', 'error', 'warn', 'info', 'debug' ], 'Log level for file logging (fatal, error, warn, info or debug).' do |value|
+          options[:logs] ||= {}
+          options[:logs][:file] ||= {}
+          options[:logs][:file][:api] = value
+          options[:logs][:file][:sys] = value
+          options[:logs][:file][:wrk] = value
+        end
+
+        o.on '--debug', 'Enable file logging and set file log level to debug.' do
+          options[:logs] ||= {}
+          options[:logs][:file] ||= {}
+          options[:logs][:file][:enable] = true
+          options[:logs][:file][:api] = 'debug'
+          options[:logs][:file][:sys] = 'debug'
+          options[:logs][:file][:wrk] = 'debug'
         end
 
         o.on '-o', '--offline', 'Offline mode: no updates, use local database only.' do 
           options[:offline] = true
         end
 
-        o.on '-O', '--online', 'Online mode [default], use this flag to cancel \'offline: true\' in config.'
+        o.on '-O', '--online', 'Online mode [default], use this flag to cancel \'offline: true\' in config.' do
+          options[:offline] = false
+        end
 
         o.separator ''
         o.separator "\e[1m   DB Maintenance:\e[0m"
@@ -163,7 +214,12 @@ module INatGet::Setup
                     "\t\t\t\t     If task name has not extension try to read '‹task›' than '‹task›.inat' than '‹task›.rb'."
       end
 
-      files = opts.parse!
+      begin
+        files = opts.parse!
+      rescue => e
+        $stderr.puts "❌ \e[1m#{ e.message }\e[0m"
+        exit Errno::ENOTSUP::Errno
+      end
 
       [options, files]
     end

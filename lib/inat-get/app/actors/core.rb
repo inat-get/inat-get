@@ -13,10 +13,12 @@ class INatGet::Actor::Core
     @config = config
   end
 
-  attr_reader :db
+  attr_reader :logger
 
   def execute
+    require_relative 'logger'
+    @logger = INatGet::System::Logger::new @main
+    @logger.progname = self.name
   end
 
 end
-
