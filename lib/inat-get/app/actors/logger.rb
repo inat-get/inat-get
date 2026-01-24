@@ -13,16 +13,16 @@ class INatGet::System::MainLogger < ::Logger
     super nil, **options
   end
 
-  def add severity, time = Time.now, progname = nil, msg = nil
+  def add severity, msg = nil, progname = nil
     return unless msg || block_given?
     msg = yield if block_given? && msg.nil?
     @main.send({
       command: :log,
       data: {
+        worker: Ractor.current,
         severity: severity,
-        time: time,
-        progname: progname || self.progname,
-        message: msg
+        message: msg,
+        progname: progname || self.progname
       }
     })
   end

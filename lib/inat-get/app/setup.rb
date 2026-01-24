@@ -210,8 +210,9 @@ module INatGet::Setup
         o.separator ''
         o.separator "\e[1m   File Arguments:\e[0m"
 
-        o.separator "\t‹task› [‹task› ...]\t     One or more names of task files or list files with '@' prefix (one task file per line).\n" +
-                    "\t\t\t\t     If task name has not extension try to read '‹task›' than '‹task›.inat' than '‹task›.rb'."
+        o.separator "\t‹task› [‹task› ...]\t     One or more names of task files or list files with '@' prefix (one task\n" +
+                    "\t\t\t\t     file per line). If task name has not extension try to read '‹task›'\n" +
+                    "\t\t\t\t     than '‹task›.inat' than '‹task›.rb'."
       end
 
       begin

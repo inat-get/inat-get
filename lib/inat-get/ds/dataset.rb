@@ -90,7 +90,7 @@ class INatGet::Dataset
   private
 
   def get_field_values field
-    @update!
+    update!
     @condition.helper.model.select(field).where(@condition.sequel_query).all
   end
 

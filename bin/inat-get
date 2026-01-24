@@ -3,6 +3,6 @@
 require_relative '../lib/inat-get'
 require_relative '../lib/inat-get/app'
 
-pp INatGet::Setup::config!
+app = INatGet::Application::instance
 
-puts 'Started...'
+app.run

@@ -2,7 +2,7 @@
 
 require_relative 'core'
 
-class INatGet::Actor::Task < INatGet::Actor::Core
+class INatGet::Actor::Worker < INatGet::Actor::Core
 
   attr_reader :api, :task, :name
 
