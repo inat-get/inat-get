@@ -17,7 +17,7 @@ class INatGet::Actor::Core
 
   def execute
     require_relative 'logger'
-    @logger = INatGet::System::Logger::new @main
+    @logger = INatGet::System::MainLogger::new @main
     @logger.progname = self.name
   end
 

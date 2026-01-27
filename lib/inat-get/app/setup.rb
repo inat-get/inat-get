@@ -59,7 +59,12 @@ module INatGet::Setup
       },
       delay: '1s',
       pager: 200
-    }
+    },
+    socket: {
+      console: "/tmp/#{ INatGet::Info::NAME }/console.sock",
+      api: "/tmp/#{ INatGet::Info::NAME }/api.sock"
+    },
+    tasks: []
   }
 
   class << self
@@ -75,6 +80,7 @@ module INatGet::Setup
       inject_env! @config
       unwrap_files!
       INatGet::Maintenance.send @config[:maintenance], @config if @config[:maintenance]
+      @config
     end
 
     def config
@@ -93,7 +99,7 @@ module INatGet::Setup
         end
         data
       when String
-        data.gsub!(/\$\{\s*(?<variable>[a-z_]\w*)\s*\}/i) do |match|
+        data.gsub(/\$\{\s*(?<variable>[a-z_]\w*)\s*\}/i) do |match|
           ENV["INATGET_#{ $~[:variable] }"] || ENV[$~[:variable]] || ''
         end || data
       else

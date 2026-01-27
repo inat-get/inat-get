@@ -16,12 +16,13 @@ class INatGet::Actor::API < INatGet::Actor::Core
     require_relative '../../utils/duration'
 
     @delay = INatGet::Utils::Duration::as_duration(@config.dig(:api, :delay)).to_f
-    @logger.debug 'API Ractor started', progname: 'SYS'
+    @logger.debug('SYS') { 'API Ractor started' }
     loop do
       msg = Ractor.receive
-      @logger.debug "API Ractor received message: #{ msg.inspect }", progname: 'SYS'
+      pp msg
+      @logger.debug('SYS') { "API Ractor received message: #{ msg.inspect }" }
       unless msg.is_a?(Hash) && msg[:command]
-        @logger.error "API Ractor invalid message: #{msg.inspect}", progname: 'SYS'
+        @logger.error('SYS') { "API Ractor invalid message: #{ msg.inspect }" }
         next
       end
       case msg[:command]
@@ -31,7 +32,7 @@ class INatGet::Actor::API < INatGet::Actor::Core
         self.send msg[:command], msg[:data]
       end
     end
-    @logger.debug 'API Ractor done', progname: 'SYS'
+    @logger.debug('SYS') { 'API Ractor done' }
   end
 
   def get query

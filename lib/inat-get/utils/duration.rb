@@ -23,13 +23,13 @@ module INatGet::Utils::Duration
         'us' => 0.000001,
         'ns' => 0.000000001
       }
-      matches = source.scan /(?<num>\d+)(?<unit>w|d|h|m|s|ms|us|ns)/
+      matches = source.scan(/(\d+)(w|d|h|m|s|ms|us|ns)/)
       seconds = 0
       subseconds = 0.0
       has_subseconds = false
       matches.each do |fields|
-        num = fields[:num].to_i
-        unit = fields[:unit]
+        num = fields[0].to_i
+        unit = fields[1]
         if %w[ms us ns].include?(unit)
           subseconds += num * multipliers[unit]
           has_subseconds = true
