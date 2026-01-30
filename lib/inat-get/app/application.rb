@@ -31,19 +31,11 @@ class INatGet::Application
     api_socket = @config.dig :socket, :api
     check_sockets! api_socket, console_socket
 
-    if api_socket_exists?
-      if api_socket_alive?
-        warn "❌ API Socket already exists!"
-        exit(-1)
-      else
-        File.delete @api_socket
-      end
-    end
-    
     console = INatGet::Server::Console::create console_socket
     api = INatGet::Server::API::create api_socket, console: console
 
     tasks = @config[:tasks].map { |path| INatGet::Task::new path, @config }
+    Process::warmup
     INatGet::Worker::enqueue @config, *tasks, console: console, api: api
   end
 

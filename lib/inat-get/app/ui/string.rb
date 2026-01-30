@@ -4,7 +4,7 @@ class String
 
   ANSI  = /\e\[[0-9;]*[a-zA-Z]/
   EMOJI = /\p{Emoji_Presentation}/
-  EAST  = /\p{Emoji_Presentation}|\p{Han}|\p{Hiragana}|\p{Katakana}|\p{Hangul}/
+  EAST  = /\p{Han}|\p{Hiragana}|\p{Katakana}|\p{Hangul}/
 
   def width
     current = 0
@@ -12,9 +12,7 @@ class String
       w = case match
       when ANSI
         0
-      when EMOJI
-        2
-      when EAST
+      when EMOJI, EAST
         2
       else
         1
@@ -32,9 +30,7 @@ class String
       w = case match
       when ANSI
         0
-      when EMOJI
-        2
-      when EAST
+      when EMOJI, EAST
         2
       else
         1
