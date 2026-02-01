@@ -11,11 +11,6 @@ require_relative 'core/worker'
 
 class INatGet::Application
 
-  # PROGRESS_TITLE = "🌿 \e[1miNatGet:\e[0m\e[K\tprocessing: \e[1m:current\e[0m of \e[1m:total\e[0m\ttotal time: \e[1m:elapsed\e[0m\tspeed: \e[1m:mean_rate\e[0m r/s \t:extra"
-  # PROGRESS_LINE  = "\e[1m:title \e[K\t- :status - \t[:bar] :percent \t:current of :total \t:eta\e[0m \t:appendix"
-
-  # private_constant :PROGRESS_TITLE, :PROGRESS_LINE
-
   include Singleton
 
   def initialize
