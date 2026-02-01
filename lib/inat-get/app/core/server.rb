@@ -65,7 +65,7 @@ class INatGet::Server
     warn exception
   end
 
-  class Proxy < BasicObject
+  class Proxy 
 
     def initialize detacher, socket_path, wait_answer = true
       @detacher = detacher
@@ -116,7 +116,6 @@ class INatGet::Server
       end
       detacher = Process::detach pid
       @proxies[socket_path] = INatGet::Server::Proxy::new(detacher, socket_path, wait_answer?)
-      $stderr.puts "DEBUG: proxy = #{ @proxies[socket_path] }"
       @proxies[socket_path]
     end
 

@@ -28,7 +28,7 @@ class INatGet::Server::Console < INatGet::Server
   end
 
   def log severity, message, progname, **opts
-    $stderr.puts message
+    $stderr.puts "[ #{opts[:_sender_pid]} ] ( #{severity} ) #{message} || #{progname}"
     # TODO: implement
   end
 

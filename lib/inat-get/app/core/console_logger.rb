@@ -14,8 +14,13 @@ class INatGet::App::ConsoleLogger < Logger
   end
 
   def add severity, msg = nil, progname = nil
-    return unless msg || block_given?
-    msg = yield if block_given? && msg.nil?
+    if block_given?
+      msg = yield
+    elsif msg.nil?
+      msg = progname
+      progname = nil
+    end
+    return if msg.nil?
     @console.log severity, msg, (progname || self.progname)
   end
 
