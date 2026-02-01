@@ -23,13 +23,13 @@ class INatGet::Task
   attr_reader :db
 
   def prepare
-    require 'sequel'
-    db_connect = @config.dig(:database, :connect)
-    db_options = { user: @config.dig(:database, :user), password: @config.dig(:database, :password) }.compact
-    @db = Sequel::connect(db_connect, **db_options)
-    Sequel::Model::db = @db
-    require_relative '../../objects/observation'
-    # ... etc
+    # require 'sequel'
+    # db_connect = @config.dig(:database, :connect)
+    # db_options = { user: @config.dig(:database, :user), password: @config.dig(:database, :password) }.compact
+    # @db = Sequel::connect(db_connect, **db_options)
+    # Sequel::Model::db = @db
+    # require_relative '../../objects/observation'
+    # # ... etc
   end
 
 end

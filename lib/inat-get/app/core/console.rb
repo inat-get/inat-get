@@ -28,6 +28,7 @@ class INatGet::Server::Console < INatGet::Server
   end
 
   def log severity, message, progname, **opts
+    $stderr.puts message
     # TODO: implement
   end
 
