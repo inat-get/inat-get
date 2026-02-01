@@ -29,6 +29,10 @@ module INatGet::Maintenance
       exit OK
     end
 
+    def info config
+      # TODO: implement
+    end
+
     def db_check config, continue = false
       connect_string = config.dig :database, :connect
       uri = URI::parse connect_string
@@ -59,6 +63,22 @@ module INatGet::Maintenance
         $stderr.puts "✅ \e[1mDatabase is actual:\e[0m version \e[1m#{md_ver}\e[0m"
         exit DB_OK
       end
+    end
+
+    def db_update config
+      # TODO: implement
+    end
+
+    def db_migrate config
+      # TODO: implement
+    end
+
+    def db_create config
+      # TODO: implement
+    end
+
+    def db_reset config
+      # TODO: implement
     end
 
     private
