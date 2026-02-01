@@ -32,6 +32,8 @@ class INatGet::Application
     tasks = @config[:tasks].map { |path| INatGet::Task::new path, @config }
     Process::warmup
     INatGet::Worker::enqueue @config, *tasks, console: console, api: api
+    console.quit
+    api.quit
   end
 
   private
@@ -41,9 +43,9 @@ class INatGet::Application
       if socket_alive?(socket)
         warn "❌ API Socket already exists!"
         exit(-1)
+      else
+        File.delete socket
       end
-    else
-      File.delete socket
     end
 
     if File.exist?(socket2)

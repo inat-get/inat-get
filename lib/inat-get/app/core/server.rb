@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
+require 'socket'
 require 'fileutils'
 
 require_relative '../../info'
 require_relative '../setup'
 
-class INatGet::Server < BasicObject
+class INatGet::Server 
 
   attr_reader :config
 
   def initialize socket_path, **params
     @socket_path = socket_path
     @params = params
-    @config = INatGet::Setup::config
+    @config = ::INatGet::Setup::config
   end
 
   def run

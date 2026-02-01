@@ -7,7 +7,7 @@ class INatGet::Server::API < INatGet::Server
 
   def initialize socket_path, **params
     @console = params.delete :console
-    @logger = ConsoleLogger::new @console, progname: 'API'
+    @logger = ::INatGet::App::ConsoleLogger::new @console, progname: 'API'
     super(socket_path, **params)
     # TODO: implement or delete
   end

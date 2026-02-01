@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
 require_relative 'task'
+require_relative 'console_logger'
 
-class INatGet::Worker < BasicObject
+class INatGet::Worker
 
   def initialize task, **params
     @task = task
     @params = params
+    @console = params.delete :console
+    @logger = INatGet::App::ConsoleLogger::new @console, progname: task.name
   end
 
   def execute
     @task.prepare
     @task.execute
   rescue => e
-    # TODO: logging
+    @logger.error e.message
   end
 
   class << self
