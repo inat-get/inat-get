@@ -115,7 +115,9 @@ class INatGet::Server
         server.run
       end
       detacher = Process::detach pid
-      @proxies[socket_path] = INatGet::Server::Proxy::new detacher, socket_path, wait_answer?
+      @proxies[socket_path] = INatGet::Server::Proxy::new(detacher, socket_path, wait_answer?)
+      $stderr.puts "DEBUG: proxy = #{ @proxies[socket_path] }"
+      @proxies[socket_path]
     end
 
     private :new

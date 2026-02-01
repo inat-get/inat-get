@@ -27,6 +27,7 @@ class INatGet::Application
     check_sockets! api_socket, console_socket
 
     console = INatGet::Server::Console::create console_socket
+    $stderr.puts "DEBUG in run: console = #{ console.inspect }"
     api = INatGet::Server::API::create api_socket, console: console
 
     tasks = @config[:tasks].map { |path| INatGet::Task::new path, @config }

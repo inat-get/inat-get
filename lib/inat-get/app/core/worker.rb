@@ -9,6 +9,7 @@ class INatGet::Worker
     @task = task
     @params = params
     @console = params.delete :console
+    $stderr.puts "DEBUG in worker console = #{@console.inspect}"
     @logger = INatGet::App::ConsoleLogger::new @console, progname: task.name
   end
 
