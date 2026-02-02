@@ -4,6 +4,7 @@
 
 ```mermaid
 erDiagram
+    direction LR
     "schema_info" {
         INTEGER version
     }
