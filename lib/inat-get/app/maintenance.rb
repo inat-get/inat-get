@@ -8,12 +8,6 @@ require_relative '../info'
 
 module INatGet::Maintenance
 
-  OK            = 0
-  DB_OK         = 0
-  DB_NOT_EXISTS = 1
-  DB_ERROR      = 2
-  DB_NOT_ACTUAL = 3
-
   class << self
 
     def show_config config
@@ -26,7 +20,7 @@ module INatGet::Maintenance
       puts "🌿 \e[1miNatGet Config:\e[0m"
       YAML.dump(config, $stdout, stringify_names: true)
       puts '---'
-      exit OK
+      exit Errno::NOERROR::Errno
     end
 
     def info config
@@ -36,10 +30,10 @@ module INatGet::Maintenance
     def db_check config, continue = false
       connect_string = config.dig :database, :connect
       uri = URI::parse connect_string
-      if uri.scheme.downcase == 'sqlite'
+      if file_based?(uri)
         unless File.exist?(uri.path)
           $stderr.puts "❌ \e[1mDatabase file not found:\e[0m #{ uri.path }"
-          exit DB_NOT_EXISTS
+          exit Errno::ENOENT::Errno
         end
       end
       db_opts = { user: config.dig(:database, :user), password: config.dig(:database, :password) }.compact
@@ -47,7 +41,7 @@ module INatGet::Maintenance
         db = Sequel.connect connect_string, **db_opts
       rescue => e
         $stderr.puts "❌ \e[1mDB Connection error:\e[0m #{ e.message }"
-        exit DB_ERROR
+        exit Errno::ECONNREFUSED::Errno
       end
       Sequel.extension :migration
       migrator = Sequel::Migrator::migrator_class(migrations_path).new(db, migrations_path)
@@ -57,31 +51,127 @@ module INatGet::Maintenance
         $stderr.puts "🚨 \e[1mDatabase is not actual:\e[0m"
         $stderr.puts "    Target version: \e[1m#{ md_ver }\e[0m"
         $stderr.puts "   Current version: \e[1m#{ db_ver }\e[0m"
-        exit DB_NOT_ACTUAL
+        exit Errno::ECANCELED::Errno
       end
       unless continue
         $stderr.puts "✅ \e[1mDatabase is actual:\e[0m version \e[1m#{md_ver}\e[0m"
-        exit DB_OK
+        exit Errno::NOERROR::Errno
       end
+      Sequel::DATABASES.each(&:disconnect)
+      true
     end
 
     def db_update config
-      # TODO: implement
+      run_migration config
+      exit Errno::NOERROR::Errno
     end
 
     def db_migrate config
-      # TODO: implement
+      target = config[:maintenance_params]
+      unless target.is_a?(Integer)
+        $stderr.puts "❌ \e[1mVersion must be an integer\e[0m"
+        exit Errno::ECANCELED::Errno
+      end
+      run_migration config, target: target
+      exit Errno::NOERROR::Errno
     end
 
     def db_create config
-      # TODO: implement
+      connect_string = config.dig :database, :connect
+      uri = URI.parse connect_string
+      db_opts = { user: config.dig(:database, :user), password: config.dig(:database, :password) }.compact
+      if file_based?(uri)
+        path = File.expand_path uri.path
+        if File.exist?(path)
+          $stderr.puts "❌ \e[1mDatabase file already exists:\e[0m #{ path }"
+          exit Errno::EEXIST::Errno
+        end
+        FileUtils.mkdir_p File.dirname(path)
+        db = Sequel.connect(connect_string, **db_opts)
+        db.disconnect
+        puts "✅ \e[1mDatabase file created:\e[0m #{ path }"
+      else
+        begin
+          db = Sequel.connect(connect_string, **db_opts)
+          db.test_connection
+          db.disconnect
+          puts "✅ \e[1mDatabase connection verified (#{ uri.scheme })\e[0m"
+        rescue => e
+          $stderr.puts "❌ \e[1mCannot connect to database:\e[0m"
+          $stderr.puts "   #{ e.message }"
+          $stderr.puts "   Please create database manually first"
+          exit Errno::ECONNREFUSED::Errno
+        end
+      end
+      begin
+        run_migrations(config)
+      rescue => e
+        $stderr.puts "❌ \e[1mError while creating:\e[0m"
+        $stderr.puts "   #{ e.message }"
+        exit Errno::ECANCELED::Errno
+      end
+      puts "✅ \e[1mDatabase successfully created\e[0m"
+      exit Errno::NOERROR::Errno
     end
 
     def db_reset config
-      # TODO: implement
+      connect_string = config.dig :database, :connect
+      db_opts = { user: config.dig(:database, :user), password: config.dig(:database, :password) }.compact
+      uri = URI.parse connect_string
+      if file_based?(uri)
+        path = File.expand_path uri.path
+        if File.exist?(path)
+          File.delete path
+          puts "🗑️  \e[1mDatabase file removed:\e[0m #{ path }"
+        end
+      else
+        begin
+          db = Sequel.connect(connect_string, **db_opts)
+          tables = db.tables
+          if tables.any?
+            mysql_mode = uri.scheme =~ /mysql/i
+            if mysql_mode
+              db.execute "SET FOREIGN_KEY_CHECKS = 0"
+            end
+            tables.each do |table|
+              db.drop_table table, cascade: !mysql_mode
+            end
+            if mysql_mode
+              db.execute "SET FOREIGN_KEY_CHECKS = 1"
+            end
+            puts "🗑️  \e[1mAll tables dropped (#{ tables.size }):\e[0m #{ tables.join(", ") }"
+          else
+            puts "⚠️  \e[1mNo tables found in database\e[0m"
+          end
+          db.disconnect
+        rescue => e
+          $stderr.puts "❌ \e[1mError resetting database:\e[0m #{ e.message }"
+          exit Errno::ECONNREFUSED::Errno
+        end
+      end
+      puts "🔄 \e[1mRecreating database...\e[0m"
+      db_create(config)
     end
 
     private
+
+    def run_migration config, target: nil
+      connect_string = config.dig :database, :connect
+      db_opts = { user: config.dig(:database, :user), password: config.dig(:database, :password) }.compact
+      db = Sequel.connect(connect_string, **db_opts)
+      opts = { target: target }.compact
+      Sequel::Migrator.run(db, migrations_path, **opts)
+      migrator = Sequel::Migrator.migrator_class(migrations_path).new(db, migrations_path)
+      puts "✅ \e[1mDatabase migrated:\e[0m version \e[1m#{ migrator.current }\e[0m"
+      db.disconnect
+    rescue => e
+      $stderr.puts "❌ \e[1mMigration error:\e[0m #{ e.message }"
+      exit Errno::ECANCELED::Errno
+    end
+
+    def file_based? uri
+      uri.scheme.downcase == 'sqlite'
+    end
 
     def migrations_path
       @migrations_path ||= File.expand_path(File.join(File.dirname(__FILE__), '../../../share/inat-get/db/migrations/'))

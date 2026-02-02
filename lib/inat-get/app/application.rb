@@ -17,7 +17,7 @@ class INatGet::Application
     @config = INatGet::Setup::config!
     if @config[:tasks].nil?
       warn "❌ No tasks specified!"
-      exit(-1)
+      exit Errno::ECHILD::Errno
     end
   end
 
@@ -25,6 +25,8 @@ class INatGet::Application
     console_socket = @config.dig :socket, :console
     api_socket = @config.dig :socket, :api
     check_sockets! api_socket, console_socket
+
+    INatGet::Maintenance::db_check @config, true
 
     console = INatGet::Server::Console::create console_socket
     api = INatGet::Server::API::create api_socket, console: console
@@ -42,7 +44,7 @@ class INatGet::Application
     if File.exist?(socket)
       if socket_alive?(socket)
         warn "❌ API Socket already exists!"
-        exit(-1)
+        exit Errno::EEXIST::Errno
       else
         File.delete socket
       end
