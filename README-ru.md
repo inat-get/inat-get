@@ -3,6 +3,10 @@
 ## DB
 
 ```mermaid
+---
+config:
+  layout: elk
+---
 erDiagram
     direction LR
     "schema_info" {
