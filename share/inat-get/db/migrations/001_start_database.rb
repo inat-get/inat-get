@@ -102,10 +102,10 @@ Sequel.migration do
     end
 
     create_view :project_included_places,
-      DB[:project_places].select(:project_id, :place_id).where(exclude: false)
+      self[:project_places].select(:project_id, :place_id).where(exclude: false)
 
     create_view :project_excluded_places,
-      DB[:project_places].select(:project_id, :place_id).where(exclude: true)
+      self[:project_places].select(:project_id, :place_id).where(exclude: true)
 
     create_table :project_users do
       column :project_id, Integer, null: false
@@ -120,10 +120,10 @@ Sequel.migration do
     end
 
     create_view :project_included_users,
-      DB[:project_users].select(:project_id, :user_id).where(exclude: false)
+      self[:project_users].select(:project_id, :user_id).where(exclude: false)
 
     create_view :project_excluded_users,
-      DB[:project_users].select(:project_id, :user_id).where(exclude: true)
+      self[:project_users].select(:project_id, :user_id).where(exclude: true)
 
     create_table :project_quality_grades do
       column :project_id, Integer, null: false
@@ -211,10 +211,10 @@ Sequel.migration do
     end
 
     create_view :project_included_taxa,
-      DB[:project_taxa].select(:project_id, :taxon_id).where(exclude: false)
+      self[:project_taxa].select(:project_id, :taxon_id).where(exclude: false)
 
     create_view :project_excluded_taxa,
-      DB[:project_taxa].select(:project_id, :taxon_id).where(exclude: true)
+      self[:project_taxa].select(:project_id, :taxon_id).where(exclude: true)
 
     create_table :observations do
       column :id, Integer, null: false
@@ -398,6 +398,7 @@ Sequel.migration do
     create_table :requests do
       column :hash, String, fixed: true, size: 32, null: false
       column :query, String, text: true, null: false
+      column :control, Time, null: false
       column :started, Time, null: false
       column :freshed, Time, null: false
       column :finished, Time
@@ -406,6 +407,50 @@ Sequel.migration do
       index [ :started ], name: 'ix_requests_started'
       index [ :freshed ], name: 'ix_requests_freshed'
       index [ :finished ], name: 'ix_requests_finished'
+    end
+
+    create_table :request_projects do
+      column :request_hash, String, fixed: true, size: 32, null: false
+      column :project_id, Integer, null: false
+
+      primary_key [ :request_hash, :project_id ], name: 'pk_request_projects'
+      foreign_key [ :request_hash ], :requests, name: 'fk_request_projects_request_hash', on_delete: :cascade, on_update: :cascade
+      foreign_key [ :project_id ], :projects, name: 'fk_request_projects_project_id', on_delete: :cascade, on_update: :cascade
+      index [ :request_hash ], name: 'ix_request_projects_request_hash'
+      index [ :project_id ], name: 'ix_request_projects_project_id'
+    end
+
+    create_table :request_places do
+      column :request_hash, String, fixed: true, size: 32, null: false
+      column :place_id, Integer, null: false
+
+      primary_key [ :request_hash, :place_id ], name: 'pk_request_places'
+      foreign_key [ :request_hash ], :requests, name: 'fk_request_places_request_hash', on_delete: :cascade, on_update: :cascade
+      foreign_key [ :place_id ], :places, name: 'fk_request_places_place_id', on_delete: :cascade, on_update: :cascade
+      index [ :request_hash ], name: 'ix_request_places_request_hash'
+      index [ :place_id ], name: 'ix_request_places_place_id'
+    end
+
+    create_table :request_taxa do
+      column :request_hash, String, fixed: true, size: 32, null: false
+      column :taxon_id, Integer, null: false
+
+      primary_key [ :request_hash, :taxon_id ], name: 'pk_request_taxa'
+      foreign_key [ :request_hash ], :requests, name: 'fk_request_taxa_request_hash', on_delete: :cascade, on_update: :cascade
+      foreign_key [ :taxon_id ], :taxa, name: 'fk_requests_taxa_taxon_id', on_delete: :cascade, on_update: :cascade
+      index [ :request_hash ], name: 'ix_request_taxa_request_hash'
+      index [ :taxon_id ], name: 'ix_request_taxa_taxon_id'
+    end
+
+    create_table :request_users do
+      column :request_hash, String, fixed: true, size: 32, null: false
+      column :user_id, Integer, null: false
+
+      primary_key [ :request_hash, :user_id ], name: 'pk_request_users'
+      foreign_key [ :request_hash ], :requests, name: 'fk_request_users_request_hash', on_delete: :cascade, on_update: :cascade
+      foreign_key [ :user_id ], :users, name: 'fk_request_users_user_id', on_delete: :cascade, on_update: :cascade
+      index [ :request_hash ], name: 'ix_request_users_request_hash'
+      index [ :user_id ], name: 'ix_request_users_user_id'
     end
 
   end

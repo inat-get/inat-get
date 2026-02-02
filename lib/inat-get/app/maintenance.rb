@@ -3,6 +3,7 @@
 require 'uri'
 require 'yaml'
 require 'sequel'
+Sequel.extension :migration
 
 require_relative '../info'
 
@@ -155,7 +156,7 @@ module INatGet::Maintenance
 
     private
 
-    def run_migration config, target: nil
+    def run_migrations config, target: nil
       connect_string = config.dig :database, :connect
       db_opts = { user: config.dig(:database, :user), password: config.dig(:database, :password) }.compact
       db = Sequel.connect(connect_string, **db_opts)
@@ -165,7 +166,7 @@ module INatGet::Maintenance
       puts "✅ \e[1mDatabase migrated:\e[0m version \e[1m#{ migrator.current }\e[0m"
       db.disconnect
     rescue => e
-      $stderr.puts "❌ \e[1mMigration error:\e[0m #{ e.message }"
+      $stderr.puts "❌ \e[1mMigration error:\e[0m #{ e.message }\n#{ e.backtrace.inspect }"
       exit Errno::ECANCELED::Errno
     end
 
