@@ -397,8 +397,8 @@ Sequel.migration do
 
     create_table :requests do
       column :hash, String, fixed: true, size: 32, null: false
+      column :endless, String, fixed: true, size: 32, null: false
       column :query, String, text: true, null: false
-      column :control, Time, null: false
       column :started, Time, null: false
       column :freshed, Time, null: false
       column :finished, Time

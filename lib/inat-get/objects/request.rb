@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'json'
+require 'digest'
 require 'sequel'
 
 require_relative '../info'
