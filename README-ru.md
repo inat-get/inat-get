@@ -4,10 +4,10 @@
 
 ```mermaid
 erDiagram
-    schema_info {
+    "schema_info" {
         INTEGER version
     }
-    users {
+    "users" {
         INTEGER id
         varchar(255) login
         varchar(255) name
@@ -15,7 +15,7 @@ erDiagram
         varchar(255) orchid
         boolean suspended
     }
-    places {
+    "places" {
         INTEGER id
         varchar(255) slug
         varchar(255) name
@@ -25,14 +25,14 @@ erDiagram
         varchar(255) uuid
         TEXT bounding_box
         TEXT geometry
-        double precision latitude
-        double precision longitude
+        double_precision latitude
+        double_precision longitude
     }
-    place_ancestors {
+    "place_ancestors" {
         INTEGER place_id
         INTEGER ancestor_id
     }
-    projects {
+    "projects" {
         INTEGER id
         varchar(255) slug
         varchar(255) title
@@ -44,39 +44,39 @@ erDiagram
         boolean is_collection
         boolean members_only
     }
-    project_admins {
+    "project_admins" {
         INTEGER project_id
         INTEGER user_id
         varchar(255) role
     }
-    project_places {
+    "project_places" {
         INTEGER project_id
         INTEGER place_id
         boolean exclude
     }
-    project_users {
+    "project_users" {
         INTEGER project_id
         INTEGER user_id
         boolean exclude
     }
-    project_quality_grades {
+    "project_quality_grades" {
         INTEGER project_id
         varchar(255) quality_grade
     }
-    project_terms {
+    "project_terms" {
         INTEGER project_id
         INTEGER term_id
         INTEGER term_value_id
     }
-    project_members {
+    "project_members" {
         INTEGER project_id
         INTEGER user_id
     }
-    umbrella_projects {
+    "umbrella_projects" {
         INTEGER umbrella_id
         INTEGER subproject_id
     }
-    taxa {
+    "taxa" {
         INTEGER id
         varchar(255) name
         varchar(255) common_name
@@ -85,18 +85,18 @@ erDiagram
         boolean is_active
         INTEGER parent_id
         varchar(255) rank
-        double precision rank_level
+        double_precision rank_level
     }
-    taxa_ancestors {
+    "taxa_ancestors" {
         INTEGER taxon_id
         INTEGER ancestor_id
     }
-    project_taxa {
+    "project_taxa" {
         INTEGER project_id
         INTEGER taxon_id
         boolean exclude
     }
-    observations {
+    "observations" {
         INTEGER id
         boolean captive
         timestamp created
@@ -118,8 +118,8 @@ erDiagram
         varchar(255) geoprivacy
         varchar(255) taxon_geoprivacy
         varchar(255) license
-        double precision latitude
-        double precision longitude
+        double_precision latitude
+        double_precision longitude
         INTEGER accuracy
         boolean mappable
         boolean obscured
@@ -129,42 +129,42 @@ erDiagram
         varchar(255) uuid
         timestamp cached
     }
-    observation_faves {
+    "observation_faves" {
         INTEGER observation_id
         INTEGER user_id
         timestamp created
     }
-    photos {
+    "photos" {
         INTEGER id
         varchar(255) url
         varchar(255) license
     }
-    observation_photos {
+    "observation_photos" {
         INTEGER observation_id
         INTEGER photo_id
     }
-    sounds {
+    "sounds" {
         INTEGER id
         varchar(255) url
         varchar(255) license
     }
-    observation_sounds {
+    "observation_sounds" {
         INTEGER observation_id
         INTEGER sound_id
     }
-    observation_places {
+    "observation_places" {
         INTEGER observation_id
         INTEGER place_id
     }
-    observation_projects {
+    "observation_projects" {
         INTEGER observation_id
         INTEGER project_id
     }
-    observation_tags {
+    "observation_tags" {
         INTEGER observation_id
         varchar(255) tag
     }
-    identifications {
+    "identifications" {
         INTEGER observation_id
         INTEGER id
         TEXT body
@@ -179,7 +179,7 @@ erDiagram
         INTEGER user_id
         varchar(255) uuid
     }
-    requests {
+    "requests" {
         char(32) hash
         TEXT query
         timestamp control
@@ -187,64 +187,64 @@ erDiagram
         timestamp freshed
         timestamp finished
     }
-    request_projects {
+    "request_projects" {
         char(32) request_hash
         INTEGER project_id
     }
-    request_places {
+    "request_places" {
         char(32) request_hash
         INTEGER place_id
     }
-    request_taxa {
+    "request_taxa" {
         char(32) request_hash
         INTEGER taxon_id
     }
-    request_users {
+    "request_users" {
         char(32) request_hash
         INTEGER user_id
     }
-    place_ancestors ||--o{ places : "ancestor_id->None"
-    place_ancestors ||--o{ places : "place_id->None"
-    project_admins ||--o{ users : "user_id->None"
-    project_admins ||--o{ projects : "project_id->None"
-    project_places ||--o{ places : "place_id->None"
-    project_places ||--o{ projects : "project_id->None"
-    project_users ||--o{ users : "user_id->None"
-    project_users ||--o{ projects : "project_id->None"
-    project_quality_grades ||--o{ projects : "project_id->None"
-    project_terms ||--o{ projects : "project_id->None"
-    project_members ||--o{ users : "user_id->None"
-    project_members ||--o{ projects : "project_id->None"
-    umbrella_projects ||--o{ projects : "subproject_id->None"
-    umbrella_projects ||--o{ projects : "umbrella_id->None"
-    taxa ||--o{ taxa : "parent_id->None"
-    taxa ||--o{ taxa : "iconic_taxon_id->None"
-    taxa_ancestors ||--o{ taxa : "ancestor_id->None"
-    taxa_ancestors ||--o{ taxa : "taxon_id->None"
-    project_taxa ||--o{ taxa : "taxon_id->None"
-    project_taxa ||--o{ projects : "project_id->None"
-    observations ||--o{ users : "user_id->None"
-    observations ||--o{ taxa : "taxon_id->None"
-    observation_faves ||--o{ users : "user_id->None"
-    observation_faves ||--o{ observations : "observation_id->None"
-    observation_photos ||--o{ photos : "photo_id->None"
-    observation_photos ||--o{ observations : "observation_id->None"
-    observation_sounds ||--o{ sounds : "sound_id->None"
-    observation_sounds ||--o{ observations : "observation_id->None"
-    observation_places ||--o{ places : "place_id->None"
-    observation_places ||--o{ observations : "observation_id->None"
-    observation_projects ||--o{ projects : "project_id->None"
-    observation_projects ||--o{ observations : "observation_id->None"
-    observation_tags ||--o{ observations : "observation_id->None"
-    identifications ||--o{ users : "user_id->None"
-    identifications ||--o{ taxa : "taxon_id->None"
-    identifications ||--o{ observations : "observation_id->None"
-    request_projects ||--o{ projects : "project_id->None"
-    request_projects ||--o{ requests : "request_hash->None"
-    request_places ||--o{ places : "place_id->None"
-    request_places ||--o{ requests : "request_hash->None"
-    request_taxa ||--o{ taxa : "taxon_id->None"
-    request_taxa ||--o{ requests : "request_hash->None"
-    request_users ||--o{ users : "user_id->None"
-    request_users ||--o{ requests : "request_hash->None"
+    "place_ancestors" }|--|| "places" : "ancestor_id_to_None"
+    "place_ancestors" }|--|| "places" : "place_id_to_None"
+    "project_admins" }|--|| "users" : "user_id_to_None"
+    "project_admins" }|--|| "projects" : "project_id_to_None"
+    "project_places" }|--|| "places" : "place_id_to_None"
+    "project_places" }|--|| "projects" : "project_id_to_None"
+    "project_users" }|--|| "users" : "user_id_to_None"
+    "project_users" }|--|| "projects" : "project_id_to_None"
+    "project_quality_grades" }|--|| "projects" : "project_id_to_None"
+    "project_terms" }|--|| "projects" : "project_id_to_None"
+    "project_members" }|--|| "users" : "user_id_to_None"
+    "project_members" }|--|| "projects" : "project_id_to_None"
+    "umbrella_projects" }|--|| "projects" : "subproject_id_to_None"
+    "umbrella_projects" }|--|| "projects" : "umbrella_id_to_None"
+    "taxa" }|--|| "taxa" : "parent_id_to_None"
+    "taxa" }|--|| "taxa" : "iconic_taxon_id_to_None"
+    "taxa_ancestors" }|--|| "taxa" : "ancestor_id_to_None"
+    "taxa_ancestors" }|--|| "taxa" : "taxon_id_to_None"
+    "project_taxa" }|--|| "taxa" : "taxon_id_to_None"
+    "project_taxa" }|--|| "projects" : "project_id_to_None"
+    "observations" }|--|| "users" : "user_id_to_None"
+    "observations" }|--|| "taxa" : "taxon_id_to_None"
+    "observation_faves" }|--|| "users" : "user_id_to_None"
+    "observation_faves" }|--|| "observations" : "observation_id_to_None"
+    "observation_photos" }|--|| "photos" : "photo_id_to_None"
+    "observation_photos" }|--|| "observations" : "observation_id_to_None"
+    "observation_sounds" }|--|| "sounds" : "sound_id_to_None"
+    "observation_sounds" }|--|| "observations" : "observation_id_to_None"
+    "observation_places" }|--|| "places" : "place_id_to_None"
+    "observation_places" }|--|| "observations" : "observation_id_to_None"
+    "observation_projects" }|--|| "projects" : "project_id_to_None"
+    "observation_projects" }|--|| "observations" : "observation_id_to_None"
+    "observation_tags" }|--|| "observations" : "observation_id_to_None"
+    "identifications" }|--|| "users" : "user_id_to_None"
+    "identifications" }|--|| "taxa" : "taxon_id_to_None"
+    "identifications" }|--|| "observations" : "observation_id_to_None"
+    "request_projects" }|--|| "projects" : "project_id_to_None"
+    "request_projects" }|--|| "requests" : "request_hash_to_None"
+    "request_places" }|--|| "places" : "place_id_to_None"
+    "request_places" }|--|| "requests" : "request_hash_to_None"
+    "request_taxa" }|--|| "taxa" : "taxon_id_to_None"
+    "request_taxa" }|--|| "requests" : "request_hash_to_None"
+    "request_users" }|--|| "users" : "user_id_to_None"
+    "request_users" }|--|| "requests" : "request_hash_to_None"
 ```
