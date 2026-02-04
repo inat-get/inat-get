@@ -6,7 +6,7 @@ PATH
       faraday-retry (~> 2.3)
       is-dsl (~> 0.8)
       is-enum (~> 0.8.6)
-      is-term (~> 0.8.4)
+      is-term (~> 0.8.4.4)
       sequel (~> 5.100)
 
 GEM
@@ -25,7 +25,7 @@ GEM
       faraday (~> 2.0)
     is-dsl (0.8.0)
     is-enum (0.8.6)
-    is-term (0.8.4)
+    is-term (0.8.4.4)
       tty-screen (~> 0.8)
     json (2.18.0)
     logger (1.7.0)
@@ -99,7 +99,7 @@ CHECKSUMS
   inat-get (0.9.0)
   is-dsl (0.8.0) sha256=fc66508e85da3c9f4cdcdc31e9bb078f2aef791dfe432db1db931c69c97020e6
   is-enum (0.8.6) sha256=fb9b92a3d046bb56d0c6e33c815262b302bcde6ad95965abebc3e607a763c638
-  is-term (0.8.4) sha256=7f56c9cdb48816f3cd9c931634df41fac44b09a74e216d7c201d12dee84f1dce
+  is-term (0.8.4.4) sha256=80b25a186011d277a836357587ce16906e71c4bb6a7a0d2af9067ea4cb6ae287
   json (2.18.0) sha256=b10506aee4183f5cf49e0efc48073d7b75843ce3782c68dbeb763351c08fd505
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../../utils/duration'
 require_relative 'server'
 require_relative 'console_logger'
 
@@ -9,12 +10,13 @@ class INatGet::Server::API < INatGet::Server
     @console = params.delete :console
     @logger = ::INatGet::App::ConsoleLogger::new @console, progname: 'API'
     super(socket_path, **params)
-    # TODO: implement or delete
+    @config = INatGet::Setup::config
+    @delay = INatGet::Utils::Duration::as_duration @config.dig(:api, :delay)
   end
 
   private
 
-  def get(query)
+  def get query
     endpoint = @config.dig(:api, :root) + query[:endpoint]
     timepoint = Time::now
     if @last_request

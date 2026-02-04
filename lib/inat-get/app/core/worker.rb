@@ -13,6 +13,7 @@ class INatGet::Worker
   end
 
   def execute
+    @console.register status: 'started...', name: @task.name
     @task.prepare
     @task.execute
   rescue => e
@@ -24,12 +25,8 @@ class INatGet::Worker
     def create task, **params
       @detachers ||= []
       pid = fork do
-        $stdout.sync = true
-        $stderr.sync = true
         worker = new(task, **params)
         worker.execute
-        $stdout.flush
-        $stderr.flush
       end
       result = Process::detach pid
       @detachers << result

@@ -31,7 +31,7 @@ class INatGet::Application
     console = INatGet::Server::Console::create console_socket
     api = INatGet::Server::API::create api_socket, console: console
 
-    tasks = @config[:tasks].map { |path| INatGet::Task::new path, @config }
+    tasks = @config[:tasks].map { |path| INatGet::Task::new path, @config, console: console, api: api }
     Process::warmup
     INatGet::Worker::enqueue @config, *tasks, console: console, api: api
     console.quit
@@ -57,11 +57,7 @@ class INatGet::Application
 
   def socket_alive? socket
     return false unless File.socket?(socket)
-    sock = UNIXSocket::new socket
-    sock.close
-    true
-  rescue
-    false
+    INatGet::Server::used? socket
   end
 
 end

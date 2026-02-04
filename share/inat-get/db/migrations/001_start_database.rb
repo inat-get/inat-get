@@ -11,11 +11,13 @@ Sequel.migration do
       column :created, Time
       column :orchid, String
       column :suspended, :boolean, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_users'
       unique [ :login ], name: 'uq_users_login'
       index [ :created ], name: 'ix_users_created'
       index [ :suspended ], name: 'ix_users_suspended'
+      index [ :cached ], name: 'ix_users_cached'
     end
 
     create_table :places do
@@ -30,6 +32,7 @@ Sequel.migration do
       column :geometry, String, text: true
       column :latitude, Float
       column :longitude, Float
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_places'
       unique [ :slug ], name: 'uq_places_slug'
@@ -40,7 +43,8 @@ Sequel.migration do
       index [ :uuid ], name: 'ix_places_uuid'
       index [ :latitude ], name: 'ix_places_latitude'
       index [ :longitude ], name: 'ix_places_longitude'
-      index [ :latitude, :longitude ], name: 'ix_place_location'
+      index [ :latitude, :longitude ], name: 'ix_places_location'
+      index [ :cached ], name: 'ix_places_cached'
     end
 
     create_table :place_ancestors do
@@ -65,6 +69,7 @@ Sequel.migration do
       column :is_umbrella, :boolean, null: false
       column :is_collection, :boolean, null: false
       column :members_only, :boolean, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_projects'
       unique [ :slug ], name: 'uq_projects_slug'
@@ -74,6 +79,7 @@ Sequel.migration do
       index [ :project_type ], name: 'ix_projects_type'
       index [ :is_umbrella ], name: 'ix_projects_is_umbrella'
       index [ :is_collection ], name: 'ix_projects_is_collection'
+      index [ :cached ], name: 'ix_projects_cached'
     end
 
     create_table :project_admins do
@@ -176,6 +182,7 @@ Sequel.migration do
       column :parent_id, Integer
       column :rank, String
       column :rank_level, Float
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_taxa'
       foreign_key [ :iconic_taxon_id ], :taxa, name: 'fk_taxa_iconic_taxon_id', on_delete: :restrict, on_update: :cascade
@@ -187,6 +194,7 @@ Sequel.migration do
       index [ :is_active ], name: 'ix_taxa_is_active'
       index [ :parent_id ], name: 'ix_taxa_parent_id'
       index [ :rank_level ], name: 'ix_taxa_rank_level'
+      index [ :cached ], name: 'ix_taxa_cached'
     end
 
     create_table :taxa_ancestors do
@@ -377,6 +385,7 @@ Sequel.migration do
       column :taxon_id, Integer, null: false
       column :user_id, Integer, null: false
       column :uuid, String
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_identifications'
       foreign_key [ :observation_id ], :observations, name: 'fk_identifications_observation_id', on_delete: :cascade, on_update: :cascade
@@ -393,6 +402,7 @@ Sequel.migration do
       index [ :taxon_id ], name: 'ix_identifications_taxon_id'
       index [ :user_id ], name: 'ix_identifications_user_id'
       index [ :uuid ], name: 'ix_identifications_uuid'
+      index [ :cached ], name: 'ix_identifications_cached'
     end
 
     create_table :requests do

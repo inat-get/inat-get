@@ -40,6 +40,13 @@ module INatGet::Setup
       recache: { 
         count: 200,
         method: 'oldest'          # oldest by cached, newest by updated, sample — random
+      },
+      refs: {
+        default: '4w',
+        project: '1w',
+        taxon: '4w',
+        user: '10w',
+        place: '10w'
       }
     },
     offline: false,
@@ -51,7 +58,7 @@ module INatGet::Setup
       root: 'https://api.inaturalist.org/v1/',
       locale: 'ru',
       preferred_place: 7161,
-      translate_projects: umbrella,    # all | umbrella | none
+      translate_projects: 'umbrella',    # all | umbrella | none
       retry: {
         max: 5,
         interval: '1s',

@@ -44,6 +44,7 @@ class INatGet::Server
   def process_msg msg
     method = msg[:method]
     return :quit if method == :quit
+    return :pong if method == :ping
     args = msg[:args] || []
     kwargs = msg[:kwargs] || {}
     self.send method, *args, **kwargs
@@ -63,6 +64,7 @@ class INatGet::Server
 
   def on_error exception
     warn exception
+    warn exception.backtrace
   end
 
   class Proxy 
@@ -117,6 +119,13 @@ class INatGet::Server
       detacher = Process::detach pid
       @proxies[socket_path] = INatGet::Server::Proxy::new(detacher, socket_path, wait_answer?)
       @proxies[socket_path]
+    end
+
+    def used? socket_path
+      proxy = INatGet::Server::Proxy::new nil, socket_path, true
+      proxy.ping == :pong
+    rescue
+      return false
     end
 
     private :new

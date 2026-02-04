@@ -37,7 +37,7 @@ class INatGet::Dataset
   def connect!
     return self if connected?
     update!
-    @dataset = @condition.helper.model.where @condition.sequel_query
+    @dataset = @condition.helper.model.where @condition.to_sequel
     self
   end
 

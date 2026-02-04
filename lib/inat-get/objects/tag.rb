@@ -6,7 +6,7 @@ require_relative "../info"
 
 module INatGet::Models; end
 
-class INatGet::Models::Tag < Sequel::Model(:tags)
+class INatGet::Models::Tag < Sequel::Model(:observation_tags)
 
   many_to_one :observation, class: :'INatGet::Models::Observation'
 
