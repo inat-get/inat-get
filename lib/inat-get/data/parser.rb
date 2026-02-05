@@ -28,7 +28,7 @@ class INatGet::Data::Parser::Project
   include INatGet::Data::Parser::Common
 
   def model
-    INatGet::Models::Project
+    INatGet::Data::Model::Project
   end
 
   def parse_entity! source
@@ -37,7 +37,7 @@ class INatGet::Data::Parser::Project
 
   def fake id
     now = Time.now
-    rec = INatGet::Models::Project::create id: id, 
+    rec = INatGet::Data::Model::Project::create id: id, 
                                          slug: "#{ Random.alphanumeric }-#{ id }",
                                         title: "Ghost project \##{ id }", 
                                       created: now, 
@@ -56,7 +56,7 @@ class INatGet::Data::Parser::Place
   include INatGet::Data::Parser::Common
 
   def model
-    INatGet::Models::Place
+    INatGet::Data::Model::Place
   end
 
   def parse_entity! source
@@ -64,7 +64,7 @@ class INatGet::Data::Parser::Place
   end
 
   def fake id
-    rec = INatGet::Models::Place::create id: id,
+    rec = INatGet::Data::Model::Place::create id: id,
                                        slug: "#{ Random.alphanumeric }-#{ id }",  
                                        name: "Ghost place \##{ id }",
                                display_name: "Ghost place \##{ id }"
@@ -79,7 +79,7 @@ class INatGet::Data::Parser::Taxon
   include INatGet::Data::Parser::Common
 
   def model
-    INatGet::Models::Taxon
+    INatGet::Data::Model::Taxon
   end
 
   def parse_entity! source
@@ -87,7 +87,7 @@ class INatGet::Data::Parser::Taxon
   end
 
   def fake id
-    rec = INatGet::Models::Taxon::create id: id,
+    rec = INatGet::Data::Model::Taxon::create id: id,
                                        name: "Ghost taxon \##{ id }",
                                   is_active: false
     rec.save
@@ -101,7 +101,7 @@ class INatGet::Data::Parser::User
   include INatGet::Data::Parser::Common
 
   def model
-    INatGet::Models::User
+    INatGet::Data::Model::User
   end
 
   def parse_entity! source
@@ -110,7 +110,7 @@ class INatGet::Data::Parser::User
 
   def fake id
     now = Time.now
-    rec = INatGet::Models::User::create id: id,
+    rec = INatGet::Data::Model::User::create id: id,
                                      login: "#{ Random.alphanumeric }_#{ id }",
                                       name: "Ghost user \##{ id }",
                                    created: now,

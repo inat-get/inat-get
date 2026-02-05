@@ -67,6 +67,10 @@ GEM
     tty-screen (0.8.2)
     uri (1.1.1)
     yard (0.9.38)
+    yard-is-sequel (0.8.0)
+      sequel (~> 5.100)
+      sqlite3 (~> 2.9)
+      yard (~> 0.9)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -88,6 +92,7 @@ DEPENDENCIES
   simplecov (~> 0.22)
   sqlite3 (~> 2.9)
   yard
+  yard-is-sequel
 
 CHECKSUMS
   bigdecimal (4.0.1) sha256=8b07d3d065a9f921c80ceaea7c9d4ae596697295b584c296fe599dd0ad01c4a7
@@ -127,6 +132,7 @@ CHECKSUMS
   tty-screen (0.8.2) sha256=c090652115beae764336c28802d633f204fb84da93c6a968aa5d8e319e819b50
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   yard (0.9.38) sha256=721fb82afb10532aa49860655f6cc2eaa7130889df291b052e1e6b268283010f
+  yard-is-sequel (0.8.0) sha256=485c00a5c62e8e23cbc5bbe0630c698d31356c56b11242dc952cae35a0ef3175
 
 BUNDLED WITH
   4.0.4

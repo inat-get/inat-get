@@ -16,6 +16,7 @@ class INatGet::Worker
     @console.register status: 'started...', name: @task.name
     @task.prepare
     @task.execute
+    @console.update _active: false
   rescue => e
     @logger.error e.message
   end

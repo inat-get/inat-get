@@ -17,7 +17,7 @@ module INatGet::Data::Helpers::Common
     else
       raise ArgumentError, "Invalid id or slug for project: #{ id_or_slug.inspect }", caller_locations
     end
-    ds = INatGet::Models::Project.where(**query)
+    ds = INatGet::Data::Model::Project.where(**query)
     if ds.empty?
       parser = INatGet::Data::Parser::Project::instance
       if updated
@@ -50,7 +50,7 @@ module INatGet::Data::Helpers::Common
     else
       raise ArgumentError, "Invalid id or slug for place: #{ id_or_slug.inspect }", caller_locations
     end
-    ds = INatGet::Models::Place.where(**query)
+    ds = INatGet::Data::Model::Place.where(**query)
     if ds.empty?
       parser = INatGet::Data::Parser::Place::instance
       if updated
@@ -76,7 +76,7 @@ module INatGet::Data::Helpers::Common
 
   def get_taxon id, updated = false
     raise ArgumentError, "Invalid id for taxon: #{ id.inspect }", caller_locations unless id.is_a?(Integer)
-    ds = INatGet::Models::Taxon.where id: id
+    ds = INatGet::Data::Model::Taxon.where id: id
     if ds.empty?
       parser = INatGet::Data::Parser::Taxon::instance
       if updated
@@ -105,7 +105,7 @@ module INatGet::Data::Helpers::Common
     else
       raise ArgumentError, "Invalid id or login for user: #{ id_or_login.inspect }", caller_locations
     end
-    ds = INatGet::Models::User.where(**query)
+    ds = INatGet::Data::Model::User.where(**query)
     if ds.empty?
       parser = INatGet::Data::Parser::User::instance
       if updated
@@ -219,9 +219,9 @@ module INatGet::Data::Helpers::Common
     reflection = model.association_reflection key
     if reflection
       case reflection.associated_class
-      when INatGet::Models::Taxon
+      when INatGet::Data::Model::Taxon
         return taxon_to_sequel(reflection, value)
-      when INatGet::Models::Project
+      when INatGet::Data::Model::Project
         return project_to_sequel(reflection, value)
       end
     end
@@ -469,11 +469,11 @@ class INatGet::Data::Helpers::Observation
               license: set_func(String, lambda { |v| v.is_a?(Symbol) ? v.to_s : v }),
         photo_license: set_func(String, lambda { |v| v.is_a?(Symbol) ? v.to_s : v }),
         sound_license: set_func(String, lambda { |v| v.is_a?(Symbol) ? v.to_s : v }),
-                place: set_func(INatGet::Models::Place, lambda { |v| get_place(v) }),
-              project: set_func(INatGet::Models::Project, lambda { |v| get_project(v) }),
+                place: set_func(INatGet::Data::Model::Place, lambda { |v| get_place(v) }),
+              project: set_func(INatGet::Data::Model::Project, lambda { |v| get_project(v) }),
                  rank: rank_set_or_range_func,
-                taxon: set_func(INatGet::Models::Taxon, lambda { |v| get_taxon(v) }),
-                 user: set_func(INatGet::Models::User, lambda { |v| get_user(v) }),
+                taxon: set_func(INatGet::Data::Model::Taxon, lambda { |v| get_taxon(v) }),
+                 user: set_func(INatGet::Data::Model::User, lambda { |v| get_user(v) }),
         observed_year: set_func(Integer),
        observed_month: set_func(Integer),
          observed_day: set_func(Integer),
@@ -504,7 +504,7 @@ class INatGet::Data::Helpers::Observation
   end
 
   def model
-    INatGet::Models::Observation
+    INatGet::Data::Model::Observation
   end
 
   private
@@ -525,7 +525,7 @@ class INatGet::Data::Helpers::Taxon
   def query_funcs
     @query_funcs ||= {
              id: set_func(Integer),
-         parent: scalar_func(INatGet::Models::Taxon, lambda { |v| get_taxon(v) }),
+         parent: scalar_func(INatGet::Data::Model::Taxon, lambda { |v| get_taxon(v) }),
       is_active: scalar_func(Boolean),
            rank: rank_set_or_range_func
     }.freeze
@@ -536,7 +536,7 @@ class INatGet::Data::Helpers::Taxon
   end
 
   def model
-    INatGet::Models::Taxon
+    INatGet::Data::Model::Taxon
   end
 
 end
@@ -551,7 +551,7 @@ class INatGet::Data::Helpers::Project
              id: set_func(Integer),
            slug: set_func(String, lambda { |v| v.is_a?(Symbol) ? v.to_s : v }),
            type: set_func(String, lambda { |v| v.is_a?(Symbol) ? v.to_s : v }),
-          place: set_func(INatGet::Models::Place, lambda { |v| get_place(v) }),
+          place: set_func(INatGet::Data::Model::Place, lambda { |v| get_place(v) }),
        latitude: scalar_func(Float),
       longitude: scalar_func(Float),
        location: location_field_func,
@@ -564,7 +564,7 @@ class INatGet::Data::Helpers::Project
   end
 
   def model
-    INatGet::Models::Project
+    INatGet::Data::Model::Project
   end
 
 end
@@ -589,7 +589,7 @@ class INatGet::Data::Helpers::Place
   end
 
   def model
-    INatGet::Models::Place
+    INatGet::Data::Model::Place
   end
 
 end
@@ -611,7 +611,7 @@ class INatGet::Data::Helpers::User
   end
 
   def model
-    INatGet::Models::User
+    INatGet::Data::Model::User
   end
 
   def to_api **query

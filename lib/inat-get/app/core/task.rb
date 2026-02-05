@@ -32,7 +32,7 @@ class INatGet::Task
     db_options = { user: @config.dig(:database, :user), password: @config.dig(:database, :password) }.compact
     @db = Sequel::connect(db_connect, **db_options)
     Sequel::Model::db = @db
-    require_relative '../../objects/observation'
+    require_relative '../../data/models/observation'
     # # ... etc
   end
 
