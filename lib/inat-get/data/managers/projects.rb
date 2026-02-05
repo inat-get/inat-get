@@ -12,5 +12,10 @@ class INatGet::Data::Manager::Projects < INatGet::Data::Manager::Base
   # @return [INatGet::Data::Model::Project]
   def model = INatGet::Data::Model::Project
 
+  # @return [:slug]
+  def sid = :slug
+
+  def updater = nil # FIXME
+    
 end
 

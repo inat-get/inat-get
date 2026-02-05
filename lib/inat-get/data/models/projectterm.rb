@@ -11,6 +11,10 @@ class INatGet::Data::Model::ProjectTerm < Sequel::Model
 
   set_dataset :project_terms
 
-  many_to_one :projects
+  many_to_one :project
+
+  include INatGet::Data::Model::Sub
+
+  def owner = self.project
 
 end

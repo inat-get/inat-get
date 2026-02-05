@@ -14,4 +14,8 @@ class INatGet::Data::Model::ProjectAdmin < Sequel::Model
   many_to_one :project
   many_to_one :user
 
+  include INatGet::Data::Model::Sub
+
+  def owner = self.project
+
 end

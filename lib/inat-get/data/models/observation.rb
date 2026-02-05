@@ -11,6 +11,7 @@ require_relative 'tag'
 require_relative 'taxon'
 require_relative 'identification'
 require_relative 'user'
+require_relative 'annotation'
 
 module INatGet::Data; end
 module INatGet::Data::Model; end
@@ -22,6 +23,7 @@ class INatGet::Data::Model::Observation < Sequel::Model
   one_to_many :faves, class: INatGet::Data::Model::Fave
   one_to_many :tags, class: INatGet::Data::Model::Tag
   one_to_many :identifications, class: INatGet::Data::Model::Identification
+  one_to_many :annotations, class: INatGet::Data::Model::Annotation
 
   many_to_one :taxon, class: INatGet::Data::Model::Taxon
   many_to_one :user, class: INatGet::Data::Model::User
@@ -41,6 +43,14 @@ class INatGet::Data::Model::Observation < Sequel::Model
 
   def tag_values
     tags.map(&:tag)
+  end
+
+  include INatGet::Data::Model::Base
+
+  class << self
+
+    def manager = INatGet::Data::Manager::Observations::instance
+
   end
 
 end

@@ -4,6 +4,7 @@ require 'sequel'
 
 require_relative '../../info'
 require_relative 'observation'
+require_relative 'annotation'
 require_relative 'projectadmin'
 require_relative 'projectqualitygrade'
 require_relative 'projectterm'
@@ -29,9 +30,10 @@ class INatGet::Data::Model::Project < Sequel::Model
   many_to_many :members, class: :'INatGet::Data::Model::User', join_table: :project_members, left_key: :project_id, right_key: :user_id
 
   one_to_many :admins, class: :'INatGet::Data::Model::ProjectAdmin'
-  one_to_many :quality_grades, :'INatGet::Data::Model::ProjectQualityGrade'
-  one_to_many :terms, :'INatGet::Data::Model::ProjectTerm'
+  one_to_many :quality_grades, class: :'INatGet::Data::Model::ProjectQualityGrade'
+  one_to_many :terms, class: :'INatGet::Data::Model::ProjectTerm'
 
+  # @return [Sequel::SQL::Expression]
   def to_sequel
     if self.is_umbrella
       return Sequel.|(*self.subprojects.map(&:to_sequel))
@@ -57,15 +59,28 @@ class INatGet::Data::Model::Project < Sequel::Model
       if !self.excluded_users_dataset.empty?
         conditions << Sequel.~({ user: self.excluded_users_dataset })
       end
-      # TODO: добавить Terms
+      if !self.terms_dataset.empty?
+        self.terms.each do |term|
+          conditions << { id: Annotation.select(:observation_id).where({ term_id: term.term_id, term_value_id: term.term_value_id }) }
+        end
+      end
       return Sequel.&(*conditions)
     else
       return { project_id: self.id }
     end
   end
 
+  # @return [Sequel::Dataset<INatGet::Data::Model::Observation>]
   def observations
     INatGet::Data::Model::Observation.where(self.to_sequel)
+  end
+
+  include INatGet::Data::Model::Base
+
+  class << self
+
+    def manager = INatGet::Data::Manager::Projects::instance
+
   end
 
 end

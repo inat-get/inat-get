@@ -12,4 +12,8 @@ class INatGet::Data::Manager::Observations < INatGet::Data::Manager::Base
   # @return [class INatGet::Data::Model::Observation]
   def model = INatGet::Data::Model::Observation
 
+  def uuid? = true
+
+  def updater = nil # FIXME
+    
 end

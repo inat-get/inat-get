@@ -13,4 +13,8 @@ class INatGet::Data::Model::Fave < Sequel::Model
 
   many_to_one :observation
 
+  include INatGet::Data::Model::Sub
+
+  def owner = self.observation
+
 end

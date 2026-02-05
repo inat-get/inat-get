@@ -12,4 +12,6 @@ class INatGet::Data::Manager::Taxa < INatGet::Data::Manager::Base
   # @return [INatGet::Data::Model::Taxon]
   def model = INatGet::Data::Model::Taxon
 
+  def updater = nil # FIXME
+    
 end

@@ -12,4 +12,8 @@ class INatGet::Data::Manager::Identifications < INatGet::Data::Manager::Base
   # @return [class INatGet::Data::Model::Identification]
   def model = INatGet::Data::Model::Identification
 
+  def uuid? = true
+
+  def updater = nil # FIXME
+
 end

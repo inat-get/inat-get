@@ -12,4 +12,9 @@ class INatGet::Data::Manager::Users < INatGet::Data::Manager::Base
   # @return [INatGet::Data::Model::User]
   def model = INatGet::Data::Model::User
 
+  # @return [:login]
+  def sid = :login
+
+  def updater = nil # FIXME
+
 end

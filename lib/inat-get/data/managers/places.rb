@@ -12,5 +12,12 @@ class INatGet::Data::Manager::Places < INatGet::Data::Manager::Base
   # @return [class INatGet::Data::Model::Place]
   def model = INatGet::Data::Model::Place
 
+  # @return [:slug]
+  def sid = :slug
+
+  def uuid? = true
+
+  def updater = nil # FIXME
+    
 end
 

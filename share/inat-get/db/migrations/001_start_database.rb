@@ -298,7 +298,25 @@ Sequel.migration do
       primary_key [ :observation_id, :user_id ], name: 'pk_observation_faves'
       foreign_key [ :observation_id ], :observations, name: 'fk_observation_faves_observation_id', on_delete: :cascade, on_update: :cascade
       foreign_key [ :user_id ], :users, name: 'fk_observation_faves_user_id', on_delete: :cascade, on_update: :cascade
-      index [ :observation_id, :created ], name: 'fk_observation_faves_created'
+      index [ :observation_id, :created ], name: 'ix_observation_faves_created'
+    end
+
+    create_table :annotations do
+      column :observation_id, Integer, null: false
+      column :term_id, Integer, null: false
+      column :term_value_id, Integer, null: false
+      column :user_id, Integer, null: false
+      column :uuid, String
+      column :vote_score, Integer, null: false
+
+      primary_key [ :observation_id, :term_id, :term_value_id ], name: 'pk_annotations'
+      foreign_key [ :observation_id ], :observations, name: 'fk_annotations_observation_id', on_delete: :cascade, on_update: :cascade
+      foreign_key [ :user_id ], :users, name: 'fk_annotations_user_id', on_delete: :cascade, on_update: :cascade
+      index [ :observation_id ], name: 'ix_annotations_observation_id'
+      index [ :term_id ], name: 'ix_annotations_term_id'
+      index [ :term_id, :term_value_id ], name: 'ix_annotations_term_and_value_id'
+      index [ :term_value_id ], name: 'ix_annotations_term_value_id'
+      index [ :uuid ], name: 'ix_annotations_uuid'
     end
 
     create_table :photos do

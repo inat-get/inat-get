@@ -15,4 +15,16 @@ class INatGet::Data::Model::Identification < Sequel::Model
   many_to_one :taxon, class: :'INatGet::Data::Model::Taxon'
   many_to_one :user, class: :'INatGet::Data::Model::User'
 
+  include INatGet::Data::Model::Sub
+
+  def owner = self.observation
+
+  include INatGet::Data::Model::Base
+
+  class << self
+
+    def manager = INatGet::Data::Manager::Identifications::instance
+
+  end
+
 end
