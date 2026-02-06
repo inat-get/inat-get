@@ -3,9 +3,7 @@
 require_relative 'base'
 require_relative '../utils/ranges'
 
-class INatGet::Condition::AND
-
-  include INatGet::Condition::Base
+class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
 
   attr_reader :operands
 

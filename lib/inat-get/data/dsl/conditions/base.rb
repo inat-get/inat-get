@@ -4,11 +4,11 @@ require 'singleton'
 
 require_relative '../info'
 
-module INatGet::Condition; end
+module INatGet::Data::DSL::Condition; end
 
-module INatGet::Condition::Base
+class INatGet::Data::DSL::Condition::Base
 
-  include INatGet::Condition
+  include INatGet::Data::DSL::Condition
 
   def helper
     nil
@@ -68,10 +68,9 @@ module INatGet::Condition::Base
 
 end
 
-class INatGet::Condition::Nothing
+class INatGet::Data::DSL::Condition::Nothing < INatGet::Data::DSL::Condition::Base
 
   include Singleton
-  include INatGet::Condition::Base
 
   def & other
     self
@@ -95,10 +94,9 @@ class INatGet::Condition::Nothing
 
 end
 
-class INatGet::Condition::Anything
+class INatGet::Data::DSL::Condition::Anything < INatGet::Data::DSL::Condition::Base
 
   include Singleton
-  include INatGet::Condition::Base
 
   def & other
     other
@@ -118,7 +116,7 @@ class INatGet::Condition::Anything
 
 end
 
-module INatGet::Condition
+module INatGet::Data::DSL::Condition
 
   NOTHING = Nothing::instance.freeze
   ANYTHING = Anything::instance.freeze

@@ -2,9 +2,7 @@
 
 require_relative 'base'
 
-class INatGet::Condition::OR
-
-  include INatGet::Condition::Base
+class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
 
   attr_reader :operands
 

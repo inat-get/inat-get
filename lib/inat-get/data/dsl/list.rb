@@ -3,7 +3,7 @@
 require_relative '../info'
 require_relative '../condition'
 
-class INatGet::List
+class INatGet::Data::DSL::List
 
   def initialize *datasets
     @datasets = {}
@@ -25,7 +25,7 @@ class INatGet::List
   end
 
   def copy
-    INatGet::List::new *@datasets.values
+    INatGet::Data::DSL::List::new *@datasets.values
   end
 
   def add! other
@@ -42,7 +42,7 @@ class INatGet::List
   def mul! other
     result = {}
     case other
-    when INatGet::List
+    when INatGet::Data::DSL::List
       other.each do |ds|
         sds = @datasets[ds.key]
         if sds
@@ -63,7 +63,7 @@ class INatGet::List
 
   def sub! other
     case other
-    when INatGet::List
+    when INatGet::Data::DSL::List
       other.each do |ds|
         @datasets.delete ds.key
       end
@@ -149,7 +149,7 @@ class INatGet::List
   end
 
   def to_ds
-    result = INatGet::Dataset::new(nil, NOTHING, true)
+    result = INatGet::Data::DSL::Dataset::new(nil, NOTHING, true)
     @datasets.each do |_, ds|
       result += ds
     end

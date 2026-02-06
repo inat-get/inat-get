@@ -8,7 +8,7 @@ require_relative 'console_logger'
 
 class INatGet::Task
 
-  include INatGet::DSL
+  include INatGet::Data::DSL
 
   attr_reader :path, :name
 

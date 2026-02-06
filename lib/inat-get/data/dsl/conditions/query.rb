@@ -3,9 +3,7 @@
 require_relative 'base'
 require_relative '../data/helper'
 
-class INatGet::Condition::Q
-
-  include INatGet::Condition::Base
+class INatGet::Data::DSL::Condition::Q < INatGet::Data::DSL::Condition::Base
 
   attr_reader :query
 
@@ -34,7 +32,7 @@ class INatGet::Condition::Q
 
     def [] **query
       return ANYTHING if query.empty?
-      INatGet::Condition::Q[@helper, **query]
+      INatGet::Data::DSL::Condition::Q[@helper, **query]
     end
   end
 

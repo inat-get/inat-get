@@ -4,8 +4,10 @@ require 'date'
 
 require_relative '../info'
 
-module INatGet::DSL
+module INatGet::Data::DSL
 
+  include INatGet::Data::DSL::Condition
+  
   def observations **query
     # TODO: implement
     # Возвращает Dataset с соответствующим условием

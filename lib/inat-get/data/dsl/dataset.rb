@@ -3,9 +3,9 @@
 require_relative '../info'
 require_relative '../condition'
 
-class INatGet::Dataset
+class INatGet::Data::DSL::Dataset
 
-  include INatGet::Condition
+  include INatGet::Data::DSL::Condition
 
   attr_reader :key, :condition
 
@@ -47,15 +47,15 @@ class INatGet::Dataset
   end
 
   def + other
-    INatGet::Dataset::new(self.key, self.condition | other.condition, self.updated? && other.updated?)
+    INatGet::Data::DSL::Dataset::new(self.key, self.condition | other.condition, self.updated? && other.updated?)
   end
 
   def * other
-    INatGet::Dataset::new(self.key, self.condition & other.condition, self.updated? || other.updated?)
+    INatGet::Data::DSL::Dataset::new(self.key, self.condition & other.condition, self.updated? || other.updated?)
   end
 
   def - other
-    INatGet::Dataset::new(self.key, self.condition & !other.condition, self.updated?)
+    INatGet::Data::DSL::Dataset::new(self.key, self.condition & !other.condition, self.updated?)
   end
 
   def % field
@@ -63,15 +63,15 @@ class INatGet::Dataset
     values = get_field_values field
     dss = values.map do |value|
       query = Q[self.helper][ field => value ]
-      INatGet::Dataset::new(value, self.condition & query, self.updated?)
+      INatGet::Data::DSL::Dataset::new(value, self.condition & query, self.updated?)
     end
-    INatGet::List::new(*dss)
+    INatGet::Data::DSL::List::new(*dss)
   end
 
   def where condition = nil, **query
     condition ||= ANYTHING
     condition &= Q[self.helper][**query]
-    INatGet::Dataset::new(self.key, self.condition & condition, self.updated?)
+    INatGet::Data::DSL::Dataset::new(self.key, self.condition & condition, self.updated?)
   end
 
   include Enumerable

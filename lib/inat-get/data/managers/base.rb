@@ -14,7 +14,7 @@ class INatGet::Data::Manager::Base
 
   # Returns model instance, array of them or dataset.
   # @see #model
-  # @return [Dataset::Model, Array<Sequel::Model> or INatGet::Dataset]
+  # @return [Dataset::Model, Array<Sequel::Model> or INatGet::Data::DSL::Dataset]
   # @overload get id
   #   @param [Integer, String or Symbol] id
   #   @return [Sequel::Model]
@@ -23,10 +23,10 @@ class INatGet::Data::Manager::Base
   #   @return [Array<Sequel::Model>]
   # @overload get **query
   #   @param [Hash] query
-  #   @return [INatGet::Dataset]
+  #   @return [INatGet::Data::DSL::Dataset]
   # @overload get condition
-  #   @param [INatGet::Condition] condition
-  #   @return [INatGet::Dataset]
+  #   @param [INatGet::Data::DSL::Condition] condition
+  #   @return [INatGet::Data::DSL::Dataset]
   def get *args, **kwargs
     # TODO: implement
   end
@@ -49,7 +49,7 @@ class INatGet::Data::Manager::Base
   # @overload update **query
   #   @param [Hash] query
   # @overload update condition
-  #   @param [INatGet::Condition] condition
+  #   @param [INatGet::Data::DSL::Condition] condition
   # @overload update object
   #   @param [Sequel::Model] object
   # @overload update *objects
