@@ -2,8 +2,11 @@
 
 require 'singleton'
 
-require_relative '../info'
+require_relative '../../../info'
+require_relative '../../../utils/ranges'
 
+module INatGet::Data; end
+module INatGet::Data::DSL; end
 module INatGet::Data::DSL::Condition; end
 
 class INatGet::Data::DSL::Condition::Base

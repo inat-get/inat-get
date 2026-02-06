@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../info'
-require_relative '../condition'
+require_relative '../../info'
+require_relative 'conditions'
 
 class INatGet::Data::DSL::Dataset
 

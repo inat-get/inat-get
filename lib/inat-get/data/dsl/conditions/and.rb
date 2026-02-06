@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../utils/ranges'
 
 class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
 

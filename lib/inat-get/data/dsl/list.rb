@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../info'
-require_relative '../condition'
+require_relative '../../info'
+require_relative 'conditions'
 
 class INatGet::Data::DSL::List
 
@@ -25,7 +25,7 @@ class INatGet::Data::DSL::List
   end
 
   def copy
-    INatGet::Data::DSL::List::new *@datasets.values
+    INatGet::Data::DSL::List::new(*@datasets.values)
   end
 
   def add! other
@@ -120,12 +120,12 @@ class INatGet::Data::DSL::List
 
   def filter &block
     return to_enum(__method__) unless block_given?
-    copy.filter! &block
+    copy.filter!(&block)
   end
 
   def filter_keys &block
     return to_enum(__method__) unless block_given?
-    copy.filter_keys! &block
+    copy.filter_keys!(&block)
   end
 
   def has_key? key

@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../../info'
+
+module INatGet::Data; end
+module INatGet::Data::Model; end
+
 module INatGet::Data::Model::Base
 
   module Cls

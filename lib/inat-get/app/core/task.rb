@@ -3,7 +3,7 @@
 require 'sequel'
 
 require_relative '../../info'
-require_relative '../dsl'
+require_relative '../../data/dsl/dsl'
 require_relative 'console_logger'
 
 class INatGet::Task

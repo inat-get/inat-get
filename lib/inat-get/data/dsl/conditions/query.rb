@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../data/helper'
+require_relative '../../helper'
 
 class INatGet::Data::DSL::Condition::Q < INatGet::Data::DSL::Condition::Base
 

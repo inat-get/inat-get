@@ -2,12 +2,15 @@
 
 require 'date'
 
-require_relative '../info'
+require_relative '../../info'
+require_relative 'conditions'
+
+module INatGet::Data; end
 
 module INatGet::Data::DSL
 
   include INatGet::Data::DSL::Condition
-  
+
   def observations **query
     # TODO: implement
     # Возвращает Dataset с соответствующим условием

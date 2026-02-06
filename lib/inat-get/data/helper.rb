@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+require 'singleton'
+
 require_relative '../info'
-require_relative '../utils/boolean'
 
 module INatGet::Data; end
 module INatGet::Data::Helpers; end
