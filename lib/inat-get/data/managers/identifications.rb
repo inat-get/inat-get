@@ -2,9 +2,11 @@
 
 require_relative 'base'
 
-class INatGet::Data::Manager::Identifications < INatGet::Data::Manager::Base
+class INatGet::Data::Manager::Identifications < INatGet::Data::Manager
 
   include Singleton
+
+  # @group Specificators
 
   # @return [:identifications]
   def entrypoint = :identifications
@@ -12,8 +14,55 @@ class INatGet::Data::Manager::Identifications < INatGet::Data::Manager::Base
   # @return [class INatGet::Data::Model::Identification]
   def model = INatGet::Data::Model::Identification
 
+  # @return [true]
   def uuid? = true
 
-  def updater = nil # FIXME
+  # @return [INatGet::Data::Helper::Identifications]
+  def helper = INatGet::Data::Helper::Identifications::instance
+
+  # @return [INatGet::Data::Parser::Identification]
+  def parser = INatGet::Data::Parser::Identification::instance
+
+  # @return [INatGet::Data::Updater::Identifications]
+  def updater = INatGet::Data::Updater::Identifications::instance
+
+  # @endgroup
+
+end
+
+module INatGet::Data::DSL
+
+  private
+
+  # @group Data Querying
+
+  # @return [Enumerable<INatGet::Data::Model::Identification>]
+  # @overload identifications *ids
+  #   @param [Array<Integer, String>] ids (String for UUID)
+  #   @return [Array<INatGet::Data::Model::Identification>]
+  # @overload identifications condition
+  #   @param [Condition] condition
+  # @overload identifications **query
+  #   @param [Hash] query
+  def identifications(*args, **query)
+    result = INatGet::Data::Manager::Identifications::instance.get(*args, **query)
+    case result
+    when Sequel::Model
+      [ result ]
+    when nil
+      []
+    else
+      result
+    end
+  end
+
+  # @overload identification id
+  #   @param [Integer] id
+  # @overload identification uuid
+  #   @param [String] uuid
+  # @return [INatGet::Data::Model::Identification, nil]
+  def identification(id) = INatGet::Data::Manager::Identifications::instance[id]
+
+  # @endgroup
 
 end

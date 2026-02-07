@@ -45,7 +45,7 @@ class INatGet::Data::Model::Observation < Sequel::Model
     tags.map(&:tag)
   end
 
-  include INatGet::Data::Model::Base
+  include INatGet::Data::Model
 
   class << self
 

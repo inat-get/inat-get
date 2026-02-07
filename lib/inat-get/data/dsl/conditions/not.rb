@@ -2,18 +2,31 @@
 
 require_relative 'base'
 
-class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition::Base
+class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
 
+  # @group Metadata
+
+  # @api private
+  # @return [Condition]
   attr_reader :operand
 
+  # @api private
+  # @!attribute [ro] model
+  # @return [class of Sequel::Model]
+  def model
+    @operand.model
+  end
+
+  # @endgroup
+
+  # @private
   def initialize operand
     @operand = operand
   end
 
-  def helper
-    @operand.helper
-  end
+  # @group Operators
 
+  # @return [Condition]
   def & other
     if @operand == other
       NOTHING
@@ -22,6 +35,7 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @return [Condition]
   def | other
     if @operand == other
       ANYTHING
@@ -30,18 +44,25 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @return [Condition]
   def !
     @operand
   end
 
+  # @return [Boolean]
   def == other
     return true if self.equal?(other)
     return false unless other.is_a?(NOT)
     self.operand == other.operand
   end
 
+  # @endgroup
+
   class << self
 
+    # @group Constructor
+
+    # @return [Condition]
     def [] operand
       case operand
       when Nothing
@@ -55,10 +76,13 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition::Base
       end
     end
 
+    # @endgroup
+
     private :new
 
   end
 
+  # @private
   def flatten
     if @operand.is_a?(NOT)
       @operand.operand.flatten
@@ -67,6 +91,7 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @private
   def push_not_down
     case @operand
     when AND
@@ -80,16 +105,31 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @private
   def merge_n_factor
     NOT[ @operand.merge_n_factor ]
   end
 
+  # @private
   def simplify
     ANYTHING
   end
 
+  # @private
   def to_sequel
     Sequel.~(@operand.to_sequel)
   end
+
+end
+
+module INatGet::Data::DSL
+
+  # @group Conditions
+
+  # @param [Condition] operand
+  # @return [Condition::NOT]
+  private def NOT(operand) = Condition::NOT[operand]
+
+  # @endgroup
 
 end

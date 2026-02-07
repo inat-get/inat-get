@@ -2,18 +2,31 @@
 
 require_relative 'base'
 
-class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
+class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
 
+  # @group Metadata
+
+  # @api private
+  # @return [Array<Condition>]
   attr_reader :operands
 
+  # @private
   def initialize *operands
     @operands = operands
   end
 
-  def helper
-    @operands.map(&:helper).find { |h| !h.nil? }
+  # @api private
+  # @!attribute [ro] model
+  # @return [class of Sequel::Model]
+  def model
+    @operands.map(&:model).find { |h| !h.nil? }
   end
 
+  # @endgroup
+
+  # @group Operators
+
+  # @return [Condition]
   def & other
     if other.is_a?(AND)
       AND[ *self.operands, *other.operands ]
@@ -22,14 +35,20 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @return [Boolean]
   def == other
     return true if self.equal?(other)
     return false unless other.is_a?(AND)
     self.operands.all? { |o| other.operands.include?(o) } && other.operands.all? { |o| self.operands.include?(o) }
   end
 
+  # @endgroup
+
   class << self
 
+    # @group Constructor
+
+    # @return [Condition]
     def [] *operands
       return ANYTHING if operands.empty?
       return NOTHING if operands.include?(NOTHING)
@@ -37,20 +56,25 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
       new(*operands).freeze
     end
 
+    # @endgroup
+
     private :new
 
   end
 
+  # @private
   def flatten
     and_operands, other_operands = @operands.map(&:flatten).partition { |o| o.is_a?(AND) }
     flatten_operands = and_operands.map(&:operands).flatten
     AND[ *flatten_operands, *other_operands ]
   end
 
+  # @private
   def push_not_down
     AND[ *@operands.map { |o| o.push_not_down } ]
   end
 
+  # @private
   def push_and_down
     ops = @operands.dup
     or_index = ops.index { |o| o.is_a?(OR) }
@@ -62,6 +86,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @private
   def merge_n_factor
     query_operands, rest = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Q) }
     not_operands, other_operands = rest.partition { |o| o.is_a?(NOT) }
@@ -71,16 +96,19 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
     AND[ query_op, not_op, *other_operands ]
   end
 
+  # @private
   def simplify
     AND[ *@operands.map(&:simplify) ].normalize
   end
 
+  # @private
   def to_sequel
     Sequel.&(@operands.map(&:to_sequel))
   end
 
   private
 
+  # @private
   def and_merge *queries
     # TODO: внедрить логику таксонов: ancesor_id & descendant_id => descendant_id
     cur_helper = self.helper
@@ -123,5 +151,17 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition::Base
     end
     Q[cur_helper][ **query ]
   end
+
+end
+
+module INatGet::Data::DSL
+
+  # @group Conditions
+
+  # @param [Array<Condition>] operands
+  # @return [Condition::AND]
+  private def AND(*operands) = Condition::AND[*operands]
+
+  # @endgroup
 
 end

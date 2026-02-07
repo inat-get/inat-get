@@ -75,7 +75,7 @@ class INatGet::Data::Model::Project < Sequel::Model
     INatGet::Data::Model::Observation.where(self.to_sequel)
   end
 
-  include INatGet::Data::Model::Base
+  include INatGet::Data::Model
 
   class << self
 

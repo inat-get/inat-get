@@ -18,7 +18,7 @@ class INatGet::Data::Model::Place < Sequel::Model
 
   many_to_many :projects, class: :'INatGet::Data::Model::Project', join_table: :project_included_places, left_key: :place_id, right_key: :project_id
 
-  include INatGet::Data::Model::Base
+  include INatGet::Data::Model
 
   class << self
 

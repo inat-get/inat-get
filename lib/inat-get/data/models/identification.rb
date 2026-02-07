@@ -19,7 +19,7 @@ class INatGet::Data::Model::Identification < Sequel::Model
 
   def owner = self.observation
 
-  include INatGet::Data::Model::Base
+  include INatGet::Data::Model
 
   class << self
 

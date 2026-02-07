@@ -5,6 +5,9 @@ require_relative 'conditions'
 
 class INatGet::Data::DSL::List
 
+  include INatGet::Data::DSL
+
+  # @private
   def initialize *datasets
     @datasets = {}
     datasets.each do |ds|
@@ -12,22 +15,33 @@ class INatGet::Data::DSL::List
     end
   end
 
+  # @group Enumerable
+
+  # @return [Array<Object>]
   def keys
     @datasets.keys
   end
 
-  def datasets
-    @datasets.values
-  end
-
+  # @return [Dataset, nil]
   def [] key
     @datasets[key]
   end
 
-  def copy
+  # @endgroup
+
+  # @private
+  private def copy
     INatGet::Data::DSL::List::new(*@datasets.values)
   end
 
+  # @group Data Access
+
+  # @return [Array<Dataset>]
+  def datasets
+    @datasets.values
+  end
+
+  # @return [self]
   def add! other
     other.each do |ds|
       if @datasets.has_key?(ds.key)
@@ -39,6 +53,7 @@ class INatGet::Data::DSL::List
     self
   end
 
+  # @return [self]
   def mul! other
     result = {}
     case other
@@ -61,6 +76,7 @@ class INatGet::Data::DSL::List
     self
   end
 
+  # @return [self]
   def sub! other
     case other
     when INatGet::Data::DSL::List
@@ -75,24 +91,43 @@ class INatGet::Data::DSL::List
     self
   end
 
+  # @return [Dataset]
+  def to_dataset
+    result = INatGet::Data::DSL::Dataset::new(nil, NOTHING, true)
+    @datasets.each do |_, ds|
+      result += ds
+    end
+    result
+  end
+
+  # @endgroup
+
+  # @group Operators
+
+  # @return [List]
   def + other
     copy.add! other
   end
 
+  # @return [List]
   def * other
     copy.mul! other
   end
 
+  # @return [List]
   def - other
     copy.sub! other
   end
 
+  # @endgroup
+
   include Enumerable
 
-  def values
-    @datasets.values
-  end
+  # @group Enumerable
 
+  # @return [void]
+  # @yield Block
+  # @yieldparam [Dataset] ds
   def each
     return to_enum(__method__) unless block_given?
     @datasets.each do |_, ds|
@@ -100,6 +135,16 @@ class INatGet::Data::DSL::List
     end
   end
 
+  # @return [Integer]
+  def count
+    @datasets.count
+  end
+
+  alias :size :count
+
+  # @yield Boolean expression
+  # @yieldparam [Dataset] ds
+  # @return [self]
   def filter!
     if block_given?
       @datasets.filter! do |_, value|
@@ -109,6 +154,9 @@ class INatGet::Data::DSL::List
     self
   end
 
+  # @yield Boolean expression
+  # @yieldparam [Object] key
+  # @return [self]
   def filter_keys!
     if block_given?
       @datasets.filter! do |key, _|
@@ -118,11 +166,17 @@ class INatGet::Data::DSL::List
     self
   end
 
+  # @yield Boolean expression
+  # @yieldparam [Dataset] ds
+  # @return [List]
   def filter &block
     return to_enum(__method__) unless block_given?
     copy.filter!(&block)
   end
 
+  # @yield Boolean expression
+  # @yieldparam [Object] key
+  # @return [List]
   def filter_keys &block
     return to_enum(__method__) unless block_given?
     copy.filter_keys!(&block)
@@ -132,30 +186,21 @@ class INatGet::Data::DSL::List
     @datasets.has_key? key
   end
 
-  def size
-    @datasets.size
-  end
-
   def empty?
     @datasets.empty?
   end
 
-  def to_a
-    @datasets.values
-  end
+  alias :to_a :datasets
+  alias :values :datasets
 
+  # @return [Hash]
   def to_h
     @datasets.dup
   end
 
-  def to_ds
-    result = INatGet::Data::DSL::Dataset::new(nil, NOTHING, true)
-    @datasets.each do |_, ds|
-      result += ds
-    end
-    result
-  end
+  # @group Operators
 
+  # @return [List]
   def self.commons num, *src
     keys = {}
     values = {}
@@ -175,5 +220,7 @@ class INatGet::Data::DSL::List
     end
     result
   end
+
+  # @endgroup
 
 end

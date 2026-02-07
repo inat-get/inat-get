@@ -6,9 +6,8 @@ require_relative '../../info'
 
 module INatGet::Data; end
 
-module INatGet::Data::Manager; end
-
-class INatGet::Data::Manager::Base
+# @api private
+class INatGet::Data::Manager
 
   # @group Common Methods
 
@@ -37,7 +36,9 @@ class INatGet::Data::Manager::Base
   end
 
   # @return [Sequel::Model]
-  def fake(id) = raise NorImplementedError, "Not implemented 'fake' is abstract base class", caller_locations
+  def fake **data
+    self.parser.fake data
+  end
 
   # Update specified records.
   # @see #updater
@@ -76,7 +77,14 @@ class INatGet::Data::Manager::Base
   # @return [Boolean]
   def uuid? = false
 
+  # @return [INatGet::Data::Updater]
   def updater = raise NorImplementedError, "Not implemented 'updater' is abstract base class", caller_locations
+
+  # @return [INatGet::Data::Helper]
+  def helper = raise NorImplementedError, "Not implemented 'helper' is abstract base class", caller_locations
+
+  # @return [INatGet::Data::Parser]
+  def parser = raise NorImplementedError, "Not implemented 'parser' is abstract base class", caller_locations
 
   # @endgroup
 

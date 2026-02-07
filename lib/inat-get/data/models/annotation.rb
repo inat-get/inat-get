@@ -16,6 +16,9 @@ class INatGet::Data::Model::Annotation < Sequel::Model
 
   include INatGet::Data::Model::Sub
 
+  # @group Structure
+
+  # @return [INatGet::Data::Model::Observation]
   def owner = self.observation
 
 end

@@ -3,13 +3,13 @@
 require_relative '../../info'
 
 module INatGet::Data; end
-module INatGet::Data::Model; end
 
-module INatGet::Data::Model::Base
+module INatGet::Data::Model
 
-  module Cls
+  # @api private
+  module Meta
 
-    def manager = raise NorImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
+    def manager = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
 
     def helper = self.manager.helper
 
@@ -22,7 +22,7 @@ module INatGet::Data::Model::Base
   class << self
 
     def included cls
-      cls.extend INatGet::Data::Model::Base::Cls
+      cls.extend INatGet::Data::Model::Meta
     end
 
   end

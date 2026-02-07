@@ -5,6 +5,7 @@ require_relative '../../info'
 module INatGet::Data; end
 module INatGet::Data::Model; end
 
+# @private
 module INatGet::Data::Model::Sub
 
   def owner = raise NorImplementedError, "Not implemented method 'owner' in abstract module", caller_locations

@@ -2,9 +2,11 @@
 
 require_relative 'base'
 
-class INatGet::Data::Manager::Users < INatGet::Data::Manager::Base
+class INatGet::Data::Manager::Users < INatGet::Data::Manager
 
   include Singleton
+
+  # @group Specificators
 
   # @return [:users]
   def entrypoint = :users
@@ -15,6 +17,39 @@ class INatGet::Data::Manager::Users < INatGet::Data::Manager::Base
   # @return [:login]
   def sid = :login
 
-  def updater = nil # FIXME
+  # @return [INatGet::Data::Helper::Users]
+  def helper = INatGet::Data::Helper::Users::instance
+
+  # @return [INatGet::Data::Parser::User]
+  def parser = INatGet::Data::Parser::User::instance
+
+  # @return [INatGet::Data::Updater::Users]
+  def updater = INatGet::Data::Updater::Users::instance
+
+  # @endgroup
+
+end
+
+module INatGet::Data::DSL
+
+  private
+
+  # @group Data Querying
+
+  # @return [INatGet::Data::Model::User, nil]
+  def user(id) = INatGet::Data::Manager::Users::instance[id]
+
+  # @return [Array<INatGet::Data::Model::User>]
+  def users *ids
+    result = INatGet::Data::Manager::Users::instance(*ids)
+    case result
+    when Sequel::Model
+      [ result ]
+    when nil
+      []
+    else
+      result
+    end
+  end
 
 end

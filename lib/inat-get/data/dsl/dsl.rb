@@ -9,48 +9,25 @@ module INatGet::Data; end
 
 module INatGet::Data::DSL
 
-  include INatGet::Data::DSL::Condition
+  private
 
-  def observations **query
-    # TODO: implement
-    # Возвращает Dataset с соответствующим условием
-  end
+  # @group System Info
 
-  def observation id
-    observations(id: id).first
-  end
-
-  def taxa **query
-    # TODO: implement
-    # Возвращает датасет с соотвествующим условием
-  end
-
-  def taxon id
-    taxa(id: id).first
-  end
-
-  def place id_or_slug
-    # TODO: implement
-  end
-
-  def project id_or_slug
-    # TODO: implement
-  end
-
-  def user id_or_login
-    # TODO: implement
-  end
-
+  # @return [Date]
   def today
     Date.today
   end
 
+  # @return [Time]
   def now
     Time.now
   end
 
+  # @return [String]
   def version
     INatGet::Info::VERSION
   end
+
+  # @endgroup
 
 end

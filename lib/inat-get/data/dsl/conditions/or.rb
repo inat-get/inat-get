@@ -2,18 +2,31 @@
 
 require_relative 'base'
 
-class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
+class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
 
+  # @group Metadata
+
+  # @api private
+  # @return [Array<Condition>]
   attr_reader :operands
 
+  # @api private
+  # @!attribute [ro] model
+  # @return [class of Sequel::Model]
+  def model
+    @operands.map(&:model).find { |h| !h.nil? }
+  end
+
+  # @endgroup
+
+  # @private
   def initialize *operands
     @operands = operands
   end
 
-  def helper
-    @operands.map(&:helper).find { |h| !h.nil? }
-  end
+  # @group Operators
 
+  # @return [Condition]
   def | other
     if other.is_a?(OR)
       OR[ *self.operands, *other.operands ]
@@ -22,14 +35,20 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
     end
   end
 
+  # @return [Boolean]
   def == other
     return true if self.equal?(other)
     return false unless other.is_a?(OR)
     self.operands.all? { |o| other.operands.include?(o) } && other.operands.all? { |o| self.operands.include?(o) }
   end
 
+  # @endgroup
+
   class << self
 
+    # @group Constructor
+
+    # @return [Condition]
     def [] *operands
       return NOTHING if operands.empty?
       return ANYTHING if operands.include?(ANYTHING)
@@ -37,24 +56,30 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
       new(*operands).freeze
     end
 
+    # @endgroup
+
     private :new
 
   end
 
+  # @private
   def flatten
     or_operands, other_operands = @operands.map(&:flatten).partition { |o| o.is_a?(OR) }
     flatten_operands = or_operands.map(&:operands).flatten
     OR[ *flatten_operands, *other_operands ]
   end
 
+  # @private
   def push_not_down
     OR[ *@operands.map { |o| o.push_not_down } ]
   end
 
+  # @private
   def push_and_down
     OR[ *@operands.map { |o| o.push_and_down } ]
   end
 
+  # @private
   def merge_n_factor
     query_operands, other_operands = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Q) }
     not_operands = other_operands.select { |o| o.is_a?(NOT) }
@@ -63,20 +88,24 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
     OR[ *query_ops, *other_operands ]
   end
 
+  # @private
   def simplify
     OR[ *@operands.map(&:simplify) ].normalize
   end
 
+  # @private
   def to_api
     @operands.map(&:to_api).flatten.compact
   end
 
+  # @private
   def to_sequel
     Sequel.|(*@operands.map(&:to_sequel))
   end
 
   private
 
+  # @private
   def or_merge *queries
     queries = queries.compact
     return queries if queries.size <= 1
@@ -112,6 +141,7 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
     queries.compact
   end
 
+  # @private
   def hash_cover? first, second
     # TODO: логика таксонов ancestor_id >= descendant_id
     first.each do |key, value|
@@ -132,6 +162,7 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
     true
   end
 
+  # @private
   def hash_try_merge first, second
     # TODO: логика таксонов
     first = first.dup.compact
@@ -208,3 +239,16 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition::Base
   end
 
 end
+
+module INatGet::Data::DSL
+
+  # @group Conditions
+
+  # @param [Array<Condition>] operands
+  # @return [Condition::OR]
+  private def OR(*operands) = Condition::OR[*operands]
+
+  # @endgroup
+
+end
+
