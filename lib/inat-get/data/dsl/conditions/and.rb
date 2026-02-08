@@ -70,8 +70,13 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
   end
 
   # @private
+  def expand_references
+    AND[ *@operands.map(&:expand_references) ]
+  end
+
+  # @private
   def push_not_down
-    AND[ *@operands.map { |o| o.push_not_down } ]
+    AND[ *@operands.map(&:push_not_down) ]
   end
 
   # @private
@@ -82,7 +87,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
       or_operand = ops.delete_at or_index
       OR[ *or_operand.operands.map { |o| AND[ o, *ops ].push_and_down } ]
     else
-      AND[ *@operands.map { |o| o.push_and_down } ]
+      AND[ *@operands.map(&:push_and_down) ]
     end
   end
 

@@ -92,6 +92,11 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
   end
 
   # @private
+  def expand_references
+    NOT[ @operand.expand_references ]
+  end
+
+  # @private
   def push_not_down
     case @operand
     when AND

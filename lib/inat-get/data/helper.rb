@@ -514,13 +514,3 @@ class INatGet::Data::Helpers::User
 
 end
 
-module INatGet::Data::Helpers
-
-  OBS = INatGet::Data::Helpers::Observation::instance
-  TXN = INatGet::Data::Helpers::Taxon::instance
-  PRJ = INatGet::Data::Helpers::Project::instance
-  PLC = INatGet::Data::Helpers::Place::instance
-  USR = INatGet::Data::Helpers::User::instance
-  CMN = INatGet::Data::Helpers::Common
-
-end

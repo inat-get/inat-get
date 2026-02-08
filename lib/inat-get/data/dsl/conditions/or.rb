@@ -70,13 +70,18 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
   end
 
   # @private
+  def expand_references
+    OR[ *@operands.map(&:expand_references) ]
+  end
+
+  # @private
   def push_not_down
-    OR[ *@operands.map { |o| o.push_not_down } ]
+    OR[ *@operands.map(&:push_not_down) ]
   end
 
   # @private
   def push_and_down
-    OR[ *@operands.map { |o| o.push_and_down } ]
+    OR[ *@operands.map(&:push_and_down) ]
   end
 
   # @private
@@ -246,7 +251,7 @@ module INatGet::Data::DSL
 
   # @param [Array<Condition>] operands
   # @return [Condition::OR]
-  private def OR(*operands) = Condition::OR[*operands]
+  private def OR(*operands) = Condition::OR[ *operands ]
 
   # @endgroup
 

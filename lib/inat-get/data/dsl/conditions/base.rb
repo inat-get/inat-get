@@ -50,7 +50,7 @@ class INatGet::Data::DSL::Condition
   # @private
   # @return [Condition]
   def normalize
-    self.flatten.push_not_down.flatten.push_and_down.flatten.merge_n_factor.flatten
+    self.expand_references.flatten.push_not_down.flatten.push_and_down.flatten.merge_n_factor.flatten
   end
 
   # @private
@@ -75,6 +75,11 @@ class INatGet::Data::DSL::Condition
 
   # @private
   def simplify
+    self
+  end
+
+  # @private
+  def expand_references
     self
   end
 
