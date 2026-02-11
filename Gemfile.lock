@@ -5,6 +5,7 @@ PATH
       faraday (~> 2.14)
       faraday-retry (~> 2.3)
       is-dsl (~> 0.8)
+      is-duration (~> 0.8.4)
       is-enum (~> 0.8.8)
       is-range (~> 0.8)
       is-term (~> 0.8.4.8)
