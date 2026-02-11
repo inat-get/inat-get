@@ -30,7 +30,7 @@ class INatGet::Server::API < INatGet::Server
       rq.params[:preferred_place_id] = @config.dig(:api, :preferred_place)
       rq.params.compact!
       rq.params.merge! query[:params]
-      rq.headers["User-Agent"] = "iNatGet v#{INatGet::Info::VERSION}"
+      rq.headers["User-Agent"] = "iNatGet v#{INatGet::Info::VERSION} (#{ INatGet::Info::VERSION_ALIAS })"
     end
     if response.success?
       begin

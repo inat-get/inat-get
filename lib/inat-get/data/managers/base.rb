@@ -64,10 +64,10 @@ class INatGet::Data::Manager
   # @group Descendant Specificators
 
   # @return [Symbol]
-  def entrypoint = raise NorImplementedError, "Not implemented 'entrypoint' in abstract base class", caller_locations
+  def endpoint = raise NotImplementedError, "Not implemented 'endpoint' in abstract base class", caller_locations
 
   # @return [class of Sequel::Model]
-  def model = raise NorImplementedError, "Not implemented 'model' is abstract base class", caller_locations
+  def model = raise NotImplementedError, "Not implemented 'model' is abstract base class", caller_locations
 
   # Name of `String` field that can be used as identifier or `nil`.
   # @return [Symbol, nil]
@@ -78,13 +78,13 @@ class INatGet::Data::Manager
   def uuid? = false
 
   # @return [INatGet::Data::Updater]
-  def updater = raise NorImplementedError, "Not implemented 'updater' is abstract base class", caller_locations
+  def updater = raise NotImplementedError, "Not implemented 'updater' is abstract base class", caller_locations
 
   # @return [INatGet::Data::Helper]
-  def helper = raise NorImplementedError, "Not implemented 'helper' is abstract base class", caller_locations
+  def helper = raise NotImplementedError, "Not implemented 'helper' is abstract base class", caller_locations
 
   # @return [INatGet::Data::Parser]
-  def parser = raise NorImplementedError, "Not implemented 'parser' is abstract base class", caller_locations
+  def parser = raise NotImplementedError, "Not implemented 'parser' is abstract base class", caller_locations
 
   # @endgroup
 

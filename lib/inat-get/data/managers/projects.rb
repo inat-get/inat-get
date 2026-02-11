@@ -9,7 +9,7 @@ class INatGet::Data::Manager::Projects < INatGet::Data::Manager
   # @group Specificators
 
   # @return [:projects]
-  def entrypoint = :projects
+  def endpoint = :projects
 
   # @return [INatGet::Data::Model::Project]
   def model = INatGet::Data::Model::Project
@@ -31,8 +31,6 @@ class INatGet::Data::Manager::Projects < INatGet::Data::Manager
 end
 
 module INatGet::Data::DSL
-
-  private
 
   # @group Data Querying
 

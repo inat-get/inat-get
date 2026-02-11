@@ -251,7 +251,7 @@ module INatGet::Data::DSL
 
   # @param [Array<Condition>] operands
   # @return [Condition::OR]
-  private def OR(*operands) = Condition::OR[ *operands ]
+  def OR(*operands) = Condition::OR[ *operands ]
 
   # @endgroup
 

@@ -23,7 +23,7 @@ Helper выполняет четыре связанные функции:
 
 ```ruby
 def model           # → Class<Sequel::Model>, например Observation
-def entrypoint      # → Symbol, например :observations
+def endpoint      # → Symbol, например :observations
 def query_schema    # → Hash<Symbol, QueryDef>, схема полей запроса
 ```
 
@@ -32,7 +32,7 @@ def query_schema    # → Hash<Symbol, QueryDef>, схема полей запр
 ```ruby
 def validate!(**raw_query)        # → true или исключение
 def prepare_query(**raw_query)    # → Hash (нормализованный)
-def to_api(**normalized_query)    # → { entrypoint:, params: {} }
+def to_api(**normalized_query)    # → { endpoint:, params: {} }
 def to_sequel(**normalized_query) # → Sequel::SQL::Expression
 ```
 
@@ -56,7 +56,7 @@ def to_sequel(**normalized_query) # → Sequel::SQL::Expression
 
 ## 6. Трансляция в API (to_api)
 
-- Использует `entrypoint` для определения endpoint'а.
+- Использует `endpoint` для определения endpoint'а.
 - Для моделей извлекает ID через `pk`.
 - Для `Sequel::Dataset` вызывает `to_a` и материализует в список ID (ограничений на размер пока нет).
 - Для Taxon просто перечисляет ID (ancestors обрабатываются сервером iNaturalist).

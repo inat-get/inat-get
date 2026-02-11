@@ -165,7 +165,7 @@ module INatGet::Data::DSL
 
   # @param [Array<Condition>] operands
   # @return [Condition::AND]
-  private def AND(*operands) = Condition::AND[*operands]
+  def AND(*operands) = Condition::AND[*operands]
 
   # @endgroup
 

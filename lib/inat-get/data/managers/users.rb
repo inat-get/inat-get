@@ -9,7 +9,7 @@ class INatGet::Data::Manager::Users < INatGet::Data::Manager
   # @group Specificators
 
   # @return [:users]
-  def entrypoint = :users
+  def endpoint = :users
 
   # @return [INatGet::Data::Model::User]
   def model = INatGet::Data::Model::User
@@ -32,8 +32,6 @@ end
 
 module INatGet::Data::DSL
 
-  private
-
   # @group Data Querying
 
   # @return [INatGet::Data::Model::User, nil]
@@ -41,7 +39,7 @@ module INatGet::Data::DSL
 
   # @return [Array<INatGet::Data::Model::User>]
   def users *ids
-    result = INatGet::Data::Manager::Users::instance(*ids)
+    result = INatGet::Data::Manager::Users::instance.get(*ids)
     case result
     when Sequel::Model
       [ result ]

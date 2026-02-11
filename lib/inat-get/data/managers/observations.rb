@@ -9,7 +9,7 @@ class INatGet::Data::Manager::Observations < INatGet::Data::Manager
   # @group Specificators
 
   # @return [:observations]
-  def entrypoint = :observations
+  def endpoint = :observations
 
   # @return [class INatGet::Data::Model::Observation]
   def model = INatGet::Data::Model::Observation
@@ -31,8 +31,6 @@ class INatGet::Data::Manager::Observations < INatGet::Data::Manager
 end
 
 module INatGet::Data::DSL
-
-  private 
 
   # @group Data Querying
 

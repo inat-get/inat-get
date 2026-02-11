@@ -1,6 +1,7 @@
 --title "INatGet"
 --markup markdown
 --readme README.md
+--files share/inat-get/docs/*.md
 --protected
 --private
 --no-private

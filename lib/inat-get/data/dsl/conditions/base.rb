@@ -178,11 +178,15 @@ module INatGet::Data::DSL
 
   # @group Conditions
 
-  # @return [Condition::Nothing]
-  private def NOTHING = Condition::Nothing::instance.freeze
+  # @!method NOTHING
+  #   @return [Condition::Nothing]
+  # @private
+  NOTHING = Condition::Nothing::instance.freeze
   
-  # @return [Condition::Anything]
-  private def ANYTHING = Condition::Anything::instance.freeze
+  # @!method ANYTHING
+  #   @return [Condition::Anything]
+  # @private
+  ANYTHING = Condition::Anything::instance.freeze
 
   # @endgroup
 

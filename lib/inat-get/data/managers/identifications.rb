@@ -9,7 +9,7 @@ class INatGet::Data::Manager::Identifications < INatGet::Data::Manager
   # @group Specificators
 
   # @return [:identifications]
-  def entrypoint = :identifications
+  def endpoint = :identifications
 
   # @return [class INatGet::Data::Model::Identification]
   def model = INatGet::Data::Model::Identification
@@ -31,8 +31,6 @@ class INatGet::Data::Manager::Identifications < INatGet::Data::Manager
 end
 
 module INatGet::Data::DSL
-
-  private
 
   # @group Data Querying
 

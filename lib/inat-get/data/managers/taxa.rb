@@ -9,7 +9,7 @@ class INatGet::Data::Manager::Taxa < INatGet::Data::Manager
   # @group Specificators
 
   # @return [:taxa]
-  def entrypoint = :taxa
+  def endpoint = :taxa
 
   # @return [INatGet::Data::Model::Taxon]
   def model = INatGet::Data::Model::Taxon
@@ -28,8 +28,6 @@ class INatGet::Data::Manager::Taxa < INatGet::Data::Manager
 end
 
 module INatGet::Data::DSL
-
-  private
 
   # @group Data Querying
 

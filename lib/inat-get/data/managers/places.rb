@@ -9,7 +9,7 @@ class INatGet::Data::Manager::Places < INatGet::Data::Manager
   # @group Specificators
 
   # @return [:places]
-  def entrypoint = :places
+  def endpoint = :places
 
   # @return [class INatGet::Data::Model::Place]
   def model = INatGet::Data::Model::Place
@@ -34,8 +34,6 @@ class INatGet::Data::Manager::Places < INatGet::Data::Manager
 end
 
 module INatGet::Data::DSL
-
-  private
 
   # @group Data Querying
 

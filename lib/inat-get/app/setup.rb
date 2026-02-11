@@ -123,7 +123,7 @@ module INatGet::Setup
       }
 
       opts = OptionParser::new do |o|
-        o.banner = "🌿 \e[1miNatGet v#{INatGet::Info::VERSION}:\e[0m #{INatGet::Info::DESCRIPTION}\n" +
+        o.banner = "🌿 \e[1miNatGet v#{INatGet::Info::VERSION} (#{INatGet::Info::VERSION_ALIAS}):\e[0m #{INatGet::Info::DESCRIPTION}\n" +
                    "          License: \e[1mGNU GPLv3+\e[0m (#{INatGet::Info::LICENSE_URL})\n" +
                    "           Author: \e[1m#{INatGet::Info::AUTHOR}\e[0m (#{INatGet::Info::AUTHOR_URL})\n" +
                    "         Homepage: \e[1m#{INatGet::Info::HOMEPAGE}\e[0m\n\n" +

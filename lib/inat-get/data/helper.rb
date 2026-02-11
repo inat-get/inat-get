@@ -32,7 +32,7 @@ module INatGet::Data::Helpers::Common
   def to_api **query
     hooks = self.api_hooks
     result = {}
-    result[:entrypoint] = self.entrypoint
+    result[:endpoint] = self.endpoint
     params = {}
     query.each do |key, value|
       next if value.nil?
@@ -72,7 +72,7 @@ module INatGet::Data::Helpers::Common
     {}
   end
 
-  def entrypoint
+  def endpoint
     nil
   end
 
@@ -377,7 +377,7 @@ class INatGet::Data::Helpers::Observation
     }.freeze
   end
 
-  def entrypoint
+  def endpoint
     :observations
   end
 
@@ -409,7 +409,7 @@ class INatGet::Data::Helpers::Taxon
     }.freeze
   end
 
-  def entrypoint
+  def endpoint
     :taxa
   end
 
@@ -437,7 +437,7 @@ class INatGet::Data::Helpers::Project
     }.freeze
   end
 
-  def entrypoint
+  def endpoint
     :projects
   end
 
@@ -462,7 +462,7 @@ class INatGet::Data::Helpers::Place
     }.freeze
   end
 
-  def entrypoint
+  def endpoint
     :places
   end
 
@@ -484,7 +484,7 @@ class INatGet::Data::Helpers::User
     }.freeze
   end
 
-  def entrypoint
+  def endpoint
     :users
   end
 
@@ -498,14 +498,14 @@ class INatGet::Data::Helpers::User
       if value.is_a?(Enumerable)
         value.map { |v| to_api({ id: v }) }
       else
-        { entrypoint: "#{ self.entrypoint }/#{ value }", params: {} }
+        { endpoint: "#{ self.endpoint }/#{ value }", params: {} }
       end
     elsif query.has_key?(:login)
       value = query[:login]
       if value.is_a?(Enumerable)
         value.map { |v| to_api({ id: v }) }
       else
-        { entrypoint: "#{ self.entrypoint }/#{ value }", params: {} }
+        { endpoint: "#{ self.endpoint }/#{ value }", params: {} }
       end
     else
       raise ArgumentError, "Invalid query: #{ query.inspect }", caller_locations

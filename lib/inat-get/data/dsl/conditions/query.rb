@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../../helper'
+require_relative '../../helpers/base'
 
 class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
 
@@ -18,10 +18,10 @@ class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
   # @endgroup
 
   # @private
-  def initialize model, **query
+  def initialize model, validate: true, **query
     @model = model
     @helper = model.helper
-    @helper.validate_query **query
+    @helper.validate_query!(**query) if validate
     @query = query
   end
 
@@ -47,9 +47,9 @@ class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
     # @group Constructor
 
     # @return [Condition]
-    def [] model, **query
+    def [] model, validate: true, **query
       return creator(model) if query.empty?
-      new(model, **query).freeze
+      new(model, validate: validate, **query).freeze
     end
 
     # @endgroup
@@ -65,7 +65,7 @@ class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
 
   # @private
   def merge_n_factor
-    Query[@model][ **@helper.prepare_query(**@query) ]
+    Query[ @model, validate: false, **@helper.prepare_query(**@query) ]
   end
 
   # @private
@@ -96,31 +96,31 @@ class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
       collections, rest = projects.partition { |p| p.is_collection }
       if collections.empty?
         work_query[:project] = projects
-        return Query[@model][ **work_query ]
+        return Query[ @model, validate: false, **work_query ]
       end
       collection_conditions = collections.map do |c|
         conditions = []
-        conditions << Query[@model][ place: c.included_places ] unless c.included_places.empty?
-        conditions << NOT[ Query[@model][ place: c.excluded_places ] ] unless c.excluded_places.empty?
-        conditions << Query[@model][ taxon: c.included_taxa ] unless c.included_taxa.empty?
-        conditions << NOT[ Query[@model][ taxon: c.excluded_taxa ] ] unless c.excluded_taxa.empty?
+        conditions << Query[@model, validate: false, place: c.included_places ] unless c.included_places.empty?
+        conditions << NOT[ Query[@model, validate: false, place: c.excluded_places ] ] unless c.excluded_places.empty?
+        conditions << Query[@model, validate: false, taxon: c.included_taxa ] unless c.included_taxa.empty?
+        conditions << NOT[ Query[@model, validate: false, taxon: c.excluded_taxa ] ] unless c.excluded_taxa.empty?
         if c.members_only
-          conditions << Query[@model][ user: c.members ]
+          conditions << Query[@model, validate: false, user: c.members ]
         else
-          conditions << Query[@model][ user: c.included_users ] unless c.included_users.empty?
+          conditions << Query[@model, validate: false, user: c.included_users ] unless c.included_users.empty?
         end
-        conditions << NOT[ Query[@model][ user: c.excluded_users ] ] unless c.excluded_users.empty?
+        conditions << NOT[ Query[@model, validate: false, user: c.excluded_users ] ] unless c.excluded_users.empty?
         unless c.terms.empty?
           c.terms.each do |term|
-            conditions << Query[@model][ term_id: term.term_id, term_value_id: term.term_value_id ]
+            conditions << Query[@model, validate: false, term_id: term.term_id, term_value_id: term.term_value_id ]
           end
         end
         AND[ *conditions ]
       end
-      AND[ Query[@model][ **work_query ], OR[ Query[@model][ project: rest ], *collection_conditions ] ]
+      AND[ Query[@model, validate: false, **work_query ], OR[ Query[@model, validate: false, project: rest ], *collection_conditions ] ]
     else
       work_query[:project] = projects
-      Query[@model][ **work_query ]
+      Query[@model, validate: false, **work_query ]
     end
   end
 
@@ -141,7 +141,7 @@ module INatGet::Data::DSL
   # @overload Q **query
   #   If _model_ parameter is emitted, {INatGet::Data::Model::Observation} is used by default.
   #   @param [Hash] query
-  private def Q(model = INatGet::Data::Model::Observation, **query) = Condition::Query[model, **query]
+  def Q(model = INatGet::Data::Model::Observation, **query) = Condition::Query[ model, validate: true, **query ]
 
   # @endgroup
 

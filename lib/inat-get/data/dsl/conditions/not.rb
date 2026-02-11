@@ -133,7 +133,7 @@ module INatGet::Data::DSL
 
   # @param [Condition] operand
   # @return [Condition::NOT]
-  private def NOT(operand) = Condition::NOT[operand]
+  def NOT(operand) = Condition::NOT[operand]
 
   # @endgroup
 
