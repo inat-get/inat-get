@@ -3,6 +3,6 @@
 require_relative '../lib/inat-get'
 require_relative '../lib/inat-get/app'
 
-app = INatGet::Application::instance
+app = INatGet::App::Main::instance
 
 app.run

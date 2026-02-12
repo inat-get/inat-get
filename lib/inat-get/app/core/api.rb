@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../utils/duration'
+require 'is-duration'
+
 require_relative 'server'
 require_relative 'console_logger'
 
-class INatGet::Server::API < INatGet::Server
+class INatGet::App::Server::API < INatGet::App::Server
 
   def initialize socket_path, **params
     @console = params.delete :console

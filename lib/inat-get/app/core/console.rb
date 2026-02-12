@@ -8,7 +8,7 @@ require 'is-term/functions'
 
 require_relative 'server'
 
-class INatGet::Server::Console < INatGet::Server
+class INatGet::App::Server::Console < INatGet::App::Server
 
   class << self
 

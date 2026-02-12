@@ -2,9 +2,6 @@
 
 require_relative '../../info'
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
 # @private
 module INatGet::Data::Model::Sub
 

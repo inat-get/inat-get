@@ -1,9 +1,9 @@
 # frozen_string_literal
 
 require 'singleton'
+require 'is-range'
 
 require_relative '../../../info'
-require_relative '../../../utils/ranges'
 
 module INatGet::Data; end
 module INatGet::Data::DSL; end

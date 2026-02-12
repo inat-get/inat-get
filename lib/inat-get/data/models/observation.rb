@@ -14,9 +14,8 @@ require_relative 'user'
 require_relative 'annotation'
 
 module INatGet::Data; end
-module INatGet::Data::Model; end
 
-class INatGet::Data::Model::Observation < Sequel::Model
+class INatGet::Data::Model::Observation < INatGet::Data::Model
 
   set_dataset :observations
 
@@ -44,8 +43,6 @@ class INatGet::Data::Model::Observation < Sequel::Model
   def tag_values
     tags.map(&:tag)
   end
-
-  include INatGet::Data::Model
 
   class << self
 

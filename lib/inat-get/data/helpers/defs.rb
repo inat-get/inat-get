@@ -5,7 +5,7 @@ require 'set'
 require_relative '../../info'
 
 module INatGet::Data; end
-module INatGet::Data::Helper; end
+class INatGet::Data::Helper; end
 
 # @api private
 class INatGet::Data::Helper::Field

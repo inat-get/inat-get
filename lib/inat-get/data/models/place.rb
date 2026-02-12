@@ -5,9 +5,8 @@ require 'sequel'
 require_relative '../../info'
 
 module INatGet::Data; end
-module INatGet::Data::Model; end
 
-class INatGet::Data::Model::Place < Sequel::Model
+class INatGet::Data::Model::Place < INatGet::Data::Model
 
   set_dataset :places
 
@@ -17,8 +16,6 @@ class INatGet::Data::Model::Place < Sequel::Model
   many_to_many :descendants, class: self, join_table: :place_ancestors, left_key: :ancestor_id, right_key: :place_id
 
   many_to_many :projects, class: :'INatGet::Data::Model::Project', join_table: :project_included_places, left_key: :place_id, right_key: :project_id
-
-  include INatGet::Data::Model
 
   class << self
 

@@ -6,7 +6,9 @@ require 'fileutils'
 require_relative '../../info'
 require_relative '../setup'
 
-class INatGet::Server 
+module INatGet::App; end
+
+class INatGet::App::Server 
 
   attr_reader :config
 

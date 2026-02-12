@@ -4,10 +4,7 @@ require "sequel"
 
 require_relative "../../info"
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
-class INatGet::Data::Model::Tag < Sequel::Model
+class INatGet::Data::Model::Tag < INatGet::Data::Model
 
   set_dataset :observation_tags
 

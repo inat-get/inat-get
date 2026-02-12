@@ -4,10 +4,7 @@ require 'sequel'
 
 require_relative '../../info'
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
-class INatGet::Data::Model::Taxon < Sequel::Model
+class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
   set_dataset :taxa
 
@@ -19,8 +16,6 @@ class INatGet::Data::Model::Taxon < Sequel::Model
 
   many_to_many :ancestors, class: INatGet::Data::Model::Taxon, join_table: :taxa_ancestors, left_key: :taxon_id, right_key: :ancestor_id
   many_to_many :descendants, class: INatGet::Data::Model::Taxon, join_table: :taxa_ancestors, left_key: :ancestor_id, right_key: :taxon_id
-
-  include INatGet::Data::Model
 
   class << self
 

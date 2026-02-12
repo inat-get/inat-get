@@ -10,9 +10,8 @@ require_relative 'projectqualitygrade'
 require_relative 'projectterm'
 
 module INatGet::Data; end
-module INatGet::Data::Model; end
 
-class INatGet::Data::Model::Project < Sequel::Model
+class INatGet::Data::Model::Project < INatGet::Data::Model
 
   set_dataset :projects
 
@@ -74,8 +73,6 @@ class INatGet::Data::Model::Project < Sequel::Model
   def observations
     INatGet::Data::Model::Observation.where(self.to_sequel)
   end
-
-  include INatGet::Data::Model
 
   class << self
 

@@ -3,7 +3,7 @@
 require_relative 'task'
 require_relative 'console_logger'
 
-class INatGet::Worker
+class INatGet::App::Worker
 
   def initialize task, **params
     @task = task

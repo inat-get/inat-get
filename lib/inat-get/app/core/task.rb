@@ -6,7 +6,7 @@ require_relative '../../info'
 require_relative '../../data/dsl/dsl'
 require_relative 'console_logger'
 
-class INatGet::Task
+class INatGet::App::Task
 
   include INatGet::Data::DSL
 

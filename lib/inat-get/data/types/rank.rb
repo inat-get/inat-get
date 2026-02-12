@@ -3,9 +3,10 @@
 require 'set'
 require 'is-enum'
 
-module INatGet::Enums; end
+module INatGet::Data; end
+module INatGet::Data::Enum; end
 
-class INatGet::Enums::Rank < IS::Enum
+class INatGet::Data::Enum::Rank < IS::Enum
 
   # order_no должен быть целым числом, поэтому дробные уровни вынесены в отдельный параметр
 
@@ -72,6 +73,6 @@ class INatGet::Enums::Rank < IS::Enum
     :species, 
     :subspecies, 
     :variety 
-  ].map { |v| INatGet::Enums::Rank.of(v) }.to_set.freeze
+  ].map { |v| INatGet::Data::Enum::Rank.of(v) }.to_set.freeze
 
 end

@@ -4,10 +4,7 @@ require "sequel"
 
 require_relative "../../info"
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
-class INatGet::Data::Model::ProjectQualityGrade < Sequel::Model
+class INatGet::Data::Model::ProjectQualityGrade < INatGet::Data::Model
 
   set_dataset :project_quality_grades
 

@@ -4,10 +4,7 @@ require "sequel"
 
 require_relative "../../info"
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
-class INatGet::Data::Model::Sound < Sequel::Model
+class INatGet::Data::Model::Sound < INatGet::Data::Model
 
   set_dataset :sounds
 

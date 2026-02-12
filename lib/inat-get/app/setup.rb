@@ -4,12 +4,14 @@ require 'yaml'
 require 'optparse'
 
 require 'is-dsl'
+require 'is-deep'
 
 require_relative '../info'
-require_relative '../utils/deep_merge'
 require_relative 'maintenance'
 
-module INatGet::Setup
+module INatGet::App; end
+
+module INatGet::App::Setup
 
   DEFAULTS = {
     logs: {
@@ -87,7 +89,7 @@ module INatGet::Setup
       @config.deep_merge! opts
       inject_env! @config
       unwrap_files!
-      INatGet::Maintenance.send @config[:maintenance], @config if @config[:maintenance]
+      INatGet::App::Maintenance.send @config[:maintenance], @config if @config[:maintenance]
       @config
     end
 

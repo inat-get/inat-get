@@ -9,12 +9,14 @@ require_relative 'core/api'
 require_relative 'core/task'
 require_relative 'core/worker'
 
-class INatGet::Application
+module INatGet::App; end
+
+class INatGet::App::Main
 
   include Singleton
 
   def initialize
-    @config = INatGet::Setup::config!
+    @config = INatGet::App::Setup::config!
     if @config[:tasks].nil?
       warn "❌ No tasks specified!"
       exit Errno::ECHILD::Errno
@@ -26,14 +28,14 @@ class INatGet::Application
     api_socket = @config.dig :socket, :api
     check_sockets! api_socket, console_socket
 
-    INatGet::Maintenance::db_check @config, true
+    INatGet::App::Maintenance::db_check @config, true
 
-    console = INatGet::Server::Console::create console_socket
-    api = INatGet::Server::API::create api_socket, console: console
+    console = INatGet::App::Server::Console::create console_socket
+    api = INatGet::App::Server::API::create api_socket, console: console
 
-    tasks = @config[:tasks].map { |path| INatGet::Task::new path, @config, console: console, api: api }
+    tasks = @config[:tasks].map { |path| INatGet::App::Task::new path, @config, console: console, api: api }
     Process::warmup
-    INatGet::Worker::enqueue @config, *tasks, console: console, api: api
+    INatGet::App::Worker::enqueue @config, *tasks, console: console, api: api
     console.quit
     api.quit
   end

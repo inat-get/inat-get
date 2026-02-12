@@ -4,10 +4,10 @@ require_relative '../../info'
 
 module INatGet::Data; end
 
-module INatGet::Data::Model
+class INatGet::Data::Model < Sequel::Model
 
   # @api private
-  module Meta
+  class << self
 
     def manager = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
 
@@ -16,14 +16,6 @@ module INatGet::Data::Model
     def updater = self.manager.updater
 
     def parser = self.manager.parser
-
-  end
-
-  class << self
-
-    def included cls
-      cls.extend INatGet::Data::Model::Meta
-    end
 
   end
 

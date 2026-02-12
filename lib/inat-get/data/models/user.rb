@@ -4,10 +4,7 @@ require 'sequel'
 
 require_relative '../../info'
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
-class INatGet::Data::Model::User < Sequel::Model
+class INatGet::Data::Model::User < INatGet::Data::Model
 
   set_dataset :users
 
@@ -17,8 +14,6 @@ class INatGet::Data::Model::User < Sequel::Model
 
   many_to_many :projects, class: :'INatGet::Data::Model::Project', join_table: :project_members, left_key: :user_id, right_key: :project_id
   many_to_many :managed_projects, class: :'INatGet::Data::Model::Project', join_table: :project_admins, left_key: :user_id, right_key: :project_id
-
-  include INatGet::Data::Model
 
   class << self
 

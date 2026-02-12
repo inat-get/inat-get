@@ -10,10 +10,7 @@ require_relative 'place'
 require_relative 'taxon'
 require_relative 'user'
 
-module INatGet::Data; end
-module INatGet::Data::Model; end
-
-class INatGet::Data::Model::Request < Sequel::Model
+class INatGet::Data::Model::Request < INatGet::Data::Model
 
   set_dataset :requests
 

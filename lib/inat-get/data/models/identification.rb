@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "sequel"
+require 'sequel'
 
-require_relative "../../info"
+require_relative '../../info'
+require_relative 'base'
 
 module INatGet::Data; end
-module INatGet::Data::Model; end
 
-class INatGet::Data::Model::Identification < Sequel::Model
+class INatGet::Data::Model::Identification < INatGet::Data::Model
 
   set_dataset :identifications
 
@@ -18,8 +18,6 @@ class INatGet::Data::Model::Identification < Sequel::Model
   include INatGet::Data::Model::Sub
 
   def owner = self.observation
-
-  include INatGet::Data::Model
 
   class << self
 

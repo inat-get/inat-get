@@ -7,7 +7,9 @@ Sequel.extension :migration
 
 require_relative '../info'
 
-module INatGet::Maintenance
+module INatGet::App; end
+
+module INatGet::App::Maintenance
 
   class << self
 
