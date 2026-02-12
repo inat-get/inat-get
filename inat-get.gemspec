@@ -25,6 +25,7 @@ Gem::Specification::new do |spec|
   spec.add_dependency 'is-duration', '~> 0.8.4'
   spec.add_dependency 'is-term', '~> 0.8.4.8'
   spec.add_dependency 'is-range', '~> 0.8'
+  spec.add_dependency 'is-deep', '~> 0.8'
 
   spec.add_development_dependency 'rspec', '~> 3.13'
   spec.add_development_dependency 'rake', '~> 13.3'
