@@ -7,6 +7,8 @@ module INatGet::Data; end
 # @api private
 class INatGet::Data::Helper
 
+  # @group Interface
+
   # @return [Hash]
   def prepare_query **query
     # TODO: implement
@@ -18,17 +20,74 @@ class INatGet::Data::Helper
     #   - Широта, долгота и Location — в диапазоны широты и долготы
     #   - Символы в строки
     # Модели в примитивы на этом этапе НЕ преобразуем, тем более не преобразуем данные между полями.
-    raise NotImplementedError, "Not implemented method 'prepare_query' in abstract class", caller_locations
+    result = {}
+    defs = self.definitions
+    query.each do |key, value|
+      definition = defs[key]
+      raise KeyError::new("Invalid query key: #{ key }", self, key), "Invalid query key: #{ key }", caller_locations if definition.nil?
+      prepared = definition.prepare value
+      if prepared.is_a?(Hash)
+        result.merge! prepared
+      else
+        result[key] = prepared
+      end
+    end
+    result
   end
 
   # Raises exception if any field is not valid.
   # @return [Boolean]
-  def validate_query(**query) = raise NotImplementedError, "Not implemented method 'validate_query' in abstract class", caller_locations
+  def validate_query! **query
+    defs = self.definitions
+    query.each do |key, value|
+      definition = defs[key]
+      raise KeyError::new("Invalid query key: #{ key }", self, key), "Invalid query key: #{ key }", caller_locations if definition.nil?
+      raise ArgumentError, "Invalid query value: #{ key } => #{ value.inspect }" unless definition.valid?(value)
+    end
+  end
 
-  # @return [Hash]
-  def query_to_api(**query) = raise NotImplementedError, "Not implemented method 'query_to_api' in abstract class", caller_locations
+  # Array of request definitions
+  # @return [Array<Hash>]
+  def query_to_api **query
+    # default implementation
+    defs = self.definitions
+    converted = {}
+    query.each do |key, value|
+      definition = defs[key]
+      raise KeyError::new("Invalid query key: #{ key }", self, key), "Invalid query key: #{ key }", caller_locations if definition.nil?
+      converted_value = definition.to_api value
+      if converted_value.is_a?(Hash)
+        converted.merge! converted_value
+      else
+        converted[key] = converted_value
+      end
+    end
+    [ { endpoint: manager.endpoint, query: converted } ]
+  end
 
   # @return [Sequel::SQL::Expression]
-  def query_to_sequel(**query) = raise NotImplementedError, "Not implemented method 'query_to_sequel' in abstract class", caller_locations
+  def query_to_sequel **query
+    # default implementation
+    defs = self.definitions
+    sequel_terms = []
+    query.each do |key, value|
+      definition = defs[key]
+      raise KeyError::new("Invalid query key: #{ key }", self, key), "Invalid query key: #{ key }", caller_locations if definition.nil?
+      sequel_terms << definition.to_sequel(value)
+    end
+    Sequel.&(*sequel_terms)
+  end
+
+  # @endgroup
+
+  # @group Must be implemented in descendants
+
+  # @return [INatGet::Data::Manager]
+  def manager() = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
+
+  # @return [Hash<Field>]
+  def definitions() = raise NotImplementedError, "Not implemented method 'definitions' in abstract class", caller_locations
+
+  # @endgroup
 
 end
