@@ -359,7 +359,7 @@
 #          created_year: set_func(Integer),
 #         created_month: set_func(Integer),
 #           created_day: set_func(Integer),
-#          created_hour: set_func(Integer),
+#  ##        created_hour: set_func(Integer),
 #              accuracy: range_func(Integer),
 #                  date: date_field_func,
 #              observed: time_range_func,

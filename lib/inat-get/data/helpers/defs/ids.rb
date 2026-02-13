@@ -1,0 +1,46 @@
+# frozen_string_literal: true
+
+require_relative '../defs'
+
+class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
+
+  def initialize helper, key
+    super helper, key
+    @sid = helper.manager.sid
+    @uuid = helper.manager.uuid?
+  end
+
+  def prepare value
+    case value
+    when nil
+      nil
+    when Integer, String
+      Set[ value ]
+    when Enumerable
+      value.to_set
+    else 
+      raise ArgumentError, "Invalid field value: #{ @key } => #{ value.inspect }", caller_locations
+    end
+  end
+
+  UUID_PATTERN = /\A\h{8}-\h{4}-\h{4}-\h{4}-\h{12}\z/
+
+  def valid? value
+    return true if value.nil?
+    return true if value.is_a?(Integer)
+    return true if @sid && value.is_a?(String)
+    return true if @uuid && value.is_a?(String) && value =~ UUID_PATTERN
+    if value.is_a?(Enumerable)
+      value.each do |v|
+        next if v.is_a?(Integer)
+        next if @sid && v.is_a?(String)
+        next if @uuid && v.is_a?(String) && v =~ UUID_PATTERN
+        return false
+      end
+      return true
+    end
+    return false
+  end
+  
+end
+

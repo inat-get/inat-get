@@ -11,7 +11,6 @@ class INatGet::Data::Helper
 
   # @return [Hash]
   def prepare_query **query
-    # TODO: implement
     # Вызывается в процессе нормализации условий — ДО преобразований для API и Sequel
     # Выполняем слеюущие преобразования
     #   - Date и диапазоны Date — в диапазоны Time
@@ -80,13 +79,38 @@ class INatGet::Data::Helper
 
   # @endgroup
 
+  class << self
+
+    # @group Definitions DSL
+
+    # @return [Field]
+    def field key, cls, *args
+      raise ArgumentError, "Invalid field key: #{ key.inspect }", caller_locations unless key.is_a?(Symbol)
+      raise ArgumentError, "Invalid field class: #{ cls.inspect }", caller_locations unless cls.is_a?(Class) && cls < INatGet::Data::Helper::Field
+      @fields ||= {}
+      @fields[key] = cls.new(self, key, *args)
+    end
+
+    # @return [Hash<Field>]
+    def fields
+      @fields ||= {}
+    end
+
+    # @endgroup
+
+  end
+
+  # @group Definitions DSL
+
+  # @return [Hash<Field>]
+  def definitions() = self.class.fields
+
+  # @endgroup
+
   # @group Must be implemented in descendants
 
   # @return [INatGet::Data::Manager]
   def manager() = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
-
-  # @return [Hash<Field>]
-  def definitions() = raise NotImplementedError, "Not implemented method 'definitions' in abstract class", caller_locations
 
   # @endgroup
 
