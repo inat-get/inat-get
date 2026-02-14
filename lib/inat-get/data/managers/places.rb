@@ -37,10 +37,17 @@ module INatGet::Data::DSL
 
   # @group Data Querying
 
-  # @return [INatGet::Data::Model::Place, nil]
+  # @overload place id
+  #   @param [Integer] id
+  # @overload place uuid
+  #   @param [String] uuid
+  # @overload place slug
+  #   @param [String] slug
+  # @return [Model::Place, nil]
   def place(id) = INatGet::Data::Manager::Places::instance[id]
 
-  # @return [Array<INatGet::Data::Model::Place>]
+  # @return [Array<Model::Place>]
+  # @param [Array<Integer, String>] ids
   def places *ids
     result = INatGet::Data::Manager::Places::instance.get(*ids)
     case result

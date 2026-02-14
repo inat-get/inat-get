@@ -34,14 +34,16 @@ module INatGet::Data::DSL
 
   # @group Data Querying
 
-  # @return [Enumerable<INatGet::Data::Model::Identification>]
+  # @return [Enumerable<Model::Identification>]
   # @overload identifications *ids
   #   @param [Array<Integer, String>] ids (String for UUID)
-  #   @return [Array<INatGet::Data::Model::Identification>]
+  #   @return [Array<Model::Identification>]
   # @overload identifications condition
   #   @param [Condition] condition
+  #   @return [Dataset<Model::Identification>]
   # @overload identifications **query
   #   @param [Hash] query
+  #   @return [Dataset<Model::Identification>]
   def identifications(*args, **query)
     result = INatGet::Data::Manager::Identifications::instance.get(*args, **query)
     case result
@@ -58,7 +60,7 @@ module INatGet::Data::DSL
   #   @param [Integer] id
   # @overload identification uuid
   #   @param [String] uuid
-  # @return [INatGet::Data::Model::Identification, nil]
+  # @return [Model::Identification, nil]
   def identification(id) = INatGet::Data::Manager::Identifications::instance[id]
 
   # @endgroup

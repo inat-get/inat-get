@@ -8,4 +8,6 @@ class INatGet::Data::Helper::Field::Models < INatGet::Data::Helper::Field::Set
     { "#{ @key }_id".to_sym => value.map(&:id).to_set }
   end
 
+  # TODO: to_sequel with projects and taxa
+
 end

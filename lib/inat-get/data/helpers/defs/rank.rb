@@ -2,7 +2,7 @@
 
 require_relative 'set'
 
-class INatGet::Data::Helper::Field::Rank < INatGet::Data::Helper::Field
+class INatGet::Data::Helper::Field::Rank < INatGet::Data::Helper::Field::Set
 
   def initialize helper, key
     super helper, key, INatGet::Data::Enum::Rank

@@ -34,7 +34,16 @@ module INatGet::Data::DSL
 
   # @group Data Querying
 
-  # @return [Enumerable<INatGet::Data::Model::Observation>]
+  # @return [Enumerable<Model::Observation>]
+  # @overload observations *ids
+  #   @param [Array<Integer, String>] ids +String+ for UUIDs
+  #   @return [Array<Model::Observation>]
+  # @overload observations condition
+  #   @param [Condition] condition
+  #   @return [Dataset<Model::Observation>]
+  # @overload observations **query
+  #   @param [Hash] query
+  #   @return [Dataset<Model::Observation>]
   def observations *args, **query
     result = INatGet::Data::Manager::Observations::instance.get *args, **query
     case result
@@ -47,7 +56,11 @@ module INatGet::Data::DSL
     end
   end
 
-  # @return [INatGet::Data::Model::Observation, nil]
+  # @overload observation id
+  #   @param [Integer] id
+  # @overload observation uuid
+  #   @param [String] uuid
+  # @return [Model::Observation, nil]
   def observation(id) = INatGet::Data::Manager::Observations::instance[id]
 
 end

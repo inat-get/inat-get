@@ -41,6 +41,16 @@ class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
     end
     return false
   end
-  
-end
 
+  def to_sequel value
+    return {} if value.nil?
+    result = []
+    value.each do |v|
+      result << { id: v } if v.is_a?(Integer)
+      result << { uuid: v } if @uuid && v.is_a?(String) && v =~ UUID_PATTERN
+      result << { @sid.to_sym => v } if @sid && v.is_a?(String)
+    end
+    Sequel.|(*result)
+  end
+    
+end
