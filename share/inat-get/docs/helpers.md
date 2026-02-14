@@ -133,7 +133,7 @@ INatGet::Data::Helper (abstract)
 Внутренний класс/структура, описывающий одно поле запроса:
 
 ```ruby
-class QueryDef
+class Field
   # target_model — для извлечения id
   # cardinality — :scalar, :set, :range
   # primitive — базовый тип для проверки
