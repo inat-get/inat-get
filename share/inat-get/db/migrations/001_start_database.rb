@@ -9,7 +9,7 @@ Sequel.migration do
       column :login, String, null: false
       column :name, String
       column :created, Time
-      column :orchid, String
+      column :orcid, String
       column :suspended, :boolean, null: false
       column :cached, Time, null: false
 
