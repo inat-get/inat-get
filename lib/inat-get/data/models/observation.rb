@@ -19,13 +19,13 @@ class INatGet::Data::Model::Observation < INatGet::Data::Model
 
   set_dataset :observations
 
-  one_to_many :faves, class: INatGet::Data::Model::Fave
-  one_to_many :tags, class: INatGet::Data::Model::Tag
+  one_to_many :faves,           class: INatGet::Data::Model::Fave
+  one_to_many :tags,            class: INatGet::Data::Model::Tag
   one_to_many :identifications, class: INatGet::Data::Model::Identification
-  one_to_many :annotations, class: INatGet::Data::Model::Annotation
+  one_to_many :annotations,     class: INatGet::Data::Model::Annotation
 
   many_to_one :taxon, class: INatGet::Data::Model::Taxon
-  many_to_one :user, class: INatGet::Data::Model::User
+  many_to_one :user,  class: INatGet::Data::Model::User
   
   many_to_many :photos, class: INatGet::Data::Model::Photo, join_table: :observation_photos, left_key: :observation_id, right_key: :photo_id
   many_to_many :sounds, class: INatGet::Data::Model::Sound, join_table: :observation_sounds, left_key: :observation_id, right_key: :sound_id
