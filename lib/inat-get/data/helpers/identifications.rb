@@ -4,6 +4,7 @@ require 'singleton'
 
 require_relative 'base'
 
+# @todo Must be implemented in v1.0
 class INatGet::Data::Helper::Identifications < INatGet::Data::Helper
 
   include Singleton
