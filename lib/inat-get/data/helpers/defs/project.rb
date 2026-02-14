@@ -10,7 +10,7 @@ class INatGet::Data::Helper::Field::Project < INatGet::Data::Helper::Field::Mode
 
   def to_sequel value
     value = [ value ] unless value.is_a?(Enumerable)
-    Sequel.|(*value.map(&:to_sequel))
+    Sequel.|( *value.map(&:to_sequel) )
   end
 
 end
