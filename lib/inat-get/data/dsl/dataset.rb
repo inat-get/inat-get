@@ -33,7 +33,8 @@ class INatGet::Data::DSL::Dataset
   # @return [self]
   def update!
     return self if @updated
-    # TODO: implement
+    updater = @condition.manager.updater
+    updater.update! @condition
     @updated = true
     self
   end

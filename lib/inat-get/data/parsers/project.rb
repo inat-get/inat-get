@@ -2,12 +2,10 @@
 
 require 'singleton'
 
-require_relative 'main'
+require_relative 'base'
 
 class INatGet::Data::Parser::Project < INatGet::Data::Parser
 
   include Singleton
-
-  def entry!(src) = self.project!(src)
 
 end
