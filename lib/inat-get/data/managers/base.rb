@@ -13,50 +13,66 @@ class INatGet::Data::Manager
 
   # Returns model instance, array of them or dataset.
   # @see #model
-  # @return [Dataset::Model, Array<Sequel::Model> or INatGet::Data::DSL::Dataset]
+  # @return [Enumerable<Model>, Model, nil]
   # @overload get id
-  #   @param [Integer, String or Symbol] id
-  #   @return [Sequel::Model]
+  #   @param [Integer, String] id
+  #   @return [Model, nil]
   # @overload get *ids
-  #   @param [Array<Integer, String or Symbol>] ids
-  #   @return [Array<Sequel::Model>]
+  #   @param [Array<Integer, String>] ids
+  #   @return [Array<Model>]
   # @overload get **query
   #   @param [Hash] query
-  #   @return [INatGet::Data::DSL::Dataset]
+  #   @return [DSL::Dataset]
   # @overload get condition
-  #   @param [INatGet::Data::DSL::Condition] condition
-  #   @return [INatGet::Data::DSL::Dataset]
+  #   @param [DSL::Condition] condition
+  #   @return [DSL::Dataset]
   def get *args, **kwargs
-    # TODO: implement
+    if kwargs.empty?
+      if args.size == 1 
+        arg = args.first
+        if arg.is_a?(INatGet::Data::DSL::Condition)
+          INatGet::Data::DSL::Dataset::new nil, arg
+        else
+          condition = INatGet::Data::DSL::Condition::Query[self.model, id: arg]
+          self.updater.update! condition
+          get_local_one arg
+        end
+      else
+        condition = INatGet::Data::DSL::Condition::Query[self.model, id: args]
+        args.map { |arg| get_local_one(arg) }
+      end
+    else
+      raise ArgumentError, "Too many arguments", caller_locations unless args.empty?
+      condition = INatGet::Data::DSL::Condition::Query[self.model, **kwargs]
+      INatGet::Data::DSL::Dataset::new nil, condition
+    end
   end
 
-  # @return [Sequel::Model, nil]
+  # @private
+  private def get_local_one id, no_fake = false
+    if id.is_a?(Integer)
+      result = self.model[id]
+      result ||= self.parser.fake(id) unless no_fake
+      result
+    elsif arg.is_a?(String)
+      if self.helper.uuid? && id =~ INatGet::Data::Helper::UUID_PATTERN
+        self.model.where(uuid: id).first
+      elsif self.helper.sid
+        self.model.where(self.helper.sid.to_sym => id).first
+      else
+        raise ArgumentError, "Invalid id: #{ id.inspect }", caller_locations
+      end
+    else
+      raise ArgumentError, "Invalid id: #{ id.inspect }", caller_locations
+    end
+  end
+
+  # Return valid item or `nil`
+  # @return [Model, nil]
   def [] id
-    # TODO: implement
-  end
-
-  # @return [Sequel::Model]
-  def fake **data
-    self.parser.fake data
-  end
-
-  # Update specified records.
-  # @see #updater
-  # @return [void]
-  # @overload update id
-  #   @param [Integer, String or Symbol] id
-  # @overload update *ids
-  #   @param [Array<Integer, String or Symbol>] ids
-  # @overload update **query
-  #   @param [Hash] query
-  # @overload update condition
-  #   @param [INatGet::Data::DSL::Condition] condition
-  # @overload update object
-  #   @param [Sequel::Model] object
-  # @overload update *objects
-  #   @param [Array<Sequel::Model>] objects
-  def update *args, **kwargs
-    # TODO: implement
+    condition = INatGet::Data::DSL::Condition::Query[self.model, id: id]
+    self.updater.update! condition
+    get_local_one id, true
   end
 
   # @endgroup

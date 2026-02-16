@@ -7,6 +7,8 @@ module INatGet::Data; end
 # @api private
 class INatGet::Data::Helper
 
+  UUID_PATTERN = /\A\h{8}-\h{4}-\h{4}-\h{4}-\h{12}\z/
+
   # @group Interface
 
   # @return [Hash]
