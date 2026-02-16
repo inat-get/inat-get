@@ -4,14 +4,56 @@ require_relative 'base'
 
 class INatGet::Data::Parser::Part 
 
-  def initialize parser, *args, **kwargs
+  attr_reader :parser
+
+  def initialize parser
     @parser = parser
-    @args = args
-    @kwargs = kwargs
   end
 
-  # @return [void]
-  def apply(target, source) = raise NotImplementedError, "Not implemented method 'apply' for abstract class", caller_locations
+  # @return [Hash]
+  def parse(source) = raise NotImplementedError, "Not implemented method 'parse' in abstract class", caller_locations
+
+end
+
+class INatGet::Data::Parser::Part::Assoc < INatGet::Data::Parser::Part
+
+  def initialize parser, name, model:, source: nil, source_ids: nil
+    super parser
+    @name = name
+    @model = model
+    @source = source || @name
+    @source_ids = source_ids || singular_ids(@source)
+  end
+
+  # @return [Hash, nil]
+  def parse(target, source) = raise NotImplementedError, "Not implemented method 'parse' in abstract class", caller_locations
+
+  private
+
+  # @private
+  def singular_ids name
+    if name == :taxa
+      :taxon_ids
+    elsif name == :species
+      :species_ids
+    else
+      str_name = name.to_s
+      single = if str_name.end_with?('ies')
+        str_name.sub(/ies$/, 'y')
+      elsif str_name.end_with?('ses')
+        str_name.sub(/ses$/, 's')
+      elsif str_name.end_with?('xes')
+        str_name.sub(/xes$/, 'x')
+      elsif str_name.end_with?('shes')
+        str_name.sub(/shes$/, 'sh')
+      elsif str_name.end_with?('s') && !str_name.end_with?('ss')
+        str_name.sub(/s$/, '')
+      else
+        str_name
+      end
+      "#{ single }_ids".to_sym
+    end
+  end
 
 end
 
@@ -26,6 +68,8 @@ class INatGet::Data::Parser
       @parts ||= []
     end
 
+    private
+
     # @return [void]
     def part cls, *args, **kwargs
       @parts ||= []
@@ -39,7 +83,7 @@ class INatGet::Data::Parser
   # @group Parts
 
   # @return [Array<Part>]
-  def parts = self.class.parts
+  private def parts = self.class.parts
 
   # @endgroup
 
@@ -47,22 +91,39 @@ class INatGet::Data::Parser
 
   # @return [Model]
   def entry! source
-    id = source[:id]
-    raise ArgumentError, "Field 'id' not found in source", caller_locations unless id
-    record = self.model[id]
-    unless record
-      record = self.model.new
-      record.id = id
+    associations, attributes = parts.partition { |p| p.is_a?(INatGet::Data::Parser::Part::Assoc) }
+    fields = {}
+    attributes.each do |a|
+      fields.merge! a.parse(source)
     end
-    self.parts.each do |part|
-      part.apply record, source
+    record = upsert fields
+    fields = {}
+    associations.each do |a|
+      res = a.parse(record, source)
+      fields.merge! res if res
     end
-    record.cached = Time::now
-    record.save
-    record
+    record.update fields
   end
 
   # @endgroup
 
-end
+  private
 
+  # @private
+
+  def upsert data
+    pk_cols = Array(model.primary_key)
+    pk_vals = data.values_at(*pk_cols)
+    record = if pk_vals.all?
+      model.with_pk(pk_vals.size == 1 ? pk_vals.first : pk_vals)
+    else
+      raise ArgumentError, "Invalid PK for #{ model }: #{ pk_vals.inspect }", caller_locations
+    end
+    if record
+      record.update data
+    else
+      model.create data
+    end
+  end
+
+end

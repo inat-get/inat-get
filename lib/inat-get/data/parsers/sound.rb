@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class INatGet::Data::Parser::Photo < INatGet::Data::Parser
+class INatGet::Data::Parser::Sound < INatGet::Data::Parser
 
-  # @return [class Model::Photo]
-  def model() = INatGet::Data::Model::Photo
+  # @return [class Model::Sound]
+  def model() = INatGet::Data::Model::Sound
 
 end

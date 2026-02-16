@@ -1,17 +1,25 @@
 # frozen_string_literal: true
 
+require_relative '../defs'
+
 class INatGet::Data::Parser::Part::Location < INatGet::Data::Parser::Part
 
-  def apply target, source
+  def parse source
     geojson = source[:geojson]
-    coordinates = geojson&.[](:coordinates)
-    accuracy = source[:positional_accuracy]
-    fields = {
-      latitude: coordinates&.[](1),
-      longitude: coordinates&.[](0),
-      accuracy: accuracy
-    }
-    target.set(**fields)
+    if geojson
+      coordinates = geojson[:coordinates]
+      if coordinates
+        {
+          latitude: coordinates[1],
+          longitude: coordinates[0],
+          accuracy: source[:positional_accuracy]
+        }
+      else
+        {}
+      end
+    else
+      {}
+    end
   end
 
 end
