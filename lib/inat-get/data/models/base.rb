@@ -9,13 +9,13 @@ class INatGet::Data::Model < Sequel::Model
   # @api private
   class << self
 
-    def manager = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
+    def manager = nil
 
-    def helper = self.manager.helper
+    def helper = self.manager&.helper
 
-    def updater = self.manager.updater
+    def updater = self.manager&.updater
 
-    def parser = self.manager.parser
+    def parser = self.manager&.parser
 
   end
 
