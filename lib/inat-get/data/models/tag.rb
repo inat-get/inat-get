@@ -14,4 +14,11 @@ class INatGet::Data::Model::Tag < INatGet::Data::Model
 
   def owner = self.observation
 
+  class << self
+    
+    # @return [Parser::Tag]
+    def parser = INatGet::Data::Parser::Tag::instance
+
+  end
+
 end

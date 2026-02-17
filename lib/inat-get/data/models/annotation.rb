@@ -18,4 +18,13 @@ class INatGet::Data::Model::Annotation < INatGet::Data::Model
   # @return [INatGet::Data::Model::Observation]
   def owner = self.observation
 
+  # @endgroup
+
+  class << self
+
+    # @return [Parser::Annotation]
+    def parser = INatGet::Data::Parser::Annotation::instance
+
+  end
+
 end

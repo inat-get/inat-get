@@ -19,6 +19,7 @@ class INatGet::Data::Model::Place < INatGet::Data::Model
 
   class << self
 
+    # @return [Manager::Places]
     def manager = INatGet::Data::Manager::Places::instance
 
   end

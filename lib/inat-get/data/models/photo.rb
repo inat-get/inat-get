@@ -12,4 +12,11 @@ class INatGet::Data::Model::Photo < INatGet::Data::Model
 
   many_to_many :observations, class: :'INatGet::Data::Model::Observation', join_table: :observation_photos, left_key: :photo_id, right_key: :observation_id
 
+  class << self
+
+    # @return [Parser::Photo]
+    def parser = INatGet::Data::Parser::Photo::instance
+    
+  end
+
 end
