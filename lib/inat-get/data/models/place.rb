@@ -24,4 +24,6 @@ class INatGet::Data::Model::Place < INatGet::Data::Model
 
   end
 
+  mk_apks
+
 end
