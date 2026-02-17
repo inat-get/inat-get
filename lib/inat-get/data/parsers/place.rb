@@ -14,7 +14,7 @@ class INatGet::Data::Parser::Place < INatGet::Data::Parser
   part Part::StrLocation
   part Part::Cached
 
-  part Part::Links :ancestors, model: INatGet::Data::Model::Place, source_ids: :ancestor_place_ids
+  part Part::Ancestry, :ancestors, source_ids: :ancestor_place_ids
 
   class << self
 
