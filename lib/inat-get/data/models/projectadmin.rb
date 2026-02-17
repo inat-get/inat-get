@@ -15,4 +15,10 @@ class INatGet::Data::Model::ProjectAdmin < INatGet::Data::Model
 
   def owner = self.project
 
+  class << self
+
+    def parser() = INatGet::Data::Parser::ProjectAdmin::instance
+
+  end
+
 end

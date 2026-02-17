@@ -91,4 +91,6 @@ class INatGet::Data::Model::Project < INatGet::Data::Model
 
   end
 
+  mk_apks
+
 end
