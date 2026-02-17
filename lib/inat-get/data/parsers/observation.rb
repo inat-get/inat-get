@@ -16,6 +16,7 @@ class INatGet::Data::Parser::Observation < INatGet::Data::Parser
   part Part::Location
   part Part::Model, :taxon, model: INatGet::Data::Model::Taxon
   part Part::Model, :user,  model: INatGet::Data::Model::User
+  part Part::Cached
 
   part Part::Children, :identifications, model: INatGet::Data::Model::Identification
   part Part::Children, :annotations,     model: INatGet::Data::Model::Annotation
