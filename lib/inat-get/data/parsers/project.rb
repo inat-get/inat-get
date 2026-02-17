@@ -8,6 +8,13 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
 
   include Singleton
 
+  part Part::PK
+  part Part::Copy, :slug, :title, :description
+  part Part::PrjType
+  part Part::Time, :created => :created_at, :updated => :updated_at
+  part Part::Model, :user, model: INatGet::Data::Model::User
+  part Part::Cached
+
   # TODO
 
   class << self

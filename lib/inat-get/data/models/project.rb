@@ -15,6 +15,8 @@ class INatGet::Data::Model::Project < INatGet::Data::Model
 
   set_dataset :projects
 
+  many_to_one :user, class: :'INatGet::Data::Model::User'
+
   many_to_many :manual_observations, class: :'INatGet::Data::Model::Observation', join_table: :observation_projects, left_key: :project_id, right_key: :observation_id
 
   many_to_many :included_taxa, class: :'INatGet::Data::Model::Taxon', join_table: :project_included_taxa, left_key: :project_id, right_key: :taxon_id

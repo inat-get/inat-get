@@ -69,9 +69,11 @@ Sequel.migration do
       column :is_umbrella, :boolean, null: false
       column :is_collection, :boolean, null: false
       column :members_only, :boolean, null: false
+      column :user_id, Integer
       column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_projects'
+      foreign_key [ :user_id ], :users, name: 'fk_projects_user_id', on_delete: :restrict, on_update: :cascade
       unique [ :slug ], name: 'uq_projects_slug'
       index [ :title ], name: 'ix_projects_name'
       index [ :created ], name: 'ix_projects_created'
