@@ -91,8 +91,15 @@ class INatGet::Data::Parser
 
   # @return [Model]
   def entry! source
-    associations, attributes = parts.partition { |p| p.is_a?(INatGet::Data::Parser::Part::Assoc) }
     fields = {}
+    pk, rest = parts.partition { |p| p.is_a?(Part::PK) }
+    pk.each do |a|
+      result = a.parse source
+      registered = result.delete :_registered
+      return model.with_pk(registered.size == 1 ? registered.first : registered) if registered
+      fields.merge! result
+    end
+    associations, attributes = rest.partition { |p| p.is_a?(Part::Assoc) }
     attributes.each do |a|
       fields.merge! a.parse(source)
     end

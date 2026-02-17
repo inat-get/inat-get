@@ -12,7 +12,7 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
 
   class << self
 
-    def manager = INatGet::Data::Manager::Projects::instance
+    def manager() = INatGet::Data::Manager::Projects::instance
 
   end
 
