@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# @api private
 class INatGet::Data::Model::ProjectTaxon < INatGet::Data::Model
 
   set_dataset :project_taxa

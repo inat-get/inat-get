@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# @api private
 class INatGet::Data::Model::ProjectPlace < INatGet::Data::Model
 
   set_dataset :project_places

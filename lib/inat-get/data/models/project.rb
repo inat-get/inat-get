@@ -34,8 +34,13 @@ class INatGet::Data::Model::Project < INatGet::Data::Model
   one_to_many :quality_grades, class: :'INatGet::Data::Model::ProjectQualityGrade'
   one_to_many :terms, class: :'INatGet::Data::Model::ProjectTerm'
 
+  # @api private
   one_to_many :taxa, class: :'INatGet::Data::Model::ProjectTaxon'
+
+  # @api private
   one_to_many :places, class: :'INatGet::Data::Model::ProjectPlace'
+
+  # @api private
   one_to_many :users, class: :'INatGet::Data::Model::ProjectUser'
 
   # @return [Sequel::SQL::Expression]
