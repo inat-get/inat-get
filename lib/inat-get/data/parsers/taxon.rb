@@ -8,4 +8,6 @@ class INatGet::Data::Parser::Taxon < INatGet::Data::Parser
 
   include Singleton
 
+  # TODO
+
 end
