@@ -33,12 +33,12 @@ class INatGet::Data::Manager
         if arg.is_a?(INatGet::Data::DSL::Condition)
           INatGet::Data::DSL::Dataset::new nil, arg
         else
-          condition = INatGet::Data::DSL::Condition::Query[self.model, id: arg]
-          self.updater.update! condition
+          self.updater.update!(arg)
           get_local_one arg
         end
       else
         condition = INatGet::Data::DSL::Condition::Query[self.model, id: args]
+        self.updater.update!(*args)
         args.map { |arg| get_local_one(arg) }
       end
     else

@@ -8,4 +8,6 @@ class INatGet::Data::Updater::Users < INatGet::Data::Updater
 
   include Singleton
 
+  def parser() = INatGet::Data::Parser::User::instance
+
 end

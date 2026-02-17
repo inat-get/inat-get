@@ -8,4 +8,6 @@ class INatGet::Data::Updater::Observations < INatGet::Data::Updater
 
   include Singleton
 
+  def parser() = INatGet::Data::Parser::Observation::instance
+
 end
