@@ -22,10 +22,12 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
   part Part::PrjSearch
   part Part::Subprojects
 
-  class << self
+  def manager() = INatGet::Data::Manager::Projects::instance
 
-    def manager() = INatGet::Data::Manager::Projects::instance
-
+  def fake id
+    self.model.create id: id, slug: "fake-#{ id }", title: "Fake \##{ id }", description: "Fake project \##{ id }", project_type: '',
+                      created: Time::now, updated: Time::now, cached: Time::now, 
+                      is_umbrella: false, is_collection: false, members_only: false, user: INatGet::Data::Manager::Users.get(0)
   end
 
 end

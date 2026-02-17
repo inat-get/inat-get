@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 require 'singleton'
 
 require_relative 'base'
@@ -30,5 +31,11 @@ class INatGet::Data::Parser::Observation < INatGet::Data::Parser
 
   # @return [class Model::Observation]
   def model = INatGet::Data::Model::Observation
+
+  def fake id
+    now = Time::now
+    self.model.create id: id, created: now, observed: now, updated: now, cached: now, quality_grade: 'fake', user: INatGet::Data::Manager::Users::instance.get(0),
+                      created_year: now.year, created_month: now.month, created_week: now.to_date.cweek, created_day: now.day, created_hour: now.hour
+  end
 
 end

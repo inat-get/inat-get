@@ -10,4 +10,8 @@ class INatGet::Data::Parser::Photo < INatGet::Data::Parser
   # @return [class Model::Photo]
   def model() = INatGet::Data::Model::Photo
 
+  def fake id
+    self.model.create id: id, url: ''
+  end
+
 end

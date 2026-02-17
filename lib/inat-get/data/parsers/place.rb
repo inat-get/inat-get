@@ -16,10 +16,10 @@ class INatGet::Data::Parser::Place < INatGet::Data::Parser
 
   part Part::Ancestry, :ancestors, source_ids: :ancestor_place_ids
 
-  class << self
+  def manager = INatGet::Data::Manager::Places::instance
 
-    def manager = INatGet::Data::Manager::Places::instance
-
+  def fake id
+    self.model.create id: id, name: "Fake \##{ id }", display_name: "Fake \##{ id }", slug: "fake-#{ id }", cached: Time::new
   end
 
 end

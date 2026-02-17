@@ -18,4 +18,8 @@ class INatGet::Data::Parser::Taxon < INatGet::Data::Parser
 
   def manager() = INatGet::Data::Manager::Taxa::instance
 
+  def fake id
+    self.model.create id: id, name: "Fake #{ id }", is_active: false, cached: Time::now
+  end
+
 end
