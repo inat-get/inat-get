@@ -29,7 +29,9 @@ flowchart TB
 
   subgraph R090 ["v0.9.0"]
     direction TB
-    Shutdown("Graceful Shutdown")
+    Observs("Запросы<br>по наблюдениям")
+    Caching("Базовое<br>кэшировние")
+    Shutdown("Управление процессами и Graceful Shutdown")
     Timing("Настройки Sequel для хранения времени со смещением")
   end
 
@@ -48,6 +50,7 @@ flowchart TB
   subgraph R096 ["v0.9.6"]
     direction TB
     Idents("Запросы по идентификациям")
+    AdvCaching("Продвинутое<br>кэширование")
   end
 
   subgraph R098 ["v0.9.8"]
@@ -78,4 +81,5 @@ flowchart TB
 
   Testing --> Debugging
   Debugging --> Ref1
+  Ref1 --> Testing
 ```
