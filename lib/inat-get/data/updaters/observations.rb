@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Observations < INatGet::Data::Updater
 
   include Singleton
 
-  def parser() = INatGet::Data::Parser::Observation::instance
+  # @return [INatGet::Data::Manager::Observations]
+  def manager() = INatGet::Data::Manager::Observations::instance
 
 end

@@ -18,6 +18,7 @@ class INatGet::App::Task
     @name = File.basename path, '.*'
     @opts = opts
     @console = opts[:console]
+    @api = opts[:api]
     inner_code = File.read @path
     outer_code = "define_singleton_method :execute do\n" +
                  "#{ inner_code }\n" +
@@ -28,6 +29,9 @@ class INatGet::App::Task
   attr_reader :db
 
   def prepare
+    Thread::current[:api] = @api
+    Thread::current[:console] = @console
+    Thread::current[:logger] = logger
     db_connect = @config.dig(:database, :connect)
     db_options = { user: @config.dig(:database, :user), password: @config.dig(:database, :password) }.compact
     @db = Sequel::connect(db_connect, **db_options)

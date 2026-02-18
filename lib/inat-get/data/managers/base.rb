@@ -70,8 +70,7 @@ class INatGet::Data::Manager
   # Return valid item or `nil`
   # @return [Model, nil]
   def [] id
-    condition = INatGet::Data::DSL::Condition::Query[self.model, id: id]
-    self.updater.update! condition
+    self.updater.update! id
     get_local_one id, true
   end
 

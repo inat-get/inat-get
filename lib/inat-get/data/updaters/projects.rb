@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Projects < INatGet::Data::Updater
 
   include Singleton
 
-  def parser() = INatGet::Data::Parser::Project::instance
+  # @return [INatGet::Data::Manager::Projects]
+  def manager() = INatGet::Data::Manager::Projects::instance
   
 end

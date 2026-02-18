@@ -8,7 +8,8 @@ class INatGet::Data::Updater::Taxa < INatGet::Data::Updater
 
   include Singleton
 
-  def parser() = INatGet::Data::Parser::Taxon::instance
+  # @return [INatGet::Data::Manager::Taxa]
+  def manager() = INatGet::Data::Manager::Taxa::instance
 
 end
 

@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Places < INatGet::Data::Updater
 
   include Singleton
 
-  def parser() = INatGet::Data::Parser::Place::instance
+  # @return [INatGet::Data::Manager::Places]
+  def manager() = INatGet::Data::Manager::Places::instance
 
 end

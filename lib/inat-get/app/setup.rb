@@ -45,10 +45,10 @@ module INatGet::App::Setup
       },
       refs: {
         default: '4w',
-        project: '1w',
-        taxon: '4w',
-        user: '10w',
-        place: '10w'
+        projects: '1w',
+        taxa: '4w',
+        users: '10w',
+        places: '10w'
       }
     },
     offline: false,

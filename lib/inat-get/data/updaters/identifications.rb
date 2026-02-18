@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Identifications < INatGet::Data::Updater
 
   include Singleton
 
-  def parser() = INatGet::Data::Parser::Identification::instance
+  # @return [INatGet::Data::Manager::Identifications]
+  def manager() = INatGet::Data::Manager::Identifications::instance
 
 end
