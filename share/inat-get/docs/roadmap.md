@@ -39,7 +39,10 @@ flowchart TB
   end
 
   subgraph R094 ["v0.9.4"]
-    direction TB
+    direction LR
+    Testing("Тестирование")
+    Debugging("Исправление багов")
+    Ref1("Малый рефакторинг")
   end
 
   subgraph R096 ["v0.9.6"]
@@ -56,7 +59,7 @@ flowchart TB
 
   subgraph R100 ["v1.0"]
     direction TB
-    Refactoring("Рефакторинг и оптимизация")
+    Refactoring("Рефакторинг и оптимизация")
     Documenting("Полная документация")
   end
 
@@ -73,6 +76,6 @@ flowchart TB
   Smth --> R100
   R100 --> R120
 
-  ERB --> Reporting
-  Reporting --> Documenting
+  Testing --> Debugging
+  Debugging --> Ref1
 ```
