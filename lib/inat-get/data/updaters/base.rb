@@ -45,6 +45,9 @@ class INatGet::Data::Updater
   # @return [INatGet::Data::Helper]
   def helper() = self.manager.helper
 
+  # @return [Symbol]
+  def endpoint() = self.manager.endpoint
+
   # @endgroup
 
   private
@@ -80,56 +83,61 @@ class INatGet::Data::Updater
   # @private
   def make_request request
     endpoint = request[:endpoint]
-    query = request[:query].transform_values { |v| v.is_a?(Enumerable) ? v.sort : v }
-    prepared = { endpoint: endpoint, query: query }
-    json = JSON.generate prepared, sort_keys: true, space: ''
-    hash = Digest::MD5::hexdigest json
-    endless_query = query.reject { |k, _| k == :d2 || k == :created_d2 }
-    endless_prepared = { endpoint: endpoint, query: query }
-    endless_json = JSON.generate endless_prepared, sort_keys: true, space: ''
-    endless_hash = Digest::MD5::hexdigest endless_json
+    query = request[:query]
+    if endpoint == self.endpoint
+      # ⮴ В противном случае мы запрашиваем конкретные id/sid, которых не нашлось в базе, или нашлись, но недостаточно свежие.
+      #   Соответственно, смысла в дальнейших проверках, равно как и в сохранении запроса, нет.
+      query.transform_values! { |v| v.is_a?(Enumerable) ? v.sort : v }
+      prepared = { endpoint: endpoint, query: query }
+      json = JSON.generate prepared, sort_keys: true, space: ''
+      hash = Digest::MD5::hexdigest json
+      endless_query = query.reject { |k, _| k == :d2 || k == :created_d2 }
+      endless_prepared = { endpoint: endpoint, query: query }
+      endless_json = JSON.generate endless_prepared, sort_keys: true, space: ''
+      endless_hash = Digest::MD5::hexdigest endless_json
 
-    fresh_point = Time::now - parse_duration(@config.dig(:update) || 0)
+      fresh_point = Time::now - parse_duration(@config.dig(:update) || 0)
 
-    found = false
-    rq_model = INatGet::Data::Model::Request
-    rq_model.db.transaction(isolation: :committed) do
-      record = INatGet::Data::Model::Request.with_pk(hash)
-      if record
-        found = true
-        if record.finished == nil && record.started > (Time::now - HARD_LIMIT)
-          while record.finished == nil
-            sleep 0.01
-            record.reload
+      found = false
+      rq_model = INatGet::Data::Model::Request
+      rq_model.db.transaction(isolation: :committed) do
+        record = INatGet::Data::Model::Request.with_pk(hash)
+        if record
+          found = true
+          if record.finished == nil && record.started > (Time::now - HARD_LIMIT)
+            while record.finished == nil
+              sleep 0.01
+              record.reload
+            end
+            return :other
           end
-          return :other
+          return :fresh if record.finished > fresh_point
+          record.update started: Time::now, finished: nil
+        else
+          record = rq_model.create hash: hash, endless: endless_hash, query: json, started: Time::now, freshed: now, finished: nil
         end
-        return :fresh if record.finished > fresh_point
-        record.update started: Time::now, finished: nil
+      end
+      updated_since = nil
+      if found
+        updated_since = record.started
       else
-        record = rq_model.create hash: hash, endless: endless_hash, query: json, started: Time::now, freshed: now, finished: nil
-      end
-    end
-    updated_since = nil
-    if found
-      updated_since = record.started
-    else
-      endless_record = rq_model.where(endless: endless_hash).exclude(finished: nil).order(:finished.desc).first
-      if endless_record
-        return :fresh if endless_record.finished > fresh_point
-        if allow_updated_since
-          saved_json = endless_record.query
-          saved_data = JSON.parse saved_json, symbolize_names: true
-          saved_d2 = saved_data.dig :query, :d1
-          saved_d2 = Time.parse saved_d2 if saved_d2
-          saved_cd2 = saved_data.dig :query, :created_d2
-          saved_cd2 = Time.parse saved_cd2 if saved_cd2
-          updated_since = [ endless_record.started, saved_d2, saved_cd2 ].compact.min
+        endless_record = rq_model.where(endless: endless_hash).exclude(finished: nil).order(:finished.desc).first
+        if endless_record
+          return :fresh if endless_record.finished > fresh_point
+          if allow_updated_since
+            saved_json = endless_record.query
+            saved_data = JSON.parse saved_json, symbolize_names: true
+            saved_d2 = saved_data.dig :query, :d1
+            saved_d2 = Time.parse saved_d2 if saved_d2
+            saved_cd2 = saved_data.dig :query, :created_d2
+            saved_cd2 = Time.parse saved_cd2 if saved_cd2
+            updated_since = [ endless_record.started, saved_d2, saved_cd2 ].compact.min
+          end
         end
       end
+      query[:updated_since] = updated_since if allow_updated_since && updated_since
     end
-    query[:updated_since] = updated_since if allow_updated_since && updated_since 
-    # TODO: проверка endpoint на предмет доступности updated_since
+    # TODO
   end
 
   # @group Descendant Rules

@@ -20,4 +20,3 @@ class INatGet::Data::Updater::Taxa < INatGet::Data::Updater
   def allow_id_above() = true
 
 end
-
