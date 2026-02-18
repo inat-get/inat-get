@@ -47,7 +47,7 @@ flowchart TB
 
   subgraph R096 ["v0.9.6"]
     direction TB
-    Idents("Запросы по идентификациям")
+    Idents("Запросы по идентификациям")
   end
 
   subgraph R098 ["v0.9.8"]
