@@ -84,6 +84,7 @@ class INatGet::Data::Updater
   def make_request request
     endpoint = request[:endpoint]
     query = request[:query]
+    record = nil
     if endpoint == self.endpoint
       # ⮴ В противном случае мы запрашиваем конкретные id/sid, которых не нашлось в базе, или нашлись, но недостаточно свежие.
       #   Соответственно, смысла в дальнейших проверках, равно как и в сохранении запроса, нет.
@@ -136,8 +137,19 @@ class INatGet::Data::Updater
         end
       end
       query[:updated_since] = updated_since if allow_updated_since && updated_since
+      # TODO: глубокая проверка на охватывающие запросы
     end
-    # TODO
+    request = { endpoint: endpoint, query: query }
+    execute_request request
+    if endpoint == self.endpoint
+      record.update finished: Time::now if record
+      # TODO: дальнейшие этапы обновления кэша: refresh и recache
+    end
+  end
+
+  # @private
+  def execute_request request
+    # TODO: implement
   end
 
   # @group Descendant Rules
