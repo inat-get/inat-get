@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sequel'
+Sequel.extension :core_extensions
 
 require_relative '../../info'
 require_relative '../../data/dsl/dsl'

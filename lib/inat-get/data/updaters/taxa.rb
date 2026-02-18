@@ -11,5 +11,13 @@ class INatGet::Data::Updater::Taxa < INatGet::Data::Updater
   # @return [INatGet::Data::Manager::Taxa]
   def manager() = INatGet::Data::Manager::Taxa::instance
 
+  private
+
+  # @return [true]
+  def allow_locale() = true
+
+  # @return [true]
+  def allow_id_above() = true
+
 end
 

@@ -11,4 +11,12 @@ class INatGet::Data::Updater::Observations < INatGet::Data::Updater
   # @return [INatGet::Data::Manager::Observations]
   def manager() = INatGet::Data::Manager::Observations::instance
 
+  private
+
+  # @return [true]
+  def allow_id_above() = true
+
+  # @return [true]
+  def allow_updated_since() = true
+
 end

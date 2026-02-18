@@ -11,4 +11,9 @@ class INatGet::Data::Updater::Identifications < INatGet::Data::Updater
   # @return [INatGet::Data::Manager::Identifications]
   def manager() = INatGet::Data::Manager::Identifications::instance
 
+  private
+
+  # @return [true]
+  def allow_id_above() = true
+
 end
