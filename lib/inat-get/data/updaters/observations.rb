@@ -14,9 +14,12 @@ class INatGet::Data::Updater::Observations < INatGet::Data::Updater
   private
 
   # @return [true]
-  def allow_id_above() = true
+  def allow_locale?() = true
 
   # @return [true]
-  def allow_updated_since() = true
+  def allow_id_above?() = true
+
+  # @return [true]
+  def allow_updated_since?() = true
 
 end

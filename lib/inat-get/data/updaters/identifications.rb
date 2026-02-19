@@ -14,6 +14,6 @@ class INatGet::Data::Updater::Identifications < INatGet::Data::Updater
   private
 
   # @return [true]
-  def allow_id_above() = true
+  def allow_id_above?() = true
 
 end

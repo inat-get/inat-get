@@ -14,9 +14,9 @@ class INatGet::Data::Updater::Taxa < INatGet::Data::Updater
   private
 
   # @return [true]
-  def allow_locale() = true
+  def allow_locale?() = true
 
   # @return [true]
-  def allow_id_above() = true
+  def allow_id_above?() = true
 
 end

@@ -11,7 +11,7 @@ class INatGet::Data::Updater
 
   # @private
   def initialize
-    @config = INatGet::App::Setup::config[:caching] || {}
+    @config = INatGet::App::Setup::config || {}
   end
 
   # @group Update
@@ -66,7 +66,7 @@ class INatGet::Data::Updater
 
   # @private
   def update_by_ids! *ids
-    interval = parse_duration(@config.dig(:refs, self.manager.endpoint) || @config.dig(:refs, :default))
+    interval = parse_duration(@config.dig(:caching, :refs, self.manager.endpoint) || @config.dig(:caching, :refs, :default))
     if interval
       point = Time::now - interval
       fresh = self.model.where(id: ids, cached: (point .. )).select_map(:id)
@@ -74,8 +74,7 @@ class INatGet::Data::Updater
     end
     ids.each_slice(@config.dig(:api, :pager) || 200) do |slice|
       endpoint = "#{ self.endpoint }/#{ slice.map(&:to_s).join(',') }"
-      request = { endpoint: endpoint, query: {} }
-      execute_request request
+      execute_request(endpoint, {})
     end
   end
 
@@ -139,50 +138,158 @@ class INatGet::Data::Updater
   #       end
   #     end
   #     query[:updated_since] = updated_since if allow_updated_since && updated_since
-  #     # TODO: глубокая проверка на охватывающие запросы
+  #     # TO DO: глубокая проверка на охватывающие запросы
   #   end
   #   request = { endpoint: endpoint, query: query }
   #   execute_request request
   #   if endpoint == self.endpoint
   #     record.update finished: Time::now if record
-  #     # TODO: дальнейшие этапы обновления кэша: refresh и recache
+  #     # TO DO: дальнейшие этапы обновления кэша: refresh и recache
   #   end
   # end
 
   # @private
   def wrap_request request
     endpoint = request[:endpoint]
+    query = request[:query]
     # Запрос конкретного набора id — не кэшируем — нет смысла
-    return execute_request(request) unless endpoint == self.endpoint
+    return execute_request(endpoint, query) unless endpoint == self.endpoint
 
     # TODO: Определяем updated_since, если возможно
-    # TODO: Захватываем request в БД
+
+    # Формируем ключи и данные
+    query.transform_values! { |v| v.is_a?(Enumerable) ? v.sort : v }
+    rq_json = JSON.generate({ endpoint: endpoint, query: query }, sort_keys: true, space: '')
+    rq_hash = Digest::MD5::hexdigest rq_json
+    el_query = query.reject { |k, _| k == :d2 || k.to_s.end_with?('_d2') }
+    el_json = JSON.generate({ endpoint: endpoint, query: el_query }, sort_keys: true, space: '')
+    el_hash = Digest::MD5::hexdigest el_json
+
+    start_point = Time::now
+    actual_point = point - parse_duration(@config.dig(:caching, :update))
+
+    # Захватываем requests
+    rq_model = INatGet::Data::Model::Request
+    record = nil
+    found = false
+    rq_model.db.transaction(isolation: :committed) do
+      record = rq_model.with_pk(rq_hash)
+      if record
+        while record.busy
+          sleep 0.01
+          record.reload
+        end
+        return :fresh if record.finished > actual_point
+        record.update busy: true
+        found = true
+      else
+        record = rq_model.create hash: rq_hash, endless: el_hash, endpoint: endpoint, query: rq_json, started: start_point, freshed: start_point, busy: true
+        set_request_projects record, query[:project_id] if query[:project_id]
+        set_request_places   record, query[:place_id]   if query[:place_id]
+        set_request_taxa     record, query[:taxon_id]   if query[:taxon_id]
+        set_request_users    record, query[:user_id]    if query[:user_id]
+      end
+    end
+
+    # Устанавливаем updated_since
+    if allow_updated_since?
+      updated_since = nil
+      if found
+        updated_since = record.started
+      else
+        el_record = rq_model.where(endless: el_hash).order(:started.desc).first
+        if el_record
+          saved_json = el_record.query
+          saved_data = JSON.load saved_json, symbolize_names: false
+          dates = saved_data.select { |k, _| k == 'd2' || k.end_with?('_d2') }.values.compact.map { |v| Time.parse(v) rescue nil }.compact
+          updated_since = [ el_record.started, *dates ].min
+        end
+      end
+      query[:updated_since] = updated_since if updated_since
+    end
+
+    # Выполняем запрос
+    result = :empty
+    begin
+      result = execute_request endpoint, query
+    rescue => e
+      result = :error
+      logger.error e.message
+    end
+
+    # Освобождаем requests
+    rq_model.db.transaction(isolation: :committed) do
+      if result == :done
+        record.update busy: false, started: started, finished: Time::now
+      else
+        record.update busy: false
+      end
+    end
     
-    execute_request request
-    
-    # TODO: Освобождаем request в БД
     # TODO: Определяем необходимость этапа refresh
     # TODO:   Этап recache
+
+    result
   end
 
   # @private
-  # Возвращаем true, если загрузка прошла успешно, false — в случае ошибки:
+  # Возвращаем :done, если загрузка прошла успешно, :error — в случае ошибки:
   #   от этого будут зависеть изменения в requests при освобождении записи.
-  def execute_request request
+  def execute_request endpoint, query
     # TODO: implement
   end
 
   # @group Descendant Rules
 
   # @return [Boolean]
-  def allow_updated_since() = false
+  def allow_updated_since?() = false
 
   # @return [Boolean]
-  def allow_id_above() = false
+  def allow_id_above?() = false
 
   # @return [Boolean]
-  def allow_locale() = false
+  def allow_locale?() = false
 
   # @endgroup
+
+  # @private
+  def project_pks
+    @project_pks ||= INatGet::Data::Model::Request.association_reflection(:projects)[:pks_setter_method]
+  end
+
+  # @private
+  def place_pks
+    @place_pks ||= INatGet::Data::Model::Request.association_reflection(:places)[:pks_setter_method]
+  end
+
+  # @private
+  def taxon_pks
+    @taxon_pks ||= INatGet::Data::Model::Request.association_reflection(:taxa)[:pks_setter_method]
+  end
+
+  # @private
+  def user_pks
+    @user_pks ||= INatGet::Data::Model::Request.association_reflection(:users)[:pks_setter_method]
+  end
+
+  # @private
+  def set_request_projects record, ids
+    record.send project_pks, ids
+  end
+
+  # @private
+  def set_request_places record, ids
+    record.send place_pks, ids
+  end
+
+  # @private
+  def set_request_taxa record, ids
+    record.send taxon_pks, ids
+  end
+
+  # @private
+  def set_request_users record, ids
+    record.send user_pks, ids
+  end
 
 end
