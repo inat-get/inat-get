@@ -428,12 +428,16 @@ Sequel.migration do
     create_table :requests do
       column :hash, String, fixed: true, size: 32, null: false
       column :endless, String, fixed: true, size: 32, null: false
+      column :endpoint, String, null: false
       column :query, String, text: true, null: false
       column :started, Time, null: false
       column :freshed, Time, null: false
       column :finished, Time
+      column :busy, :boolean
 
       primary_key [ :hash ], name: 'pk_requests'
+      index [ :endless ], name: 'ix_requests_endless'
+      index [ :endpoint ], name: 'ix_requests_endpoint'
       index [ :started ], name: 'ix_requests_started'
       index [ :freshed ], name: 'ix_requests_freshed'
       index [ :finished ], name: 'ix_requests_finished'

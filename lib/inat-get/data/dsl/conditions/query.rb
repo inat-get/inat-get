@@ -70,12 +70,12 @@ class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
 
   # @private
   def to_api
-    @helper.to_api(**@query)
+    @helper.query_to_api(**@query)
   end
 
   # @private
   def to_sequel
-    @helper.to_sequel(**@query)
+    @helper.query_to_sequel(**@query)
   end
 
   private

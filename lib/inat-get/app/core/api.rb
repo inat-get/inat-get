@@ -27,8 +27,6 @@ class INatGet::App::Server::API < INatGet::App::Server
     @last_request = timepoint
     response = faraday.get endpoint do |rq|
       rq.params[:per_page] = @config.dig(:api, :pager)
-      rq.params[:locale] = @config.dig(:api, :locale)
-      rq.params[:preferred_place_id] = @config.dig(:api, :preferred_place)
       rq.params.compact!
       rq.params.merge! query[:params]
       rq.headers["User-Agent"] = "iNatGet v#{INatGet::Info::VERSION} (#{ INatGet::Info::VERSION_ALIAS })"
