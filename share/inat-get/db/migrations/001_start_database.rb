@@ -433,7 +433,7 @@ Sequel.migration do
       column :started, Time, null: false
       column :freshed, Time, null: false
       column :finished, Time
-      column :busy, :boolean
+      column :busy,Time
 
       primary_key [ :hash ], name: 'pk_requests'
       index [ :endless ], name: 'ix_requests_endless'

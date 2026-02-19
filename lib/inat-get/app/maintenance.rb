@@ -60,6 +60,10 @@ module INatGet::App::Maintenance
         $stderr.puts "✅ \e[1mDatabase is actual:\e[0m version \e[1m#{md_ver}\e[0m"
         exit Errno::NOERROR::Errno
       end
+      db.transaction(isolation: :committed) do
+        # Чистим зависшие запросы
+        db[:requests].where(Sequel.|({ finished: nil }, Sequel.~({ busy: nil }))).delete
+      end
       Sequel::DATABASES.each(&:disconnect)
       true
     end
