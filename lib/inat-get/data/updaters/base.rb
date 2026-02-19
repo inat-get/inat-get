@@ -79,14 +79,14 @@ class INatGet::Data::Updater
     end
   end
 
+  HARD_STOP = 2 * 24 * 60 * 60
+
   # @private
   def wrap_request request
     endpoint = request[:endpoint]
     query = request[:query]
     # Запрос конкретного набора id — не кэшируем — нет смысла
     return execute_request(endpoint, query) unless endpoint == self.endpoint
-
-    # TODO: Определяем updated_since, если возможно
 
     # Формируем ключи и данные
     query.transform_values! { |v| v.is_a?(Enumerable) ? v.sort : v }
@@ -107,7 +107,7 @@ class INatGet::Data::Updater
       record = rq_model.with_pk(rq_hash)
       if record
         while record.busy
-          # TODO: определять потерянные, бросать исключение
+          raise "Too old business" if start_point - record.busy > HARD_STOP
           sleep 0.01
           record.reload
         end
@@ -205,10 +205,15 @@ class INatGet::Data::Updater
         record.update busy: nil
       end
     end
-    
-    # TODO: Определяем необходимость этапа refresh
-    # TODO:   Этап recache
 
+    if allow_updated_since?
+      fresh_point = start_point - parse_duration(@config.dig(:caching, :refresh, :interval) || 0)
+      if record.fresh < fresh_point
+        # TODO: этап refresh, к версии 0.9.6
+        # TODO: этап recache, к версии 0.9.6
+      end
+    end
+    
     result
   end
 
