@@ -5,3 +5,7 @@ source 'https://rubygems.org'
 gemspec
 
 # gem 'yard-is-sequel', path: '../yard-is-sequel'
+
+gem 'webrick'
+gem 'rack'
+gem 'rackup'

@@ -3,6 +3,7 @@
 require 'is-duration'
 
 require_relative '../../info'
+require_relative '../../utils/json'
 
 # @api private
 class INatGet::Data::Updater
@@ -205,6 +206,54 @@ class INatGet::Data::Updater
           updated_since = [ el_record.started, *dates ].min
         end
       end
+      unless updated_since
+        # Попытаемся найти охватывающий запрос (в endless-логике)
+        database = rq_model.db
+        dataset = rq_model.where(endpoint: endpoint).exclude(finished: nil)
+        project_ids = query[:project_id]
+        if project_ids
+          hashes_by_projects = database[:request_projects].where(project_id: project_ids)
+            .group(:request_hash).having { count(project_id) >= project_ids.size }
+            .select(:request_hash)
+          dataset = dataset.where(hash: hashes_by_projects)
+        end
+        place_ids = query[:place_id]
+        if place_ids
+          hashes_by_places = database[:request_places].where(place_id: place_ids)
+            .group(:request_hash).having { count(place_id) >= place_ids.size }
+            .select(:request_hash)
+          dataset = dataset.where(hash: hashes_by_places)
+        end
+        taxon_ids = query[:taxon_id]
+        if taxon_ids
+          hashes_by_taxa = database[:request_taxa].where(taxon_id: taxon_ids)
+            .group(:request_hash).having { count(taxon_id) >= taxon_ids.size }
+            .select(:request_hash)
+          dataset = dataset.where(hash: hashes_by_taxa)
+        end
+        user_ids = query[:user_id]
+        if user_ids
+          hashes_by_users = database[:request_users].where(user_id: user_ids)
+            .group(:request_hash).having { count(user_id) >= user_ids.size }
+            .select(:request_hash)
+          dataset = dataset.where(hash: hashes_by_users)
+        end
+        dataset.order(:started.desc).limit(10).each do |rec|
+          saved_json = rec.query
+          saved_data = JSON.load saved_json, symbolize_names: true
+          cover_data = saved_data.reject { |k, _| k == :d2 || k.to_s.end_with?('_d2') }
+          cover_data.each do |k, v|
+            if k == :d1 || k.to_s.end_with?('_d1')
+              cover_data[k] = Time.parse(v) rescue v
+            end
+          end
+          if query_covers?(cover_data, query)
+            dates = saved_data.select { |k, _| k == "d2" || k.end_with?("_d2") }.values.compact.map { |v| Time.parse(v) rescue nil }.compact
+            updated_since = [rec.started, *dates].min
+            break
+          end
+        end
+      end
       query[:updated_since] = updated_since if updated_since
     end
 
@@ -290,6 +339,23 @@ class INatGet::Data::Updater
   # @private
   def set_request_users record, ids
     record.send user_pks, ids
+  end
+
+  # @private
+  def query_covers? base, actual
+    base.each do |key, value|
+      av = actual[key]
+      return false unless av
+      case value
+      when Time
+        return false if value > av
+      when Enumerable
+        return false if (av - value).size > 0
+      else
+        return false if value != av
+      end
+    end
+    true
   end
 
 end

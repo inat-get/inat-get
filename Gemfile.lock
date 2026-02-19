@@ -41,6 +41,9 @@ GEM
     logger (1.7.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
+    rack (3.2.5)
+    rackup (2.3.1)
+      rack (>= 3)
     rake (13.3.1)
     redcarpet (3.6.1)
     rspec (3.13.2)
@@ -76,6 +79,7 @@ GEM
     sqlite3 (2.9.0-x86_64-linux-musl)
     tty-screen (0.8.2)
     uri (1.1.1)
+    webrick (1.9.2)
     yard (0.9.38)
     yard-is-sequel (0.8.0)
       sequel (~> 5.100)
@@ -96,11 +100,14 @@ PLATFORMS
 
 DEPENDENCIES
   inat-get!
+  rack
+  rackup
   rake (~> 13.3)
   redcarpet
   rspec (~> 3.13)
   simplecov (~> 0.22)
   sqlite3 (~> 2.9)
+  webrick
   yard
   yard-is-sequel
 
@@ -122,6 +129,8 @@ CHECKSUMS
   json (2.18.0) sha256=b10506aee4183f5cf49e0efc48073d7b75843ce3782c68dbeb763351c08fd505
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
+  rack (3.2.5) sha256=4cbd0974c0b79f7a139b4812004a62e4c60b145cba76422e288ee670601ed6d3
+  rackup (2.3.1) sha256=6c79c26753778e90983761d677a48937ee3192b3ffef6bc963c0950f94688868
   rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
   redcarpet (3.6.1) sha256=d444910e6aa55480c6bcdc0cdb057626e8a32c054c29e793fa642ba2f155f445
   rspec (3.13.2) sha256=206284a08ad798e61f86d7ca3e376718d52c0bc944626b2349266f239f820587
@@ -145,6 +154,7 @@ CHECKSUMS
   sqlite3 (2.9.0-x86_64-linux-musl) sha256=ef716ba7a66d7deb1ccc402ac3a6d7343da17fac862793b7f0be3d2917253c90
   tty-screen (0.8.2) sha256=c090652115beae764336c28802d633f204fb84da93c6a968aa5d8e319e819b50
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
+  webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131
   yard (0.9.38) sha256=721fb82afb10532aa49860655f6cc2eaa7130889df291b052e1e6b268283010f
   yard-is-sequel (0.8.0) sha256=485c00a5c62e8e23cbc5bbe0630c698d31356c56b11242dc952cae35a0ef3175
 
