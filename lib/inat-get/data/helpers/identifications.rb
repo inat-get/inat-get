@@ -9,7 +9,7 @@ class INatGet::Data::Helper::Identifications < INatGet::Data::Helper
 
   include Singleton
 
-  # TODO: fields
+  # TODO: fields, Must be implemented in v1.0
 
   # @return [INatGet::Data::Manager::Identifications]
   def manager() = INatGet::Data::Manager::Identifications::instance

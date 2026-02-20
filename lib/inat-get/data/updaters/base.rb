@@ -221,7 +221,48 @@ class INatGet::Data::Updater
   # Возвращаем :done, если загрузка прошла успешно, :error — в случае ошибки:
   #   от этого будут зависеть изменения в requests при освобождении записи.
   def execute_request endpoint, query
-    # TODO: implement
+    if allow_locale?
+      locale = @config.dig :api, :locale
+      preferred_place = @config.dig :api, :preferred_place
+      query[:locale] = locale if locale
+      query[:preferred_place_id] = preferred_place if preferred_place
+    end
+    result = nil
+    if allow_id_above?
+      query[:order] = 'asc'
+      query[:order_by] = 'id'
+      id_above = nil
+      until result
+        query[:id_above] = id_above if id_above
+        response = api.get({ endpoint: endpoint, query: query })
+        if response[:status] == :error
+          result = :error
+        else
+          self.model.db.transaction do
+            self.parser.parse! response[:results]
+          end
+          result = :done if response[:total_results] >= response[:per_page]
+          id_above = response[:results].last[:id]
+        end
+      end
+    else
+      page = nil
+      until result
+        query[:page] = page if page
+        response = api.get({ endpoint: endpoint, query: query })
+        if response[:status] == :error
+          result = :error
+        else
+          self.model.db.transaction do
+            self.parser.parse! response[:results]
+          end
+          processed = response[:page] * response[:per_page]
+          result = :done if processed >= response[:total_results]
+          page = response[:page] + 1
+        end
+      end
+    end
+    result
   end
 
   # @group Descendant Rules
