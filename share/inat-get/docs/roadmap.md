@@ -31,6 +31,7 @@ flowchart TB
   subgraph R098 ["v0.9.8"]
     direction TB
     Reporting("Система настраиваемых мультиформатных отчетов")
+    TechReps("Технические отчеты: фейки и так далее")
   end
 
   Smth(("• • •"))

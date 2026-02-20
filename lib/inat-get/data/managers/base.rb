@@ -54,7 +54,7 @@ class INatGet::Data::Manager
       result = self.model[id]
       result ||= self.parser.fake(id) unless no_fake
       result
-    elsif arg.is_a?(String)
+    elsif id.is_a?(String)
       if self.helper.uuid? && id =~ INatGet::Data::Helper::UUID_PATTERN
         self.model.where(uuid: id).first
       elsif self.helper.sid
