@@ -18,7 +18,7 @@ class INatGet::Data::Parser::Part::Model < INatGet::Data::Parser::Part
     else
       id = source[@source_id]
       if id
-        { @name => @model.manager.get(id) }
+        { @name => Array(@model.manager.get(id)).first }
       else
         { @name => nil }
       end

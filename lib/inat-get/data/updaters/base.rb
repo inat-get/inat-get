@@ -239,7 +239,7 @@ class INatGet::Data::Updater
       query[:preferred_place_id] = preferred_place if preferred_place
     end
     result = nil
-    if allow_id_above?
+    if allow_id_above? && endpoint == self.endpoint
       query[:order] = 'asc'
       query[:order_by] = 'id'
       id_above = nil

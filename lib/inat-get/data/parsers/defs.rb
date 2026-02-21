@@ -134,7 +134,7 @@ class INatGet::Data::Parser
     else
       raise ArgumentError, "Invalid PK for #{ model }: #{ pk_vals.inspect }", caller_locations
     end
-    # pp({ UPSERT: { MODEL: model, RECORD: record, PK: pk_vals, DATA: data.transform_values { |v| v.class } } })
+    pp({ UPSERT: { MODEL: model, RECORD: record, PK: pk_vals, DATA: data.transform_values { |v| v.class } } })
     if record
       record.update(data) || record
     else
