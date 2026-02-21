@@ -59,6 +59,8 @@ end
 
 class INatGet::Data::Parser
 
+  include INatGet::System::Context
+
   class << self
 
     # @group Parts
@@ -91,6 +93,7 @@ class INatGet::Data::Parser
 
   # @return [Model]
   def entry! source
+    check_shutdown! { self.model.db.rollback_on_exit }
     fields = {}
     pk, rest = parts.partition { |p| p.is_a?(Part::PK) }
     pk.each do |a|

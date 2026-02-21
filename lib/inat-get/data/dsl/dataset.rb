@@ -2,10 +2,12 @@
 
 require_relative '../../info'
 require_relative 'conditions'
+require_relative '../../sys/context'
 
 class INatGet::Data::DSL::Dataset
 
   include INatGet::Data::DSL
+  include INatGet::System::Context
 
   # @group Attributes
 
@@ -107,7 +109,10 @@ class INatGet::Data::DSL::Dataset
   def each &block
     return to_enum(__method__) unless block_given?
     connect!
-    @dataset.each(&block)
+    @dataset.each do |item|
+      check_shutdown!
+      block.call item
+    end
   end
 
   # @return [Integer]

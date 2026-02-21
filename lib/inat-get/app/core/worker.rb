@@ -13,6 +13,9 @@ class INatGet::App::Worker
   end
 
   def execute
+    require_relative '../../sys/context'
+    Signal::trap(:TERM) { INatGet::System::Context::shutdown = true }
+    Signal::trap(:INT)  { INatGet::System::Context::shutdown = true }
     @console.register status: 'started...', name: @task.name
     @task.prepare
     @task.execute
@@ -43,8 +46,11 @@ class INatGet::App::Worker
     end
 
     def enqueue config, *tasks, **params
+      @shutdown = false
+      Signal::trap(:TERM) { @shutdown = true }
+      Signal::trap(:INT)  { @shutdown = true }
       queue = tasks.dup
-      while queue.size > 0
+      while queue.size > 0 && !@shutdown
         if self.count >= config.dig(:workers, :limit)
           sleep 0.01
           next
@@ -53,7 +59,27 @@ class INatGet::App::Worker
         self.create task, **params
         sleep 0.01
       end
-      @detachers.map(&:join)
+      if @shutdown
+        @detachers.each do |dt|
+          if dt.alive?
+            begin
+              Process::kill :TERM, dt.pid
+            rescue Errno::ESRCH
+            end
+          end
+        end
+        @detacher.each do |dt|
+          dt.join 0.5
+          if dt.alive?
+            begin
+              Process::kill :KILL, dt.pid
+            rescue Errno::ESRCH
+            end
+          end
+        end
+      else
+        @detachers.map(&:join)
+      end
     end
 
   end

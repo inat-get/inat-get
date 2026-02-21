@@ -4,11 +4,13 @@ require 'is-duration'
 
 require_relative '../../info'
 require_relative '../../utils/json'
+require_relative '../../sys/context'
 
 # @api private
 class INatGet::Data::Updater
 
   include IS::Duration
+  include INatGet::System::Context
 
   # @private
   def initialize
@@ -74,6 +76,7 @@ class INatGet::Data::Updater
       ids -= fresh
     end
     ids.each_slice(@config.dig(:api, :pager) || 200) do |slice|
+      check_shutdown!
       endpoint = "#{ self.endpoint }/#{ slice.map(&:to_s).join(',') }"
       execute_request(endpoint, {})
     end
@@ -234,11 +237,13 @@ class INatGet::Data::Updater
       id_above = nil
       until result
         query[:id_above] = id_above if id_above
+        check_shutdown!
         response = api.get({ endpoint: endpoint, query: query })
         if response[:status] == :error
           result = :error
         else
           self.model.db.transaction do
+            check_shutdown! { self.model.db.rollback_on_exit }
             self.parser.parse! response[:results]
           end
           result = :done if response[:total_results] >= response[:per_page]
@@ -249,11 +254,13 @@ class INatGet::Data::Updater
       page = nil
       until result
         query[:page] = page if page
+        check_shutdown!
         response = api.get({ endpoint: endpoint, query: query })
         if response[:status] == :error
           result = :error
         else
           self.model.db.transaction do
+            check_shutdown! { self.model.db.rollback_on_exit }
             self.parser.parse! response[:results]
           end
           processed = response[:page] * response[:per_page]
