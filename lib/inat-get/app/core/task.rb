@@ -36,8 +36,16 @@ class INatGet::App::Task
     db_connect = @config.dig(:database, :connect)
     db_options = { user: @config.dig(:database, :user), password: @config.dig(:database, :password) }.compact
     @db = Sequel::connect(db_connect, **db_options)
-    Sequel::Model::db = @db
+    Sequel::Model.require_valid_table = false
+    Sequel::Model.strict_param_setting = false
+    Sequel::Model.raise_on_save_failure = true
+    Sequel::Model.db = @db
+    Sequel::Model.db.loggers << ::Logger::new("debugdb.log", level: :debug)
     require_relative '../../data/models/observation'
+    require_relative '../../data/managers/places'
+    require_relative '../../data/managers/projects'
+    require_relative '../../data/managers/users'
+    require_relative '../../data/managers/taxa'
     # # ... etc
   end
 

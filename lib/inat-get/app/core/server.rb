@@ -15,7 +15,7 @@ class INatGet::App::Server
   def initialize socket_path, **params
     @socket_path = socket_path
     @params = params
-    @config = ::INatGet::Setup::config
+    @config = ::INatGet::App::Setup::config
   end
 
   def run
@@ -102,7 +102,8 @@ class INatGet::App::Server
       result = @wait_answer ? ::Marshal.load(socket) : true
       socket.close
       result
-    rescue
+    rescue => e
+      pp e
       false
     end
 
@@ -119,12 +120,12 @@ class INatGet::App::Server
         server.run
       end
       detacher = Process::detach pid
-      @proxies[socket_path] = INatGet::Server::Proxy::new(detacher, socket_path, wait_answer?)
+      @proxies[socket_path] = INatGet::App::Server::Proxy::new(detacher, socket_path, wait_answer?)
       @proxies[socket_path]
     end
 
     def used? socket_path
-      proxy = INatGet::Server::Proxy::new nil, socket_path, true
+      proxy = INatGet::App::Server::Proxy::new nil, socket_path, true
       proxy.ping == :pong
     rescue
       return false

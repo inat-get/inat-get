@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../models/place'
+require_relative '../helpers/places'
+require_relative '../updaters/places'
+require_relative '../parsers/place'
 
 class INatGet::Data::Manager::Places < INatGet::Data::Manager
 

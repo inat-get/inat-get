@@ -2,7 +2,8 @@
 
 require 'sequel'
 
-require_relative "../../info"
+require_relative '../../info'
+require_relative '../parsers/projectadmin'
 
 class INatGet::Data::Model::ProjectAdmin < INatGet::Data::Model
 

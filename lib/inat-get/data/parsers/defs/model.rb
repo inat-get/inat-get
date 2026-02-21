@@ -11,6 +11,7 @@ class INatGet::Data::Parser::Part::Model < INatGet::Data::Parser::Part
   end
 
   def parse source
+    pp({ MODEL: { NAME: @name } })
     data = source[@source]
     if data
       { @name => @model.parser.entry!(data) }

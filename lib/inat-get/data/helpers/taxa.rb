@@ -3,6 +3,10 @@
 require 'singleton'
 
 require_relative 'base'
+require_relative 'defs/ids'
+require_relative 'defs/scalar'
+require_relative 'defs/rank'
+require_relative 'defs/scalarmodel'
 
 class INatGet::Data::Helper::Taxa < INatGet::Data::Helper
 

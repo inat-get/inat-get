@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../models/user'
+require_relative '../helpers/users'
+require_relative '../parsers/user'
+require_relative '../updaters/users'
 
 class INatGet::Data::Manager::Users < INatGet::Data::Manager
 

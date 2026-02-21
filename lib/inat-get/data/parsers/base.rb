@@ -21,7 +21,7 @@ class INatGet::Data::Parser
   # def entry!(data) = raise NotImplementedError, "Not implemented method 'entry!' of abstract class", caller_locations
 
   # @return [Model]
-  def fake(id) = raise NotImplementedError, "Not implemented method 'fake' of abstract class", caller_locations
+  def fake(id) = raise NotImplementedError, "Not implemented method 'fake' for abstract class", caller_locations
 
   # @endgroup
 
@@ -31,7 +31,7 @@ class INatGet::Data::Parser
   def manager() = self.model.manager
 
   # @return [class of Model]
-  def model() = raise NotImplementedError, "Not implemented method 'manager' if abstract class", caller_locations
+  def model() = raise NotImplementedError, "Not implemented method 'model' for abstract class", caller_locations
 
   # @endgroup
 

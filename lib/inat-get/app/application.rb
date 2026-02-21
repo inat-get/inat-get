@@ -59,7 +59,7 @@ class INatGet::App::Main
 
   def socket_alive? socket
     return false unless File.socket?(socket)
-    INatGet::Server::used? socket
+    INatGet::App::Server::used? socket
   end
 
 end

@@ -14,9 +14,6 @@ class INatGet::Data::Manager
   # Returns model instance, array of them or dataset.
   # @see #model
   # @return [Enumerable<Model>, Model, nil]
-  # @overload get id
-  #   @param [Integer, String] id
-  #   @return [Model, nil]
   # @overload get *ids
   #   @param [Array<Integer, String>] ids
   #   @return [Array<Model>]
@@ -34,7 +31,7 @@ class INatGet::Data::Manager
           INatGet::Data::DSL::Dataset::new nil, arg
         else
           self.updater.update!(arg)
-          get_local_one arg
+          Array(get_local_one arg)
         end
       else
         condition = INatGet::Data::DSL::Condition::Query[self.model, id: args]
@@ -55,10 +52,10 @@ class INatGet::Data::Manager
       result ||= self.parser.fake(id) unless no_fake
       result
     elsif id.is_a?(String)
-      if self.helper.uuid? && id =~ INatGet::Data::Helper::UUID_PATTERN
+      if self.uuid? && id =~ INatGet::Data::Helper::UUID_PATTERN
         self.model.where(uuid: id).first
-      elsif self.helper.sid
-        self.model.where(self.helper.sid.to_sym => id).first
+      elsif self.sid
+        self.model.where(self.sid.to_sym => id).first
       else
         raise ArgumentError, "Invalid id: #{ id.inspect }", caller_locations
       end

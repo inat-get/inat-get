@@ -2,34 +2,40 @@
 
 require_relative '../../info'
 
-module INatGet::Data; end
+module INatGet::Data
 
-class INatGet::Data::Model < Sequel::Model
+  Model = Class::new(Sequel::Model) do 
+  # class Model < Sequel::Model
 
-  plugin :association_pks
+    # self.dataset = nil
 
-  self.abstract_class = true
+    plugin :association_pks
 
-  # @api private
-  class << self
+    unrestrict_primary_key
 
-    def manager = nil
+    # @api private
+    class << self
 
-    def helper = self.manager&.helper
+      def manager = nil
 
-    def updater = self.manager&.updater
+      def helper = self.manager&.helper
 
-    def parser = self.manager&.parser
+      def updater = self.manager&.updater
 
-    def mk_apks
-      associations.each do |assoc|
-        reflection = association_reflection(assoc)
-        if [:one_to_many, :many_to_many].include?(reflection[:type])
-          association_pks assoc
-        end
+      def parser = self.manager&.parser
+
+      def mk_apks
+        # associations.each do |assoc|
+        #   reflection = association_reflection(assoc)
+        #   if [:one_to_many, :many_to_many].include?(reflection[:type])
+        #     # association_pks assoc
+        #   end
+        # end
       end
+
     end
 
   end
 
 end
+

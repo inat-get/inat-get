@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'base'
+require_relative 'defs/pk'
+require_relative 'defs/copy'
+require_relative 'defs/model'
+
 class INatGet::Data::Parser::ProjectAdmin < INatGet::Data::Parser
 
   include Singleton

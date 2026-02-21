@@ -18,12 +18,13 @@ module INatGet::System::Context
 
     # @return [Boolean]
     def shutdown
-      @@context_shutdown
+      @@context_shutdown ||= false
     end
 
   end
 
   def shutdown?
+    @@context_shutdown ||= false
     !!@@context_shutdown
   end
 

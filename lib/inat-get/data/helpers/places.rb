@@ -9,11 +9,11 @@ class INatGet::Data::Helper::Places < INatGet::Data::Helper
 
   include Singleton
 
-  field :id,   INatGet::Data::Helper::Field::Ids
-  field :slug, INatGet::Data::Helper::Field::Ids
-
   # @return [INatGet::Data::Manager::Places]
   def manager() = INatGet::Data::Manager::Places::instance
+
+  field :id, INatGet::Data::Helper::Field::Ids
+  field :slug, INatGet::Data::Helper::Field::Ids
 
   # @return [Array<Hash>]
   def query_to_api **query

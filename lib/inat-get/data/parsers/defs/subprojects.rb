@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class INatGet::Data::Parser::Part::Subprojects < INatGet::Data::Parser::Links
+class INatGet::Data::Parser::Part::Subprojects < INatGet::Data::Parser::Part::Links
 
   def initialize parser
     super parser, :subprojects, model: INatGet::Data::Model::Project
@@ -17,7 +17,7 @@ class INatGet::Data::Parser::Part::Subprojects < INatGet::Data::Parser::Links
     end
     manager = INatGet::Data::Manager::Projects::instance
     subprojects = manager.get(*subprojects).compact.map(&:id)
-    field = @parser.model.association_reflection(@name)[:pks_setter_method].to_s.chomp("=").to_sym
+    field = @parser.model.association_reflection(@name)[:pks_setter_method].to_s.chomp("=").gsub('_setter', '').to_sym
     { field => subprojects }
   end
 

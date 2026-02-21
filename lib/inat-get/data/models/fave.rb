@@ -4,6 +4,7 @@ require 'sequel'
 
 require_relative '../../info'
 require_relative 'base'
+require_relative 'sub'
 
 module INatGet::Data; end
 
@@ -21,7 +22,7 @@ class INatGet::Data::Model::Fave < INatGet::Data::Model
   class << self
 
     # @return [Parser::Fave]
-    def parser = INatGet::Data::Parser::Fave::instance
+    def parser() = INatGet::Data::Parser::Fave::instance
 
   end
 

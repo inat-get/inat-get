@@ -69,17 +69,25 @@ class INatGet::Data::Updater
 
   # @private
   def update_by_ids! *ids
+    pp({SELF: self.class, IDS: ids})
+    return [] if ids.empty?
     interval = parse_duration(@config.dig(:caching, :refs, self.manager.endpoint) || @config.dig(:caching, :refs, :default))
     if interval
       point = Time::now - interval
+      # TODO: учесть slugs и uuids
       fresh = self.model.where(id: ids, cached: (point .. )).select_map(:id)
       ids -= fresh
     end
-    ids.each_slice(@config.dig(:api, :pager) || 200) do |slice|
+    ids.each_slice(self.slice_size) do |slice|
       check_shutdown!
       endpoint = "#{ self.endpoint }/#{ slice.map(&:to_s).join(',') }"
       execute_request(endpoint, {})
     end
+  end
+
+  # @private
+  def slice_size
+    @config.dig(:api, :pager) || 200
   end
 
   HARD_STOP = 2 * 24 * 60 * 60
@@ -241,6 +249,8 @@ class INatGet::Data::Updater
         response = api.get({ endpoint: endpoint, query: query })
         if response[:status] == :error
           result = :error
+          # pp [endpoint, query]
+          # pp response
         else
           self.model.db.transaction do
             check_shutdown! { self.model.db.rollback_on_exit }
@@ -258,6 +268,8 @@ class INatGet::Data::Updater
         response = api.get({ endpoint: endpoint, query: query })
         if response[:status] == :error
           result = :error
+          # pp [endpoint, query]
+          # pp response
         else
           self.model.db.transaction do
             check_shutdown! { self.model.db.rollback_on_exit }

@@ -75,7 +75,7 @@ class INatGet::Data::Parser
     # @return [void]
     def part cls, *args, **kwargs
       @parts ||= []
-      @parts << cls.new(self, *args, **kwargs)
+      @parts << cls.new(self.instance, *args, **kwargs)
     end
 
     # @endgroup
@@ -98,21 +98,26 @@ class INatGet::Data::Parser
     pk, rest = parts.partition { |p| p.is_a?(Part::PK) }
     pk.each do |a|
       result = a.parse source
+      pp({ IN_ENTRY: { PK: result } })
       registered = result.delete :_registered
       return model.with_pk(registered.size == 1 ? registered.first : registered) if registered
       fields.merge! result
     end
     associations, attributes = rest.partition { |p| p.is_a?(Part::Assoc) }
     attributes.each do |a|
+      pp({ IN_ENTRY: { ATTR: a.class.name } })
       fields.merge! a.parse(source)
     end
+    # pp({ self.class => { UPSERT: fields } })
     record = upsert fields
     fields = {}
     associations.each do |a|
+      pp({ IN_ENTRY: { ASSOC: a.class.name } })
       res = a.parse(record, source)
       fields.merge! res if res
     end
-    record.update fields
+    # pp({ self.class => { UPDATE: fields } })
+    record.update(fields) || record
   end
 
   # @endgroup
@@ -129,10 +134,13 @@ class INatGet::Data::Parser
     else
       raise ArgumentError, "Invalid PK for #{ model }: #{ pk_vals.inspect }", caller_locations
     end
+    # pp({ UPSERT: { MODEL: model, RECORD: record, PK: pk_vals, DATA: data.transform_values { |v| v.class } } })
     if record
-      record.update data
+      record.update(data) || record
     else
       model.create data
+      # pp({ RESULT: r, EXISTS: r.exists?, ERRORS: r.errors }) if self.class == INatGet::Data::Parser::ProjectAdmin
+      # r.save
     end
   end
 

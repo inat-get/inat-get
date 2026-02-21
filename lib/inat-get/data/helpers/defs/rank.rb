@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'set'
+require_relative '../../types/rank'
 
 class INatGet::Data::Helper::Field::Rank < INatGet::Data::Helper::Field::Set
 

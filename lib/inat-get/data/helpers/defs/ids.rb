@@ -6,8 +6,8 @@ class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
 
   def initialize helper, key
     super helper, key
-    @sid = helper.manager.sid
-    @uuid = helper.manager.uuid?
+    # @sid = helper.manager.sid
+    # @uuid = helper.manager.uuid?
   end
 
   def prepare value
@@ -24,6 +24,8 @@ class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
   end
 
   def valid? value
+    @sid ||= helper.manager.sid
+    @uuid ||= helper.manager.uuid?
     return true if value.nil?
     return true if value.is_a?(Integer)
     return true if @sid && value.is_a?(String)
@@ -42,6 +44,8 @@ class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
 
   def to_sequel value
     return {} if value.nil?
+    @sid ||= helper.manager.sid
+    @uuid ||= helper.manager.uuid?
     result = []
     value.each do |v|
       result << { id: v } if v.is_a?(Integer)

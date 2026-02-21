@@ -3,6 +3,12 @@
 require 'singleton'
 
 require_relative 'base'
+require_relative 'defs/ids'
+require_relative 'defs/set'
+require_relative 'defs/models'
+require_relative 'defs/scalarcoord'
+require_relative 'defs/scalar'
+require_relative 'defs/scalarlocation'
 
 class INatGet::Data::Helper::Projects < INatGet::Data::Helper
 

@@ -3,6 +3,19 @@
 require 'singleton'
 
 require_relative 'base'
+require_relative 'defs/pk'
+require_relative 'defs/copy'
+require_relative 'defs/prjtype'
+require_relative 'defs/time'
+require_relative 'defs/model'
+require_relative 'defs/prjdefault'
+require_relative 'defs/cached'
+require_relative 'defs/children'
+require_relative 'defs/links'
+require_relative 'defs/prjrules'
+require_relative 'defs/prjsearch'
+require_relative 'defs/subprojects'
+require_relative '../models/project'
 
 class INatGet::Data::Parser::Project < INatGet::Data::Parser
 
@@ -22,7 +35,7 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
   part Part::PrjSearch
   part Part::Subprojects
 
-  def manager() = INatGet::Data::Manager::Projects::instance
+  def model() = INatGet::Data::Model::Project
 
   def fake id
     self.model.create id: id, slug: "fake-#{ id }", title: "Fake \##{ id }", description: "Fake project \##{ id }", project_type: '',

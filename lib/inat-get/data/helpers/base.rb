@@ -9,6 +9,13 @@ class INatGet::Data::Helper
 
   UUID_PATTERN = /\A\h{8}-\h{4}-\h{4}-\h{4}-\h{12}\z/
 
+  # @group Must be implemented in descendants
+
+  # @return [INatGet::Data::Manager]
+  def manager() = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
+
+  # @endgroup
+
   # @group Interface
 
   # @return [Hash]
@@ -90,7 +97,7 @@ class INatGet::Data::Helper
       raise ArgumentError, "Invalid field key: #{ key.inspect }", caller_locations unless key.is_a?(Symbol)
       raise ArgumentError, "Invalid field class: #{ cls.inspect }", caller_locations unless cls.is_a?(Class) && cls < INatGet::Data::Helper::Field
       @fields ||= {}
-      @fields[key] = cls.new(self, key, *args)
+      @fields[key] = cls.new(self.instance, key, *args)
     end
 
     # @return [Hash<Field>]
@@ -106,13 +113,6 @@ class INatGet::Data::Helper
 
   # @return [Hash<Field>]
   def definitions() = self.class.fields
-
-  # @endgroup
-
-  # @group Must be implemented in descendants
-
-  # @return [INatGet::Data::Manager]
-  def manager() = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
 
   # @endgroup
 

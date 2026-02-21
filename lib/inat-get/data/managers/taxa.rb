@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../models/taxon'
+require_relative '../helpers/taxa'
+require_relative '../parsers/taxon'
+require_relative '../updaters/taxa'
 
 class INatGet::Data::Manager::Taxa < INatGet::Data::Manager
 

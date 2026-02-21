@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../defs'
+require_relative '../../models/projectplace'
+require_relative '../../models/projecttaxon'
+require_relative '../../models/projectuser'
+
 class INatGet::Data::Parser::Part::PrjRules < INatGet::Data::Parser::Part::Assoc
 
   def initialize parser
@@ -59,7 +64,7 @@ class INatGet::Data::Parser::Part::PrjRules < INatGet::Data::Parser::Part::Assoc
     ids.each do |id|
       record = model.with_pk([ p_id, id ])
       if record
-        record.update exclude: exclude
+        record.update(exclude: exclude) || record
       else
         model.create :project_id => p_id, key => id, :exclude => exclude
       end

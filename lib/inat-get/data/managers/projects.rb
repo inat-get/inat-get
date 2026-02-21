@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../models/project'
+require_relative '../helpers/projects'
+require_relative '../parsers/project'
+require_relative '../updaters/projects'
 
 class INatGet::Data::Manager::Projects < INatGet::Data::Manager
 

@@ -8,12 +8,12 @@ class INatGet::Data::Parser::Part::PK < INatGet::Data::Parser::Part
 
   def initialize parser, **aliases
     super parser
-    @pk_cols = Array(parser.model.primary_key)
     @aliases = aliases
     @registered = Set::new
   end
 
   def parse source
+    @pk_cols ||= Array(parser.model.primary_key)
     result = {}
     @pk_cols.each do |col|
       src_col = @aliases[col] || col
@@ -24,6 +24,7 @@ class INatGet::Data::Parser::Part::PK < INatGet::Data::Parser::Part
       result[:_registered] = key
     end
     @registered << key
+    pp({PK: { REG: @registered, RES: result }})
     result
   end
 
