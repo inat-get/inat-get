@@ -18,7 +18,7 @@ class INatGet::Data::Parser::Part::Subprojects < INatGet::Data::Parser::Links
     manager = INatGet::Data::Manager::Projects::instance
     subprojects = manager.get(*subprojects).compact.map(&:id)
     field = @parser.model.association_reflection(@name)[:pks_setter_method].to_s.chomp("=").to_sym
-    { field => ids }
+    { field => subprojects }
   end
 
 end

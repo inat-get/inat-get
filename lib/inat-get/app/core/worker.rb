@@ -68,7 +68,7 @@ class INatGet::App::Worker
             end
           end
         end
-        @detacher.each do |dt|
+        @detachers.each do |dt|
           dt.join 0.5
           if dt.alive?
             begin

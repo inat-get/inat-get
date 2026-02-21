@@ -2,7 +2,7 @@
 
 class INatGet::Data::Parser::Part::PrjDefault < INatGet::Data::Parser::Part
 
-  def parser source
+  def parse source
     { members_only: false }
   end
 
