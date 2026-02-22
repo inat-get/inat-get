@@ -4,10 +4,10 @@ flowchart TB
 
   subgraph R090 ["v0.9.0"]
     direction TB
-    Observs("Запросы<br>по наблюдениям")
-    Caching("Базовое<br>кэшировние")
-    Shutdown("Управление процессами и Graceful Shutdown")
-    Timing("Настройки Sequel для хранения времени со смещением")
+    Observs("[✔] Запросы<br>по наблюдениям")
+    Caching("[✔] Базовое<br>кэшировние")
+    Shutdown("[✔] Управление процессами и Graceful Shutdown")
+    Timing("[✔] Настройки Sequel для хранения времени со смещением")
   end
 
   subgraph R092 ["v0.9.2"]
