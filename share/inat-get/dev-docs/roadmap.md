@@ -6,7 +6,7 @@ flowchart TB
     direction TB
     Observs("[✔] Запросы<br>по наблюдениям")
     Caching("[✔] Базовое<br>кэшировние")
-    Shutdown("[✔] Управление процессами и Graceful Shutdown")
+    Shutdown("[✔] Управление процессами и Graceful Shutdown")
     Timing("[✔] Настройки Sequel для хранения времени со смещением")
   end
 
