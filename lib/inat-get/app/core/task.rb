@@ -42,7 +42,7 @@ class INatGet::App::Task
     if @db.database_type == :sqlite
       @db.extend_datasets do
         def literal_datetime(value)
-          "'#{value.iso8601}'"
+          "'#{value.xmlschema}'"
         end
       end
       @db.execute 'PRAGMA journal_mode=WAL'

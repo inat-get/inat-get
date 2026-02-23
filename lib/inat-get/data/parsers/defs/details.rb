@@ -27,13 +27,29 @@ class INatGet::Data::Parser::Part::Details < INatGet::Data::Parser::Part::Copy
 
   # @private
   def parse_details details, prefix:
-    {
+    result = {
       "#{ prefix }_year".to_sym  => details[:year],
       "#{ prefix }_month".to_sym => details[:month],
       "#{ prefix }_week".to_sym  => details[:week],
       "#{ prefix }_day".to_sym   => details[:day],
       "#{ prefix }_hour".to_sym  => details[:hour]
     }
+    if prefix == :observed
+      result.merge!({ "#{ prefix }_winter".to_sym => winter(details[:year], details[:month]) })
+    end
+    result
+  end
+
+  # @private
+  def winter year, month
+    case month
+    when 1..4
+      year
+    when 5..9
+      nil
+    when 10..12
+      year + 1
+    end
   end
 
 end

@@ -238,6 +238,7 @@ Sequel.migration do
       column :created_timezone, String
       column :observed, DateTime
       column :observed_year, Integer
+      column :observed_winter, Integer
       column :observed_month, Integer
       column :observed_week, Integer
       column :observed_day, Integer
