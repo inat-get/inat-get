@@ -352,7 +352,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#projects-instance_method" title="#projects (instance method)">#<strong>projects</strong>  &#x21d2; Object </a>
+      <a href="#projects-instance_method" title="#projects (instance method)">#<strong>projects</strong>  &#x21d2; Sequel::Dataset, Array&lt;INatGet::Data::Model::Project&gt; </a>
     
 
     
@@ -369,7 +369,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>unrestrict_primary_key set_primary_key :hash.</p>
+    <span class="summary_desc"><div class='inline'><p>Sequel many-to-many association.</p>
 </div></span>
   
 </li>
@@ -442,7 +442,7 @@
   <h2>Method Summary</h2>
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">INatGet::Data::Model</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#manager-class_method" title="INatGet::Data::Model.manager (method)">manager</a></span>, <span class='object_link'><a href="../Model.html#mk_apks-class_method" title="INatGet::Data::Model.mk_apks (method)">mk_apks</a></span>, <span class='object_link'><a href="../Model.html#parser-class_method" title="INatGet::Data::Model.parser (method)">parser</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#manager-class_method" title="INatGet::Data::Model.manager (method)">manager</a></span>, <span class='object_link'><a href="../Model.html#parser-class_method" title="INatGet::Data::Model.parser (method)">parser</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
 
   
   <div id="instance_attr_details" class="attr_details">
@@ -794,10 +794,10 @@
       <pre class="lines">
 
 
-21</pre>
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 18</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:places</span><span class='comma'>,</span>   <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Place.html" title="INatGet::Data::Model::Place (class)">Place</a></span></span><span class='comma'>,</span>   <span class='label'>join_table:</span> <span class='symbol'>:request_places</span><span class='comma'>,</span>   <span class='label'>left_key:</span> <span class='symbol'>:request_hash</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:place_id</span></pre>
     </td>
@@ -810,7 +810,7 @@
       <div class="method_details ">
   <h3 class="signature " id="projects-instance_method">
   
-    #<strong>projects</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>projects</strong>  &#x21d2; <tt>Sequel::Dataset</tt>, <tt>Array&lt;<span class='object_link'><a href="Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span>&gt;</tt> 
   
 
   
@@ -818,14 +818,26 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>unrestrict_primary_key
-set_primary_key :hash</p>
+    <p>Sequel many-to-many association.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Sequel::Dataset</tt>, <tt>Array&lt;<span class='object_link'><a href="Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -833,10 +845,10 @@ set_primary_key :hash</p>
       <pre class="lines">
 
 
-20</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 17</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:projects</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Project.html" title="INatGet::Data::Model::Project (class)">Project</a></span></span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:request_projects</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:request_hash</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:project_id</span></pre>
     </td>
@@ -986,10 +998,10 @@ set_primary_key :hash</p>
       <pre class="lines">
 
 
-22</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 19</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:taxa</span><span class='comma'>,</span>     <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Taxon.html" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span><span class='comma'>,</span>   <span class='label'>join_table:</span> <span class='symbol'>:request_taxa</span><span class='comma'>,</span>     <span class='label'>left_key:</span> <span class='symbol'>:request_hash</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:taxon_id</span></pre>
     </td>
@@ -1037,10 +1049,10 @@ set_primary_key :hash</p>
       <pre class="lines">
 
 
-23</pre>
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/request.rb', line 20</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:users</span><span class='comma'>,</span>    <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="User.html" title="INatGet::Data::Model::User (class)">User</a></span></span><span class='comma'>,</span>    <span class='label'>join_table:</span> <span class='symbol'>:request_users</span><span class='comma'>,</span>    <span class='label'>left_key:</span> <span class='symbol'>:request_hash</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:user_id</span></pre>
     </td>
@@ -1054,7 +1066,7 @@ set_primary_key :hash</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Feb 23 10:28:37 2026 by
+  Generated on Mon Feb 23 15:01:17 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>

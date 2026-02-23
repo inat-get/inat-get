@@ -494,12 +494,12 @@
       <pre class="lines">
 
 
-42
-43
-44</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='op'>!</span>
   <span class='const'><span class='object_link'><a href="Condition/NOT.html" title="INatGet::Data::DSL::Condition::NOT (class)">NOT</a></span></span><span class='lbracket'>[</span> <span class='kw'>self</span> <span class='rbracket'>]</span>
@@ -548,12 +548,16 @@
 
 32
 33
-34</pre>
+34
+35
+36</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='const'>ANYTHING</span>
+  <span class='kw'>return</span> <span class='const'>NOTHING</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='const'>NOTHING</span>
   <span class='const'><span class='object_link'><a href="Condition/AND.html" title="INatGet::Data::DSL::Condition::AND (class)">AND</a></span></span><span class='lbracket'>[</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span> <span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -602,12 +606,12 @@
       <pre class="lines">
 
 
-88
-89
-90</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_api_query'>api_query</span>
   <span class='id identifier rubyid_normalize'>normalize</span><span class='period'>.</span><span class='id identifier rubyid_simplify'>simplify</span><span class='period'>.</span><span class='id identifier rubyid_to_api'>to_api</span>
@@ -658,12 +662,12 @@
       <pre class="lines">
 
 
-94
-95
-96</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sequel_query'>sequel_query</span>
   <span class='id identifier rubyid_normalize'>normalize</span><span class='period'>.</span><span class='id identifier rubyid_to_sequel'>to_sequel</span>
@@ -710,14 +714,18 @@
       <pre class="lines">
 
 
-37
-38
-39</pre>
+39
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='op'>|</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='const'>NOTHING</span>
+  <span class='kw'>return</span> <span class='const'>ANYTHING</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span> <span class='op'>==</span> <span class='const'>ANYTHING</span>
   <span class='const'><span class='object_link'><a href="Condition/OR.html" title="INatGet::Data::DSL::Condition::OR (class)">OR</a></span></span><span class='lbracket'>[</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span> <span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -730,7 +738,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Feb 23 10:28:38 2026 by
+  Generated on Mon Feb 23 15:01:18 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>

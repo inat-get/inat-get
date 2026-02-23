@@ -449,7 +449,8 @@
 54
 55
 56
-57</pre>
+57
+58</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/and.rb', line 52</span>
@@ -458,6 +459,7 @@
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="../../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'>ANYTHING</span> <span class='kw'>if</span> <span class='id identifier rubyid_operands'>operands</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="../../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'>NOTHING</span> <span class='kw'>if</span> <span class='id identifier rubyid_operands'>operands</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'>NOTHING</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_operands'>operands</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='const'><span class='object_link'><a href="../../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'>ANYTHING</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_operands'>operands</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='kw'>if</span> <span class='id identifier rubyid_operands'>operands</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>==</span> <span class='int'>1</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_operands'>operands</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -592,7 +594,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Feb 23 10:28:38 2026 by
+  Generated on Mon Feb 23 15:01:18 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
