@@ -16,7 +16,8 @@ flowchart TB
   subgraph R092 ["v0.9.2"]
     direction TB
     ERB("ERB-отчеты")
-
+    ERBTests("Тестирование ERB-отчетов")
+    ERBSamples("Примеры ERB-отчетов с описанием")
   end
 
   subgraph R094 ["v0.9.4"]
@@ -64,6 +65,9 @@ flowchart TB
   Caching --> BaseTesting
   Shutdown --> BaseTesting
   Observs --> BaseDoc
+
+  ERB --> ERBTests
+  ERB --> ERBSamples
 
   Testing --> Debugging
   Debugging --> Ref1
