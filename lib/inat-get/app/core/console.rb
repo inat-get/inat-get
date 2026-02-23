@@ -10,14 +10,6 @@ require_relative 'server'
 
 class INatGet::App::Server::Console < INatGet::App::Server
 
-  class << self
-
-    # def wait_answer?
-    #   false
-    # end
-
-  end
-
   def initialize socket_path, **params
     super(socket_path, **params)
     @table = IS::Term::StatusTable::instance
@@ -66,7 +58,6 @@ class INatGet::App::Server::Console < INatGet::App::Server
   end
 
   def log severity, message, progname, **opts
-    # $stderr.puts severity.inspect, message.inspect, progname.inspect, opts.inspect
     key = prog_key progname
     pid = opts[:_sender_pid]
     console_log severity, message, progname, key, pid

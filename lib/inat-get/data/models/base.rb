@@ -24,15 +24,6 @@ module INatGet::Data
 
       def parser = self.manager&.parser
 
-      def mk_apks
-        # associations.each do |assoc|
-        #   reflection = association_reflection(assoc)
-        #   if [:one_to_many, :many_to_many].include?(reflection[:type])
-        #     # association_pks assoc
-        #   end
-        # end
-      end
-
     end
 
   end

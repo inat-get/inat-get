@@ -17,9 +17,6 @@ class INatGet::Data::Parser
     end
   end
 
-  # # @return [Model]
-  # def entry!(data) = raise NotImplementedError, "Not implemented method 'entry!' of abstract class", caller_locations
-
   # @return [Model]
   def fake(id) = raise NotImplementedError, "Not implemented method 'fake' for abstract class", caller_locations
 

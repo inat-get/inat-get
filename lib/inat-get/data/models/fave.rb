@@ -27,6 +27,4 @@ class INatGet::Data::Model::Fave < INatGet::Data::Model
 
   end
 
-  mk_apks
-
 end

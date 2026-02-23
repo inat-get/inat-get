@@ -50,6 +50,4 @@ class INatGet::Data::Model::Observation < INatGet::Data::Model
 
   end
 
-  mk_apks
-
 end
