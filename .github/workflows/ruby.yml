@@ -1,0 +1,63 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: build & test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.4']
+
+    steps:
+    - uses: actions/checkout@v6
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true 
+    - name: Run tests
+      run: bundle exec rake
+    - name: Extract coverage percentage
+      id: coverage
+      run: |
+        COVERAGE=$(jq '.result.line' coverage/.last_run.json)
+        COVERAGE_ROUNDED=$(printf "%.0f" $COVERAGE)
+        echo "coverage=$COVERAGE_ROUNDED" >> $GITHUB_OUTPUT
+    - name: Generate badge SVG
+      id: badge
+      run: |
+        COLOR=green
+        if [ ${{ steps.coverage.outputs.coverage }} -lt 80 ]; then
+          COLOR=red
+        elif [ ${{ steps.coverage.outputs.coverage }} -lt 90 ]; then
+          COLOR=#c6bc3d
+        fi
+        echo "<?xml version=\"1.0\"?><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"20\">
+        <rect width=\"100\" height=\"20\" fill=\"#555\"/>
+        <rect x=\"63\" width=\"37\" height=\"20\" fill=\"$COLOR\"/>
+        <text x=\"8\" y=\"14\" fill=\"#fff\" font-family=\"Verdana\" font-size=\"11\">coverage</text>
+        <text x=\"66\" y=\"14\" fill=\"#fff\" font-family=\"Verdana\" font-size=\"11\">${{ steps.coverage.outputs.coverage }}%</text>
+        </svg>" > coverage-badge.svg
+        echo "badge_path=coverage-badge.svg" >> $GITHUB_OUTPUT
+    - name: Back push
+      uses: jekyll-is/action-jekyll-is-backpush@v1
+      with:
+        label: 'Coverage Badge'
+        telegram-bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        telegram-user-id: ${{ secrets.MY_TG_ID }}

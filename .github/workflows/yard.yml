@@ -1,0 +1,35 @@
+name: Build & Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with: 
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Build
+        run: |
+          echo "Build..."
+          bundle exec yardoc
+      - name: Publish
+        uses: jekyll-is/action-jekyll-is-publish@v1
+        with:
+          label: 'YARD Docs Pages'
+          sync-dir: 'doc'
+          github-actor: ${{ github.actor }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pages-repository: ${{ github.repository }}
+          telegram-bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          telegram-user-id: ${{ secrets.MY_TG_ID }}
