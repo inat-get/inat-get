@@ -17,7 +17,7 @@ Gem::Specification::new do |spec|
   spec.bindir = 'bin'
   spec.executables = [ 'inat-get' ]
 
-  spec.add_dependency 'sequel', '~> 5.100'
+  spec.add_dependency 'sequel', '~> 5.101'
   spec.add_dependency 'faraday', '~> 2.14'
   spec.add_dependency 'faraday-retry', '~> 2.3'
   spec.add_dependency 'is-dsl', '~> 0.8'
