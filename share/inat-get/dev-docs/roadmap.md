@@ -9,6 +9,7 @@ flowchart TB
     Shutdown("[✔] Управление процессами и Graceful Shutdown")
     Timing("[✔] Настройки Sequel для хранения времени со смещением")
     Offline("Offline-режим")
+    BaseTesting("Базовое тестирование")
   end
 
   subgraph R092 ["v0.9.2"]
@@ -57,6 +58,9 @@ flowchart TB
   R100 --> R120
 
   Caching --> Offline
+  Observs --> BaseTesting
+  Caching --> BaseTesting
+  Shutdown --> BaseTesting
 
   Testing --> Debugging
   Debugging --> Ref1
