@@ -8,6 +8,7 @@ flowchart TB
     Caching("[✔] Базовое<br>кэшировние")
     Shutdown("[✔] Управление процессами и Graceful Shutdown")
     Timing("[✔] Настройки Sequel для хранения времени со смещением")
+    Lists("Разбиения для List по любым связям")
     Offline("Offline-режим")
     BaseTesting("Базовое тестирование")
     BaseDoc("Описание DSL и примеры")
@@ -65,6 +66,8 @@ flowchart TB
   Caching --> BaseTesting
   Shutdown --> BaseTesting
   Observs --> BaseDoc
+  Lists --> BaseTesting
+  Lists --> BaseDoc
 
   ERB --> ERBTests
   ERB --> ERBSamples
