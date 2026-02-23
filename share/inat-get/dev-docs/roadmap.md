@@ -8,6 +8,7 @@ flowchart TB
     Caching("[✔] Базовое<br>кэшировние")
     Shutdown("[✔] Управление процессами и Graceful Shutdown")
     Timing("[✔] Настройки Sequel для хранения времени со смещением")
+    Offline("Offline-режим")
   end
 
   subgraph R092 ["v0.9.2"]
@@ -54,6 +55,8 @@ flowchart TB
   R098 --> Smth
   Smth --> R100
   R100 --> R120
+
+  Caching --> Offline
 
   Testing --> Debugging
   Debugging --> Ref1
