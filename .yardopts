@@ -1,6 +1,10 @@
---no-private
---title "INat::Get"
---hide-void-return
+--title "INatGet"
+--markup markdown
+--readme README.md
+--files share/inat-get/docs/*.md
+--protected
 --private
---asset docs/ doc/docs/
+--no-private
+--load .yardpreamble.rb
+--plugin is-sequel
 lib/**/*.rb
