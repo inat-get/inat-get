@@ -61,6 +61,7 @@ flowchart TB
   Smth --> R100
   R100 --> R120
 
+  Timing --> Observs
   Caching --> Offline
   Offline --> BaseTesting
   Shutdown --> BaseTesting
