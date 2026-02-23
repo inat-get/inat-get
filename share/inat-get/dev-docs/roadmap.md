@@ -62,7 +62,6 @@ flowchart TB
   R100 --> R120
 
   Caching --> Offline
-  Caching --> Observs
   Observs --> BaseTesting
   Offline --> BaseTesting
   Shutdown --> BaseTesting
