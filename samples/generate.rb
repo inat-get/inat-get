@@ -7,8 +7,7 @@ DISTRICTS.each do |key, value|
                                       "\n" +
                                       "district = District::new '#{ key }', FINISH_DATE\n" +
                                       "district.write_history\n" +
-                                      "district.write_compare\n" +
-                                      "district.write_rare\n"
+                                      "district.write_compare\n"
 end
 
 ZONES.each do |key, value|
@@ -17,8 +16,7 @@ ZONES.each do |key, value|
                                       "\n" +
                                       "zone = Zone::new '#{ key }', FINISH_DATE\n" +
                                       "zone.write_history\n" +
-                                      "zone.write_compare\n" +
-                                      "zone.write_rare\n"
+                                      "zone.write_compare\n"
 end
 
 SPECIALS.each do |key, value|

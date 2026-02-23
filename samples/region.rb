@@ -959,6 +959,8 @@ class Area
     result = []
     result << gen_top(@last_ds, 'За сезон')
     result << ""
+    result << gen_top(@last_ds.where { |o| o.user.created_at.year == @finish.year }, "Новички")
+    result << ""
     result << gen_top(@main_ds, 'За все время')
     result.join "\n"
   end
@@ -1055,7 +1057,8 @@ class Area
   end
 
   private def gen_signature
-    "\n<hr>\n\n<small>Отчет сгенерирован посредством <a href=\"https://github.com/shikhalev/inat-get\">INat::Get v#{ VERSION }</a></small>"
+    # "\n<hr>\n\n<small>Отчет сгенерирован посредством <a href=\"https://github.com/shikhalev/inat-get\">INat::Get v#{ VERSION }</a></small>"
+    "\n<hr>\n\n<small>Заходите в телеграм-канал «<a href=\"https://t.me/inat_sverdlobl\">Биоразнообразие Свердловской области в TG</a>» с ежедневными избранными наблюдениями и новостями проектов.</small>\n"
   end
 
   protected def generate_history
@@ -1076,8 +1079,8 @@ class Area
     result << ""
     result << gen_news
     result << ""
-    result << gen_lost
-    result << ""
+    # result << gen_newbies
+    # result << ""
     result << gen_signature
     result.join "\n"
   end
