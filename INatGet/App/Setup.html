@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: INatGet::App::Setup
+  
+    &mdash; INatGet
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "INatGet::App::Setup";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span>
+     &raquo; 
+    <span class="title">Setup</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: INatGet::App::Setup
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/inat-get/app/setup.rb</dd>
+  </dl>
+  
+</div>
+
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="DEFAULTS-constant" class="">DEFAULTS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>logs:</span> <span class='lbrace'>{</span>
+    <span class='label'>screen:</span> <span class='lbrace'>{</span>
+      <span class='label'>api:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>warn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>sys:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>warn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>wrk:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>file:</span> <span class='lbrace'>{</span>
+      <span class='label'>enable:</span> <span class='kw'>false</span><span class='comma'>,</span>
+      <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>.log</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='label'>api:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>sys:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>wrk:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>database:</span> <span class='lbrace'>{</span>
+    <span class='label'>connect:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sqlite://${HOME}/.cache/</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>.db</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>user:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+    <span class='label'>password:</span> <span class='kw'>nil</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>caching:</span> <span class='lbrace'>{</span>
+    <span class='label'>update:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4h</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>refresh:</span> <span class='lbrace'>{</span> 
+      <span class='label'>interval:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4d</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>depth:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>40d</span><span class='tstring_end'>&#39;</span></span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>recache:</span> <span class='lbrace'>{</span> 
+      <span class='label'>count:</span> <span class='int'>200</span><span class='comma'>,</span>
+      <span class='label'>method:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>oldest</span><span class='tstring_end'>&#39;</span></span>          <span class='comment'># oldest by cached, newest by updated, sample — random
+</span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>refs:</span> <span class='lbrace'>{</span>
+      <span class='label'>default:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4w</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>projects:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1w</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>taxa:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4w</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>users:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10w</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>places:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10w</span><span class='tstring_end'>&#39;</span></span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>offline:</span> <span class='kw'>false</span><span class='comma'>,</span>
+  <span class='label'>workers:</span> <span class='lbrace'>{</span>
+    <span class='label'>limit:</span> <span class='int'>4</span><span class='comma'>,</span>
+    <span class='label'>order:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>given</span><span class='tstring_end'>&#39;</span></span>              <span class='comment'># given, random, name
+</span>  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>api:</span> <span class='lbrace'>{</span>
+    <span class='label'>root:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://api.inaturalist.org/v1/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>locale:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ru</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>preferred_place:</span> <span class='int'>7161</span><span class='comma'>,</span>
+    <span class='label'>translate_projects:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>umbrella</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>    <span class='comment'># all | umbrella | none
+</span>    <span class='label'>retry:</span> <span class='lbrace'>{</span>
+      <span class='label'>max:</span> <span class='int'>5</span><span class='comma'>,</span>
+      <span class='label'>interval:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>randomness:</span> <span class='float'>0.5</span><span class='comma'>,</span>
+      <span class='label'>backoff:</span> <span class='int'>2</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>delay:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>pager:</span> <span class='int'>200</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>socket:</span> <span class='lbrace'>{</span>
+    <span class='label'>console:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>/console.sock</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>api:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>/api.sock</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>tasks:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#config-class_method" title="config (class method)">.<strong>config</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#config!-class_method" title="config! (class method)">.<strong>config!</strong>(**opts)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#inject_env!-class_method" title="inject_env! (class method)">.<strong>inject_env!</strong>(data)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#load_config-class_method" title="load_config (class method)">.<strong>load_config</strong>(filename)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#parse_options!-class_method" title="parse_options! (class method)">.<strong>parse_options!</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#unwrap_file_list-class_method" title="unwrap_file_list (class method)">.<strong>unwrap_file_list</strong>(list)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#unwrap_files!-class_method" title="unwrap_files! (class method)">.<strong>unwrap_files!</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="config-class_method">
+  
+    .<strong>config</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_config'>config</span>
+  <span class='ivar'>@config</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="#DEFAULTS-constant" title="INatGet::App::Setup::DEFAULTS (constant)">DEFAULTS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deep_dup'>deep_dup</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="config!-class_method">
+  
+    .<strong>config!</strong>(**opts)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_config!'>config!</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
+  <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#DEFAULTS-constant" title="INatGet::App::Setup::DEFAULTS (constant)">DEFAULTS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deep_dup'>deep_dup</span>
+  <span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_options!'>parse_options!</span>
+  <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:tasks</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_tasks'>tasks</span>
+  <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_load_config'>load_config</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:config</span><span class='rbracket'>]</span>
+  <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_deep_merge!'>deep_merge!</span> <span class='id identifier rubyid_config'>config</span>
+  <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_deep_merge!'>deep_merge!</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_deep_merge!'>deep_merge!</span> <span class='id identifier rubyid_opts'>opts</span>
+  <span class='id identifier rubyid_inject_env!'>inject_env!</span> <span class='ivar'>@config</span>
+  <span class='id identifier rubyid_unwrap_files!'>unwrap_files!</span>
+  <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Maintenance.html" title="INatGet::App::Maintenance (module)">Maintenance</a></span></span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='ivar'>@config</span> <span class='kw'>if</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span>
+  <span class='ivar'>@config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inject_env!-class_method">
+  
+    .<strong>inject_env!</strong>(data)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 102</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inject_env!'>inject_env!</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>when</span> <span class='const'>Hash</span>
+    <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_transform_values!'>transform_values!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_inject_env!'>inject_env!</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>when</span> <span class='const'>Array</span>
+    <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_each_index'>each_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_idx'>idx</span><span class='op'>|</span>
+      <span class='id identifier rubyid_data'>data</span><span class='lbracket'>[</span><span class='id identifier rubyid_idx'>idx</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_inject_env!'>inject_env!</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='lbracket'>[</span><span class='id identifier rubyid_idx'>idx</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>when</span> <span class='const'>String</span>
+    <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\$\{\s*(?&lt;variable&gt;[a-z_]\w*)\s*\}</span><span class='regexp_end'>/i</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span>
+      <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INATGET_</span><span class='embexpr_beg'>#{</span> <span class='gvar'>$~</span><span class='lbracket'>[</span><span class='symbol'>:variable</span><span class='rbracket'>]</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='gvar'>$~</span><span class='lbracket'>[</span><span class='symbol'>:variable</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>end</span> <span class='op'>||</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load_config-class_method">
+  
+    .<strong>load_config</strong>(filename)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246
+247
+248
+249
+250
+251
+252</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_config'>load_config</span> <span class='id identifier rubyid_filename'>filename</span>
+  <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span> <span class='id identifier rubyid_filename'>filename</span>
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+    <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load_file'>load_file</span> <span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='label'>symbolize_names:</span> <span class='kw'>true</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>🚨 \e[1mConfig file not found:\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_filename'>filename</span> <span class='embexpr_end'>}</span><span class='tstring_content'>\e[1m. Use defaults.\e[0m</span><span class='tstring_end'>&quot;</span></span>
+    <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_options!-class_method">
+  
+    .<strong>parse_options!</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_options!'>parse_options!</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='symbol'>:config</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>~/.config/</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>.yml</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='symbol'>:maintenance</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+    <span class='symbol'>:maintenance_params</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='const'>OptionParser</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_o'>o</span><span class='op'>|</span>
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>🌿 \e[1miNatGet v</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#VERSION-constant" title="INatGet::Info::VERSION (constant)">VERSION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#VERSION_ALIAS-constant" title="INatGet::Info::VERSION_ALIAS (constant)">VERSION_ALIAS</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>):\e[0m </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#DESCRIPTION-constant" title="INatGet::Info::DESCRIPTION (constant)">DESCRIPTION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+               <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>          License: \e[1mGNU GPLv3+\e[0m (</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#LICENSE_URL-constant" title="INatGet::Info::LICENSE_URL (constant)">LICENSE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>)\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+               <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>           Author: \e[1m</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#AUTHOR-constant" title="INatGet::Info::AUTHOR (constant)">AUTHOR</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>\e[0m (</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#AUTHOR_URL-constant" title="INatGet::Info::AUTHOR_URL (constant)">AUTHOR_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>)\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+               <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>         Homepage: \e[1m</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#HOMEPAGE-constant" title="INatGet::Info::HOMEPAGE (constant)">HOMEPAGE</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>\e[0m\n\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+               <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1m   Usage:\e[0m </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#NAME-constant" title="INatGet::Info::NAME (constant)">NAME</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'> [options] ‹task› [‹task› ...]</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1m   Info Options:\e[0m</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-h</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--help</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Show this help and exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_help'>help</span>
+      <span class='id identifier rubyid_exit'>exit</span> <span class='int'>0</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--version</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Show version and exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Info.html#VERSION-constant" title="INatGet::Info::VERSION (constant)">VERSION</a></span></span>
+      <span class='id identifier rubyid_exit'>exit</span> <span class='int'>0</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-i</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Show information about DB status and API connection. Then exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:info</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--show-config</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Show current configuration and exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:show_config</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1m   Main Options:\e[0m</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-c</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--config FILE</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Use this file as config (must be YAML) [default: ~/.config/inat-get.yml].</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:config</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-l</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--log-level LEVEL</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fatal</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>error</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>warn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Log level (fatal, error, warn, info or debug).</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:screen</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:screen</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:api</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:screen</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:sys</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:screen</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:wrk</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-L</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--log-file [FILE]</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Set log file path (if specified) and enable logging to file.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:enable</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--file-log-level LEVEL</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fatal</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>error</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>warn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Log level for file logging (fatal, error, warn, info or debug).</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:api</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:sys</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:wrk</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--debug</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Enable file logging and set file log level to debug.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:enable</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:api</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:sys</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:logs</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:wrk</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-o</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--offline</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Offline mode: no updates, use local database only.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> 
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:offline</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-O</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--online</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Online mode [default], use this flag to cancel \&#39;offline: true\&#39; in config.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:offline</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1m   DB Maintenance:\e[0m</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-C</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--db-check</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Check DB version and exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:db_check</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-U</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--db-update</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Migrate to latest DB version and exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:db_update</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-M</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--db-migrate VER</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Migrate to DB version VER and exit.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:db_migrate</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance_params</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--db-create</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Create database (error if exists).</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:db_create</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>--db-reset</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Drop (if exists) and recreate database. All fetched data will be lost.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:maintenance</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='symbol'>:db_reset</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1m   File Arguments:\e[0m</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_separator'>separator</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t‹task› [‹task› ...]\t     One or more names of task files or list files with &#39;@&#39; prefix (one task\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t\t\t\t     file per line). If task name has not extension try to read &#39;‹task›&#39;\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t\t\t\t     than &#39;‹task›.inat&#39; than &#39;‹task›.rb&#39;.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_files'>files</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_parse!'>parse!</span>
+  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>❌ \e[1m</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='embexpr_end'>}</span><span class='tstring_content'>\e[0m</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_exit'>exit</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>ENOTSUP</span><span class='op'>::</span><span class='const'>Errno</span>
+  <span class='kw'>end</span>
+
+  <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span> <span class='id identifier rubyid_files'>files</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unwrap_file_list-class_method">
+  
+    .<strong>unwrap_file_list</strong>(list)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 260</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unwrap_file_list'>unwrap_file_list</span> <span class='id identifier rubyid_list'>list</span>
+  <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+      <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_file'>file</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^@.*</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_list_file'>list_file</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='rbracket'>]</span>
+      <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_list_file'>list_file</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_unwrap_file_list'>unwrap_file_list</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_readlines'>readlines</span><span class='lparen'>(</span><span class='id identifier rubyid_list_file'>list_file</span><span class='comma'>,</span> <span class='label'>chomp:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>❌ \e[1mList file not found:\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_list_file'>list_file</span> <span class='embexpr_end'>}</span><span class='tstring_content'>\e[1m. Stopped!\e[0m</span><span class='tstring_end'>&quot;</span></span> 
+        <span class='id identifier rubyid_exit'>exit</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>ENOENT</span><span class='op'>::</span><span class='const'>Errno</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_file'>file</span>
+      <span class='kw'>elsif</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_file'>file</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.inat</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_file'>file</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.inat</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>elsif</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_file'>file</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.rb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_file'>file</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.rb</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>else</span>
+        <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>❌ \e[1mTask file not found:\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_file'>file</span> <span class='embexpr_end'>}</span><span class='tstring_content'>\e[1m. Stopped!\e[0m</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_exit'>exit</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>ENOENT</span><span class='op'>::</span><span class='const'>Errno</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unwrap_files!-class_method">
+  
+    .<strong>unwrap_files!</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+254
+255
+256
+257
+258</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 254</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unwrap_files!'>unwrap_files!</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:tasks</span><span class='rbracket'>]</span>
+  <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:tasks</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_unwrap_file_list'>unwrap_file_list</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:tasks</span><span class='rbracket'>]</span>
+  <span class='ivar'>@config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Feb 23 09:38:21 2026 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.38 (ruby-3.4.8).
+</div>
+
+    </div>
+  </body>
+</html>
