@@ -30,11 +30,15 @@ class INatGet::Data::DSL::Condition
 
   # @return [Condition]
   def & other
+    return self if other == ANYTHING
+    return NOTHING if other == NOTHING
     AND[ self, other ]
   end
 
   # @return [Condition]
   def | other
+    return self if other == NOTHING
+    return ANYTHING if other == ANYTHING
     OR[ self, other ]
   end
 

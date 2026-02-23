@@ -53,6 +53,7 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
       return INatGet::Data::DSL::NOTHING if operands.empty?
       return INatGet::Data::DSL::ANYTHING if operands.include?(INatGet::Data::DSL::ANYTHING)
       operands.delete INatGet::Data::DSL::NOTHING
+      return operands.first if operands.size == 1
       new(*operands).freeze
     end
 
@@ -86,10 +87,10 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
 
   # @private
   def merge_n_factor
-    query_operands, other_operands = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Q) }
+    query_operands, other_operands = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Query) }
     not_operands = other_operands.select { |o| o.is_a?(NOT) }
     return ANYTHING if not_operands.any? { |o| query_operands.include?(o.operand) || other_operands.include?(o.operand) }
-    query_ops = or_merge(*query_operands).map(&:merge_n_factor)
+    query_ops = or_merge(*query_operands.map(&:merge_n_factor)).map(&:merge_n_factor)
     OR[ *query_ops, *other_operands ]
   end
 
@@ -117,23 +118,27 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
     changes_flag = false
     (0 .. queries.size - 1).each do |index|
       current = queries[index]
+      next if current.nil?
       queries[index] = nil
       (0 .. queries.size - 1).each do |idx|
         second = queries[idx]
         next if second.nil?
         if hash_cover?(current.query, second.query)
+          # pp "CURRENT >= SECOND"
           queries[idx] = nil
           changes_flag = true
           next
         elsif hash_cover?(second.query, current.query)
+          # pp "CURRENT <= SECOND"
           current = nil
           changes_flag = true
           break
         else
           trying = hash_try_merge current.query, second.query
+          # pp({TRYING: trying})
           if trying
-            cur_helper = current.helper
-            current = Q[cur_helper][ **trying ]
+            # cur_helper = current.helper
+            current = Query[current.model][ **trying ]
             queries[idx] = nil
             changes_flag = true
             next
@@ -240,7 +245,8 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
       end
     end
     return false if merged && !second.empty?
-    result.compact!
+    # pp({ RESULT: result, MERGED: merged })
+    result.compact
   end
 
 end

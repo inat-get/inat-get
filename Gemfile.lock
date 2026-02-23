@@ -8,7 +8,7 @@ PATH
       is-dsl (~> 0.8)
       is-duration (~> 0.8.4)
       is-enum (~> 0.8.8.6)
-      is-range (~> 0.8)
+      is-range (~> 0.8.2)
       is-term (~> 0.8.4.10)
       sequel (~> 5.101)
 
@@ -32,7 +32,7 @@ GEM
     is-duration (0.8.4)
       is-enum (~> 0.8.8)
     is-enum (0.8.8.6)
-    is-range (0.8.0)
+    is-range (0.8.2)
     is-term (0.8.4.10)
       is-boolean (~> 0.8)
       is-duration (~> 0.8.4)
@@ -117,7 +117,7 @@ CHECKSUMS
   is-dsl (0.8.0) sha256=fc66508e85da3c9f4cdcdc31e9bb078f2aef791dfe432db1db931c69c97020e6
   is-duration (0.8.4) sha256=56123755b5871d6f6ff351fadb5f30d62bcf7307c0fad1342e534df7141daa50
   is-enum (0.8.8.6) sha256=5c86b7abef5fba11bc9525dd8a01aad01d15ce9070c9a055050b0ec20e80a6b9
-  is-range (0.8.0) sha256=79fee49f25ba4bf5b2f2753784a74c3a142a274d115b8e2930bc3617a414d437
+  is-range (0.8.2) sha256=81a761cd6ac30a61352b267644178691a517ba1b02ef402ca319dcf86e45d43a
   is-term (0.8.4.10) sha256=953f4b45c8cec8cf0e1ab0508142aa620480bee681bf0d58b2cf1125a453ff14
   json (2.18.1) sha256=fe112755501b8d0466b5ada6cf50c8c3f41e897fa128ac5d263ec09eedc9f986
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203

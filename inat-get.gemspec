@@ -24,7 +24,7 @@ Gem::Specification::new do |spec|
   spec.add_dependency 'is-enum', '~> 0.8.8.6'
   spec.add_dependency 'is-duration', '~> 0.8.4'
   spec.add_dependency 'is-term', '~> 0.8.4.10'
-  spec.add_dependency 'is-range', '~> 0.8'
+  spec.add_dependency 'is-range', '~> 0.8.2'
   spec.add_dependency 'is-deep', '~> 0.8'
 
   spec.add_development_dependency 'rspec', '~> 3.13'

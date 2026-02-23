@@ -53,6 +53,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
       return INatGet::Data::DSL::ANYTHING if operands.empty?
       return INatGet::Data::DSL::NOTHING if operands.include?(INatGet::Data::DSL::NOTHING)
       operands.delete INatGet::Data::DSL::ANYTHING
+      return operands.first if operands.size == 1
       new(*operands).freeze
     end
 
