@@ -66,10 +66,10 @@ flowchart TB
   Offline --> BaseTesting
   Shutdown --> BaseTesting
   Observs --> Lists
-  Observs --> BaseDoc
-  Lists --> BaseTesting
   Lists --> BaseDoc
-
+Observs --> BaseDoc
+  Lists --> BaseTesting
+  
   ERB --> ERBTests
   ERB --> ERBSamples
 
