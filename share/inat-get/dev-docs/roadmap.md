@@ -4,10 +4,10 @@ flowchart TB
 
   subgraph R090 ["v0.9.0"]
     direction TB
+    Timing("[✔] Настройки Sequel для хранения времени со смещением")
+    Shutdown("[✔] Управление процессами и Graceful Shutdown")
     Observs("[✔] Запросы<br>по наблюдениям")
     Caching("[✔] Базовое<br>кэшировние")
-    Shutdown("[✔] Управление процессами и Graceful Shutdown")
-    Timing("[✔] Настройки Sequel для хранения времени со смещением")
     Lists("Разбиения для List по любым связям")
     Offline("Offline-режим")
     BaseTesting("Базовое тестирование")
