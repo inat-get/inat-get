@@ -10,11 +10,13 @@ flowchart TB
     Timing("[✔] Настройки Sequel для хранения времени со смещением")
     Offline("Offline-режим")
     BaseTesting("Базовое тестирование")
+    BaseDoc("Описание DSL и примеры")
   end
 
   subgraph R092 ["v0.9.2"]
     direction TB
     ERB("ERB-отчеты")
+
   end
 
   subgraph R094 ["v0.9.4"]
@@ -61,6 +63,7 @@ flowchart TB
   Observs --> BaseTesting
   Caching --> BaseTesting
   Shutdown --> BaseTesting
+  Observs --> BaseDoc
 
   Testing --> Debugging
   Debugging --> Ref1
