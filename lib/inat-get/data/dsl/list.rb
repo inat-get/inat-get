@@ -205,7 +205,8 @@ class INatGet::Data::DSL::List
     keys = {}
     values = {}
     src.each do |s|
-      s.each do |key, value|
+      s.each do |value|
+        key = value.key
         if value
           keys[key] ||= 0
           keys[key] += 1
@@ -214,9 +215,10 @@ class INatGet::Data::DSL::List
         end
       end
     end
+    selected_keys = keys.select { |_, value| value >= num }.keys
     result = new
-    values.slice(keys.select { |_, value| value >= num }.keys).each_value do |value|
-      result.add value.reduce(:+)
+    values.slice(*selected_keys).each_value do |value|
+      result.add! value.reduce(:+)
     end
     result
   end
