@@ -26,6 +26,7 @@ class INatGet::Data::Updater
   #   @param [Array<Integer, String>] ids
   # @return [void]
   def update! *args
+    return nil if @config[:offline]
     if args.size == 1 && args.first.is_a?(INatGet::Data::DSL::Condition)
       update_by_condition! args.first
     else

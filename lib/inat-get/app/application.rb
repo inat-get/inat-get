@@ -31,13 +31,14 @@ class INatGet::App::Main
     INatGet::App::Maintenance::db_check @config, true
 
     console = INatGet::App::Server::Console::create console_socket
-    api = INatGet::App::Server::API::create api_socket, console: console
+    api = nil
+    api = INatGet::App::Server::API::create api_socket, console: console if !@config[:offline]
 
     tasks = @config[:tasks].map { |path| INatGet::App::Task::new path, @config, console: console, api: api }
     Process::warmup
     INatGet::App::Worker::enqueue @config, *tasks, console: console, api: api
     console.quit
-    api.quit
+    api.quit if api
   end
 
   private
