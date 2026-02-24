@@ -89,7 +89,7 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
     if @operand.is_a?(NOT)
       @operand.operand.flatten
     else
-      NOT[ @operand.flatten ]
+      NOT[ @operand.send :flatten ]
     end
   end
 

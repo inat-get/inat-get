@@ -94,7 +94,7 @@ class INatGet::Data::DSL::Dataset
   # @return [Dataset]
   def where condition = nil, **query
     condition ||= ANYTHING
-    condition &= Q(self.model, **query)
+    condition &= Q(@condition.model, **query)
     INatGet::Data::DSL::Dataset::new(self.key, self.condition & condition, self.updated?)
   end
 
@@ -127,17 +127,30 @@ class INatGet::Data::DSL::Dataset
   private
 
   # @private
-  def get_field_values field
+  def get_field_values(field)
     update!
     model = @condition.model
+    query = model.where(@condition.sequel_query)
+
     if model.associations.include?(field)
       reflection = model.association_reflection(field)
       target = reflection.associated_class
-      foreign_key = reflection[:key]
-      ids = model.where(@condition.sequel_query).distinct.select_map(foreign_key)
-      target.where(id: ids).all
+
+      case reflection[:type]
+      when :many_to_one
+        ids = query.distinct.select_map(reflection[:key])
+        target.where(id: ids).all
+      when :one_to_many, :many_to_many
+        # Для всех типов "много" используем ассоциативный датасет
+        # association_join делает join на основе метаданных связи
+        ids = query.association_join(field)
+                   .distinct
+                   .select_map(reflection.qualified_right_key)
+        target.where(id: ids).all
+      end
     else
-      model.where(@condition.sequel_query).distinct.select_map(field)
+      # field может быть как символом :column, так и Sequel.function(:month, :created_at)
+      query.distinct.select_map(field)
     end
   end
 

@@ -3,6 +3,7 @@
 require 'sequel'
 
 require_relative '../../info'
+require_relative 'base'
 
 class INatGet::Data::Model::User < INatGet::Data::Model
 

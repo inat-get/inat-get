@@ -3,6 +3,7 @@
 require 'singleton'
 
 require_relative 'base'
+require_relative 'defs/ids'
 
 class INatGet::Data::Helper::Users < INatGet::Data::Helper
 

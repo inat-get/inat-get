@@ -101,7 +101,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
     not_operands, other_operands = rest.partition { |o| o.is_a?(NOT) }
     return NOTHING if not_operands.any? { |o| query_operands.include?(o.operand) || other_operands.include?(o.operand) }
     query_op = and_merge(*query_operands).send :merge_n_factor
-    not_op = NOT[ OR[ *not_operands.map(&:operand) ].merge_n_factor ]
+    not_op = NOT[ OR[ *not_operands.map(&:operand) ].send :merge_n_factor ]
     AND[ query_op, not_op, *other_operands ]
   end
 
@@ -112,7 +112,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
 
   # @private
   def to_sequel
-    Sequel.&(@operands.map(&:to_sequel))
+    Sequel.&(*@operands.map { it.send :to_sequel })
   end
 
   private

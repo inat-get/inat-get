@@ -3,6 +3,10 @@
 require 'singleton'
 
 require_relative 'base'
+require_relative 'defs/pk'
+require_relative 'defs/copy'
+require_relative 'defs/time'
+require_relative 'defs/cached'
 
 class INatGet::Data::Parser::User < INatGet::Data::Parser
 

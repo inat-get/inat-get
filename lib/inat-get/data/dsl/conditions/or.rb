@@ -108,7 +108,7 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
 
   # @private
   def to_sequel
-    Sequel.|(*@operands.map(&:to_sequel))
+    Sequel.|(*@operands.map { it.send :to_sequel })
   end
 
   private
