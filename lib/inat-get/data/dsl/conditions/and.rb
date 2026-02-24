@@ -53,6 +53,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
       return INatGet::Data::DSL::ANYTHING if operands.empty?
       return INatGet::Data::DSL::NOTHING if operands.include?(INatGet::Data::DSL::NOTHING)
       operands.delete INatGet::Data::DSL::ANYTHING
+      operands.uniq!
       return operands.first if operands.size == 1
       new(*operands).freeze
     end
@@ -63,21 +64,23 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
 
   end
 
+  protected
+
   # @private
   def flatten
-    and_operands, other_operands = @operands.map(&:flatten).partition { |o| o.is_a?(AND) }
+    and_operands, other_operands = @operands.map { it.send :flatten }.partition { |o| o.is_a?(AND) }
     flatten_operands = and_operands.map(&:operands).flatten
     AND[ *flatten_operands, *other_operands ]
   end
 
   # @private
   def expand_references
-    AND[ *@operands.map(&:expand_references) ]
+    AND[ *@operands.map { it.send :expand_references } ]
   end
 
   # @private
   def push_not_down
-    AND[ *@operands.map(&:push_not_down) ]
+    AND[ *@operands.map { it.send :push_not_down } ]
   end
 
   # @private
@@ -88,16 +91,16 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
       or_operand = ops.delete_at or_index
       OR[ *or_operand.operands.map { |o| AND[ o, *ops ].push_and_down } ]
     else
-      AND[ *@operands.map(&:push_and_down) ]
+      AND[ *@operands.map { it.send :push_and_down } ]
     end
   end
 
   # @private
   def merge_n_factor
-    query_operands, rest = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Query) }
+    query_operands, rest = @operands.map { it.send :merge_n_factor }.partition { |o| o.is_a?(Query) }
     not_operands, other_operands = rest.partition { |o| o.is_a?(NOT) }
     return NOTHING if not_operands.any? { |o| query_operands.include?(o.operand) || other_operands.include?(o.operand) }
-    query_op = and_merge(*query_operands).merge_n_factor
+    query_op = and_merge(*query_operands).send :merge_n_factor
     not_op = NOT[ OR[ *not_operands.map(&:operand) ].merge_n_factor ]
     AND[ query_op, not_op, *other_operands ]
   end

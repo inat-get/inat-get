@@ -62,6 +62,8 @@ class INatGet::Data::DSL::Condition::Query < INatGet::Data::DSL::Condition
 
   end
 
+  protected
+
   # @private
   def expand_references
     self.translate_projects

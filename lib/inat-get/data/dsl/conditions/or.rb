@@ -63,45 +63,47 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
 
   end
 
+  protected
+
   # @private
   def flatten
-    or_operands, other_operands = @operands.map(&:flatten).partition { |o| o.is_a?(OR) }
+    or_operands, other_operands = @operands.map { it.send :flatten }.partition { |o| o.is_a?(OR) }
     flatten_operands = or_operands.map(&:operands).flatten
     OR[ *flatten_operands, *other_operands ]
   end
 
   # @private
   def expand_references
-    OR[ *@operands.map(&:expand_references) ]
+    OR[ *@operands.map { it.send :expand_references } ]
   end
 
   # @private
   def push_not_down
-    OR[ *@operands.map(&:push_not_down) ]
+    OR[ *@operands.map { it.send :push_not_down } ]
   end
 
   # @private
   def push_and_down
-    OR[ *@operands.map(&:push_and_down) ]
+    OR[ *@operands.map { it.send :push_and_down } ]
   end
 
   # @private
   def merge_n_factor
-    query_operands, other_operands = @operands.map(&:merge_n_factor).partition { |o| o.is_a?(Query) }
+    query_operands, other_operands = @operands.map { it.send :merge_n_factor }.partition { |o| o.is_a?(Query) }
     not_operands = other_operands.select { |o| o.is_a?(NOT) }
     return ANYTHING if not_operands.any? { |o| query_operands.include?(o.operand) || other_operands.include?(o.operand) }
-    query_ops = or_merge(*query_operands.map(&:merge_n_factor)).map(&:merge_n_factor)
+    query_ops = or_merge(*query_operands.map { it.send :merge_n_factor }).map { it.send :merge_n_factor }
     OR[ *query_ops, *other_operands ]
   end
 
   # @private
   def simplify
-    OR[ *@operands.map(&:simplify) ].normalize
+    OR[ *@operands.map { it.send :simplify } ].normalize
   end
 
   # @private
   def to_api
-    @operands.map(&:to_api).flatten.compact
+    @operands.map { it.send :to_api }.flatten.compact
   end
 
   # @private

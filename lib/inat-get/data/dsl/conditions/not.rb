@@ -82,6 +82,8 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
 
   end
 
+  protected
+
   # @private
   def flatten
     if @operand.is_a?(NOT)
@@ -93,7 +95,7 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
 
   # @private
   def expand_references
-    NOT[ @operand.expand_references ]
+    NOT[ @operand.send :expand_references ]
   end
 
   # @private
@@ -112,7 +114,7 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
 
   # @private
   def merge_n_factor
-    NOT[ @operand.merge_n_factor ]
+    NOT[ @operand.send :merge_n_factor ]
   end
 
   # @private
@@ -122,7 +124,7 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
 
   # @private
   def to_sequel
-    Sequel.~(@operand.to_sequel)
+    Sequel.~(@operand.send :to_sequel)
   end
 
 end

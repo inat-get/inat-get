@@ -51,6 +51,8 @@ class INatGet::Data::DSL::Condition
 
   # @group Transformation
 
+  protected
+
   # @private
   # @return [Condition]
   def normalize
@@ -87,18 +89,6 @@ class INatGet::Data::DSL::Condition
     self
   end
 
-  # @api private
-  # @return [Array<Hash>]
-  def api_query
-    normalize.simplify.to_api
-  end
-
-  # @api private
-  # @return [Sequel::SQL::Expression]
-  def sequel_query
-    normalize.to_sequel
-  end
-
   # @private
   def to_api
     raise TypeError, "Invalid condition type for API query", caller_locations
@@ -107,6 +97,20 @@ class INatGet::Data::DSL::Condition
   # @private
   def to_sequel
     raise TypeError, "Invalid condition type for DB query", caller_locations
+  end
+
+  public
+
+  # @api private
+  # @return [Array<Hash>]
+  def api_query
+    normalize.simplify.send :to_api
+  end
+
+  # @api private
+  # @return [Sequel::SQL::Expression]
+  def sequel_query
+    normalize.send :to_sequel
   end
 
   # @endgroup

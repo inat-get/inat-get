@@ -6,8 +6,6 @@ class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
 
   def initialize helper, key
     super helper, key
-    # @sid = helper.manager.sid
-    # @uuid = helper.manager.uuid?
   end
 
   def prepare value
@@ -15,7 +13,7 @@ class INatGet::Data::Helper::Field::Ids < INatGet::Data::Helper::Field
     when nil
       nil
     when Integer, String
-      Set[ value ]
+      ::Set[ value ]
     when Enumerable
       value.to_set
     else 
