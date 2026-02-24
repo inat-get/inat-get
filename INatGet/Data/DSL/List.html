@@ -657,7 +657,9 @@
 219
 220
 221
-222</pre>
+222
+223
+224</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 204</span>
@@ -666,7 +668,8 @@
   <span class='id identifier rubyid_keys'>keys</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_src'>src</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
-    <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
         <span class='id identifier rubyid_keys'>keys</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='int'>0</span>
         <span class='id identifier rubyid_keys'>keys</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>+=</span> <span class='int'>1</span>
@@ -675,9 +678,10 @@
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_selected_keys'>selected_keys</span> <span class='op'>=</span> <span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_num'>num</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span>
-  <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_num'>num</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_value'>each_value</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
-    <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_selected_keys'>selected_keys</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_value'>each_value</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_add!'>add!</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_result'>result</span>
 <span class='kw'>end</span></pre>
@@ -1948,7 +1952,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Feb 23 15:01:16 2026 by
+  Generated on Tue Feb 24 02:22:12 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
