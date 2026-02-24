@@ -287,7 +287,6 @@
       <pre class="lines">
 
 
-45
 46
 47
 48
@@ -300,10 +299,11 @@
 55
 56
 57
-58</pre>
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/application.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/application.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_sockets!'>check_sockets!</span> <span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='id identifier rubyid_socket2'>socket2</span>
   <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
@@ -354,7 +354,8 @@
 38
 39
 40
-41</pre>
+41
+42</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/app/application.rb', line 26</span>
@@ -367,13 +368,14 @@
   <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Maintenance.html" title="INatGet::App::Maintenance (module)">Maintenance</a></span></span><span class='op'>::</span><span class='id identifier rubyid_db_check'><span class='object_link'><a href="Maintenance.html#db_check-class_method" title="INatGet::App::Maintenance.db_check (method)">db_check</a></span></span> <span class='ivar'>@config</span><span class='comma'>,</span> <span class='kw'>true</span>
 
   <span class='id identifier rubyid_console'>console</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server.html" title="INatGet::App::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Console.html" title="INatGet::App::Server::Console (class)">Console</a></span></span><span class='op'>::</span><span class='id identifier rubyid_create'><span class='object_link'><a href="Server.html#create-class_method" title="INatGet::App::Server.create (method)">create</a></span></span> <span class='id identifier rubyid_console_socket'>console_socket</span>
-  <span class='id identifier rubyid_api'>api</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server.html" title="INatGet::App::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/API.html" title="INatGet::App::Server::API (class)">API</a></span></span><span class='op'>::</span><span class='id identifier rubyid_create'><span class='object_link'><a href="Server.html#create-class_method" title="INatGet::App::Server.create (method)">create</a></span></span> <span class='id identifier rubyid_api_socket'>api_socket</span><span class='comma'>,</span> <span class='label'>console:</span> <span class='id identifier rubyid_console'>console</span>
+  <span class='id identifier rubyid_api'>api</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_api'>api</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server.html" title="INatGet::App::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/API.html" title="INatGet::App::Server::API (class)">API</a></span></span><span class='op'>::</span><span class='id identifier rubyid_create'><span class='object_link'><a href="Server.html#create-class_method" title="INatGet::App::Server.create (method)">create</a></span></span> <span class='id identifier rubyid_api_socket'>api_socket</span><span class='comma'>,</span> <span class='label'>console:</span> <span class='id identifier rubyid_console'>console</span> <span class='kw'>if</span> <span class='op'>!</span><span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:offline</span><span class='rbracket'>]</span>
 
   <span class='id identifier rubyid_tasks'>tasks</span> <span class='op'>=</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:tasks</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Task.html" title="INatGet::App::Task (class)">Task</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Task.html#initialize-instance_method" title="INatGet::App::Task#initialize (method)">new</a></span></span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='ivar'>@config</span><span class='comma'>,</span> <span class='label'>console:</span> <span class='id identifier rubyid_console'>console</span><span class='comma'>,</span> <span class='label'>api:</span> <span class='id identifier rubyid_api'>api</span> <span class='rbrace'>}</span>
   <span class='const'>Process</span><span class='op'>::</span><span class='id identifier rubyid_warmup'>warmup</span>
   <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Worker.html" title="INatGet::App::Worker (class)">Worker</a></span></span><span class='op'>::</span><span class='id identifier rubyid_enqueue'><span class='object_link'><a href="Worker.html#enqueue-class_method" title="INatGet::App::Worker.enqueue (method)">enqueue</a></span></span> <span class='ivar'>@config</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_tasks'>tasks</span><span class='comma'>,</span> <span class='label'>console:</span> <span class='id identifier rubyid_console'>console</span><span class='comma'>,</span> <span class='label'>api:</span> <span class='id identifier rubyid_api'>api</span>
   <span class='id identifier rubyid_console'>console</span><span class='period'>.</span><span class='id identifier rubyid_quit'>quit</span>
-  <span class='id identifier rubyid_api'>api</span><span class='period'>.</span><span class='id identifier rubyid_quit'>quit</span>
+  <span class='id identifier rubyid_api'>api</span><span class='period'>.</span><span class='id identifier rubyid_quit'>quit</span> <span class='kw'>if</span> <span class='id identifier rubyid_api'>api</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -417,13 +419,13 @@
       <pre class="lines">
 
 
-60
 61
 62
-63</pre>
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/application.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/application.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_socket_alive?'>socket_alive?</span> <span class='id identifier rubyid_socket'>socket</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_socket?'>socket?</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
@@ -439,7 +441,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 24 06:23:41 2026 by
+  Generated on Tue Feb 24 08:46:51 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
