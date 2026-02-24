@@ -1286,7 +1286,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_where'>where</span> <span class='id identifier rubyid_condition'>condition</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
   <span class='id identifier rubyid_condition'>condition</span> <span class='op'>||=</span> <span class='const'>ANYTHING</span>
-  <span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;=</span> <span class='const'><span class='object_link'><a href="../DSL.html#Q-instance_method" title="INatGet::Data::DSL#Q (method)">Q</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;=</span> <span class='const'><span class='object_link'><a href="../DSL.html#Q-instance_method" title="INatGet::Data::DSL#Q (method)">Q</a></span></span><span class='lparen'>(</span><span class='ivar'>@condition</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1299,7 +1299,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 24 08:46:52 2026 by
+  Generated on Tue Feb 24 11:24:54 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
