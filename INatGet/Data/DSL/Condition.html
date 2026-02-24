@@ -261,7 +261,7 @@
     </ul>
   
     <h2>
-      Transformation
+      Instance Method Summary
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
@@ -606,15 +606,15 @@
       <pre class="lines">
 
 
-92
-93
-94</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_api_query'>api_query</span>
-  <span class='id identifier rubyid_normalize'>normalize</span><span class='period'>.</span><span class='id identifier rubyid_simplify'>simplify</span><span class='period'>.</span><span class='id identifier rubyid_to_api'>to_api</span>
+  <span class='id identifier rubyid_normalize'>normalize</span><span class='period'>.</span><span class='id identifier rubyid_simplify'>simplify</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:to_api</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -662,15 +662,15 @@
       <pre class="lines">
 
 
-98
-99
-100</pre>
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/base.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sequel_query'>sequel_query</span>
-  <span class='id identifier rubyid_normalize'>normalize</span><span class='period'>.</span><span class='id identifier rubyid_to_sequel'>to_sequel</span>
+  <span class='id identifier rubyid_normalize'>normalize</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:to_sequel</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -738,7 +738,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Feb 24 02:22:14 2026 by
+  Generated on Tue Feb 24 06:23:44 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
