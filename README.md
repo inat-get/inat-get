@@ -2,7 +2,6 @@
 
 ## Usage
 
-
 <pre><b>$</b> bundle exec inat-get --help
 🌿 <b>iNatGet v0.9.0:</b> iNaturalist API query builder and analytics tool
           License: <b>GNU GPLv3+</b> (https://github.com/inat-get/inat-get/blob/main/LICENSE)

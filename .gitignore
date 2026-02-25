@@ -57,3 +57,4 @@ build-iPhoneSimulator/
 .vscode/
 *_struct.md
 *.log
+user_stat.md

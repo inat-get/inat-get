@@ -146,7 +146,7 @@ class INatGet::Data::Updater
         el_record = rq_model.where(endless: el_hash).exclude(full: rq_hash).order(:started.desc).first
         if el_record
           saved_json = el_record.query
-          saved_data = JSON.load saved_json, symbolize_names: false
+          saved_data = JSON.parse saved_json, symbolize_names: false
           dates = saved_data.select { |k, _| k == 'd2' || k.end_with?('_d2') }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
           updated_since = [ el_record.started, *dates ].min
           pp({ US: updated_since, line: __LINE__ })
@@ -186,7 +186,7 @@ class INatGet::Data::Updater
         end
         dataset.order(:started.desc).limit(10).each do |rec|
           saved_json = rec.query
-          saved_data = JSON.load saved_json, symbolize_names: true
+          saved_data = JSON.parse saved_json, symbolize_names: true
           cover_data = saved_data.reject { |k, _| k == :d2 || k.to_s.end_with?('_d2') }
           cover_data.each do |k, v|
             if k == :d1 || k.to_s.end_with?('_d1')
