@@ -73,7 +73,7 @@ module INatGet::Data::DSL
   # @see #finish
   # @return [Range<DateTime>]
   def range date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil
-    (start(date: date, century: century, decade: decade, year: year, quarter: quarter, season: season, month: month, day: day, week: week) .. finish(date: date, century: century, decade: decade, year: year, quarter: quarter, season: season, month: month, day: day, week: week))
+    (start(date: date, century: century, decade: decade, year: year, quarter: quarter, season: season, month: month, day: day, week: week) ... finish(date: date, century: century, decade: decade, year: year, quarter: quarter, season: season, month: month, day: day, week: week))
   end
 
   # @overload start date:
@@ -113,7 +113,7 @@ module INatGet::Data::DSL
       date.to_datetime
     elsif century
       raise ArgumentError, "Too many arguments", caller_locations if year || quarter || season || month || day || week
-      start year: (century * 100 + (decade || 0) * 10)
+      start year: ((century - 1) * 100 + (decade || 0) * 10 + 1)
     elsif year && quarter
       raise ArgumentError, "Too many arguments", caller_locations if season || month || day || week
       start year: year, month: ((quarter - 1) * 3 + 1)
