@@ -11,7 +11,7 @@ obs = observations user: usr, observed: range(year: year), quality_grade: 'resea
 by_taxon = obs % :taxon
 
 File::open 'user_stat.md', 'w' do |file|
-  file.puts '## Отчет для пользователя ' + usr.login
+  file.puts '## Отчет для пользователя ' + usr.login + (usr.name ? " (#{ usr.name })" : '')
   file.puts ''
   by_taxon.each do |ds|
     # Здесь ds.key — это объект Taxon
