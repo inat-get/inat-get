@@ -21,6 +21,57 @@ class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
     def manager = INatGet::Data::Manager::Taxa::instance
 
+    # @group Taxonomy
+
+    def compact_set *values
+      result = ::Set[]
+      values.each do |value|
+        found = result.find { |v| v === value }
+        next if found
+        found = result.find { |v| value === v }
+        result.delete found if found
+        result << value
+      end
+      result
+    end
+
+    # @endgroup
+
   end
+
+  # @group Taxonomy
+
+  # @overload === nil
+  #   @param [nil] nil
+  #   @return [false]
+  # @overload === taxon
+  #   @param [Taxon] taxon
+  #   @return [Boolean]
+  # @overload === item
+  #   @param [Observation, Identification] item
+  #   @return [Boolean]
+  # @overload === other
+  #   @param [Object] other
+  #   @return [nil]
+  # @return [Boolean, nil]
+  def === other
+    case other
+    when nil
+      false
+    when INatGet::Data::Model::Taxon
+      return true if self.id == other.id
+      Taxon.where(id: other.id)
+           .where(id: Taxon.select(:taxon_id)
+                           .from(:taxa_ancestors)
+                           .where(ancestor_id: self.id))
+           .exists?
+    when INatGet::Data::Model::Observation, INatGet::Data::Model::Identification
+      self === value.taxon
+    else
+      nil
+    end
+  end
+
+  # @endgroup
 
 end

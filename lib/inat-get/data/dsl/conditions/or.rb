@@ -126,20 +126,16 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
         second = queries[idx]
         next if second.nil?
         if hash_cover?(current.query, second.query)
-          # pp "CURRENT >= SECOND"
           queries[idx] = nil
           changes_flag = true
           next
         elsif hash_cover?(second.query, current.query)
-          # pp "CURRENT <= SECOND"
           current = nil
           changes_flag = true
           break
         else
           trying = hash_try_merge current.query, second.query
-          # pp({TRYING: trying})
           if trying
-            # cur_helper = current.helper
             current = Query[current.model][ **trying ]
             queries[idx] = nil
             changes_flag = true
@@ -155,7 +151,6 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
 
   # @private
   def hash_cover? first, second
-    # TODO: логика таксонов ancestor_id >= descendant_id
     first.each do |key, value|
       if second.has_key?(key)
         val = second[key]
@@ -176,7 +171,6 @@ class INatGet::Data::DSL::Condition::OR < INatGet::Data::DSL::Condition
 
   # @private
   def hash_try_merge first, second
-    # TODO: логика таксонов
     first = first.dup.compact
     second = second.dup.compact
     result = {}

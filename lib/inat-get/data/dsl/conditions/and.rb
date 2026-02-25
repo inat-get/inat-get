@@ -119,8 +119,6 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
 
   # @private
   def and_merge *queries
-    # TODO: внедрить логику таксонов: ancesor_id & descendant_id => descendant_id
-    # cur_helper = self.model.helper
     query = {}
     queries.map(&:query).each do |q|
       q.compact!
@@ -133,7 +131,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
               return NOTHING
             when Set
               if value.is_a?(Set)
-                query[key] = val & value
+                query[key] = and_merge_sets val, value
               elsif value.is_a?(Range)
                 query[key] = val.keep_if { |v| value.include?(v) }
               else
@@ -159,6 +157,21 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
       query.compact!
     end
     Query[self.model][ **query ]
+  end
+
+  def and_merge_sets left, right
+    sample = left.first
+    return ::Set[] if sample.nil?
+    return left & right unless sample.is_a?(INatGet::Data::Model::Taxon)
+    # Мержим с учетом таксономии
+    result = ::Set[]
+    left.each do |value|
+      result << value if right.exists? { |v| v === value }
+    end
+    right.each do |value|
+      result << value if left.exists? { |v| v === value }
+    end
+    INatGet::Data::Model::Taxon::compact_set(*result)
   end
 
 end
