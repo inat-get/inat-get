@@ -33,8 +33,8 @@ class INatGet::Data::Helper::Field::Rank < INatGet::Data::Helper::Field::Set
     # value.map(&:to_s)
     if value.is_a?(::Range)
       result = {}
-      result[:lrank] = value.begin if value.begin
-      result[:hrank] = value.end   if value.end
+      result[:lrank] = value.begin.to_s if value.begin
+      result[:hrank] = value.end.to_s   if value.end
       result
     else
       value

@@ -142,7 +142,6 @@ class INatGet::Data::Updater
       updated_since = nil
       if found
         updated_since = record.started
-        # pp({ US: updated_since, line: __LINE__ })
       else
         el_record = rq_model.where(endless: el_hash).exclude(full: rq_hash).order(:started.desc).first
         if el_record
@@ -150,7 +149,6 @@ class INatGet::Data::Updater
           saved_data = JSON.parse saved_json, symbolize_names: false
           dates = saved_data.select { |k, _| k == 'd2' || k.end_with?('_d2') }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
           updated_since = [ el_record.started, *dates ].min
-          # pp({ US: updated_since, line: __LINE__ })
         end
       end
       unless updated_since
@@ -162,32 +160,44 @@ class INatGet::Data::Updater
           hashes_by_projects = database[:request_projects].where(project_id: project_ids)
             .group(:request_hash).having { count(project_id) >= project_ids.size }
             .select(:request_hash)
-          dataset = dataset.where(full: hashes_by_projects)
+          cond_by_projects = { full: hashes_by_projects }
+          hashes_any_projects = database[:request_projects].select(:request_hash).distinct
+          cond_without_projects = Sequel.~(full: hashes_any_projects)
+          dataset = dataset.where(Sequel.|(cond_by_projects, cond_without_projects))
         end
         place_ids = query[:place_id]
         if place_ids
           hashes_by_places = database[:request_places].where(place_id: place_ids)
             .group(:request_hash).having { count(place_id) >= place_ids.size }
             .select(:request_hash)
-          dataset = dataset.where(full: hashes_by_places)
+          cond_by_places = { full: hashes_by_places }
+          hashes_any_places = database[:request_places].select(:request_hash).distinct
+          cond_without_places = Sequel.~(full: hashes_any_places)
+          dataset = dataset.where(Sequel.|(cond_by_places, cond_without_places))
         end
         taxon_ids = query[:taxon_id]
         if taxon_ids
           hashes_by_taxa = database[:request_taxa].where(taxon_id: taxon_ids)
             .group(:request_hash).having { count(taxon_id) >= taxon_ids.size }
             .select(:request_hash)
-          dataset = dataset.where(full: hashes_by_taxa)
+          cond_by_taxa = { full: hashes_by_taxa }
+          hashes_any_taxa = database[:request_taxa].select(:request_hash).distinct
+          cond_without_taxa = Sequel.~(full: hashes_any_taxa)
+          dataset = dataset.where(Sequel.|(cond_by_taxa, cond_without_taxa))
         end
         user_ids = query[:user_id]
         if user_ids
           hashes_by_users = database[:request_users].where(user_id: user_ids)
             .group(:request_hash).having { count(user_id) >= user_ids.size }
             .select(:request_hash)
-          dataset = dataset.where(full: hashes_by_users)
+          cond_by_users = { full: hashes_by_users }
+          hashes_any_users = database[:request_users].select(:request_hash).distinct
+          cond_without_users = Sequel.~(full: hashes_any_users)
+          dataset = dataset.where(Sequel.|(cond_by_users, cond_without_users))
         end
         dataset.order(:started.desc).limit(10).each do |rec|
           saved_json = rec.query
-          saved_data = JSON.parse saved_json, symbolize_names: true
+          saved_data = JSON.parse(saved_json, symbolize_names: true)[:query]
           cover_data = saved_data.reject { |k, _| k == :d2 || k.to_s.end_with?('_d2') }
           cover_data.each do |k, v|
             if k == :d1 || k.to_s.end_with?('_d1')
@@ -197,7 +207,6 @@ class INatGet::Data::Updater
           if query_covers?(cover_data, query)
             dates = saved_data.select { |k, _| k == "d2" || k.end_with?("_d2") }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
             updated_since = [rec.started, *dates].min
-            # pp({ US: updated_since, line: __LINE__ })
             break
           end
         end
