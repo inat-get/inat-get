@@ -80,15 +80,14 @@ end
 usr = user 'shikhalev'
 plc = place 'artinskiy-gorodskoy-okrug-osm-2023-sv-ru'
 
-obs_full = observations place: plc, quality_grade: 'research'
+obs_full = observations place: plc, quality_grade: 'research', rank: (.. Rank.complex)
 lst_full = obs_full % :taxon
-# Фокус-покус: если поменять местами строку выше и строку ниже, итоговый результат
-#  не изменится, но время выполнения увеличится примерно в два раза...
-#  Увы, механизм кэширования пока не совершенен.
-obs_user = obs_full.where user: usr
+
+obs_user = observations place: plc, quality_grade: "research", rank: (.. Rank.complex), user: usr
 lst_user = obs_user % :taxon
 
 lst_other = lst_full - lst_user
+lst_other.sort! { |ds| -ds.count }
 
 File::open "#{ name }.md", 'w' do |file|
   file.puts '## Недонайденные'
