@@ -296,8 +296,8 @@
       <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_faraday'>faraday</span>
-  <span class='id identifier rubyid_tmp_logger'>tmp_logger</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Logger</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>apilog.log</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>level:</span> <span class='symbol'>:debug</span>
-  <span class='ivar'>@faraday</span> <span class='op'>||=</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+  <span class='comment'># tmp_logger = ::Logger::new &#39;common.log&#39;, level: :info
+</span>  <span class='ivar'>@faraday</span> <span class='op'>||=</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:retry</span><span class='comma'>,</span>
               <span class='label'>max:</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:max</span><span class='rparen'>)</span><span class='comma'>,</span>
               <span class='label'>interval:</span> <span class='const'>IS</span><span class='op'>::</span><span class='const'>Duration</span><span class='op'>::</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:interval</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span>
@@ -305,8 +305,8 @@
               <span class='label'>backoff_factor:</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:backoff</span><span class='rparen'>)</span><span class='comma'>,</span>
               <span class='label'>exceptions:</span> <span class='lbracket'>[</span><span class='const'>Faraday</span><span class='op'>::</span><span class='const'>TimeoutError</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>ConnectionFailed</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>SSLError</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>ClientError</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:url_encoded</span>
-    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span> <span class='symbol'>:logger</span><span class='comma'>,</span> <span class='id identifier rubyid_tmp_logger'>tmp_logger</span><span class='comma'>,</span> <span class='label'>bodies:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>headers:</span> <span class='kw'>true</span>
-    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_default_adapter'>default_adapter</span>
+    <span class='comment'># f.response :logger, tmp_logger, bodies: true, headers: true
+</span>    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_default_adapter'>default_adapter</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -397,7 +397,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Feb 25 07:19:36 2026 by
+  Generated on Thu Feb 26 03:17:04 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>

@@ -151,8 +151,6 @@
   
   
     
-      <span class="note title readonly">readonly</span>
-    
     
   
   
@@ -319,8 +317,6 @@
       <pre class="lines">
 
 
-19
-20
 21
 22
 23
@@ -331,10 +327,12 @@
 28
 29
 30
-31</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
   <span class='ivar'>@config</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span>
@@ -386,12 +384,12 @@
       <pre class="lines">
 
 
-33
-34
-35</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_db'>db</span>
   <span class='ivar'>@db</span>
@@ -402,11 +400,11 @@
 </div>
     
       
-      <span id=""></span>
+      <span id="name=-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="name-instance_method">
   
-    #<strong>name</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>name</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -428,12 +426,12 @@
       <pre class="lines">
 
 
-17
-18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -507,12 +505,12 @@
       <pre class="lines">
 
 
-69
-70
-71</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span>
   <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="ConsoleLogger.html" title="INatGet::App::ConsoleLogger (class)">ConsoleLogger</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ConsoleLogger.html#initialize-instance_method" title="INatGet::App::ConsoleLogger#initialize (method)">new</a></span></span> <span class='ivar'>@console</span><span class='comma'>,</span> <span class='label'>progname:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
@@ -537,8 +535,6 @@
       <pre class="lines">
 
 
-35
-36
 37
 38
 39
@@ -567,10 +563,12 @@
 62
 63
 64
-65</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prepare'>prepare</span>
   <span class='const'>Thread</span><span class='op'>::</span><span class='id identifier rubyid_current'>current</span><span class='lbracket'>[</span><span class='symbol'>:api</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@api</span>
@@ -587,14 +585,14 @@
     <span class='kw'>end</span>
     <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PRAGMA journal_mode=WAL</span><span class='tstring_end'>&#39;</span></span>
     <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PRAGMA synchronous=NORMAL</span><span class='tstring_end'>&#39;</span></span>
-    <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PRAGMA busy_timeout=5000</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PRAGMA busy_timeout=5000000</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_require_valid_table'>require_valid_table</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_strict_param_setting'>strict_param_setting</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_raise_on_save_failure'>raise_on_save_failure</span> <span class='op'>=</span> <span class='kw'>true</span>
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='ivar'>@db</span>
-  <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_loggers'>loggers</span> <span class='op'>&lt;&lt;</span> <span class='op'>::</span><span class='const'>Logger</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>debugdb.log</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>level:</span> <span class='symbol'>:debug</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/models/observation</span><span class='tstring_end'>&#39;</span></span>
+  <span class='comment'># Sequel::Model.db.loggers &lt;&lt; ::Logger::new(&quot;common.log&quot;, level: :info)
+</span>  <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/models/observation</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/managers/places</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/managers/projects</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/managers/users</span><span class='tstring_end'>&#39;</span></span>
@@ -613,7 +611,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Feb 25 07:19:36 2026 by
+  Generated on Thu Feb 26 03:17:04 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
