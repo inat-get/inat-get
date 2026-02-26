@@ -76,7 +76,6 @@ class INatGet::Data::Updater
     interval = parse_duration(@config.dig(:caching, :refs, self.manager.endpoint) || @config.dig(:caching, :refs, :default))
     if interval
       point = (DateTime::now.to_time - interval).to_datetime
-      # pp({POINT: point, INTERVAL: interval})
       # TODO: учесть slugs и uuids
       fresh = self.model.where(id: ids, cached: (point .. )).select_map(:id)
       ids -= fresh
@@ -350,22 +349,22 @@ class INatGet::Data::Updater
 
   # @private
   def set_request_projects record, ids
-    record.send :project_pks=, Array(*ids)
+    record.send :project_pks=, Array(ids)
   end
 
   # @private
   def set_request_places record, ids
-    record.send :place_pks=, Array(*ids)
+    record.send :place_pks=, Array(ids)
   end
 
   # @private
   def set_request_taxa record, ids
-    record.send :taxon_pks=, Array(*ids)
+    record.send :taxon_pks=, Array(ids)
   end
 
   # @private
   def set_request_users record, ids
-    record.send :user_pks=, Array(*ids)
+    record.send :user_pks=, Array(ids)
   end
 
   # @private
