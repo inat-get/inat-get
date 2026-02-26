@@ -26,7 +26,7 @@ class INatGet::App::Server::Console < INatGet::App::Server
       separator ' of '
       column :total, align: :left, summary: :total
       separator
-      column :percent, align: :right, format: '%d%%', summary: :percent
+      column :percent, align: :right, func: :percent, format: '%d%%', summary: :percent
       separator
       column :estimated, func: :estimated, align: :right, format: :duration, summary: :elapsed
       separator

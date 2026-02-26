@@ -26,7 +26,7 @@ class INatGet::Data::Parser::Place < INatGet::Data::Parser
   def model() = INatGet::Data::Model::Place
 
   def fake id
-    self.model.create id: id, name: "Fake \##{ id }", display_name: "Fake \##{ id }", slug: "fake-#{ id }", cached: DateTime::new
+    self.model.create id: id, name: "Fake \##{ id }", display_name: "Fake \##{ id }", slug: "fake-#{ id }", cached: DateTime::now
   end
 
 end

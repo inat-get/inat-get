@@ -48,7 +48,7 @@ class INatGet::App::Server::API < INatGet::App::Server
   end
 
   def faraday
-    tmp_logger = ::Logger::new 'apilog.log', level: :debug
+    # tmp_logger = ::Logger::new 'common.log', level: :info
     @faraday ||= Faraday::new do |f|
       f.request :retry,
                 max: @config.dig(:api, :retry, :max),
@@ -57,7 +57,7 @@ class INatGet::App::Server::API < INatGet::App::Server
                 backoff_factor: @config.dig(:api, :retry, :backoff),
                 exceptions: [Faraday::TimeoutError, Faraday::ConnectionFailed, Faraday::SSLError, Faraday::ClientError]
       f.request :url_encoded
-      f.response :logger, tmp_logger, bodies: true, headers: true
+      # f.response :logger, tmp_logger, bodies: true, headers: true
       f.adapter Faraday::default_adapter
     end
   end

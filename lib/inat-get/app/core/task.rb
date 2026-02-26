@@ -14,7 +14,9 @@ class INatGet::App::Task
 
   include INatGet::Data::DSL
 
-  attr_reader :path, :name
+  attr_reader :path
+  
+  attr_accessor :name
 
   def initialize path, config, **opts
     @config = config
@@ -47,13 +49,13 @@ class INatGet::App::Task
       end
       @db.execute 'PRAGMA journal_mode=WAL'
       @db.execute 'PRAGMA synchronous=NORMAL'
-      @db.execute 'PRAGMA busy_timeout=5000'
+      @db.execute 'PRAGMA busy_timeout=5000000'
     end
     Sequel::Model.require_valid_table = false
     Sequel::Model.strict_param_setting = false
     Sequel::Model.raise_on_save_failure = true
     Sequel::Model.db = @db
-    Sequel::Model.db.loggers << ::Logger::new("debugdb.log", level: :debug)
+    # Sequel::Model.db.loggers << ::Logger::new("common.log", level: :info)
     require_relative '../../data/models/observation'
     require_relative '../../data/managers/places'
     require_relative '../../data/managers/projects'

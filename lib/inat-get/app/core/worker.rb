@@ -52,12 +52,12 @@ class INatGet::App::Worker
       queue = tasks.dup
       while queue.size > 0 && !@shutdown
         if self.count >= config.dig(:workers, :limit)
-          sleep 0.01
+          sleep 0.1
           next
         end
         task = queue.shift
         self.create task, **params
-        sleep 0.01
+        sleep 0.1
       end
       if @shutdown
         @detachers.each do |dt|

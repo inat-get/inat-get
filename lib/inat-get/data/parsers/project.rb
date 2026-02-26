@@ -15,6 +15,7 @@ require_relative 'defs/links'
 require_relative 'defs/prjrules'
 require_relative 'defs/prjsearch'
 require_relative 'defs/subprojects'
+require_relative 'defs/prjmembers'
 require_relative '../models/project'
 
 class INatGet::Data::Parser::Project < INatGet::Data::Parser
@@ -30,7 +31,8 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
   part Part::Cached
 
   part Part::Children, :admins, model: INatGet::Data::Model::ProjectAdmin
-  part Part::Links, :members, model: INatGet::Data::Model::User, source_ids: :user_ids
+  # part Part::Links, :members, model: INatGet::Data::Model::User, source_ids: :user_ids
+  # part Part::PrjMembers
   part Part::PrjRules
   part Part::PrjSearch
   part Part::Subprojects

@@ -75,7 +75,8 @@ class INatGet::Data::Updater
     return [] if ids.empty?
     interval = parse_duration(@config.dig(:caching, :refs, self.manager.endpoint) || @config.dig(:caching, :refs, :default))
     if interval
-      point = DateTime::now - interval
+      point = (DateTime::now.to_time - interval).to_datetime
+      # pp({POINT: point, INTERVAL: interval})
       # TODO: учесть slugs и uuids
       fresh = self.model.where(id: ids, cached: (point .. )).select_map(:id)
       ids -= fresh
@@ -116,7 +117,7 @@ class INatGet::Data::Updater
     rq_model = INatGet::Data::Model::Request
     record = nil
     found = false
-    rq_model.db.transaction(isolation: :committed) do
+    rq_model.db.transaction(isolation: :committed, mode: :immediate) do
       record = rq_model.with_pk(rq_hash)
       if record
         while record.busy
@@ -141,7 +142,7 @@ class INatGet::Data::Updater
       updated_since = nil
       if found
         updated_since = record.started
-        pp({ US: updated_since, line: __LINE__ })
+        # pp({ US: updated_since, line: __LINE__ })
       else
         el_record = rq_model.where(endless: el_hash).exclude(full: rq_hash).order(:started.desc).first
         if el_record
@@ -149,7 +150,7 @@ class INatGet::Data::Updater
           saved_data = JSON.parse saved_json, symbolize_names: false
           dates = saved_data.select { |k, _| k == 'd2' || k.end_with?('_d2') }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
           updated_since = [ el_record.started, *dates ].min
-          pp({ US: updated_since, line: __LINE__ })
+          # pp({ US: updated_since, line: __LINE__ })
         end
       end
       unless updated_since
@@ -278,7 +279,7 @@ class INatGet::Data::Updater
             console.update total: current_total, status: 'update...'
             Thread::current[:total] = current_total
           end
-          self.model.db.transaction do
+          # self.model.db.transaction(isolation: :committed, mode: :immediate) do
             check_shutdown! { self.model.db.rollback_on_exit }
             response[:results].each do |data| 
               self.parser.parse! data
@@ -286,7 +287,7 @@ class INatGet::Data::Updater
               console.update current: current_current, status: 'update...'
               Thread::current[:current] = current_current
             end
-          end
+          # end
           result = :done if response[:total_results] <= response[:per_page]
           id_above = response[:results].last&.[](:id)
         end
@@ -306,7 +307,7 @@ class INatGet::Data::Updater
             console.update total: current_total, status: 'update...'
             Thread::current[:total] = current_total
           end
-          self.model.db.transaction do
+          # self.model.db.transaction(isolation: :committed, mode: :immediate) do
             check_shutdown! { self.model.db.rollback_on_exit }
             response[:results].each do |data|
               self.parser.parse! data
@@ -314,7 +315,7 @@ class INatGet::Data::Updater
               console.update current: current_current, status: 'update...'
               Thread::current[:current] = current_current
             end
-          end
+          # end
           processed = response[:page] * response[:per_page]
           result = :done if processed >= response[:total_results]
           page = response[:page] + 1

@@ -107,13 +107,18 @@ class INatGet::Data::Parser
     attributes.each do |a|
       fields.merge! a.parse(source)
     end
-    record = upsert fields
+    record = nil
+    # model.db.transaction(isolation: :committed, mode: :immediate) do
+      record = upsert fields
+    # end
     fields = {}
     associations.each do |a|
       res = a.parse(record, source)
       fields.merge! res if res
     end
-    record.update(fields) || record
+    # model.db.transaction(isolation: :committed, mode: :immediate) do
+      record.update(fields) || record
+    # end
   end
 
   # @endgroup
