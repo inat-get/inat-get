@@ -197,7 +197,7 @@ class INatGet::Data::Updater
           if query_covers?(cover_data, query)
             dates = saved_data.select { |k, _| k == "d2" || k.end_with?("_d2") }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
             updated_since = [rec.started, *dates].min
-            pp({ US: updated_since, line: __LINE__ })
+            # pp({ US: updated_since, line: __LINE__ })
             break
           end
         end
