@@ -13,6 +13,7 @@ require_relative 'defs/model'
 require_relative 'defs/cached'
 require_relative 'defs/children'
 require_relative 'defs/links'
+require_relative 'defs/assmodel'
 
 class INatGet::Data::Parser::Observation < INatGet::Data::Parser
 
