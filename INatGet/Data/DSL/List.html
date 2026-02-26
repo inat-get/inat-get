@@ -168,7 +168,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#each-instance_method" title="#each (instance method)">#<strong>each</strong> {|ds| ... } &#x21d2; void </a>
+      <a href="#each-instance_method" title="#each (instance method)">#<strong>each</strong> {|ds| ... } &#x21d2; self </a>
     
 
     
@@ -583,6 +583,59 @@
       
     </ul>
   
+    <h2>
+      Sorting
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sort-instance_method" title="#sort (instance method)">#<strong>sort</strong> {|ds| ... } &#x21d2; List </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sort!-instance_method" title="#sort! (instance method)">#<strong>sort!</strong> {|ds| ... } &#x21d2; self </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
 
 
   
@@ -597,6 +650,12 @@
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">INatGet::Data::DSL</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../DSL.html#AND-instance_method" title="INatGet::Data::DSL#AND (method)">#AND</a></span>, <span class='object_link'><a href="../DSL.html#ANYTHING-instance_method" title="INatGet::Data::DSL#ANYTHING (method)">#ANYTHING</a></span>, <span class='object_link'><a href="../DSL.html#NOT-instance_method" title="INatGet::Data::DSL#NOT (method)">#NOT</a></span>, <span class='object_link'><a href="../DSL.html#NOTHING-instance_method" title="INatGet::Data::DSL#NOTHING (method)">#NOTHING</a></span>, <span class='object_link'><a href="../DSL.html#OR-instance_method" title="INatGet::Data::DSL#OR (method)">#OR</a></span>, <span class='object_link'><a href="../DSL.html#Q-instance_method" title="INatGet::Data::DSL#Q (method)">#Q</a></span>, <span class='object_link'><a href="../DSL.html#finish-instance_method" title="INatGet::Data::DSL#finish (method)">#finish</a></span>, <span class='object_link'><a href="../DSL.html#identification-instance_method" title="INatGet::Data::DSL#identification (method)">#identification</a></span>, <span class='object_link'><a href="../DSL.html#identifications-instance_method" title="INatGet::Data::DSL#identifications (method)">#identifications</a></span>, <span class='object_link'><a href="../DSL.html#now-instance_method" title="INatGet::Data::DSL#now (method)">#now</a></span>, <span class='object_link'><a href="../DSL.html#observation-instance_method" title="INatGet::Data::DSL#observation (method)">#observation</a></span>, <span class='object_link'><a href="../DSL.html#observations-instance_method" title="INatGet::Data::DSL#observations (method)">#observations</a></span>, <span class='object_link'><a href="../DSL.html#place-instance_method" title="INatGet::Data::DSL#place (method)">#place</a></span>, <span class='object_link'><a href="../DSL.html#places-instance_method" title="INatGet::Data::DSL#places (method)">#places</a></span>, <span class='object_link'><a href="../DSL.html#project-instance_method" title="INatGet::Data::DSL#project (method)">#project</a></span>, <span class='object_link'><a href="../DSL.html#projects-instance_method" title="INatGet::Data::DSL#projects (method)">#projects</a></span>, <span class='object_link'><a href="../DSL.html#range-instance_method" title="INatGet::Data::DSL#range (method)">#range</a></span>, <span class='object_link'><a href="../DSL.html#start-instance_method" title="INatGet::Data::DSL#start (method)">#start</a></span>, <span class='object_link'><a href="../DSL.html#taxa-instance_method" title="INatGet::Data::DSL#taxa (method)">#taxa</a></span>, <span class='object_link'><a href="../DSL.html#taxon-instance_method" title="INatGet::Data::DSL#taxon (method)">#taxon</a></span>, <span class='object_link'><a href="../DSL.html#today-instance_method" title="INatGet::Data::DSL#today (method)">#today</a></span>, <span class='object_link'><a href="../DSL.html#user-instance_method" title="INatGet::Data::DSL#user (method)">#user</a></span>, <span class='object_link'><a href="../DSL.html#users-instance_method" title="INatGet::Data::DSL#users (method)">#users</a></span>, <span class='object_link'><a href="../DSL.html#version-instance_method" title="INatGet::Data::DSL#version (method)">#version</a></span>, <span class='object_link'><a href="../DSL.html#version!-instance_method" title="INatGet::Data::DSL#version! (method)">#version!</a></span>, <span class='object_link'><a href="../DSL.html#version%3F-instance_method" title="INatGet::Data::DSL#version? (method)">#version?</a></span>, <span class='object_link'><a href="../DSL.html#version_alias-instance_method" title="INatGet::Data::DSL#version_alias (method)">#version_alias</a></span></p>
 
+  
+  
+  
+  
+  
+  
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
@@ -639,14 +698,6 @@
       <pre class="lines">
 
 
-204
-205
-206
-207
-208
-209
-210
-211
 212
 213
 214
@@ -659,10 +710,18 @@
 221
 222
 223
-224</pre>
+224
+225
+226
+227
+228
+229
+230
+231
+232</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 212</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_commons'>commons</span> <span class='id identifier rubyid_num'>num</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_src'>src</span>
   <span class='id identifier rubyid_keys'>keys</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -733,12 +792,12 @@
       <pre class="lines">
 
 
-113
-114
-115</pre>
+118
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span>
   <span class='id identifier rubyid_copy'>copy</span><span class='period'>.</span><span class='id identifier rubyid_mul!'>mul!</span> <span class='id identifier rubyid_other'>other</span>
@@ -785,12 +844,12 @@
       <pre class="lines">
 
 
-108
-109
-110</pre>
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='op'>+</span> <span class='id identifier rubyid_other'>other</span>
   <span class='id identifier rubyid_copy'>copy</span><span class='period'>.</span><span class='id identifier rubyid_add!'>add!</span> <span class='id identifier rubyid_other'>other</span>
@@ -837,12 +896,12 @@
       <pre class="lines">
 
 
-118
-119
-120</pre>
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span>
   <span class='id identifier rubyid_copy'>copy</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span> <span class='id identifier rubyid_other'>other</span>
@@ -889,12 +948,12 @@
       <pre class="lines">
 
 
-26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span> <span class='id identifier rubyid_key'>key</span>
   <span class='ivar'>@datasets</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span>
@@ -941,19 +1000,19 @@
       <pre class="lines">
 
 
-45
-46
-47
-48
-49
 50
 51
 52
 53
-54</pre>
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add!'>add!</span> <span class='id identifier rubyid_other'>other</span>
   <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span>
@@ -1011,12 +1070,12 @@
       <pre class="lines">
 
 
-139
-140
-141</pre>
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 139</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span>
   <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -1067,15 +1126,23 @@
       <pre class="lines">
 
 
-40
 41
-42</pre>
+42
+43
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_datasets'>datasets</span>
-  <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
+  <span class='kw'>if</span> <span class='ivar'>@sorter</span>
+    <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@sorter</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1085,7 +1152,7 @@
       <div class="method_details ">
   <h3 class="signature " id="each-instance_method">
   
-    #<strong>each</strong> {|ds| ... } &#x21d2; <tt>void</tt> 
+    #<strong>each</strong> {|ds| ... } &#x21d2; <tt>self</tt> 
   
 
   
@@ -1093,7 +1160,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>
+    
 
   </div>
 </div>
@@ -1131,6 +1198,19 @@
     </li>
   
 </ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1138,21 +1218,27 @@
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136</pre>
+136
+137
+138
+139
+140
+141
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-  <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_ds'>ds</span>
+  <span class='kw'>if</span> <span class='ivar'>@sorter</span>
+    <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_sort_by'>sort_by</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@sorter</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_ds'>ds</span> <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_ds'>ds</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1196,12 +1282,12 @@
       <pre class="lines">
 
 
-189
-190
-191</pre>
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_empty?'>empty?</span>
   <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -1280,13 +1366,13 @@
       <pre class="lines">
 
 
-172
-173
-174
-175</pre>
+180
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 172</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 180</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1366,17 +1452,17 @@
       <pre class="lines">
 
 
-148
-149
-150
-151
-152
-153
-154
-155</pre>
+156
+157
+158
+159
+160
+161
+162
+163</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filter!'>filter!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1460,13 +1546,13 @@
       <pre class="lines">
 
 
-180
-181
-182
-183</pre>
+188
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 188</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filter_keys'>filter_keys</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1546,17 +1632,17 @@
       <pre class="lines">
 
 
-160
-161
-162
-163
-164
-165
-166
-167</pre>
+168
+169
+170
+171
+172
+173
+174
+175</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 168</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_filter_keys!'>filter_keys!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1608,12 +1694,12 @@
       <pre class="lines">
 
 
-185
-186
-187</pre>
+193
+194
+195</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 193</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_key?'>has_key?</span> <span class='id identifier rubyid_key'>key</span>
   <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span> <span class='id identifier rubyid_key'>key</span>
@@ -1660,12 +1746,12 @@
       <pre class="lines">
 
 
-21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keys'>keys</span>
   <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
@@ -1712,11 +1798,6 @@
       <pre class="lines">
 
 
-57
-58
-59
-60
-61
 62
 63
 64
@@ -1732,10 +1813,15 @@
 74
 75
 76
-77</pre>
+77
+78
+79
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mul!'>mul!</span> <span class='id identifier rubyid_other'>other</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1756,6 +1842,158 @@
     <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='ivar'>@datasets</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sort-instance_method">
+  
+    #<strong>sort</strong> {|ds| ... } &#x21d2; <tt><span class='object_link'><a href="" title="INatGet::Data::DSL::List (class)">List</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>ds</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="INatGet::Data::DSL::List (class)">List</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+240
+241
+242
+243
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 240</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sort'>sort</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='id identifier rubyid_copy'>copy</span><span class='period'>.</span><span class='id identifier rubyid_sort!'>sort!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_copy'>copy</span><span class='period'>.</span><span class='id identifier rubyid_sort!'>sort!</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sort!-instance_method">
+  
+    #<strong>sort!</strong> {|ds| ... } &#x21d2; <tt>self</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>ds</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+250
+251
+252
+253
+254
+255
+256
+257</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 250</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sort!'>sort!</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@sorter</span> <span class='op'>=</span> <span class='id identifier rubyid_block'>block</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@sorter</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
   <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1800,11 +2038,6 @@
       <pre class="lines">
 
 
-80
-81
-82
-83
-84
 85
 86
 87
@@ -1812,10 +2045,15 @@
 89
 90
 91
-92</pre>
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sub!'>sub!</span> <span class='id identifier rubyid_other'>other</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
@@ -1872,16 +2110,16 @@
       <pre class="lines">
 
 
-95
-96
-97
-98
-99
 100
-101</pre>
+101
+102
+103
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_dataset'>to_dataset</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='const'>NOTHING</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -1932,12 +2170,12 @@
       <pre class="lines">
 
 
-197
-198
-199</pre>
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/list.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
   <span class='ivar'>@datasets</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -1952,7 +2190,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Feb 26 03:26:09 2026 by
+  Generated on Thu Feb 26 09:27:36 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
