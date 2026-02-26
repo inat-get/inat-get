@@ -215,7 +215,7 @@ class INatGet::Data::Updater
     end
 
     # Освобождаем requests
-    rq_model.db.transaction(isolation: :committed) do
+    rq_model.db.transaction(isolation: :committed, mode: :immediate) do
       if result == :done
         record.update busy: nil, started: start_point, finished: DateTime::now
       else
