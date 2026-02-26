@@ -22,4 +22,12 @@ class INatGet::Data::Model::User < INatGet::Data::Model
 
   end
 
+  include Comparable
+
+  def <=> other
+    return nil unless other.is_a?(INatGet::Data::Model::User)
+    return 0 if self.id == other.id
+    self.login <=> other.login
+  end
+
 end

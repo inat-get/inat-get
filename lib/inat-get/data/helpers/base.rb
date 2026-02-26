@@ -14,6 +14,9 @@ class INatGet::Data::Helper
   # @return [INatGet::Data::Manager]
   def manager() = raise NotImplementedError, "Not implemented method 'manager' in abstract class", caller_locations
 
+  # @return [Symbol]
+  def endpoint() = self.manager.endpoint
+
   # @endgroup
 
   # @group Interface

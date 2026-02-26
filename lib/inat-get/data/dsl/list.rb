@@ -13,6 +13,7 @@ class INatGet::Data::DSL::List
     datasets.each do |ds|
       @datasets[ds.key] = ds
     end
+    @sorter = nil
   end
 
   # @group Enumerable
@@ -38,7 +39,11 @@ class INatGet::Data::DSL::List
 
   # @return [Array<Dataset>]
   def datasets
-    @datasets.values
+    if @sorter
+      @datasets.values.sort_by(&@sorter)
+    else
+      @datasets.values
+    end
   end
 
   # @return [self]
@@ -125,14 +130,17 @@ class INatGet::Data::DSL::List
 
   # @group Enumerable
 
-  # @return [void]
+  # @return [self]
   # @yield Block
   # @yieldparam [Dataset] ds
   def each
     return to_enum(__method__) unless block_given?
-    @datasets.each do |_, ds|
-      yield ds
+    if @sorter
+      @datasets.values.sort_by(&@sorter).each { |ds| yield ds }
+    else
+      @datasets.each { |_, ds| yield ds }
     end
+    self
   end
 
   # @return [Integer]
@@ -221,6 +229,31 @@ class INatGet::Data::DSL::List
       result.add! value.reduce(:+)
     end
     result
+  end
+
+  # @endgroup
+
+  # @group Sorting
+
+  # @yieldparam [Dataset] ds
+  # @return [List]
+  def sort &block
+    if block_given?
+      copy.sort!(&block)
+    else
+      copy.sort!
+    end
+  end
+
+  # @yieldparam [Dataset] ds
+  # @return [self]
+  def sort! &block
+    if block_given?
+      @sorter = block
+    else
+      @sorter = lambda { |ds| ds.key }
+    end
+    self
   end
 
   # @endgroup

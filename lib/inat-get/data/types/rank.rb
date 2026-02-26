@@ -46,6 +46,7 @@ class INatGet::Data::Enum::Rank < IS::Enum
   define :form,            5
   define :infrahybrid,     5
 
+  # @return [Numeric]
   def level
     @attrs[:level] || order_no
   end

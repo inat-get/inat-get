@@ -103,7 +103,7 @@ class INatGet::Data::Updater
     return execute_request(endpoint, query) unless endpoint == self.endpoint
 
     # Формируем ключи и данные
-    query.transform_values! { |v| v.is_a?(Enumerable) ? v.sort : v }
+    query.transform_values! { |v| v.is_a?(Enumerable) && !v.is_a?(::Range) ? v.sort : v }
     rq_json = JSON.generate({ endpoint: endpoint, query: query }, sort_keys: true, space: '')
     rq_hash = Digest::MD5::hexdigest rq_json
     el_query = query.reject { |k, _| k == :d2 || k.to_s.end_with?('_d2') }

@@ -24,4 +24,12 @@ class INatGet::Data::Model::Place < INatGet::Data::Model
 
   end
 
+  include Comparable
+
+  def <=> other
+    return nil unless other.is_a?(INatGet::Data::Model::Place)
+    return 0 if self.id == other.id
+    self.slug <=> other.slug
+  end
+
 end

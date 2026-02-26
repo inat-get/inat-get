@@ -94,4 +94,12 @@ class INatGet::Data::Model::Project < INatGet::Data::Model
 
   end
 
+  include Comparable
+
+  def <=> other
+    return nil unless other.is_a?(INatGet::Data::Model::Project)
+    return 0 if self.id == other.id
+    self.slug <=> other.slug
+  end
+
 end

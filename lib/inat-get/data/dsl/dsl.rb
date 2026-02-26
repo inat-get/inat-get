@@ -5,10 +5,14 @@ require 'rubygems'
 
 require_relative '../../info'
 require_relative 'conditions'
+require_relative '../types/rank'
+require_relative '../types/iconic'
 
 module INatGet::Data; end
 
 module INatGet::Data::DSL
+
+  include INatGet::Data::Enum
 
   # @group System Info
 

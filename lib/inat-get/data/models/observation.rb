@@ -50,4 +50,11 @@ class INatGet::Data::Model::Observation < INatGet::Data::Model
 
   end
 
+  include Comparable
+
+  def <=> other
+    return nil unless other.is_a?(INatGet::Data::Model::Observation)
+    self.id <=> other.id
+  end
+
 end

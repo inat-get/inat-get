@@ -74,4 +74,21 @@ class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
   # @endgroup
 
+  # @group Sorting
+
+  # @return [INatGet::Data::Enum::Iconic]
+  def iconic
+    INatGet::Data::Enum::Iconic::by_id self.id
+  end
+
+  include Comparable
+
+  def <=> other
+    return nil unless other.is_a?(INatGet::Data::Model::Taxon)
+    return 0 if other.id == self.id
+    [ self.iconic, self.name ] <=> [ other.iconic, other.name ]
+  end
+
+  # @endgroup
+
 end
