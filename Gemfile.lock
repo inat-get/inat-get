@@ -101,7 +101,7 @@ DEPENDENCIES
   rspec (~> 3.13)
   simplecov (~> 0.22)
   sqlite3 (~> 2.9)
-  yard
+  yard (~> 0.9.37)
   yard-is-sequel
 
 CHECKSUMS
