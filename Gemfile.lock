@@ -76,7 +76,7 @@ GEM
     sqlite3 (2.9.0-x86_64-linux-musl)
     tty-screen (0.8.2)
     uri (1.1.1)
-    yard (0.9.38)
+    yard (0.9.37)
     yard-is-sequel (0.8.0)
       sequel (~> 5.100)
       sqlite3 (~> 2.9)
@@ -101,7 +101,7 @@ DEPENDENCIES
   rspec (~> 3.13)
   simplecov (~> 0.22)
   sqlite3 (~> 2.9)
-  yard (~> 0.9.37)
+  yard (= 0.9.37)
   yard-is-sequel
 
 CHECKSUMS
@@ -145,7 +145,7 @@ CHECKSUMS
   sqlite3 (2.9.0-x86_64-linux-musl) sha256=ef716ba7a66d7deb1ccc402ac3a6d7343da17fac862793b7f0be3d2917253c90
   tty-screen (0.8.2) sha256=c090652115beae764336c28802d633f204fb84da93c6a968aa5d8e319e819b50
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
-  yard (0.9.38) sha256=721fb82afb10532aa49860655f6cc2eaa7130889df291b052e1e6b268283010f
+  yard (0.9.37) sha256=a6e910399e78e613f80ba9add9ba7c394b1a935f083cccbef82903a3d2a26992
   yard-is-sequel (0.8.0) sha256=485c00a5c62e8e23cbc5bbe0630c698d31356c56b11242dc952cae35a0ef3175
 
 BUNDLED WITH
