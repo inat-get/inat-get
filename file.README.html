@@ -64,7 +64,135 @@
 <a href="https://github.com/inat-get/inat-get/actions/workflows/ruby.yml"><img src="https://github.com/inat-get/inat-get/actions/workflows/ruby.yml/badge.svg" alt="Ruby"></a> 
 <img src="coverage-badge.svg" alt="Coverage"></p>
 
-<h2 id="usage">Usage</h2>
+<h2 id="what-is-this-and-why">What is this and why?</h2>
+
+<p><code>inat-get</code> is a utility for fetching and analyzing data from <strong><a href="https://www.inaturalist.org/">iNaturalist</a></strong>.</p>
+
+<p>The basic approach is to form queries as <em>declaratively</em> as possible and get reports,
+without giving up advanced capabilities. This leads us to the concept of <strong>DSL</strong> — Domain Specific Language —
+and user scripts using it. It is assumed that the user will need a <em>minimal</em>
+familiarity with Ruby syntax, but if desired, they can use the full power of the language.</p>
+
+<p>The second crucial aspect is <strong>caching</strong>, designed to minimize duplication of
+requested data without compromising freshness. For caching, a local database is used,
+which potentially can be from a fairly wide range of supported DBMS: SQLite, PostgreSQL, MySQL
+and others.</p>
+
+<p><em>However, it should be noted that version 0.9.0 was tested only on SQLite3, full testing
+with various DBMS is planned for version 0.9.4...</em></p>
+
+<p>The third key point is <strong>parallel execution</strong> of multiple user scripts: first,
+almost all computers are multi-core now, and second, while one is waiting for a response from the API, others can
+calmly do processing. At the same time, the API requests themselves go through a single synchronous point to strictly
+comply with the restrictions imposed by the iNaturalist API itself, and not get banned for incorrect use.</p>
+
+<h3 id="what-is-not-and-will-not-be">What is not and will not be</h3>
+
+<ul>
+<li><p><em>Authorization and data submission.</em> This is a tool for analysis, not for automating any actions
+with iNaturalist.</p></li>
+<li><p><em>Neural network integration.</em> Strict analytics and neural networks should not be mixed. Of course, integration
+&quot;from the other side&quot; is possible, i.e., fetching data and then using them with neural networks.</p></li>
+<li><p><em>Native versions for other systems.</em> Currently the script works only on Linux (though possibly under
+other unix-like systems, not checked). Native cross-platform support is not planned, but containerization
+is planned (though not soon), which will allow expanding usage.</p></li>
+</ul>
+
+<h2 id="current-status-and-plans">Current status and plans</h2>
+
+<ul>
+<li><strong>v0.8.x</strong></li>
+</ul>
+
+<p>Outdated versions. Due to poorly thought-out architecture, it works very slowly and caches very poorly.
+  Can be used, but shouldn&#39;t be.</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/4">v0.9.0</a></strong> <em>(current development)</em></li>
+</ul>
+
+<p>Architectural problems are solved, but because of them the project had to be rewritten almost from scratch, and a lot remains
+  to be done.</p>
+
+<p><em>This is more of a beta than an alpha, but a very early beta.</em></p>
+
+<p>The main unfinished piece is the absence of a report formatting system. Below in the <a href="#examples">Examples</a> section you can
+  see how this is worked around... Besides, not all query types are implemented and caching is unfinished
+  in terms of updating <em>old</em> data.</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/5">v0.9.2</a></strong></li>
+</ul>
+
+<p>Planning to add ERB support for reports. It&#39;s not a huge step forward compared to
+  direct file writing, but it will add some convenience.</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/6">v0.9.4</a></strong></li>
+</ul>
+
+<p>Planning to conduct extensive load testing on different DBMS (at least SQLite and PostgreSQL),
+  followed by corrections and optimizations.</p>
+
+<p>That is, version 0.9.4 is planned as a strictly corrective and optimizing release without adding new functionality.</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/7">v0.9.6</a></strong></li>
+</ul>
+
+<p>Here the completion of work with queries is planned — implementation of missing ones, finalization of the caching system, etc.</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/8">v0.9.8</a></strong></li>
+</ul>
+
+<p>This version is planned for the development and debugging of a general reporting system. It&#39;s not yet entirely clear what exactly
+  it will be, the task is in <code>research</code> status...</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/9">v1.0</a></strong> <u>(release)</u></li>
+</ul>
+
+<p>Basically, everything above, refactored and polished. Of the serious changes visible to the user,
+  only <em>containerization</em> and, through it, cross-platform support is planned.</p>
+
+<ul>
+<li><strong><a href="https://github.com/inat-get/inat-get/milestone/10">v1.2</a></strong> </li>
+</ul>
+
+<p>Plans are not yet fully formed and will change. In versions after 1.0, advanced
+  capabilities are planned to be added, the exact composition of which will become clearer in the process of real usage.</p>
+
+<ul>
+<li><strong>v2.0</strong></li>
+</ul>
+
+<p>Very uncertain future, by that time the iNaturalist API will likely have changed, and completely
+  new needs will have appeared...</p>
+
+<h2 id="installation-and-usage">Installation and usage</h2>
+
+<h3 id="installation">Installation</h3>
+
+<p>The project is packaged as a Ruby Gem, so it is installed accordingly:</p>
+
+<pre class="code shell"><code class="shell">$ gem install inat-get
+</code></pre>
+
+<p>However, if you want to use the current version &quot;from sources&quot;, you can simply clone the repository
+and run <code>bundle install</code>:</p>
+
+<pre class="code shell"><code class="shell">$ git clone https://github.com/inat-get/inat-get.git
+$ cd inat-get
+$ bundle install
+</code></pre>
+
+<p>And then run via <code>bundle exec</code>:</p>
+
+<pre class="code shell"><code class="shell">$ bundle exec inat-get [options] ‹task› [‹task› ...]
+</code></pre>
+
+<h3 id="command-line-parameters">Command line parameters</h3>
 
 <pre class="code ruby"><code class="ruby">&lt;b&gt;$&lt;/b&gt; bundle exec inat-get --help
 🌿 &lt;b&gt;iNatGet v0.9.0:&lt;/b&gt; iNaturalist API query builder and analytics tool
@@ -105,10 +233,133 @@
                                       extension try to read &#39;‹task›&#39; than &#39;‹task›.inat&#39; than 
                                       &#39;‹task›.rb&#39;.
 </code></pre>
+
+<h3 id="dsl">DSL</h3>
+
+<p>So, in scripts you can (and should) use specially prepared DSL methods and objects
+responsible for data.</p>
+
+<p>First of all, these are <strong>models</strong>, documentation for which can be found at
+<a href="https://inat-get.github.io/inat-get/INatGet/Data/Model.html">https://inat-get.github.io/inat-get/INatGet/Data/Model.html</a>. In general, these are simply data
+objects linked to each other. The key ones are probably:
+<a href="https://inat-get.github.io/inat-get/INatGet/Data/Model/Observation.html"><code>Observation</code></a>,
+<a href="https://inat-get.github.io/inat-get/INatGet/Data/Model/Taxon.html"><code>Taxon</code></a>,
+<a href="https://inat-get.github.io/inat-get/INatGet/Data/Model/Project.html"><code>Project</code></a>,
+<a href="https://inat-get.github.io/inat-get/INatGet/Data/Model/Place.html"><code>Place</code></a>
+and <a href="https://inat-get.github.io/inat-get/INatGet/Data/Model/User.html"><code>User</code></a>.</p>
+
+<p>The main work is built on the arithmetic of <strong>datasets</strong> and <strong>lists</strong>. Datasets are data
+selections, manipulations with which happen without real access to the API and DB until
+it becomes necessary. Lists are datasets split by some key field.
+Documentation is at <a href="https://inat-get.github.io/inat-get/INatGet/Data/DSL/Dataset.html">https://inat-get.github.io/inat-get/INatGet/Data/DSL/Dataset.html</a>
+for <code>Dataset</code> and <a href="https://inat-get.github.io/inat-get/INatGet/Data/DSL/List.html">https://inat-get.github.io/inat-get/INatGet/Data/DSL/List.html</a> for <code>List</code>.
+Both classes implement the <code>Enumerable</code> module, each in its own way...</p>
+
+<p>At the beginning of each script we make observation selections (usually) via the <code>select_observations</code> method.
+In general, <code>select_*</code> and <code>get_*</code> methods for different object types are described in the DSL module documentation —
+<a href="https://inat-get.github.io/inat-get/INatGet/Data/DSL.html">https://inat-get.github.io/inat-get/INatGet/Data/DSL.html</a>. In user scripts this
+module is initially included in the context, so its methods are available directly.</p>
+
+<p><em>Unfortunately, the fields of selections are not yet documented.</em> Will be soon.</p>
+
+<p>Below are simple examples of user scripts. It is recommended to pay attention
+to &quot;arithmetic&quot; operations: <code>+</code>, <code>-</code>, <code>*</code> and <code>%</code>. The last one performs splitting and turns
+a dataset into a list.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="simple-report-for-a-user-user_stat-rb">Simple report for a user — <a href="share/inat-get/demo/01_user_stat.rb">user_stat.rb</a></h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Let&#39;s make a simple report on taxa observed by the user since the beginning of the year.
+</span><span class='comment'># The report will be output to the current directory with the name user_stat.md (Markdown format)
+</span>
+<span class='id identifier rubyid_year'>year</span> <span class='op'>=</span> <span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span>
+
+<span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user'>get_user</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>shikhalev</span><span class='tstring_end'>&#39;</span></span>      <span class='comment'># Here specify the user ID or login, I specified my own
+</span>
+<span class='comment'># Get observations
+</span><span class='id identifier rubyid_observations'>observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>user:</span> <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>observed:</span> <span class='id identifier rubyid_range'>range</span><span class='lparen'>(</span><span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>quality_grade:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>research</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_by_taxon'>by_taxon</span> <span class='op'>=</span> <span class='id identifier rubyid_observations'>observations</span> <span class='op'>%</span> <span class='symbol'>:taxon</span>
+
+<span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_open'>open</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.md</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>w</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>## Report for user </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_by_taxon'>by_taxon</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span>
+    <span class='comment'># Here ds.key is a Taxon object
+</span>    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>+ </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_common_name'>common_name</span> <span class='embexpr_end'>}</span><span class='tstring_content'> *(</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_content'>)* — </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='embexpr_end'>}</span><span class='tstring_content'> obs.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Total **</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_observations'>observations</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='embexpr_end'>}</span><span class='tstring_content'>** observations</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="demonstration-of-list-subtraction-underbound-rb">Demonstration of list subtraction — <a href="share/inat-get/demo/02_underfound.rb">underbound.rb</a></h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># And here we implement the following: for a certain area, find a list of taxa
+</span><span class='comment'>#  that the given user has not observed (but others have).
+</span>
+<span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user'>get_user</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>shikhalev</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_place'>place</span> <span class='op'>=</span> <span class='id identifier rubyid_get_place'>get_place</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>artinskiy-gorodskoy-okrug-osm-2023-sv-ru</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_all_observations'>all_observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>place:</span> <span class='id identifier rubyid_place'>place</span><span class='comma'>,</span> <span class='label'>quality_grade:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>research</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>rank:</span> <span class='lparen'>(</span><span class='op'>..</span> <span class='const'>Rank</span><span class='period'>.</span><span class='id identifier rubyid_complex'>complex</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_full_list'>full_list</span> <span class='op'>=</span> <span class='id identifier rubyid_all_observations'>all_observations</span> <span class='op'>%</span> <span class='symbol'>:taxon</span>
+
+<span class='id identifier rubyid_user_observations'>user_observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>place:</span> <span class='id identifier rubyid_place'>place</span><span class='comma'>,</span> <span class='label'>quality_grade:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>research</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>rank:</span> <span class='lparen'>(</span><span class='op'>..</span> <span class='const'>Rank</span><span class='period'>.</span><span class='id identifier rubyid_complex'>complex</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>user:</span> <span class='id identifier rubyid_user'>user</span>
+<span class='id identifier rubyid_user_list'>user_list</span> <span class='op'>=</span> <span class='id identifier rubyid_user_observations'>user_observations</span> <span class='op'>%</span> <span class='symbol'>:taxon</span>
+
+<span class='id identifier rubyid_others_list'>others_list</span> <span class='op'>=</span> <span class='id identifier rubyid_full_list'>full_list</span> <span class='op'>-</span> <span class='id identifier rubyid_user_list'>user_list</span>
+<span class='id identifier rubyid_others_list'>others_list</span><span class='period'>.</span><span class='id identifier rubyid_sort!'>sort!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span> <span class='op'>-</span><span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='rbrace'>}</span>
+
+<span class='const'>File</span><span class='op'>::</span><span class='id identifier rubyid_open'>open</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.md</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>w</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>## Not found by you</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_others_list'>others_list</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>+ </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_common_name'>common_name</span> <span class='embexpr_end'>}</span><span class='tstring_content'> *(</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_content'>)* — </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='embexpr_end'>}</span><span class='tstring_content'> obs.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Total **</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_others_list'>others_list</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='embexpr_end'>}</span><span class='tstring_content'>** taxa.</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="list-filtering-and-date-range-newcomers-rb">List filtering and date range — <a href="share/inat-get/demo/03_newcomers.rb">newcomers.rb</a></h3>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Newcomers of the previous month. As simple as possible: those who made an observation during
+</span><span class='comment'>#  the previous month, and registered in it as well. Naturally, within some
+</span><span class='comment'>#  project, so as not to pull too much.
+</span>
+<span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_get_project'>get_project</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bioraznoobrazie-rayonov-sverdlovskoy-oblasti</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_month'>month</span> <span class='op'>=</span> <span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_month'>month</span> <span class='op'>-</span> <span class='int'>1</span>
+<span class='id identifier rubyid_year'>year</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_month'>month</span> <span class='op'>=</span> <span class='int'>12</span>
+  <span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span> <span class='op'>-</span> <span class='int'>1</span>
+<span class='kw'>else</span>
+  <span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_period'>period</span> <span class='op'>=</span> <span class='id identifier rubyid_range'>range</span><span class='lparen'>(</span><span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_observations'>observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>project:</span> <span class='id identifier rubyid_project'>project</span><span class='comma'>,</span> <span class='label'>created:</span> <span class='id identifier rubyid_period'>period</span>
+
+<span class='id identifier rubyid_list'>list</span> <span class='op'>=</span> <span class='id identifier rubyid_observations'>observations</span> <span class='op'>%</span> <span class='symbol'>:user</span>
+<span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_filter!'>filter!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span> <span class='id identifier rubyid_period'>period</span> <span class='op'>===</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_created'>created</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_sort!'>sort!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_created'>created</span> <span class='rbrace'>}</span>
+
+<span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_content'>.md</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>w</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\#\# Newcomers of project «</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span> <span class='embexpr_end'>}</span><span class='tstring_content'>»</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_period'>period</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span> <span class='embexpr_end'>}</span><span class='tstring_content'> — </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_period'>period</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span> <span class='op'>-</span> <span class='int'>1</span> <span class='embexpr_end'>}</span><span class='tstring_content'>*</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ds'>ds</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>+ </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span> <span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_created'>created</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span> <span class='embexpr_end'>}</span><span class='tstring_content'>) — </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ds'>ds</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='embexpr_end'>}</span><span class='tstring_content'> obs.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Total </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='embexpr_end'>}</span><span class='tstring_content'> users</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
 </div></div>
 
       <div id="footer">
-  Generated on Fri Feb 27 12:53:00 2026 by
+  Generated on Fri Feb 27 14:39:24 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
