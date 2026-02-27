@@ -1,5 +1,10 @@
 # inat-get
 
+[![GitHub License](https://img.shields.io/github/license/inat-get/inat-get)](LICENSE)
+[![Gem Version](https://badge.fury.io/rb/inat-get.svg?icon=si%3Arubygems&d=1)](https://badge.fury.io/rb/inat-get)
+[![Ruby](https://github.com/inat-get/inat-get/actions/workflows/ruby.yml/badge.svg)](https://github.com/inat-get/inat-get/actions/workflows/ruby.yml) 
+![Coverage](coverage-badge.svg)
+
 ## Что это и зачем?
 
 `inat-get` — это утилита для получения и анализа данных с **[iNaturalist](https://www.inaturalist.org/)**.
