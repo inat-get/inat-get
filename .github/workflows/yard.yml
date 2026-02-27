@@ -23,6 +23,7 @@ jobs:
         run: |
           echo "Build..."
           bundle exec yardoc
+          touch doc/.nojekyll
       - name: Publish
         uses: jekyll-is/action-jekyll-is-publish@v1
         with:
