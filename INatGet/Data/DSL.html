@@ -340,7 +340,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#identification-instance_method" title="#identification (instance method)">#<strong>identification</strong>(id)  &#x21d2; Model::Identification<sup>?</sup> </a>
+      <a href="#get_identification-instance_method" title="#get_identification (instance method)">#<strong>get_identification</strong>(id)  &#x21d2; Model::Identification<sup>?</sup> </a>
     
 
     
@@ -362,7 +362,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#identifications-instance_method" title="#identifications (instance method)">#<strong>identifications</strong>(*args, **query)  &#x21d2; Enumerable&lt;Model::Identification&gt; </a>
+      <a href="#get_observation-instance_method" title="#get_observation (instance method)">#<strong>get_observation</strong>(id)  &#x21d2; Model::Observation<sup>?</sup> </a>
     
 
     
@@ -384,7 +384,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#observation-instance_method" title="#observation (instance method)">#<strong>observation</strong>(id)  &#x21d2; Model::Observation<sup>?</sup> </a>
+      <a href="#get_place-instance_method" title="#get_place (instance method)">#<strong>get_place</strong>(id)  &#x21d2; Model::Place<sup>?</sup> </a>
     
 
     
@@ -406,7 +406,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#observations-instance_method" title="#observations (instance method)">#<strong>observations</strong>(*args, **query)  &#x21d2; Enumerable&lt;Model::Observation&gt; </a>
+      <a href="#get_project-instance_method" title="#get_project (instance method)">#<strong>get_project</strong>(id)  &#x21d2; INatGet::Data::Model::Project<sup>?</sup> </a>
     
 
     
@@ -428,7 +428,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#place-instance_method" title="#place (instance method)">#<strong>place</strong>(id)  &#x21d2; Model::Place<sup>?</sup> </a>
+      <a href="#get_taxon-instance_method" title="#get_taxon (instance method)">#<strong>get_taxon</strong>(id)  &#x21d2; INatGet::Data::Model::Taxon<sup>?</sup> </a>
     
 
     
@@ -450,7 +450,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#places-instance_method" title="#places (instance method)">#<strong>places</strong>(*ids)  &#x21d2; Array&lt;Model::Place&gt; </a>
+      <a href="#get_user-instance_method" title="#get_user (instance method)">#<strong>get_user</strong>(id)  &#x21d2; INatGet::Data::Model::User<sup>?</sup> </a>
     
 
     
@@ -472,7 +472,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#project-instance_method" title="#project (instance method)">#<strong>project</strong>(id)  &#x21d2; INatGet::Data::Model::Project<sup>?</sup> </a>
+      <a href="#select_identifications-instance_method" title="#select_identifications (instance method)">#<strong>select_identifications</strong>(*args, **query)  &#x21d2; Enumerable&lt;Model::Identification&gt; </a>
     
 
     
@@ -494,7 +494,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#projects-instance_method" title="#projects (instance method)">#<strong>projects</strong>(*args, **query)  &#x21d2; Enumerable&lt;INatGet::Data::Model::Project&gt; </a>
+      <a href="#select_observations-instance_method" title="#select_observations (instance method)">#<strong>select_observations</strong>(*args, **query)  &#x21d2; Enumerable&lt;Model::Observation&gt; </a>
     
 
     
@@ -516,7 +516,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#taxa-instance_method" title="#taxa (instance method)">#<strong>taxa</strong>(*args, **query)  &#x21d2; Enumerable&lt;INatGet::Data::Model::Taxon&gt; </a>
+      <a href="#select_places-instance_method" title="#select_places (instance method)">#<strong>select_places</strong>(*ids)  &#x21d2; Array&lt;Model::Place&gt; </a>
     
 
     
@@ -538,7 +538,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#taxon-instance_method" title="#taxon (instance method)">#<strong>taxon</strong>(id)  &#x21d2; INatGet::Data::Model::Taxon<sup>?</sup> </a>
+      <a href="#select_projects-instance_method" title="#select_projects (instance method)">#<strong>select_projects</strong>(*args, **query)  &#x21d2; Enumerable&lt;INatGet::Data::Model::Project&gt; </a>
     
 
     
@@ -560,7 +560,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#user-instance_method" title="#user (instance method)">#<strong>user</strong>(id)  &#x21d2; INatGet::Data::Model::User<sup>?</sup> </a>
+      <a href="#select_taxa-instance_method" title="#select_taxa (instance method)">#<strong>select_taxa</strong>(*args, **query)  &#x21d2; Enumerable&lt;INatGet::Data::Model::Taxon&gt; </a>
     
 
     
@@ -582,7 +582,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#users-instance_method" title="#users (instance method)">#<strong>users</strong>(*ids)  &#x21d2; Array&lt;INatGet::Data::Model::User&gt; </a>
+      <a href="#select_users-instance_method" title="#select_users (instance method)">#<strong>select_users</strong>(*ids)  &#x21d2; Array&lt;INatGet::Data::Model::User&gt; </a>
     
 
     
@@ -1425,12 +1425,12 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="identification-instance_method">
+  <h3 class="signature " id="get_identification-instance_method">
   
     
-      <span class="overload">#<strong>identification</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
+      <span class="overload">#<strong>get_identification</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
     
-      <span class="overload">#<strong>identification</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
+      <span class="overload">#<strong>get_identification</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
     
   
 
@@ -1450,7 +1450,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>identification</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
+        <span class="signature">#<strong>get_identification</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1480,7 +1480,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>identification</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
+        <span class="signature">#<strong>get_identification</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span></tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1535,21 +1535,19 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 68</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_identification'>identification</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_identification'>get_identification</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="identifications-instance_method">
+  <h3 class="signature " id="get_observation-instance_method">
   
     
-      <span class="overload">#<strong>identifications</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+      <span class="overload">#<strong>get_observation</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
     
-      <span class="overload">#<strong>identifications</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>identifications</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+      <span class="overload">#<strong>get_observation</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
     
   
 
@@ -1569,7 +1567,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>identifications</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+        <span class="signature">#<strong>get_observation</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1582,41 +1580,24 @@
   
     <li>
       
-        <span class='name'>ids</span>
+        <span class='name'>id</span>
       
       
-        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
+        <span class='type'>(<tt>Integer</tt>)</span>
       
       
-      
-        &mdash;
-        <div class='inline'><p>(String for UUID)</p>
-</div>
       
     </li>
   
 </ul>
 
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div>
       </li>
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>identifications</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+        <span class="signature">#<strong>get_observation</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1629,24 +1610,10 @@
   
     <li>
       
-        <span class='name'>condition</span>
+        <span class='name'>uuid</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="DSL/Condition.html" title="INatGet::Data::DSL::Condition (class)">Condition</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1654,48 +1621,6 @@
   
 </ul>
 
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>identifications</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>query</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div>
       </li>
@@ -1708,7 +1633,7 @@
     <li>
       
       
-        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt>, <tt>nil</tt>)</span>
       
       
       
@@ -1722,32 +1647,305 @@
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61</pre>
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 68</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_identifications'>identifications</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
-    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='kw'>nil</span>
-    <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_observation'>get_observation</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Observations.html" title="INatGet::Data::Manager::Observations (class)">Observations</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_place-instance_method">
+  
+    
+      <span class="overload">#<strong>get_place</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
+    
+      <span class="overload">#<strong>get_place</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
+    
+      <span class="overload">#<strong>get_place</strong>(slug)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>get_place</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>get_place</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uuid</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>get_place</strong>(slug)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>slug</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/places.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_place'>get_place</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Places</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_project-instance_method">
+  
+    #<strong>get_project</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/projects.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_project'>get_project</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Projects.html" title="INatGet::Data::Manager::Projects (class)">Projects</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_taxon-instance_method">
+  
+    #<strong>get_taxon</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/taxa.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_taxon'>get_taxon</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Taxa.html" title="INatGet::Data::Manager::Taxa (class)">Taxa</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_user-instance_method">
+  
+    #<strong>get_user</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/users.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_user'>get_user</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Users.html" title="INatGet::Data::Manager::Users (class)">Users</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
     </td>
   </tr>
 </table>
@@ -1913,335 +2111,6 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="observation-instance_method">
-  
-    
-      <span class="overload">#<strong>observation</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
-    
-      <span class="overload">#<strong>observation</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>observation</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>id</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>observation</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt><sup>?</sup> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>uuid</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt>, <tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-68</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 68</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_observation'>observation</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Observations.html" title="INatGet::Data::Manager::Observations (class)">Observations</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="observations-instance_method">
-  
-    
-      <span class="overload">#<strong>observations</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>observations</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>observations</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>observations</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>ids</span>
-      
-      
-        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>+String+ for UUIDs</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>observations</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>condition</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="DSL/Condition.html" title="INatGet::Data::DSL::Condition (class)">Condition</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>observations</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>query</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 51</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_observations'>observations</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Observations.html" title="INatGet::Data::Manager::Observations (class)">Observations</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
-    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='kw'>nil</span>
-    <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="OR-instance_method">
   
     #<strong>OR</strong>(*operands)  &#x21d2; <tt><span class='object_link'><a href="DSL/Condition/OR.html" title="INatGet::Data::DSL::Condition::OR (class)">Condition::OR</a></span></tt> 
@@ -2299,354 +2168,6 @@
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/conditions/or.rb', line 256</span>
 
 <span class='kw'>def</span> <span class='const'>OR</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_operands'>operands</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="DSL/Condition.html" title="INatGet::Data::DSL::Condition (class)">Condition</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DSL/Condition/OR.html" title="INatGet::Data::DSL::Condition::OR (class)">OR</a></span></span><span class='lbracket'>[</span> <span class='op'>*</span><span class='id identifier rubyid_operands'>operands</span> <span class='rbracket'>]</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="place-instance_method">
-  
-    
-      <span class="overload">#<strong>place</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
-    
-      <span class="overload">#<strong>place</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
-    
-      <span class="overload">#<strong>place</strong>(slug)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>place</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>id</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>place</strong>(uuid)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>uuid</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>place</strong>(slug)  &#x21d2; <tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt><sup>?</sup> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>slug</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt>, <tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-51</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/places.rb', line 51</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_place'>place</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Places</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="places-instance_method">
-  
-    #<strong>places</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>ids</span>
-      
-      
-        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/places.rb', line 55</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_places'>places</span> <span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Places</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
-    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='kw'>nil</span>
-    <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="project-instance_method">
-  
-    #<strong>project</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span></tt><sup>?</sup> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span></tt>, <tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-42</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/projects.rb', line 42</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_project'>project</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Projects.html" title="INatGet::Data::Manager::Projects (class)">Projects</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="projects-instance_method">
-  
-    #<strong>projects</strong>(*args, **query)  &#x21d2; <tt>Enumerable&lt;<span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/projects.rb', line 45</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_projects'>projects</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Projects.html" title="INatGet::Data::Manager::Projects (class)">Projects</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
-    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='kw'>nil</span>
-    <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3302,6 +2823,717 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="select_identifications-instance_method">
+  
+    
+      <span class="overload">#<strong>select_identifications</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>select_identifications</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>select_identifications</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>select_identifications</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ids</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>(String for UUID)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>select_identifications</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>condition</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DSL/Condition.html" title="INatGet::Data::DSL::Condition (class)">Condition</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>select_identifications</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>query</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Identification.html" title="INatGet::Data::Model::Identification (class)">Model::Identification</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_identifications'>select_identifications</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_observations-instance_method">
+  
+    
+      <span class="overload">#<strong>select_observations</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>select_observations</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>select_observations</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>select_observations</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ids</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>+String+ for UUIDs</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>select_observations</strong>(condition)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>condition</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DSL/Condition.html" title="INatGet::Data::DSL::Condition (class)">Condition</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>select_observations</strong>(**query)  &#x21d2; <tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>query</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DSL/Dataset.html" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span>&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Observations.html" title="INatGet::Data::Manager::Observations (class)">Observations</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_places-instance_method">
+  
+    #<strong>select_places</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ids</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/places.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_places'>select_places</span> <span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Places</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_projects-instance_method">
+  
+    #<strong>select_projects</strong>(*args, **query)  &#x21d2; <tt>Enumerable&lt;<span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">INatGet::Data::Model::Project</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/projects.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_projects'>select_projects</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Projects.html" title="INatGet::Data::Manager::Projects (class)">Projects</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_taxa-instance_method">
+  
+    #<strong>select_taxa</strong>(*args, **query)  &#x21d2; <tt>Enumerable&lt;<span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/taxa.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_taxa'>select_taxa</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Taxa.html" title="INatGet::Data::Manager::Taxa (class)">Taxa</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_users-instance_method">
+  
+    #<strong>select_users</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/users.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_users'>select_users</span> <span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Users.html" title="INatGet::Data::Manager::Users (class)">Users</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
+    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span>
+    <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="start-instance_method">
   
     
@@ -3850,122 +4082,6 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="taxa-instance_method">
-  
-    #<strong>taxa</strong>(*args, **query)  &#x21d2; <tt>Enumerable&lt;<span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Enumerable&lt;<span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/taxa.rb', line 42</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_taxa'>taxa</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Taxa.html" title="INatGet::Data::Manager::Taxa (class)">Taxa</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
-    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='kw'>nil</span>
-    <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="taxon-instance_method">
-  
-    #<strong>taxon</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span></tt><sup>?</sup> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">INatGet::Data::Model::Taxon</a></span></tt>, <tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-39</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/taxa.rb', line 39</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_taxon'>taxon</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Taxa.html" title="INatGet::Data::Manager::Taxa (class)">Taxa</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="today-instance_method">
   
     #<strong>today</strong>  &#x21d2; <tt><span class='object_link'>Date</span></tt> 
@@ -4008,122 +4124,6 @@
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_today'>today</span> <span class='op'>=</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="user-instance_method">
-  
-    #<strong>user</strong>(id)  &#x21d2; <tt><span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span></tt><sup>?</sup> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span></tt>, <tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-42</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/users.rb', line 42</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Users.html" title="INatGet::Data::Manager::Users (class)">Users</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="users-instance_method">
-  
-    #<strong>users</strong>(*ids)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">INatGet::Data::Model::User</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/users.rb', line 45</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_users'>users</span> <span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Users.html" title="INatGet::Data::Manager::Users (class)">Users</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_ids'>ids</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>when</span> <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span>
-    <span class='lbracket'>[</span> <span class='id identifier rubyid_result'>result</span> <span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='kw'>nil</span>
-    <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_result'>result</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4356,7 +4356,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Feb 27 03:08:14 2026 by
+  Generated on Fri Feb 27 12:53:01 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-3.4.8).
 </div>
