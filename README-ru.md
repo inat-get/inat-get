@@ -157,6 +157,29 @@ $ bundle exec inat-get [options] ‹task› [‹task› ...]
                                       '‹task›.rb'.
 </pre>
 
+### DSL
+
+Итак, в скриптах можно (и нужно) использовать специально подготовленные DSL-методы и объекты,
+отвечающие за данные.
+
+Это, во-первых, **модели**, документацию по которым можно найти по адресу 
+<https://inat-get.github.io/inat-get/INatGet/Data/Model.html>. В целом это просто объекты
+данных, связанные друг с другом. Ключевыми из них будут, пожалуй: 
+[`Observation`](https://inat-get.github.io/inat-get/INatGet/Data/Model/Observation.html),
+[`Taxon`](https://inat-get.github.io/inat-get/INatGet/Data/Model/Taxon.html),
+[`Project`](https://inat-get.github.io/inat-get/INatGet/Data/Model/Project.html),
+[`Place`](https://inat-get.github.io/inat-get/INatGet/Data/Model/Place.html)
+и [`User`](https://inat-get.github.io/inat-get/INatGet/Data/Model/User.html).
+
+Основная работа построена на арифметике **датасетов** и **списков**. Датасеты — это выборки
+данных, манипуляции с которыми происходят без реального обращения к API и БД до того момента,
+когда это становится необходимым. Списки — это датасеты, разбитые по некоторому полю-ключу.
+Документация находится по адресу <https://inat-get.github.io/inat-get/INatGet/Data/DSL/Dataset.html>
+для `Dataset` и <https://inat-get.github.io/inat-get/INatGet/Data/DSL/List.html> для `List`.
+Оба этих класса реализуют модуль `Enumerable`, каждый своим способом...
+
+
+
 ## Примеры
 
 ### Простой отчет для пользователя — [user_stat.rb](share/inat-get/demo/01_user_stat.rb)
@@ -167,22 +190,22 @@ $ bundle exec inat-get [options] ‹task› [‹task› ...]
 
 year = today.year
 
-usr = user 'shikhalev'      # Здесь указываем ID или логин пользователя, я указал свой
+user = get_user 'shikhalev'      # Здесь указываем ID или логин пользователя, я указал свой
 
 # Получаем наблюдения
-obs = observations user: usr, observed: range(year: year), quality_grade: 'research'
+observations = select_observations user: user, observed: range(year: year), quality_grade: 'research'
 
-by_taxon = obs % :taxon
+by_taxon = observations % :taxon
 
-File::open 'user_stat.md', 'w' do |file|
-  file.puts '## Отчет для пользователя ' + usr.login + (usr.name ? " (#{ usr.name })" : '')
+File::open "#{ name }.md", 'w' do |file|
+  file.puts '## Отчет для пользователя ' + user.login + (user.name ? " (#{ user.name })" : '')
   file.puts ''
   by_taxon.each do |ds|
     # Здесь ds.key — это объект Taxon
     file.puts "+ #{ ds.key.common_name } *(#{ ds.key.name })* — #{ ds.count } набл."
   end
   file.puts ''
-  file.puts "Всего **#{ obs.count }** наблюдений"
+  file.puts "Всего **#{ observations.count }** наблюдений"
 end
 ```
 
@@ -192,26 +215,26 @@ end
 # А здесь мы реализуем следуеющее: по некоторому району найдем список таксонов,
 #  которых данный пользователь не наблюдал (а другие наблюдали).
 
-usr = user 'shikhalev'
-plc = place 'artinskiy-gorodskoy-okrug-osm-2023-sv-ru'
+user = get_user 'shikhalev'
+place = get_place 'artinskiy-gorodskoy-okrug-osm-2023-sv-ru'
 
-obs_full = observations place: plc, quality_grade: 'research', rank: (.. Rank.complex)
-lst_full = obs_full % :taxon
+all_observations = select_observations place: place, quality_grade: 'research', rank: (.. Rank.complex)
+full_list = all_observations % :taxon
 
-obs_user = observations place: plc, quality_grade: "research", rank: (.. Rank.complex), user: usr
-lst_user = obs_user % :taxon
+user_observations = select_observations place: place, quality_grade: "research", rank: (.. Rank.complex), user: user
+user_list = user_observations % :taxon
 
-lst_other = lst_full - lst_user
-lst_other.sort! { |ds| -ds.count }
+others_list = full_list - user_list
+others_list.sort! { |ds| -ds.count }
 
 File::open "#{ name }.md", 'w' do |file|
   file.puts '## Недонайденные'
   file.puts ''
-  lst_other.each do |ds|
+  others_list.each do |ds|
     file.puts "+ #{ ds.key.common_name } *(#{ ds.key.name })* — #{ ds.count } набл."
   end
   file.puts ''
-  file.puts "Всего **#{ lst_other.count }** таксонов."
+  file.puts "Всего **#{ others_list.count }** таксонов."
 end
 ```
 
@@ -222,7 +245,7 @@ end
 #  предыдущего месяца, и зарегистрировался в нем же. Естестаенно, в рамках некоторого
 #  проекта, чтобы не тащить слишком много.
 
-prj = project 'bioraznoobrazie-rayonov-sverdlovskoy-oblasti'
+project = get_project 'bioraznoobrazie-rayonov-sverdlovskoy-oblasti'
 
 month = today.month - 1
 year = if month == 0
@@ -233,20 +256,20 @@ else
 end
 
 period = range(year: year, month: month)
-obs = observations project: prj, created: period
+observations = select_observations project: project, created: period
 
-lst = obs % :user
-lst.filter! { |ds| period === ds.key.created }
-lst.sort! { |ds| ds.key.created }
+list = observations % :user
+list.filter! { |ds| period === ds.key.created }
+list.sort! { |ds| ds.key.created }
 
 File.open "#{ name }.md", 'w' do |file|
-  file.puts "\#\# Новички проекта «#{ prj.title }»"
+  file.puts "\#\# Новички проекта «#{ project.title }»"
   file.puts "*#{ period.begin.to_date } — #{ period.end.to_date - 1 }*"
   file.puts ''
-  lst.each do |ds|
+  list.each do |ds|
     file.puts "+ #{ ds.key.login } (#{ ds.key.created.to_date }) — #{ ds.count } набл."
   end
   file.puts ''
-  file.puts "Всего #{ lst.count } пользователей"
+  file.puts "Всего #{ list.count } пользователей"
 end
 ```
