@@ -39,10 +39,10 @@ module INatGet::Data::DSL
   # @group Data Querying
 
   # @return [INatGet::Data::Model::User, nil]
-  def user(id) = INatGet::Data::Manager::Users::instance[id]
+  def get_user(id) = INatGet::Data::Manager::Users::instance[id]
 
   # @return [Array<INatGet::Data::Model::User>]
-  def users *ids
+  def select_users *ids
     result = INatGet::Data::Manager::Users::instance.get(*ids)
     case result
     when Sequel::Model

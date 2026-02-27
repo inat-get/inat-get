@@ -41,18 +41,18 @@ module INatGet::Data::DSL
 
   # @group Data Querying
 
-  # @overload place id
+  # @overload get_place id
   #   @param [Integer] id
-  # @overload place uuid
+  # @overload get_place uuid
   #   @param [String] uuid
-  # @overload place slug
+  # @overload get_place slug
   #   @param [String] slug
   # @return [Model::Place, nil]
-  def place(id) = INatGet::Data::Manager::Places::instance[id]
+  def get_place(id) = INatGet::Data::Manager::Places::instance[id]
 
   # @return [Array<Model::Place>]
   # @param [Array<Integer, String>] ids
-  def places *ids
+  def select_places *ids
     result = INatGet::Data::Manager::Places::instance.get(*ids)
     case result
     when Sequel::Model

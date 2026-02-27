@@ -39,10 +39,10 @@ module INatGet::Data::DSL
   # @group Data Querying
 
   # @return [INatGet::Data::Model::Project, nil]
-  def project(id) = INatGet::Data::Manager::Projects::instance[id]
+  def get_project(id) = INatGet::Data::Manager::Projects::instance[id]
 
   # @return [Enumerable<INatGet::Data::Model::Project>]
-  def projects *args, **query
+  def select_projects *args, **query
     result = INatGet::Data::Manager::Projects::instance.get(*args, **query)
     case result
     when Sequel::Model

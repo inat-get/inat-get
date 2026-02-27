@@ -3,20 +3,20 @@
 
 year = today.year
 
-usr = user 'shikhalev'      # Здесь указываем ID или логин пользователя, я указал свой
+user = get_user 'shikhalev'      # Здесь указываем ID или логин пользователя, я указал свой
 
 # Получаем наблюдения
-obs = observations user: usr, observed: range(year: year), quality_grade: 'research'
+observations = select_observations user: user, observed: range(year: year), quality_grade: 'research'
 
-by_taxon = obs % :taxon
+by_taxon = observations % :taxon
 
 File::open "#{ name }.md", 'w' do |file|
-  file.puts '## Отчет для пользователя ' + usr.login + (usr.name ? " (#{ usr.name })" : '')
+  file.puts '## Отчет для пользователя ' + user.login + (user.name ? " (#{ user.name })" : '')
   file.puts ''
   by_taxon.each do |ds|
     # Здесь ds.key — это объект Taxon
     file.puts "+ #{ ds.key.common_name } *(#{ ds.key.name })* — #{ ds.count } набл."
   end
   file.puts ''
-  file.puts "Всего **#{ obs.count }** наблюдений"
+  file.puts "Всего **#{ observations.count }** наблюдений"
 end

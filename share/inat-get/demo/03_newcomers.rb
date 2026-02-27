@@ -2,7 +2,7 @@
 #  предыдущего месяца, и зарегистрировался в нем же. Естестаенно, в рамках некоторого
 #  проекта, чтобы не тащить слишком много.
 
-prj = project 'bioraznoobrazie-rayonov-sverdlovskoy-oblasti'
+project = get_project 'bioraznoobrazie-rayonov-sverdlovskoy-oblasti'
 
 month = today.month - 1
 year = if month == 0
@@ -13,19 +13,19 @@ else
 end
 
 period = range(year: year, month: month)
-obs = observations project: prj, created: period
+observations = select_observations project: project, created: period
 
-lst = obs % :user
-lst.filter! { |ds| period === ds.key.created }
-lst.sort! { |ds| ds.key.created }
+list = observations % :user
+list.filter! { |ds| period === ds.key.created }
+list.sort! { |ds| ds.key.created }
 
 File.open "#{ name }.md", 'w' do |file|
-  file.puts "\#\# Новички проекта «#{ prj.title }»"
+  file.puts "\#\# Новички проекта «#{ project.title }»"
   file.puts "*#{ period.begin.to_date } — #{ period.end.to_date - 1 }*"
   file.puts ''
-  lst.each do |ds|
+  list.each do |ds|
     file.puts "+ #{ ds.key.login } (#{ ds.key.created.to_date }) — #{ ds.count } набл."
   end
   file.puts ''
-  file.puts "Всего #{ lst.count } пользователей"
+  file.puts "Всего #{ list.count } пользователей"
 end

@@ -36,10 +36,10 @@ module INatGet::Data::DSL
   # @group Data Querying
 
   # @return [INatGet::Data::Model::Taxon, nil]
-  def taxon(id) = INatGet::Data::Manager::Taxa::instance[id]
+  def get_taxon(id) = INatGet::Data::Manager::Taxa::instance[id]
 
   # @return [Enumerable<INatGet::Data::Model::Taxon>]
-  def taxa *args, **query
+  def select_taxa *args, **query
     result = INatGet::Data::Manager::Taxa::instance.get(*args, **query)
     case result
     when Sequel::Model

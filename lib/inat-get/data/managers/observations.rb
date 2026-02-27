@@ -39,16 +39,16 @@ module INatGet::Data::DSL
   # @group Data Querying
 
   # @return [Enumerable<Model::Observation>]
-  # @overload observations *ids
+  # @overload select_observations *ids
   #   @param [Array<Integer, String>] ids +String+ for UUIDs
   #   @return [Array<Model::Observation>]
-  # @overload observations condition
+  # @overload select_observations condition
   #   @param [Condition] condition
   #   @return [Dataset<Model::Observation>]
-  # @overload observations **query
+  # @overload select_observations **query
   #   @param [Hash] query
   #   @return [Dataset<Model::Observation>]
-  def observations *args, **query
+  def select_observations *args, **query
     result = INatGet::Data::Manager::Observations::instance.get(*args, **query)
     case result
     when Sequel::Model
@@ -60,11 +60,11 @@ module INatGet::Data::DSL
     end
   end
 
-  # @overload observation id
+  # @overload get_observation id
   #   @param [Integer] id
-  # @overload observation uuid
+  # @overload get_observation uuid
   #   @param [String] uuid
   # @return [Model::Observation, nil]
-  def observation(id) = INatGet::Data::Manager::Observations::instance[id]
+  def get_observation(id) = INatGet::Data::Manager::Observations::instance[id]
 
 end
