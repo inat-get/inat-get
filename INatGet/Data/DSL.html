@@ -1566,10 +1566,10 @@
       <pre class="lines">
 
 
-68</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_identification'>get_identification</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
     </td>
@@ -1683,10 +1683,10 @@
       <pre class="lines">
 
 
-68</pre>
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_observation'>get_observation</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Observations.html" title="INatGet::Data::Manager::Observations (class)">Observations</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
     </td>
@@ -2943,7 +2943,7 @@
       
       
         &mdash;
-        <div class='inline'><p>(String for UUID)</p>
+        <div class='inline'><p>(<code>String</code> for UUID)</p>
 </div>
       
     </li>
@@ -3036,6 +3036,24 @@
   
 </ul>
 
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**query</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">id:</span>
+          <span class="type">(<tt>Integer</tt>, <tt><span class='object_link'>Set</span>&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+    </ul>
+  
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -3075,7 +3093,6 @@
       <pre class="lines">
 
 
-51
 52
 53
 54
@@ -3085,10 +3102,11 @@
 58
 59
 60
-61</pre>
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_identifications'>select_identifications</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
@@ -3155,7 +3173,7 @@
       
       
         &mdash;
-        <div class='inline'><p>+String+ for UUIDs</p>
+        <div class='inline'><p><code>String</code> for UUIDs</p>
 </div>
       
     </li>
@@ -3248,6 +3266,411 @@
   
 </ul>
 
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**query</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">id:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">uuid:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">captive:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">endemic:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">identified:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">introduced:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">native:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">out_of_range:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">popular:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">photos:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">sounds:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">threatened:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">verifiable:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">licensed:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">photo_licensed:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">sound_licensed:</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">place:</span>
+          <span class="type">(<tt><span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Model/Place.html" title="INatGet::Data::Model::Place (class)">Model::Place</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">project:</span>
+          <span class="type">(<tt><span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">Model::Project</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Model/Project.html" title="INatGet::Data::Model::Project (class)">Model::Project</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">taxon:</span>
+          <span class="type">(<tt><span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">Model::Taxon</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">Model::Taxon</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">user:</span>
+          <span class="type">(<tt><span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">Model::User</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">Model::User</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">rank:</span>
+          <span class="type">(<tt><span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">Model::User</a></span>&gt;</tt>, <tt>Range&lt;<span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">observed_year:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">observed_month:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">observed_week:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">observed_day:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">observed_hour:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">created_year:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">created_month:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">created_week:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">created_day:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">created_hour:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>Enumerable&lt;Integer&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">observed:</span>
+          <span class="type">(<tt><span class='object_link'>Date</span></tt>, <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">created:</span>
+          <span class="type">(<tt><span class='object_link'>Date</span></tt>, <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">accuracy:</span>
+          <span class="type">(<tt>Integer</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">csi:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">geoprivacy:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">taxon_geoprivacy:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">obscuration:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">iconic_taxa:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">latitude:</span>
+          <span class="type">(<tt>Float</tt>, <tt>Range&lt;Float&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">longitude:</span>
+          <span class="type">(<tt>Float</tt>, <tt>Range&lt;Float&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">radius:</span>
+          <span class="type">(<tt>Float</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">location:</span>
+          <span class="type">(<tt>[FLoat, Float]</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">quality_grade:</span>
+          <span class="type">(<tt>String</tt>, <tt>Enumerable&lt;String&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+    </ul>
+  
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -3287,20 +3710,20 @@
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61</pre>
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/observations.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Observations.html" title="INatGet::Data::Manager::Observations (class)">Observations</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
@@ -4464,7 +4887,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Feb 27 18:59:57 2026 by
+  Generated on Sat Feb 28 03:22:45 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
