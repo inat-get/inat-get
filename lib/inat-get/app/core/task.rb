@@ -16,7 +16,12 @@ class INatGet::App::Task
 
   attr_reader :path
   
-  attr_accessor :name
+  attr_reader :name
+
+  def name= value
+    @name = value
+    @console.update name: value
+  end
 
   def initialize path, config, **opts
     @config = config

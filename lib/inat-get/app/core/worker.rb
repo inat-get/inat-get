@@ -20,8 +20,8 @@ class INatGet::App::Worker
     @task.prepare
     @task.execute
     @console.update _active: false, status: 'done'
-  # rescue => e
-  #   @logger.error e.message
+  rescue => e
+    @logger.error e.message
   end
 
   class << self
