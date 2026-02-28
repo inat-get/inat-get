@@ -40,13 +40,14 @@ module INatGet::Data::DSL
 
   # @return [Enumerable<Model::Identification>]
   # @overload select_identifications *ids
-  #   @param [Array<Integer, String>] ids (String for UUID)
+  #   @param [Array<Integer, String>] ids (`String` for UUID)
   #   @return [Array<Model::Identification>]
   # @overload select_identifications condition
   #   @param [Condition] condition
   #   @return [Dataset<Model::Identification>]
   # @overload select_identifications **query
   #   @param [Hash] query
+  #   @option query [Integer, Set<Integer>] id:
   #   @return [Dataset<Model::Identification>]
   def select_identifications(*args, **query)
     result = INatGet::Data::Manager::Identifications::instance.get(*args, **query)

@@ -40,13 +40,57 @@ module INatGet::Data::DSL
 
   # @return [Enumerable<Model::Observation>]
   # @overload select_observations *ids
-  #   @param [Array<Integer, String>] ids +String+ for UUIDs
+  #   @param [Array<Integer, String>] ids `String` for UUIDs
   #   @return [Array<Model::Observation>]
   # @overload select_observations condition
   #   @param [Condition] condition
   #   @return [Dataset<Model::Observation>]
   # @overload select_observations **query
   #   @param [Hash] query
+  #   @option query [Integer, Enumerable<Integer>] id:
+  #   @option query [String, Enumerable<String>] uuid:
+  #   @option query [Boolean] captive:
+  #   @option query [Boolean] endemic:
+  #   @option query [Boolean] identified:
+  #   @option query [Boolean] introduced:
+  #   @option query [Boolean] native:
+  #   @option query [Boolean] out_of_range:
+  #   @option query [Boolean] popular:
+  #   @option query [Boolean] photos:
+  #   @option query [Boolean] sounds:
+  #   @option query [Boolean] threatened:
+  #   @option query [Boolean] verifiable:
+  #   @option query [Boolean] licensed:
+  #   @option query [Boolean] photo_licensed:
+  #   @option query [Boolean] sound_licensed:
+  #   @option query [Model::Place, Enumerable<Model::Place>] place:
+  #   @option query [Model::Project, Enumerable<Model::Project>] project:
+  #   @option query [Model::Taxon, Enumerable<Model::Taxon>] taxon:
+  #   @option query [Model::User, Enumerable<Model::User>] user:
+  #   @option query [Enum::Rank, Enumerable<Model::User>, Range<Enum::Rank>] rank:
+  #   @option query [Integer, Enumerable<Integer>] observed_year:
+  #   @option query [Integer, Enumerable<Integer>] observed_month:
+  #   @option query [Integer, Enumerable<Integer>] observed_week:
+  #   @option query [Integer, Enumerable<Integer>] observed_day:
+  #   @option query [Integer, Enumerable<Integer>] observed_hour:
+  #   @option query [Integer, Enumerable<Integer>] created_year:
+  #   @option query [Integer, Enumerable<Integer>] created_month:
+  #   @option query [Integer, Enumerable<Integer>] created_week:
+  #   @option query [Integer, Enumerable<Integer>] created_day:
+  #   @option query [Integer, Enumerable<Integer>] created_hour:
+  #   @option query [Date, Range<DateTime>] observed:
+  #   @option query [Date, Range<DateTime>] created:
+  #   @option query [Integer, nil] accuracy:
+  #   @option query [String, Enumerable<String>] csi:
+  #   @option query [String, Enumerable<String>] geoprivacy:
+  #   @option query [String, Enumerable<String>] taxon_geoprivacy:
+  #   @option query [String, Enumerable<String>] obscuration:
+  #   @option query [String, Enumerable<String>] iconic_taxa:
+  #   @option query [Float, Range<Float>] latitude:
+  #   @option query [Float, Range<Float>] longitude:
+  #   @option query [Float] radius:
+  #   @option query [[FLoat, Float]] location:
+  #   @option query [String, Enumerable<String>] quality_grade:
   #   @return [Dataset<Model::Observation>]
   def select_observations *args, **query
     result = INatGet::Data::Manager::Observations::instance.get(*args, **query)
