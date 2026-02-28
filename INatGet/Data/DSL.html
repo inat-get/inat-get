@@ -265,7 +265,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#finish-instance_method" title="#finish (instance method)">#<strong>finish</strong>(date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil)  &#x21d2; DateTime </a>
+      <a href="#finish_time-instance_method" title="#finish_time (instance method)">#<strong>finish_time</strong>(date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil)  &#x21d2; DateTime </a>
     
 
     
@@ -287,7 +287,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#range-instance_method" title="#range (instance method)">#<strong>range</strong>(date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil)  &#x21d2; Range&lt;DateTime&gt; </a>
+      <a href="#start_time-instance_method" title="#start_time (instance method)">#<strong>start_time</strong>(date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil)  &#x21d2; DateTime </a>
     
 
     
@@ -309,7 +309,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#start-instance_method" title="#start (instance method)">#<strong>start</strong>(date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil)  &#x21d2; DateTime </a>
+      <a href="#time_range-instance_method" title="#time_range (instance method)">#<strong>time_range</strong>(date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil)  &#x21d2; Range&lt;DateTime&gt; </a>
     
 
     
@@ -869,28 +869,28 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="finish-instance_method">
+  <h3 class="signature " id="finish_time-instance_method">
   
     
-      <span class="overload">#<strong>finish</strong>(date: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(date: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(century: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(century: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(century: , decade: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(century: nil, decade: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: , quarter: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil, quarter: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: , season: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil, season: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: , month: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil, month: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: , month: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil, month: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: , week: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil, week: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>finish</strong>(year: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>finish_time</strong>(year: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
   
 
@@ -910,7 +910,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(date: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(date: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -929,7 +929,7 @@
         <span class='type'>(<tt><span class='object_link'>Date</span></tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -942,7 +942,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(century: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(century: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -961,7 +961,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -974,7 +974,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(century: , decade: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(century: nil, decade: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -993,7 +993,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1006,7 +1006,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1019,7 +1019,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1038,7 +1038,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1051,7 +1051,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: , quarter: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil, quarter: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1070,7 +1070,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1083,7 +1083,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1096,7 +1096,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: , season: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil, season: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1115,7 +1115,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1128,7 +1128,7 @@
         <span class='type'>(<tt>Symbol</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1141,7 +1141,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: , month: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil, month: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1160,7 +1160,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1173,7 +1173,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1186,7 +1186,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: , month: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil, month: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1205,7 +1205,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1218,7 +1218,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1231,7 +1231,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1244,7 +1244,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: , week: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil, week: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1263,7 +1263,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1276,7 +1276,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1289,7 +1289,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>finish</strong>(year: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>finish_time</strong>(year: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1308,7 +1308,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1321,7 +1321,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -1351,9 +1351,9 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#range-instance_method" title="INatGet::Data::DSL#range (method)">#range</a></span></li>
+      <li><span class='object_link'><a href="#time_range-instance_method" title="INatGet::Data::DSL#time_range (method)">#time_range</a></span></li>
     
-      <li><span class='object_link'><a href="#start-instance_method" title="INatGet::Data::DSL#start (method)">#start</a></span></li>
+      <li><span class='object_link'><a href="#start_time-instance_method" title="INatGet::Data::DSL#start_time (method)">#start_time</a></span></li>
     
   </ul>
 
@@ -1411,46 +1411,46 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 186</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_finish'>finish</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_date'>date</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many argument</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_century'>century</span> <span class='op'>||</span> <span class='id identifier rubyid_decade'>decade</span> <span class='op'>||</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>||</span> <span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>||</span> <span class='id identifier rubyid_season'>season</span> <span class='op'>||</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>date:</span> <span class='lparen'>(</span><span class='id identifier rubyid_date'>date</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>date:</span> <span class='lparen'>(</span><span class='id identifier rubyid_date'>date</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_century'>century</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many argument</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>||</span> <span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>||</span> <span class='id identifier rubyid_season'>season</span> <span class='op'>||</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_decade'>decade</span>
-      <span class='id identifier rubyid_start'>start</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='lparen'>(</span><span class='id identifier rubyid_decade'>decade</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='lparen'>(</span><span class='id identifier rubyid_decade'>decade</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_start'>start</span> <span class='label'>century:</span> <span class='lparen'>(</span><span class='id identifier rubyid_century'>century</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>century:</span> <span class='lparen'>(</span><span class='id identifier rubyid_century'>century</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_quarter'>quarter</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many argument</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_season'>season</span> <span class='op'>||</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
-    <span class='id identifier rubyid_finish'>finish</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='lparen'>(</span><span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>*</span> <span class='int'>3</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='lparen'>(</span><span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>*</span> <span class='int'>3</span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_season'>season</span> 
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many argument</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_season'>season</span>
     <span class='kw'>when</span> <span class='symbol'>:winter</span>
-      <span class='id identifier rubyid_finish'>finish</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>2</span>
+      <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>2</span>
     <span class='kw'>when</span> <span class='symbol'>:spring</span>
-      <span class='id identifier rubyid_finish'>finish</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>5</span>
+      <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>5</span>
     <span class='kw'>when</span> <span class='symbol'>:summer</span>
-      <span class='id identifier rubyid_finish'>finish</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>8</span>
+      <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>8</span>
     <span class='kw'>when</span> <span class='symbol'>:autumn</span>
-      <span class='id identifier rubyid_finish'>finish</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>11</span>
+      <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>11</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid season: </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_season'>season</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span>
     <span class='kw'>end</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_month'>month</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_week'>week</span>
     <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='op'>::</span><span class='id identifier rubyid_civil'>civil</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_finish'>finish</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
+    <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_week'>week</span>
     <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='op'>::</span><span class='id identifier rubyid_commercial'>commercial</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='id identifier rubyid_week'>week</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_finish'>finish</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
+    <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_day'>day</span>
     <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='op'>::</span><span class='id identifier rubyid_ordinal'>ordinal</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='id identifier rubyid_day'>day</span>
-    <span class='id identifier rubyid_finish'>finish</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
+    <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span>
-    <span class='id identifier rubyid_finish'>finish</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>12</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='int'>31</span>
+    <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>12</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='int'>31</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Incorrect or empty arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span>
   <span class='kw'>end</span>
@@ -1566,10 +1566,10 @@
       <pre class="lines">
 
 
-69</pre>
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_identification'>get_identification</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span></pre>
     </td>
@@ -2385,516 +2385,6 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="range-instance_method">
-  
-    
-      <span class="overload">#<strong>range</strong>(date: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(century: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(century: , decade: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: , quarter: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: , season: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: , month: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: , month: , day: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: , week: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-      <span class="overload">#<strong>range</strong>(year: , day: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(date: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>date</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'>Date</span></tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(century: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>century</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(century: , decade: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>century</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>decade</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: , quarter: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>quarter</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: , season: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>season</span>
-      
-      
-        <span class='type'>(<tt>Symbol</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: , month: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>month</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: , month: , day: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>month</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>day</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: , week: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>week</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>range</strong>(year: , day: )  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>year</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>day</span>
-      
-      
-        <span class='type'>(<tt>Integer</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt></tt>)</em>
-      
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li><span class='object_link'><a href="#start-instance_method" title="INatGet::Data::DSL#start (method)">#start</a></span></li>
-    
-      <li><span class='object_link'><a href="#finish-instance_method" title="INatGet::Data::DSL#finish (method)">#finish</a></span></li>
-    
-  </ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-79
-80
-81</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 79</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_range'>range</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='id identifier rubyid_decade'>decade</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='id identifier rubyid_quarter'>quarter</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='id identifier rubyid_season'>season</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='id identifier rubyid_day'>day</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='id identifier rubyid_week'>week</span><span class='rparen'>)</span> <span class='op'>...</span> <span class='id identifier rubyid_finish'>finish</span><span class='lparen'>(</span><span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='id identifier rubyid_decade'>decade</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='id identifier rubyid_quarter'>quarter</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='id identifier rubyid_season'>season</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='id identifier rubyid_day'>day</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='id identifier rubyid_week'>week</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="select_identifications-instance_method">
   
     
@@ -3036,24 +2526,6 @@
   
 </ul>
 
-  
-    
-    
-    <p class="tag_title">Options Hash (<tt>**query</tt>):</p>
-    <ul class="option">
-      
-        <li>
-          <span class="name">id:</span>
-          <span class="type">(<tt>Integer</tt>, <tt><span class='object_link'>Set</span>&lt;Integer&gt;</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-        </li>
-      
-    </ul>
-  
-
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -3093,6 +2565,7 @@
       <pre class="lines">
 
 
+51
 52
 53
 54
@@ -3102,11 +2575,10 @@
 58
 59
 60
-61
-62</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/identifications.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_identifications'>select_identifications</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager/Identifications.html" title="INatGet::Data::Manager::Identifications (class)">Identifications</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
@@ -3454,7 +2926,7 @@
       
         <li>
           <span class="name">rank:</span>
-          <span class="type">(<tt><span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Model/User.html" title="INatGet::Data::Model::User (class)">Model::User</a></span>&gt;</tt>, <tt>Range&lt;<span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span>&gt;</tt>)</span>
+          <span class="type">(<tt><span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span></tt>, <tt>Enumerable&lt;<span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span>&gt;</tt>, <tt>Range&lt;<span class='object_link'><a href="Enum/Rank.html" title="INatGet::Data::Enum::Rank (class)">Enum::Rank</a></span>&gt;</tt>)</span>
           <span class="default">
             
           </span>
@@ -4029,28 +3501,28 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="start-instance_method">
+  <h3 class="signature " id="start_time-instance_method">
   
     
-      <span class="overload">#<strong>start</strong>(date: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(date: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(century: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(century: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(century: , decade: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(century: nil, decade: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: , quarter: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil, quarter: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: , season: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil, season: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: , month: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil, month: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: , month: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil, month: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: , week: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil, week: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
-      <span class="overload">#<strong>start</strong>(year: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+      <span class="overload">#<strong>start_time</strong>(year: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
     
   
 
@@ -4070,7 +3542,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(date: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(date: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4089,7 +3561,7 @@
         <span class='type'>(<tt><span class='object_link'>Date</span></tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4102,7 +3574,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(century: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(century: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4121,7 +3593,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4134,7 +3606,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(century: , decade: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(century: nil, decade: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4153,7 +3625,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4166,7 +3638,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4179,7 +3651,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4198,7 +3670,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4211,7 +3683,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: , quarter: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil, quarter: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4230,7 +3702,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4243,7 +3715,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4256,7 +3728,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: , season: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil, season: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4275,7 +3747,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4288,7 +3760,7 @@
         <span class='type'>(<tt>Symbol</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4301,7 +3773,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: , month: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil, month: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4320,7 +3792,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4333,7 +3805,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4346,7 +3818,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: , month: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil, month: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4365,7 +3837,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4378,7 +3850,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4391,7 +3863,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4404,7 +3876,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: , week: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil, week: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4423,7 +3895,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4436,7 +3908,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4449,7 +3921,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>start</strong>(year: , day: )  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
+        <span class="signature">#<strong>start_time</strong>(year: nil, day: nil)  &#x21d2; <tt><span class='object_link'>DateTime</span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -4468,7 +3940,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4481,7 +3953,7 @@
         <span class='type'>(<tt>Integer</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt></tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
     </li>
@@ -4511,9 +3983,9 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#range-instance_method" title="INatGet::Data::DSL#range (method)">#range</a></span></li>
+      <li><span class='object_link'><a href="#time_range-instance_method" title="INatGet::Data::DSL#time_range (method)">#time_range</a></span></li>
     
-      <li><span class='object_link'><a href="#finish-instance_method" title="INatGet::Data::DSL#finish (method)">#finish</a></span></li>
+      <li><span class='object_link'><a href="#finish_time-instance_method" title="INatGet::Data::DSL#finish_time (method)">#finish_time</a></span></li>
     
   </ul>
 
@@ -4567,45 +4039,559 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 114</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_date'>date</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_century'>century</span> <span class='op'>||</span> <span class='id identifier rubyid_decade'>decade</span> <span class='op'>||</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>||</span> <span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>||</span> <span class='id identifier rubyid_season'>season</span> <span class='op'>||</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
     <span class='id identifier rubyid_date'>date</span><span class='period'>.</span><span class='id identifier rubyid_to_datetime'>to_datetime</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_century'>century</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>||</span> <span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>||</span> <span class='id identifier rubyid_season'>season</span> <span class='op'>||</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_century'>century</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>100</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_decade'>decade</span> <span class='op'>||</span> <span class='int'>0</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>10</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_century'>century</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>100</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_decade'>decade</span> <span class='op'>||</span> <span class='int'>0</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>10</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_quarter'>quarter</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_season'>season</span> <span class='op'>||</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>3</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_quarter'>quarter</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>3</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_season'>season</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_month'>month</span> <span class='op'>||</span> <span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='id identifier rubyid_week'>week</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_season'>season</span>
     <span class='kw'>when</span> <span class='symbol'>:winter</span>
-      <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='lparen'>(</span><span class='id identifier rubyid_year'>year</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>12</span>
+      <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='lparen'>(</span><span class='id identifier rubyid_year'>year</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>12</span>
     <span class='kw'>when</span> <span class='symbol'>:spring</span>
-      <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>3</span>
+      <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>3</span>
     <span class='kw'>when</span> <span class='symbol'>:summer</span>
-      <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>6</span>
+      <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>6</span>
     <span class='kw'>when</span> <span class='symbol'>:autumn</span>
-      <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>9</span>
+      <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>9</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid season: </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_season'>season</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span>
     <span class='kw'>end</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_month'>month</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span> <span class='kw'>if</span> <span class='id identifier rubyid_week'>week</span>
     <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='op'>::</span><span class='id identifier rubyid_civil'>civil</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='int'>1</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_week'>week</span>
     <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='op'>::</span><span class='id identifier rubyid_commercial'>commercial</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='id identifier rubyid_week'>week</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_day'>day</span> <span class='op'>||</span> <span class='int'>1</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_day'>day</span>
     <span class='id identifier rubyid_date'>date</span> <span class='op'>=</span> <span class='const'>Date</span><span class='op'>::</span><span class='id identifier rubyid_ordinal'>ordinal</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='id identifier rubyid_day'>day</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_year'>year</span>
-    <span class='id identifier rubyid_start'>start</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='int'>1</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Incorrect or empty arguments</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="time_range-instance_method">
+  
+    
+      <span class="overload">#<strong>time_range</strong>(date: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(century: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(century: nil, decade: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil, quarter: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil, season: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil, month: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil, month: nil, day: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil, week: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+      <span class="overload">#<strong>time_range</strong>(year: nil, day: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(date: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>date</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Date</span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(century: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>century</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Century (20 is 1901..2000)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(century: nil, decade: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>century</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>decade</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil, quarter: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>quarter</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil, season: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>season</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil, month: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>month</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil, month: nil, day: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>month</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>day</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil, week: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>week</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>time_range</strong>(year: nil, day: nil)  &#x21d2; <tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>year</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>day</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+
+</div>
+      </li>
+    
+  </ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Range&lt;<span class='object_link'>DateTime</span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#start_time-instance_method" title="INatGet::Data::DSL#start_time (method)">#start_time</a></span></li>
+    
+      <li><span class='object_link'><a href="#finish_time-instance_method" title="INatGet::Data::DSL#finish_time (method)">#finish_time</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_time_range'>time_range</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_start_time'>start_time</span><span class='lparen'>(</span><span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='id identifier rubyid_decade'>decade</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='id identifier rubyid_quarter'>quarter</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='id identifier rubyid_season'>season</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='id identifier rubyid_day'>day</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='id identifier rubyid_week'>week</span><span class='rparen'>)</span> <span class='op'>...</span> <span class='id identifier rubyid_finish_time'>finish_time</span><span class='lparen'>(</span><span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='id identifier rubyid_decade'>decade</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='id identifier rubyid_quarter'>quarter</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='id identifier rubyid_season'>season</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='id identifier rubyid_day'>day</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='id identifier rubyid_week'>week</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4887,7 +4873,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Feb 28 03:22:45 2026 by
+  Generated on Sat Feb 28 05:15:17 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

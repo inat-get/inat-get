@@ -278,7 +278,7 @@ a dataset into a list.</p>
 <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user'>get_user</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>shikhalev</span><span class='tstring_end'>&#39;</span></span>      <span class='comment'># Here specify the user ID or login, I specified my own
 </span>
 <span class='comment'># Get observations
-</span><span class='id identifier rubyid_observations'>observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>user:</span> <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>observed:</span> <span class='id identifier rubyid_range'>range</span><span class='lparen'>(</span><span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>quality_grade:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>research</span><span class='tstring_end'>&#39;</span></span>
+</span><span class='id identifier rubyid_observations'>observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>user:</span> <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>observed:</span> <span class='id identifier rubyid_time_range'>time_range</span><span class='lparen'>(</span><span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>quality_grade:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>research</span><span class='tstring_end'>&#39;</span></span>
 
 <span class='id identifier rubyid_by_taxon'>by_taxon</span> <span class='op'>=</span> <span class='id identifier rubyid_observations'>observations</span> <span class='op'>%</span> <span class='symbol'>:taxon</span>
 
@@ -338,7 +338,7 @@ a dataset into a list.</p>
   <span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span>
 <span class='kw'>end</span>
 
-<span class='id identifier rubyid_period'>period</span> <span class='op'>=</span> <span class='id identifier rubyid_range'>range</span><span class='lparen'>(</span><span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_period'>period</span> <span class='op'>=</span> <span class='id identifier rubyid_time_range'>time_range</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span>
 <span class='id identifier rubyid_observations'>observations</span> <span class='op'>=</span> <span class='id identifier rubyid_select_observations'>select_observations</span> <span class='label'>project:</span> <span class='id identifier rubyid_project'>project</span><span class='comma'>,</span> <span class='label'>created:</span> <span class='id identifier rubyid_period'>period</span>
 
 <span class='id identifier rubyid_list'>list</span> <span class='op'>=</span> <span class='id identifier rubyid_observations'>observations</span> <span class='op'>%</span> <span class='symbol'>:user</span>
@@ -359,7 +359,7 @@ a dataset into a list.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Sat Feb 28 03:22:45 2026 by
+  Generated on Sat Feb 28 05:15:17 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
