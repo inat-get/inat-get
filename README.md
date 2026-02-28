@@ -202,7 +202,7 @@ year = today.year
 user = get_user 'shikhalev'      # Here specify the user ID or login, I specified my own
 
 # Get observations
-observations = select_observations user: user, observed: range(year: year), quality_grade: 'research'
+observations = select_observations user: user, observed: time_range(year: year), quality_grade: 'research'
 
 by_taxon = observations % :taxon
 
@@ -264,7 +264,7 @@ else
   today.year
 end
 
-period = range(year: year, month: month)
+period = time_range year: year, month: month
 observations = select_observations project: project, created: period
 
 list = observations % :user

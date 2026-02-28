@@ -6,7 +6,7 @@ year = today.year
 user = get_user 'shikhalev'      # Здесь указываем ID или логин пользователя, я указал свой
 
 # Получаем наблюдения
-observations = select_observations user: user, observed: range(year: year), quality_grade: 'research'
+observations = select_observations user: user, observed: time_range(year: year), quality_grade: 'research'
 
 by_taxon = observations % :taxon
 

@@ -12,7 +12,7 @@ else
   today.year
 end
 
-period = range(year: year, month: month)
+period = time_range year: year, month: month
 observations = select_observations project: project, created: period
 
 list = observations % :user

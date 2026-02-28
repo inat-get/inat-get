@@ -47,7 +47,6 @@ module INatGet::Data::DSL
   #   @return [Dataset<Model::Identification>]
   # @overload select_identifications **query
   #   @param [Hash] query
-  #   @option query [Integer, Set<Integer>] id:
   #   @return [Dataset<Model::Identification>]
   def select_identifications(*args, **query)
     result = INatGet::Data::Manager::Identifications::instance.get(*args, **query)

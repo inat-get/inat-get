@@ -67,7 +67,7 @@ module INatGet::Data::DSL
   #   @option query [Model::Project, Enumerable<Model::Project>] project:
   #   @option query [Model::Taxon, Enumerable<Model::Taxon>] taxon:
   #   @option query [Model::User, Enumerable<Model::User>] user:
-  #   @option query [Enum::Rank, Enumerable<Model::User>, Range<Enum::Rank>] rank:
+  #   @option query [Enum::Rank, Enumerable<Enum::Rank>, Range<Enum::Rank>] rank:
   #   @option query [Integer, Enumerable<Integer>] observed_year:
   #   @option query [Integer, Enumerable<Integer>] observed_month:
   #   @option query [Integer, Enumerable<Integer>] observed_week:
