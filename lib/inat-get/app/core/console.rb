@@ -15,23 +15,23 @@ class INatGet::App::Server::Console < INatGet::App::Server
     @table = IS::Term::StatusTable::instance
     @table.configure do
       column :icon, func: lambda { |row| row[:_active] ? "\e[1m[ ]" : "[✔]" }
-      separator
+      separator ' • '
       column :_sender_pid, id: true, align: :right
-      separator
+      separator ' • '
       column :name
-      separator
+      separator ' • '
       column :status, align: :center
-      separator
+      separator ' • '
       column :current, align: :right, summary: :current
       separator ' of '
       column :total, align: :left, summary: :total
-      separator
+      separator ' • '
       column :percent, align: :right, func: :percent, format: '%d%%', summary: :percent
-      separator
+      separator ' • '
       column :estimated, func: :estimated, align: :right, format: :duration, summary: :elapsed
-      separator
+      separator ' • '
       column :speed, func: :speed, format: '%.2f r/s', align: :right, summary: :speed
-      separator
+      separator ' • '
       column :message, summary: :value
 
       summary true, message: ''

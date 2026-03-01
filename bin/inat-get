@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/ruby --jit
 
 require_relative '../lib/inat-get'
 require_relative '../lib/inat-get/app'
