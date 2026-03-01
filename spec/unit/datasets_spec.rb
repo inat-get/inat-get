@@ -8,7 +8,7 @@ RSpec::describe INatGet::Data::DSL::Dataset do
     um = INatGet::Data::Model::User
     om = INatGet::Data::Model::Observation
     om.db.transaction do
-      point = DateTime::now
+      point = Time::now
       u1 = um.create id: 1, login: 'first', suspended: false, cached: point
       u2 = um.create id: 2, login: "second", suspended: false, cached: point
       om.create id: 1, 
@@ -53,7 +53,7 @@ RSpec::describe INatGet::Data::DSL::Dataset do
   end
 
   it 'split' do
-    obs = INatGet::Data::Manager::Observations::instance.get created_year: DateTime::now.year
+    obs = INatGet::Data::Manager::Observations::instance.get created_year: Time::now.year
     list = obs % :quality_grade
     expect(list.size).to eq(2)
     expect(list.keys.include?('research')).to eq(true)

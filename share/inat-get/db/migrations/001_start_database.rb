@@ -8,10 +8,10 @@ Sequel.migration do
       column :id, Integer, null: false
       column :login, String, null: false
       column :name, String
-      column :created, DateTime
+      column :created, Time
       column :orcid, String
       column :suspended, :boolean, null: false
-      column :cached, DateTime, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_users'
       unique [ :login ], name: 'uq_users_login'
@@ -32,7 +32,7 @@ Sequel.migration do
       column :geometry, String, text: true
       column :latitude, Float
       column :longitude, Float
-      column :cached, DateTime, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_places'
       unique [ :slug ], name: 'uq_places_slug'
@@ -63,14 +63,14 @@ Sequel.migration do
       column :slug, String, null: false
       column :title, String, null: false
       column :description, String, text: true
-      column :created, DateTime, null: false
-      column :updated, DateTime
+      column :created, Time, null: false
+      column :updated, Time
       column :project_type, String
       column :is_umbrella, :boolean, null: false
       column :is_collection, :boolean, null: false
       column :members_only, :boolean, null: false
       column :user_id, Integer
-      column :cached, DateTime, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_projects'
       foreign_key [ :user_id ], :users, name: 'fk_projects_user_id', on_delete: :restrict, on_update: :cascade
@@ -184,7 +184,7 @@ Sequel.migration do
       column :parent_id, Integer
       column :rank, String
       column :rank_level, Float
-      column :cached, DateTime, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_taxa'
       foreign_key [ :iconic_taxon_id ], :taxa, name: 'fk_taxa_iconic_taxon_id', on_delete: :restrict, on_update: :cascade
@@ -229,14 +229,14 @@ Sequel.migration do
     create_table :observations do
       column :id, Integer, null: false
       column :captive, :boolean
-      column :created, DateTime, null: false
+      column :created, Time, null: false
       column :created_year, Integer, null: false
       column :created_month, Integer, null: false
       column :created_week, Integer, null: false
       column :created_day, Integer, null: false
       column :created_hour, Integer, null: false
       column :created_timezone, String
-      column :observed, DateTime
+      column :observed, Time
       column :observed_year, Integer
       column :observed_winter, Integer
       column :observed_month, Integer
@@ -244,7 +244,7 @@ Sequel.migration do
       column :observed_day, Integer
       column :observed_hour, Integer
       column :observed_timezone, String
-      column :updated, DateTime, null: false
+      column :updated, Time, null: false
       column :description, String, text: true
       column :geoprivacy, String
       column :taxon_geoprivacy, String
@@ -258,7 +258,7 @@ Sequel.migration do
       column :taxon_id, Integer
       column :user_id, Integer, null: false
       column :uuid, String
-      column :cached, DateTime, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_observations'
       foreign_key [ :taxon_id ], :taxa, name: 'fk_observations_taxon_id', on_delete: :cascade, on_update: :cascade
@@ -296,7 +296,7 @@ Sequel.migration do
     create_table :observation_faves do
       column :observation_id, Integer, null: false
       column :user_id, Integer, null: false
-      column :created, DateTime, null: false
+      column :created, Time, null: false
 
       primary_key [ :observation_id, :user_id ], name: 'pk_observation_faves'
       foreign_key [ :observation_id ], :observations, name: 'fk_observation_faves_observation_id', on_delete: :cascade, on_update: :cascade
@@ -397,7 +397,7 @@ Sequel.migration do
       column :id, Integer, null: false
       column :body, String, text: true
       column :category, String
-      column :created, DateTime, null: false
+      column :created, Time, null: false
       column :current, :boolean
       column :disagreement, :boolean
       column :hidden, :boolean
@@ -406,7 +406,7 @@ Sequel.migration do
       column :taxon_id, Integer, null: false
       column :user_id, Integer, null: false
       column :uuid, String
-      column :cached, DateTime, null: false
+      column :cached, Time, null: false
 
       primary_key [ :id ], name: 'pk_identifications'
       foreign_key [ :observation_id ], :observations, name: 'fk_identifications_observation_id', on_delete: :cascade, on_update: :cascade
@@ -431,10 +431,10 @@ Sequel.migration do
       column :endless, String, fixed: true, size: 32, null: false
       column :endpoint, String, null: false
       column :query, String, text: true, null: false
-      column :started, DateTime, null: false
-      column :freshed, DateTime, null: false
-      column :finished, DateTime
-      column :busy,DateTime
+      column :started, Time, null: false
+      column :freshed, Time, null: false
+      column :finished, Time
+      column :busy,Time
 
       primary_key [ :full ], name: 'pk_requests'
       index [ :endless ], name: 'ix_requests_endless'

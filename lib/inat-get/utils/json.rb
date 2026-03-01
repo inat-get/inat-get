@@ -15,15 +15,15 @@ class Time
 
 end
 
-# @private
-class DateTime
+# # @private
+# class DateTime
 
-  # @return [String]
-  def to_json(*)
-    "\"#{ xmlschema(9) }\""
-  end
+#   # @return [String]
+#   def to_json(*)
+#     "\"#{ xmlschema(9) }\""
+#   end
 
-end
+# end
 
 # @private
 class Date

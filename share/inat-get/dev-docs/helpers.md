@@ -49,7 +49,7 @@ def to_sequel(**normalized_query) # → Sequel::SQL::Expression
 | Одиночное значение для set-поля | `Set[value]` |
 | `Enumerable` для set-поля | `value.to_set` |
 | `Sequel::Dataset` для set-поля | остаётся как есть (специальный случай для подзапросов) |
-| `Date` или `Range<Date>` | `Range<DateTime>` (начало дня / начало следующего дня) |
+| `Date` или `Range<Date>` | `Range<Time>` (начало дня / начало следующего дня) |
 | `Symbol` | `String#freeze` |
 | `location: [lat, lon]` | `{ latitude: lat..lat, longitude: lon..lon }` |
 | `Rank` или `Range<Rank>` / `Set<Rank>` | остаётся как есть (специальная обработка в to_api/to_sequel) |

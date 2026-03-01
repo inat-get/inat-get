@@ -14,6 +14,7 @@ require_relative 'defs/cached'
 require_relative 'defs/children'
 require_relative 'defs/links'
 require_relative 'defs/assmodel'
+require_relative 'defs/observed'
 
 class INatGet::Data::Parser::Observation < INatGet::Data::Parser
 
@@ -22,7 +23,8 @@ class INatGet::Data::Parser::Observation < INatGet::Data::Parser
   part Part::PK          # :id => :id
   part Part::Copy, :captive, :mappable, :obscured, :description, :uuid, :geoprivacy, :taxon_geoprivacy, :quality_grade
   part Part::Copy, :license => :license_code, :observed_timezone => :observed_time_zone, :created_timezone => :created_time_zone
-  part Part::DateTime, :created => :created_at, :observed => :time_observed_at, :updated => :updated_at
+  part Part::Time, :created => :created_at, :updated => :updated_at
+  part Part::Observed
   part Part::Details, :created => :created_at_details, :observed => :observed_on_details
   part Part::Location
   part Part::Model, :user,  model: INatGet::Data::Model::User
@@ -44,7 +46,7 @@ class INatGet::Data::Parser::Observation < INatGet::Data::Parser
   def model = INatGet::Data::Model::Observation
 
   def fake id
-    now = DateTime::now
+    now = Time::now
     self.model.create id: id, created: now, observed: now, updated: now, cached: now, quality_grade: 'fake', user: INatGet::Data::Manager::Users::instance.get(0),
                       created_year: now.year, created_month: now.month, created_week: now.to_date.cweek, created_day: now.day, created_hour: now.hour
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'sequel'
 Sequel.extension :migration
 Sequel.extension :core_extensions
-Sequel.datetime_class = DateTime
+Sequel.datetime_class = Time
 Sequel.database_timezone = :utc
 Sequel.application_timezone = :local
 DB = Sequel::sqlite

@@ -14,13 +14,13 @@ class INatGet::Data::Parser::User < INatGet::Data::Parser
 
   part Part::PK
   part Part::Copy, :login, :name, :orcid, :suspended
-  part Part::DateTime, :created => :created_at
+  part Part::Time, :created => :created_at
   part Part::Cached
 
   def model() = INatGet::Data::Model::User
 
   def fake id
-    self.model.create id: id, login: "fake#{ id }", name: "Fake user \##{ id }", suspended: false, created: DateTime::now, cached: DateTime::now
+    self.model.create id: id, login: "fake#{ id }", name: "Fake user \##{ id }", suspended: false, created: Time::now, cached: Time::now
   end
 
 end

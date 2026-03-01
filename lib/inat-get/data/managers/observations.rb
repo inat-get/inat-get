@@ -78,8 +78,8 @@ module INatGet::Data::DSL
   #   @option query [Integer, Enumerable<Integer>] created_week:
   #   @option query [Integer, Enumerable<Integer>] created_day:
   #   @option query [Integer, Enumerable<Integer>] created_hour:
-  #   @option query [Date, Range<DateTime>] observed:
-  #   @option query [Date, Range<DateTime>] created:
+  #   @option query [Date, Range<Time>] observed:
+  #   @option query [Date, Range<Time>] created:
   #   @option query [Integer, nil] accuracy:
   #   @option query [String, Enumerable<String>] csi:
   #   @option query [String, Enumerable<String>] geoprivacy:

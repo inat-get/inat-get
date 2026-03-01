@@ -19,8 +19,8 @@ module INatGet::Data::DSL
   # @return [Date]
   def today = Date.today
 
-  # @return [DateTime]
-  def now = DateTime.now
+  # @return [Time]
+  def now = Time.now
 
   # @return [Gem::Version]
   def version = Gem::Version::create INatGet::Info::VERSION
@@ -75,7 +75,7 @@ module INatGet::Data::DSL
   #   @param [Integer] day
   # @see #start_time
   # @see #finish_time
-  # @return [Range<DateTime>]
+  # @return [Range<Time>]
   def time_range date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil
     (start_time(date: date, century: century, decade: decade, year: year, quarter: quarter, season: season, month: month, day: day, week: week) ... finish_time(date: date, century: century, decade: decade, year: year, quarter: quarter, season: season, month: month, day: day, week: week))
   end
@@ -110,11 +110,11 @@ module INatGet::Data::DSL
   #   @param [Integer] day
   # @see #time_range
   # @see #finish_time
-  # @return [DateTime]
+  # @return [Time]
   def start_time date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil
     if date
       raise ArgumentError, "Too many arguments", caller_locations if century || decade || year || quarter || season || month || day || week
-      date.to_datetime
+      date.to_time
     elsif century
       raise ArgumentError, "Too many arguments", caller_locations if year || quarter || season || month || day || week
       start_time year: ((century - 1) * 100 + (decade || 0) * 10 + 1)
@@ -182,7 +182,7 @@ module INatGet::Data::DSL
   #   @param [Integer] day
   # @see #time_range
   # @see #start_time
-  # @return [DateTime]
+  # @return [Time]
   def finish_time date: nil, century: nil, decade: nil, year: nil, quarter: nil, season: nil, month: nil, day: nil, week: nil
     if date
       raise ArgumentError, "Too many argument", caller_locations if century || decade || year || quarter || season || month || day || week

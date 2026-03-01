@@ -39,7 +39,7 @@
 | `rank` | Rank, Range[Rank], Set[Rank] | Ранг таксона (species, genus и т.д.) |
 | `quality_grade` | String, Symbol, Set[...] | Качество (research, needs_id, casual) |
 | `captive`, `mappable`, `threatened`, `introduced` и др. | Boolean | Флаги наблюдений |
-| `observed`, `created` | DateTime, Date, Range[DateTime] | Временные диапазоны |
+| `observed`, `created` | Time, Date, Range[Time] | Временные диапазоны |
 | `latitude`, `longitude` | Float, Range[Float] | Географические координаты |
 | `location` | [Float, Float] | Точка [lat, lon] для поиска в радиусе |
 | `radius` | Float | Радиус в километрах для `location` |

@@ -21,7 +21,7 @@ class INatGet::App::Server::API < INatGet::App::Server
 
   def get query, **opts
     endpoint = @config.dig(:api, :root) + query[:endpoint].to_s
-    timepoint = DateTime::now
+    timepoint = Time::now
     if @last_request
       delta = timepoint - @last_request
       sleep (@delay - delta) if delta < @delay

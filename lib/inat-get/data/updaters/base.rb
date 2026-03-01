@@ -75,7 +75,7 @@ class INatGet::Data::Updater
     return [] if ids.empty?
     interval = parse_duration(@config.dig(:caching, :refs, self.manager.endpoint) || @config.dig(:caching, :refs, :default))
     if interval
-      point = (DateTime::now.to_time - interval).to_datetime
+      point = (Time::now.to_time - interval).to_time
       # TODO: учесть slugs и uuids
       fresh = self.model.where(id: ids, cached: (point .. )).select_map(:id)
       ids -= fresh
@@ -109,7 +109,7 @@ class INatGet::Data::Updater
     el_json = JSON.generate({ endpoint: endpoint, query: el_query }, sort_keys: true, space: '')
     el_hash = Digest::MD5::hexdigest el_json
 
-    start_point = DateTime::now
+    start_point = Time::now
     actual_point = start_point - parse_duration(@config.dig(:caching, :update))
 
     # Захватываем requests
@@ -146,7 +146,7 @@ class INatGet::Data::Updater
         if el_record
           saved_json = el_record.query
           saved_data = JSON.parse saved_json, symbolize_names: false
-          dates = saved_data.select { |k, _| k == 'd2' || k.end_with?('_d2') }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
+          dates = saved_data.select { |k, _| k == 'd2' || k.end_with?('_d2') }.values.compact.map { |v| ::Time.parse(v) rescue nil }.compact
           updated_since = [ el_record.started, *dates ].min
         end
       end
@@ -200,11 +200,11 @@ class INatGet::Data::Updater
           cover_data = saved_data.reject { |k, _| k == :d2 || k.to_s.end_with?('_d2') }
           cover_data.each do |k, v|
             if k == :d1 || k.to_s.end_with?('_d1')
-              cover_data[k] = DateTime.parse(v) rescue v
+              cover_data[k] = ::Time.parse(v) rescue v
             end
           end
           if query_covers?(cover_data, query)
-            dates = saved_data.select { |k, _| k == "d2" || k.end_with?("_d2") }.values.compact.map { |v| DateTime.parse(v) rescue nil }.compact
+            dates = saved_data.select { |k, _| k == "d2" || k.end_with?("_d2") }.values.compact.map { |v| ::Time.parse(v) rescue nil }.compact
             updated_since = [rec.started, *dates].min
             break
           end
@@ -225,7 +225,7 @@ class INatGet::Data::Updater
     # Освобождаем requests
     rq_model.db.transaction(isolation: :committed, mode: :immediate) do
       if result == :done
-        record.update busy: nil, started: start_point, finished: DateTime::now
+        record.update busy: nil, started: start_point, finished: ::Time::now
       else
         record.update busy: nil
       end
@@ -255,7 +255,7 @@ class INatGet::Data::Updater
       case v
       when Enumerable
         v.map(&:to_s).join(',')
-      when DateTime, Date
+      when ::Time, Date
         v.xmlschema
       else
         v
@@ -373,7 +373,7 @@ class INatGet::Data::Updater
       av = actual[key]
       return false unless av
       case value
-      when DateTime
+      when Time
         return false if value > av
       when Enumerable
         return false if (av - value).size > 0

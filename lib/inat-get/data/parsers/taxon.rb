@@ -20,7 +20,7 @@ class INatGet::Data::Parser::Taxon < INatGet::Data::Parser
   def model() = INatGet::Data::Model::Taxon
 
   def fake id
-    self.model.create id: id, name: "Fake #{ id }", is_active: false, cached: DateTime::now
+    self.model.create id: id, name: "Fake #{ id }", is_active: false, cached: Time::now
   end
 
 end

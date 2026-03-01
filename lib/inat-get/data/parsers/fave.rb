@@ -13,7 +13,7 @@ class INatGet::Data::Parser::Fave < INatGet::Data::Parser
   include Singleton
 
   part Part::PK, :observation_id => :owner_id
-  part Part::DateTime, :created => :created_at
+  part Part::Time, :created => :created_at
   part Part::Model, :user, model: INatGet::Data::Model::User
 
   # @return [class Model::Fave]

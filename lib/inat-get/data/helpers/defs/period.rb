@@ -7,15 +7,15 @@ require_relative 'range'
 class INatGet::Data::Helper::Field::Period < INatGet::Data::Helper::Field::Range
 
   def initialize helper, key
-    super helper, key, DateTime
+    super helper, key, Time
   end
 
   def valid? value
-    value.is_a?(DateTime) ||
+    value.is_a?(Time) ||
       value.is_a?(Date) ||
       value.is_a?(::Range) && 
-        (value.begin.nil? || value.begin.is_a?(DateTime) || value.begin.is_a?(Date)) &&
-        (value.end.nil?   || value.end.is_a?(DateTime)   || value.end.is_a?(Date))
+        (value.begin.nil? || value.begin.is_a?(Time) || value.begin.is_a?(Date)) &&
+        (value.end.nil?   || value.end.is_a?(Time)   || value.end.is_a?(Date))
   end
 
   def prepare value
@@ -39,13 +39,13 @@ class INatGet::Data::Helper::Field::Period < INatGet::Data::Helper::Field::Range
 
   def value_begin value
     value = value.begin if value.is_a?(::Range)
-    value = value.to_datetime if value.is_a?(Date)
+    value = value.to_time if value.is_a?(Date)
     value
   end
 
   def value_end value
     value = value.end if value.is_a?(::Range)
-    value = (value + 1).to_datetime if value.is_a?(Date)
+    value = (value + 1).to_time if value.is_a?(Date)
     value
   end
 

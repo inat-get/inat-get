@@ -2,7 +2,7 @@
 
 require 'sequel'
 Sequel.extension :core_extensions
-Sequel.datetime_class = DateTime
+Sequel.datetime_class = Time
 Sequel.database_timezone = :utc
 Sequel.application_timezone = :local
 
@@ -50,6 +50,13 @@ class INatGet::App::Task
       @db.extend_datasets do
         def literal_datetime(value)
           "'#{value.xmlschema}'"
+        end
+        def literal_time(value)
+          if value.is_a?(::Time)
+            "'#{value.xmlschema}'"
+          else
+            super(value)
+          end
         end
       end
       @db.execute 'PRAGMA journal_mode=WAL'
