@@ -12,16 +12,16 @@ RSpec::describe INatGet::Data::DSL::Dataset do
       u1 = um.create id: 1, login: 'first', suspended: false, cached: point
       u2 = um.create id: 2, login: "second", suspended: false, cached: point
       om.create id: 1, 
-              created: point, created_year: point.year, created_month: point.month, created_week: point.cweek, created_day: point.day, created_hour: point.hour, 
+              created: point, created_year: point.year, created_month: point.month, created_week: point.to_date.cweek, created_day: point.day, created_hour: point.hour, 
               updated: point, quality_grade: 'research', user: u1, cached: point
       om.create id: 2, 
-              created: point, created_year: point.year, created_month: point.month, created_week: point.cweek, created_day: point.day, created_hour: point.hour, 
+              created: point, created_year: point.year, created_month: point.month, created_week: point.to_date.cweek, created_day: point.day, created_hour: point.hour, 
               updated: point, quality_grade: "needs_id", user: u1, cached: point
       om.create id: 3, 
-              created: point, created_year: point.year, created_month: point.month, created_week: point.cweek, created_day: point.day, created_hour: point.hour, 
+              created: point, created_year: point.year, created_month: point.month, created_week: point.to_date.cweek, created_day: point.day, created_hour: point.hour, 
               updated: point, quality_grade: "research", user: u2, cached: point
       om.create id: 4, 
-              created: point, created_year: point.year, created_month: point.month, created_week: point.cweek, created_day: point.day, created_hour: point.hour, 
+              created: point, created_year: point.year, created_month: point.month, created_week: point.to_date.cweek, created_day: point.day, created_hour: point.hour, 
               updated: point, quality_grade: "needs_id", user: u2, cached: point
     end
   end
