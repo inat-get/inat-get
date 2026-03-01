@@ -513,9 +513,9 @@
   <span class='ivar'>@task</span><span class='period'>.</span><span class='id identifier rubyid_prepare'>prepare</span>
   <span class='ivar'>@task</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span>
   <span class='ivar'>@console</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span> <span class='label'>_active:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>done</span><span class='tstring_end'>&#39;</span></span>
-<span class='comment'># rescue =&gt; e
-</span><span class='comment'>#   @logger.error e.message
-</span><span class='kw'>end</span></pre>
+<span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -526,7 +526,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Feb 28 05:16:27 2026 by
+  Generated on Sun Mar  1 08:27:30 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

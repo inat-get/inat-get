@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: INatGet::Data::Parser::Part::DateTime
+  Class: INatGet::Data::Parser::Part::Time
   
     &mdash; INatGet
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../../css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  pathId = "INatGet::Data::Parser::Part::DateTime";
+  pathId = "INatGet::Data::Parser::Part::Time";
   relpath = '../../../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../../../_index.html">Index (D)</a> &raquo;
+    <a href="../../../../_index.html">Index (T)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Data.html" title="INatGet::Data (module)">Data</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Parser.html" title="INatGet::Data::Parser (class)">Parser</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Part.html" title="INatGet::Data::Parser::Part (class)">Part</a></span></span>
      &raquo; 
-    <span class="title">DateTime</span>
+    <span class="title">Time</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: INatGet::Data::Parser::Part::DateTime
+      <div id="content"><h1>Class: INatGet::Data::Parser::Part::Time
   
   
   <span class="private note title">Private</span>
@@ -78,7 +78,7 @@
           
             <li class="next"><span class='object_link'><a href="Copy.html" title="INatGet::Data::Parser::Part::Copy (class)">Copy</a></span></li>
           
-            <li class="next">INatGet::Data::Parser::Part::DateTime</li>
+            <li class="next">INatGet::Data::Parser::Part::Time</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -116,7 +116,11 @@
 <div class="tags">
   
 
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Observed.html" title="INatGet::Data::Parser::Part::Observed (class)">Observed</a></span></p>
 </div>
+
 
 
 
@@ -243,11 +247,11 @@
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='ivar'>@names</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
     <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_value'>value</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_value'>value</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
   <span class='kw'>end</span>
   <span class='ivar'>@aliases</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_src_name'>src_name</span><span class='op'>|</span>
     <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_source'>source</span><span class='lbracket'>[</span><span class='id identifier rubyid_src_name'>src_name</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_value'>value</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_value'>value</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_result'>result</span>
 <span class='kw'>end</span></pre>
@@ -261,7 +265,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Feb 28 05:16:29 2026 by
+  Generated on Sun Mar  1 08:27:32 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

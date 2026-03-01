@@ -362,7 +362,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span> <span class='id identifier rubyid_query'>query</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
   <span class='id identifier rubyid_endpoint'>endpoint</span> <span class='op'>=</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:root</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_query'>query</span><span class='lbracket'>[</span><span class='symbol'>:endpoint</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='id identifier rubyid_timepoint'>timepoint</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_timepoint'>timepoint</span> <span class='op'>=</span> <span class='const'>Time</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span>
   <span class='kw'>if</span> <span class='ivar'>@last_request</span>
     <span class='id identifier rubyid_delta'>delta</span> <span class='op'>=</span> <span class='id identifier rubyid_timepoint'>timepoint</span> <span class='op'>-</span> <span class='ivar'>@last_request</span>
     <span class='id identifier rubyid_sleep'>sleep</span> <span class='lparen'>(</span><span class='ivar'>@delay</span> <span class='op'>-</span> <span class='id identifier rubyid_delta'>delta</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_delta'>delta</span> <span class='op'>&lt;</span> <span class='ivar'>@delay</span>
@@ -397,7 +397,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Feb 28 05:16:26 2026 by
+  Generated on Sun Mar  1 08:27:29 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

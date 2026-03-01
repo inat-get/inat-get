@@ -323,11 +323,6 @@
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
 26
 27
 28
@@ -335,10 +330,15 @@
 30
 31
 32
-33</pre>
+33
+34
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_config'>config</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
   <span class='ivar'>@config</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span>
@@ -390,12 +390,12 @@
       <pre class="lines">
 
 
-35
-36
-37</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_db'>db</span>
   <span class='ivar'>@db</span>
@@ -511,12 +511,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span>
   <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="ConsoleLogger.html" title="INatGet::App::ConsoleLogger (class)">ConsoleLogger</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ConsoleLogger.html#initialize-instance_method" title="INatGet::App::ConsoleLogger#initialize (method)">new</a></span></span> <span class='ivar'>@console</span><span class='comma'>,</span> <span class='label'>progname:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
@@ -541,11 +541,6 @@
       <pre class="lines">
 
 
-37
-38
-39
-40
-41
 42
 43
 44
@@ -571,10 +566,22 @@
 64
 65
 66
-67</pre>
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/task.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prepare'>prepare</span>
   <span class='const'>Thread</span><span class='op'>::</span><span class='id identifier rubyid_current'>current</span><span class='lbracket'>[</span><span class='symbol'>:api</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@api</span>
@@ -587,6 +594,13 @@
     <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_extend_datasets'>extend_datasets</span> <span class='kw'>do</span>
       <span class='kw'>def</span> <span class='id identifier rubyid_literal_datetime'>literal_datetime</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>def</span> <span class='id identifier rubyid_literal_time'>literal_time</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+        <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Time</span><span class='rparen'>)</span>
+          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>else</span>
+          <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
     <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PRAGMA journal_mode=WAL</span><span class='tstring_end'>&#39;</span></span>
@@ -617,7 +631,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Feb 28 05:16:26 2026 by
+  Generated on Sun Mar  1 08:27:29 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
