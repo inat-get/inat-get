@@ -18,32 +18,40 @@ require_relative 'defs/period'
 require_relative 'defs/accuracy'
 require_relative 'defs/coordinate'
 require_relative 'defs/location'
+require_relative 'defs/identified'
+require_relative 'defs/has'
+require_relative 'defs/verifiable'
+require_relative 'defs/licensed'
+require_relative 'defs/licenses'
 
 class INatGet::Data::Helper::Observations < INatGet::Data::Helper
 
   include Singleton
 
+  # @return [INatGet::Data::Manager::Observations]
+  def manager() = INatGet::Data::Manager::Observations::instance
+
   field :id,               INatGet::Data::Helper::Field::Ids
   field :uuid,             INatGet::Data::Helper::Field::Ids
   field :captive,          INatGet::Data::Helper::Field::Scalar, Boolean
   field :endemic,          INatGet::Data::Helper::Field::Scalar, Boolean
-  field :identified,       INatGet::Data::Helper::Field::Scalar, Boolean
+  field :identified,       INatGet::Data::Helper::Field::Identified
   field :introduced,       INatGet::Data::Helper::Field::Scalar, Boolean
   field :native,           INatGet::Data::Helper::Field::Scalar, Boolean
   field :out_of_range,     INatGet::Data::Helper::Field::Scalar, Boolean
-  field :popular,          INatGet::Data::Helper::Field::Scalar, Boolean
-  field :photos,           INatGet::Data::Helper::Field::Scalar, Boolean
-  field :sounds,           INatGet::Data::Helper::Field::Scalar, Boolean
+  field :popular,          INatGet::Data::Helper::Field::Has, :faves
+  field :photos,           INatGet::Data::Helper::Field::Has, :photos
+  field :sounds,           INatGet::Data::Helper::Field::Has, :sounds
   field :threatened,       INatGet::Data::Helper::Field::Scalar, Boolean
-  field :verifiable,       INatGet::Data::Helper::Field::Scalar, Boolean
-  field :licensed,         INatGet::Data::Helper::Field::Scalar, Boolean
-  field :photo_licensed,   INatGet::Data::Helper::Field::Scalar, Boolean
-  field :sound_licensed,   INatGet::Data::Helper::Field::Scalar, Boolean
+  field :verifiable,       INatGet::Data::Helper::Field::Verifiable
+  field :licensed,         INatGet::Data::Helper::Field::Licensed
+  field :photo_licensed,   INatGet::Data::Helper::Field::Has, :photos, Sequel.~(license: nil) 
+  field :sound_licensed,   INatGet::Data::Helper::Field::Has, :sounds, Sequel.~(license: nil)
   field :mappable,         INatGet::Data::Helper::Field::Scalar, Boolean
   field :obscured,         INatGet::Data::Helper::Field::Scalar, Boolean
   field :license,          INatGet::Data::Helper::Field::Set,    String
-  field :photo_license,    INatGet::Data::Helper::Field::Set,    String
-  field :sound_license,    INatGet::Data::Helper::Field::Set,    String
+  field :photo_license,    INatGet::Data::Helper::Field::Licenses, :photos
+  field :sound_license,    INatGet::Data::Helper::Field::Licenses, :sounds
   field :place,            INatGet::Data::Helper::Field::Place
   field :user,             INatGet::Data::Helper::Field::Models, INatGet::Data::Model::User
   field :project,          INatGet::Data::Helper::Field::Project
@@ -72,8 +80,5 @@ class INatGet::Data::Helper::Observations < INatGet::Data::Helper
   field :radius,           INatGet::Data::Helper::Field::Scalar, Float
   field :location,         INatGet::Data::Helper::Field::Location
   field :quality_grade,    INatGet::Data::Helper::Field::Set,    String
-
-  # @return [INatGet::Data::Manager::Observations]
-  def manager() = INatGet::Data::Manager::Observations::instance
 
 end

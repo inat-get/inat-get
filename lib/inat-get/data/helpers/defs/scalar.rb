@@ -10,7 +10,7 @@ class INatGet::Data::Helper::Field::Scalar < INatGet::Data::Helper::Field
   end
 
   def valid? value
-    value.nil? || check === value
+    value.nil? || @check === value
   end
 
 end

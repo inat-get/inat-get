@@ -15,6 +15,7 @@ require_relative 'defs/children'
 require_relative 'defs/links'
 require_relative 'defs/assmodel'
 require_relative 'defs/observed'
+require_relative 'defs/fromtaxon'
 
 class INatGet::Data::Parser::Observation < INatGet::Data::Parser
 
@@ -22,6 +23,7 @@ class INatGet::Data::Parser::Observation < INatGet::Data::Parser
 
   part Part::PK          # :id => :id
   part Part::Copy, :captive, :mappable, :obscured, :description, :uuid, :geoprivacy, :taxon_geoprivacy, :quality_grade
+  part Part::FromTaxon, :endemic, :native, :introduced, :out_of_range, :threatened
   part Part::Copy, :license => :license_code, :observed_timezone => :observed_time_zone, :created_timezone => :created_time_zone
   part Part::Time, :created => :created_at, :updated => :updated_at
   part Part::Observed

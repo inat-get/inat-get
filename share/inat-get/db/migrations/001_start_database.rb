@@ -228,7 +228,12 @@ Sequel.migration do
 
     create_table :observations do
       column :id, Integer, null: false
-      column :captive, :boolean
+      column :captive,      :boolean
+      column :endemic,      :boolean
+      column :native,       :boolean
+      column :introduced,   :boolean
+      column :out_of_range, :boolean
+      column :threatened,   :boolean
       column :created, Time, null: false
       column :created_year, Integer, null: false
       column :created_month, Integer, null: false
@@ -264,6 +269,11 @@ Sequel.migration do
       foreign_key [ :taxon_id ], :taxa, name: 'fk_observations_taxon_id', on_delete: :cascade, on_update: :cascade
       foreign_key [ :user_id ], :users, name: 'fk_observations_user_id', on_delete: :cascade, on_update: :cascade
       index [ :captive ], name: 'ix_observations_captive'
+      index [ :endemic ], name: 'ix_observations_endemic'
+      index [ :native ], name: 'ix_observations_native'
+      index [ :introduced ], name: 'ix_observations_introduced'
+      index [ :out_of_range ], name: 'ix_observations_out_of_range'
+      index [ :threatened ], name: 'ix_observations_threatened'
       index [ :created ], name: 'ix_observations_created'
       index [ :created_year ], name: 'ix_observations_created_year'
       index [ :created_month ], name: 'ix_observations_created_month'

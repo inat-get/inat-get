@@ -1,3 +1,5 @@
+require 'logger'
+
 require 'spec_helper'
 
 require 'sequel'
@@ -12,6 +14,7 @@ Sequel::Model.strict_param_setting = false
 Sequel::Model.raise_on_save_failure = true
 Sequel::Migrator::run DB, 'share/inat-get/db/migrations/'
 Sequel::Model.db = DB
+DB::loggers << ::Logger::new('tmp/db.log', level: :debug)
 
 require_relative '../lib/inat-get/app/setup'
 INatGet::App::Setup::config[:offline] = true
