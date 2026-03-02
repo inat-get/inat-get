@@ -404,6 +404,32 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#endemic-instance_method" title="#endemic (instance method)">#<strong>endemic</strong>  &#x21d2; Boolean<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sequel data field.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#geoprivacy-instance_method" title="#geoprivacy (instance method)">#<strong>geoprivacy</strong>  &#x21d2; String<sup>?</sup> </a>
     
 
@@ -431,6 +457,32 @@
   <span class="summary_signature">
     
       <a href="#id-instance_method" title="#id (instance method)">#<strong>id</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sequel data field.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#introduced-instance_method" title="#introduced (instance method)">#<strong>introduced</strong>  &#x21d2; Boolean<sup>?</sup> </a>
     
 
     
@@ -535,6 +587,32 @@
   <span class="summary_signature">
     
       <a href="#mappable-instance_method" title="#mappable (instance method)">#<strong>mappable</strong>  &#x21d2; Boolean<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sequel data field.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#native-instance_method" title="#native (instance method)">#<strong>native</strong>  &#x21d2; Boolean<sup>?</sup> </a>
     
 
     
@@ -794,6 +872,32 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#out_of_range-instance_method" title="#out_of_range (instance method)">#<strong>out_of_range</strong>  &#x21d2; Boolean<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sequel data field.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#quality_grade-instance_method" title="#quality_grade (instance method)">#<strong>quality_grade</strong>  &#x21d2; String </a>
     
 
@@ -847,6 +951,32 @@
   <span class="summary_signature">
     
       <a href="#taxon_id-instance_method" title="#taxon_id (instance method)">#<strong>taxon_id</strong>  &#x21d2; Integer<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sequel data field.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#threatened-instance_method" title="#threatened (instance method)">#<strong>threatened</strong>  &#x21d2; Boolean<sup>?</sup> </a>
     
 
     
@@ -1977,6 +2107,57 @@
 </div>
     
       
+      <span id="endemic-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="endemic-instance_method">
+  
+    #<strong>endemic</strong>  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sequel data field</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/observation.rb', line 20</span>
+
+<span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observations</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
       <span id="faves-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="faves-instance_method">
@@ -2175,6 +2356,57 @@
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/observation.rb', line 24</span>
 
 <span class='id identifier rubyid_one_to_many'>one_to_many</span> <span class='symbol'>:identifications</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Identification.html" title="INatGet::Data::Model::Identification (class)">Identification</a></span></span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="introduced-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="introduced-instance_method">
+  
+    #<strong>introduced</strong>  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sequel data field</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/observation.rb', line 20</span>
+
+<span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observations</span></pre>
     </td>
   </tr>
 </table>
@@ -2390,6 +2622,57 @@
   <h3 class="signature " id="mappable-instance_method">
   
     #<strong>mappable</strong>  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sequel data field</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/observation.rb', line 20</span>
+
+<span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observations</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="native-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="native-instance_method">
+  
+    #<strong>native</strong>  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
   
 
   
@@ -2895,6 +3178,57 @@
 </div>
     
       
+      <span id="out_of_range-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="out_of_range-instance_method">
+  
+    #<strong>out_of_range</strong>  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sequel data field</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/observation.rb', line 20</span>
+
+<span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observations</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
       <span id="photos-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="photos-instance_method">
@@ -3303,6 +3637,57 @@
 </div>
     
       
+      <span id="threatened-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="threatened-instance_method">
+  
+    #<strong>threatened</strong>  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sequel data field</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/observation.rb', line 20</span>
+
+<span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observations</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
       <span id="updated-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="updated-instance_method">
@@ -3672,7 +4057,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Mar  1 08:42:41 2026 by
+  Generated on Mon Mar  2 03:15:10 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
