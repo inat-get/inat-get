@@ -23,6 +23,7 @@ require_relative 'defs/has'
 require_relative 'defs/verifiable'
 require_relative 'defs/licensed'
 require_relative 'defs/licenses'
+require_relative 'defs/iconic'
 
 class INatGet::Data::Helper::Observations < INatGet::Data::Helper
 
@@ -70,15 +71,15 @@ class INatGet::Data::Helper::Observations < INatGet::Data::Helper
   field :observed,         INatGet::Data::Helper::Field::Period
   field :created,          INatGet::Data::Helper::Field::Period
   field :accuracy,         INatGet::Data::Helper::Field::Accuracy
-  field :csi,              INatGet::Data::Helper::Field::Set,    String
+  # field :csi,              INatGet::Data::Helper::Field::Set,    String               # Пока отставим
   field :geoprivacy,       INatGet::Data::Helper::Field::Set,    String
   field :taxon_geoprivacy, INatGet::Data::Helper::Field::Set,    String
-  field :obscuration,      INatGet::Data::Helper::Field::Set,    String
-  field :iconic_taxa,      INatGet::Data::Helper::Field::Set,    String
-  field :latitude,         INatGet::Data::Helper::Field::Coordinate
-  field :longitude,        INatGet::Data::Helper::Field::Coordinate
-  field :radius,           INatGet::Data::Helper::Field::Scalar, Float
-  field :location,         INatGet::Data::Helper::Field::Location
+  # field :obscuration,      INatGet::Data::Helper::Field::Set,    String               # Пока отставим
+  field :iconic_taxa,      INatGet::Data::Helper::Field::Iconic
+  # field :latitude,         INatGet::Data::Helper::Field::Coordinate                   # Пока отставим, нужен рефакторинг
+  # field :longitude,        INatGet::Data::Helper::Field::Coordinate
+  # field :radius,           INatGet::Data::Helper::Field::Scalar, Float
+  # field :location,         INatGet::Data::Helper::Field::Location
   field :quality_grade,    INatGet::Data::Helper::Field::Set,    String
 
 end

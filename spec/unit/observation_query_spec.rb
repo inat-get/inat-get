@@ -37,4 +37,46 @@ RSpec::describe INatGet::Data::Helper::Observations do
     expect { manager.get(sound_license: [ 'cc-by', 'cc-by-nc' ]).to_a }.not_to raise_error()
   end
 
+  it 'dates' do
+    today = Date::today
+    expect { manager.get(created: today).to_a }.not_to raise_error()
+    expect { manager.get(created: (... today)).to_a }.not_to raise_error()
+    expect { manager.get(observed: today).to_a }.not_to raise_error()
+    expect { manager.get(observed: (today ..)).to_a }.not_to raise_error()
+    expect { manager.get(created_year: today.year).to_a }.not_to raise_error()
+    expect { manager.get(created_month: today.month).to_a }.not_to raise_error()
+    expect { manager.get(created_week: today.cweek).to_a }.not_to raise_error()
+    expect { manager.get(created_day: today.day).to_a }.not_to raise_error()
+    expect { manager.get(created_hour: 12).to_a }.not_to raise_error()
+    expect { manager.get(observed_year: today.year).to_a }.not_to raise_error()
+    expect { manager.get(observed_month: today.month).to_a }.not_to raise_error()
+    expect { manager.get(observed_week: today.cweek).to_a }.not_to raise_error()
+    expect { manager.get(observed_day: today.day).to_a }.not_to raise_error()
+    expect { manager.get(observed_hour: 12).to_a }.not_to raise_error()
+  end
+
+  it 'accuracy' do
+    expect { manager.get(accuracy: (0 .. 4)).to_a }.not_to raise_error()
+    expect { manager.get(accuracy: (  .. 4)).to_a }.not_to raise_error()
+  end
+
+  it 'keys' do
+    expect { manager.get(geoprivacy: 'test').to_a }.not_to raise_error()
+    expect { manager.get(geoprivacy: [ 'test' ]).to_a }.not_to raise_error()
+    expect { manager.get(taxon_geoprivacy: 'test').to_a }.not_to raise_error()
+    expect { manager.get(taxon_geoprivacy: [ 'test' ]).to_a }.not_to raise_error()
+    expect { manager.get(quality_grade: 'test').to_a }.not_to raise_error()
+    expect { manager.get(quality_grade: [ 'test' ]).to_a }.not_to raise_error()
+  end
+
+  it 'iconic' do
+    expect { manager.get(iconic_taxa: 'Aves').to_a }.not_to raise_error()
+    expect { manager.get(iconic_taxa: [ 'Aves', 'Fungi' ]).to_a }.not_to raise_error()
+  end
+
+  # it 'location' do
+  #   expect { manager.get(latitude: 50.0, longitude: 60.0, radius: 200).to_a }.not_to raise_error()
+  #   expect { manager.get(latitude: (50.0 .. 60.0), longitude: (50 .. 60)).to_a }.not_to raise_error()
+  # end
+
 end

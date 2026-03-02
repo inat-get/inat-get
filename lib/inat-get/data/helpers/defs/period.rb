@@ -19,7 +19,8 @@ class INatGet::Data::Helper::Field::Period < INatGet::Data::Helper::Field::Range
   end
 
   def prepare value
-    (value_begin(value) .. value_end(value))
+    #(value_begin(value) .. value_end(value))
+    ::Range::new(value_begin(value), value_end(value), value_exclude(value))
   end
 
   def to_api value
@@ -47,6 +48,12 @@ class INatGet::Data::Helper::Field::Period < INatGet::Data::Helper::Field::Range
     value = value.end if value.is_a?(::Range)
     value = (value + 1).to_time if value.is_a?(Date)
     value
+  end
+
+  def value_exclude value
+    value = value.exclude_end? if value.is_a?(::Range)
+    # value = true if value.is_a?(Date) || value.is_a(Time)
+    !!value
   end
 
 end

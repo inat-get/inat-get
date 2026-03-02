@@ -28,10 +28,10 @@ class INatGet::Data::Helper::Field::Set < INatGet::Data::Helper::Field
     case value
     when nil
       nil
-    when @check
-      ::Set[ value ]
     when Enumerable
       value.to_set
+    when @check
+      ::Set[ value ]
     else
       raise ArgumentError, "Invalid field value: #{ @key } => #{ value.inspect }", caller_locations
     end

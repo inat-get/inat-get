@@ -5,7 +5,7 @@ require_relative '../defs'
 class INatGet::Data::Helper::Field::Location < INatGet::Data::Helper::Field
 
   def valid? value
-    value.nil? || (value.is_a?(Array) && value[0].is_a?(Float) && value[1].is_a?(Float))
+    value.nil? || (value.is_a?(Array) && value.size == 2 && value[0].is_a?(Float) && value[1].is_a?(Float))
   end
 
   def prepare value

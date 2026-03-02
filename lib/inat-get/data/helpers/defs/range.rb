@@ -10,14 +10,14 @@ class INatGet::Data::Helper::Field::Range < INatGet::Data::Helper::Field
   end
 
   def valid? value
-    @check === value || (Range === value && (value.begin.nil? || @check === value.begin) && (value.end.nil? || @check === value.end))
+    @check === value || (::Range === value && (value.begin.nil? || @check === value.begin) && (value.end.nil? || @check === value.end))
   end
 
   def prepare value
     case value
     when nil
       nil
-    when Range
+    when ::Range
       value
     when @check
       (value .. value)

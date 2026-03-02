@@ -24,9 +24,9 @@ class INatGet::Data::Helper::Field::Accuracy < INatGet::Data::Helper::Field::Ran
   end
 
   def to_sequel value
-    return {} if valid.nil? || (value.begin.nil? && value.end.nil?)
+    return {} if value.nil? || (value.begin.nil? && value.end.nil?)
     result = { accuracy: value }
-    result = Sequel.|({ accuracy: nil }) if value.begin.nil?
+    result = Sequel.|(result, { accuracy: nil }) if value.begin.nil?
     result
   end
 

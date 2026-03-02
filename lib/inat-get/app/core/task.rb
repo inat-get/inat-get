@@ -52,12 +52,15 @@ class INatGet::App::Task
           "'#{value.xmlschema}'"
         end
         def literal_time(value)
-          if value.is_a?(::Time)
+          if value.instance_of?(::Time)
             "'#{value.xmlschema}'"
           else
             super(value)
           end
         end
+        # def literal_date(value)
+        #   "'#{value.xmlschema}'"
+        # end
       end
       @db.execute 'PRAGMA journal_mode=WAL'
       @db.execute 'PRAGMA synchronous=NORMAL'
