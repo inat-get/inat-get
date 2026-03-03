@@ -3,7 +3,11 @@
 require 'singleton'
 
 require_relative 'base'
+require_relative 'defs/pk'
+require_relative 'defs/copy'
+require_relative 'defs/cached'
 require_relative 'defs/assmodel'
+require_relative 'defs/ancestry'
 
 class INatGet::Data::Parser::Taxon < INatGet::Data::Parser
 

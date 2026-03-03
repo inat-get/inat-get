@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'sequel'
+require 'is-boolean'
 
 require_relative '../../info'
+require_relative 'base'
 
 class INatGet::Data::Model::Taxon < INatGet::Data::Model
 

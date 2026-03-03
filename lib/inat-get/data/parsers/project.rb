@@ -42,7 +42,7 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
   def fake id
     self.model.create id: id, slug: "fake-#{ id }", title: "Fake \##{ id }", description: "Fake project \##{ id }", project_type: '',
                       created: Time::now, updated: Time::now, cached: Time::now, 
-                      is_umbrella: false, is_collection: false, members_only: false, user: INatGet::Data::Manager::Users.get(0)
+                      is_umbrella: false, is_collection: false, members_only: false, user: INatGet::Data::Manager::Users.instance.get(0).first
   end
 
 end

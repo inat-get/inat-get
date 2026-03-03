@@ -32,8 +32,11 @@ end
 require_relative '../lib/inat-get/app/setup'
 INatGet::App::Setup::config[:offline] = true
 
+require_relative '../lib/inat-get/data/managers/taxa'
 require_relative '../lib/inat-get/data/managers/users'
+require_relative '../lib/inat-get/data/managers/places'
 require_relative '../lib/inat-get/data/managers/projects'
 require_relative '../lib/inat-get/data/managers/observations'
+require_relative '../lib/inat-get/data/managers/identifications'
 
 
