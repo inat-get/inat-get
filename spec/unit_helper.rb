@@ -39,4 +39,10 @@ require_relative '../lib/inat-get/data/managers/projects'
 require_relative '../lib/inat-get/data/managers/observations'
 require_relative '../lib/inat-get/data/managers/identifications'
 
-
+RSpec.configure do |config|
+  config.around(:each) do |example|
+    DB.transaction(rollback: :always, savepoint: true) do
+      example.run
+    end
+  end
+end
