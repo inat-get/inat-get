@@ -81,15 +81,9 @@ module INatGet::Data::DSL
   #   @option query [Date, Range<Time>] observed:
   #   @option query [Date, Range<Time>] created:
   #   @option query [Integer, nil] accuracy:
-  #   @option query [String, Enumerable<String>] csi:
   #   @option query [String, Enumerable<String>] geoprivacy:
   #   @option query [String, Enumerable<String>] taxon_geoprivacy:
-  #   @option query [String, Enumerable<String>] obscuration:
   #   @option query [String, Enumerable<String>] iconic_taxa:
-  #   @option query [Float, Range<Float>] latitude:
-  #   @option query [Float, Range<Float>] longitude:
-  #   @option query [Float] radius:
-  #   @option query [[FLoat, Float]] location:
   #   @option query [String, Enumerable<String>] quality_grade:
   #   @return [Dataset<Model::Observation>]
   def select_observations *args, **query
