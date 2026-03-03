@@ -10,7 +10,7 @@
 `inat-get` is a utility for fetching and analyzing data from **[iNaturalist](https://www.inaturalist.org/)**.
 
 The basic approach is to form queries as *declaratively* as possible and get reports,
-without giving up advanced capabilities. This leads us to the concept of **DSL** — Domain Specific Language —
+without giving up advanced capabilities. This leads us to the concept of **{file:DSL.md DSL — Domain Specific Language}** —
 and user scripts using it. It is assumed that the user will need a *minimal*
 familiarity with Ruby syntax, but if desired, they can use the full power of the language.
 

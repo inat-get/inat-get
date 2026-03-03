@@ -2,7 +2,7 @@
 
 ## Общие принципы
 
-Скрипты `*.inat` представляют собой обычные Ruby-скрипты с предзагруженными методами DSL. Пользователь пишет на полноценном Ruby, но в распоряжении имеет набор специализированных методов для работы с данными iNaturalist.
+Скрипты `*.inat` (или `*.rb`) представляют собой обычные Ruby-скрипты с предзагруженными методами DSL. Пользователь пишет на полноценном Ruby, но в распоряжении имеет набор специализированных методов для работы с данными iNaturalist.
 
 Основные принципы DSL:
 
@@ -21,14 +21,18 @@
 
 | Метод | Возвращает | Описание |
 |-------|-----------|----------|
-| `observations(**query)` | `Dataset` | Набор наблюдений по условию |
-| `taxa(**query)` | `Dataset` | Набор таксонов по условию |
-| `observation(id)` | `Observation` \| `nil` | Одно наблюдение по ID |
-| `taxon(id)` | `Taxon` \| `nil` | Один таксон по ID |
+| `select_observations(**query)` | `Dataset` | Набор наблюдений по условию |
+| `select_taxa(**query)` | `Dataset` | Набор таксонов по условию |
+| `select_places(*ids)` | `Array<Place>` | Места по ID или slug |
+| `select_projects(*args, **query)` | `Dataset` или `Array<Project>` | Проекты по условию или ID |
+| `select_users(*ids)` | `Array<User>` | Пользователи по ID или login |
+| `get_observation(id)` | `Observation` \| `nil` | Одно наблюдение по ID или UUID |
+| `get_taxon(id)` | `Taxon` \| `nil` | Один таксон по ID |
+| `get_place(id)` | `Place` \| `nil` | Одно место по ID, UUID или slug |
+| `get_project(id)` | `Project` \| `nil` | Один проект по ID или slug |
+| `get_user(id)` | `User` \| `nil` | Один пользователь по ID или login |
 
-Методы `place`, `project`, `user` возвращают не датасеты, а отдельные модели Sequel. Для включения в условия датасетов они используются неявно через параметры запроса.
-
-### Параметры запроса для observations
+### Параметры запроса для select_observations
 
 | Параметр | Тип | Описание |
 |----------|-----|----------|
@@ -41,15 +45,16 @@
 | `captive`, `mappable`, `threatened`, `introduced` и др. | Boolean | Флаги наблюдений |
 | `observed`, `created` | Time, Date, Range[Time] | Временные диапазоны |
 | `latitude`, `longitude` | Float, Range[Float] | Географические координаты |
-| `location` | [Float, Float] | Точка [lat, lon] для поиска в радиусе |
-| `radius` | Float | Радиус в километрах для `location` |
+| `accuracy` | Integer, Range[Integer], nil | Точность геолокации в метрах |
 | `license`, `photo_license`, `sound_license` | String, Symbol, Set[...] | Лицензии |
 | `geoprivacy`, `taxon_geoprivacy` | String, Symbol, Set[...] | Приватность геоданных |
 | `id`, `observed_year`, `observed_month` и др. | Integer, Set[Integer], Range[Integer] | Идентификаторы и временные компоненты |
+| `iconic_taxa` | String, Symbol, Set[...] | Иконичные таксоны (Aves, Mammalia и т.д.) |
+| `identified`, `verifiable`, `licensed`, `photos`, `sounds`, `popular` | Boolean | Специальные флаги |
 
-Полный список см. в `lib/inat-get/data/helper.rb`.
+Полный список см. в `lib/inat-get/data/helpers/observations.rb`.
 
-### Параметры запроса для taxa
+### Параметры запроса для select_taxa
 
 | Параметр | Тип | Описание |
 |----------|-----|----------|
@@ -57,6 +62,16 @@
 | `parent` | Taxon, Integer | Родительский таксон |
 | `is_active` | Boolean | Активен ли таксон |
 | `rank` | Rank, Range[Rank], Set[Rank] | Ранг |
+
+### Переменная `name`
+
+Внутри скрипта доступна переменная `name` — имя файла задачи без расширения. Используется для формирования имён выходных файлов:
+
+```ruby
+File.open "#{name}.md", 'w' do |file|
+  file.puts "## Отчёт #{name}"
+end
+```
 
 ---
 
@@ -80,19 +95,25 @@
 
 `ds % field` — разбивает датасет на подмножества по значению поля.
 
-Возвращает `List` — отображение значение поля → датасет с соответствующим ограничением.
+Возвращает `List` — контейнер датасетов, где каждый датасет имеет `key` (значение поля разбиения).
 
 ```ruby
 # Разбиение наблюдений птиц по пользователям
-by_user = observations(taxon: taxon_birds) % :user
+by_user = select_observations(taxon: taxon_birds) % :user
 
-# Итерация по парам [user, dataset]
-by_user.each do |user, ds|
+# Итерация по датасетам, доступ к ключу через ds.key
+by_user.each do |ds|
+  user = ds.key
   puts "#{user.login}: #{ds.count} наблюдений"
 end
 ```
 
-**Ограничения текущей реализации**: разбиение материализует полный список ключей (пользователей) при создании. Ленивое разбиение запланировано на будущее.
+Разбиение работает по любым полям модели:
+- Ассоциации (`:user`, `:taxon`, `:place`)
+- Временные компоненты (`:observed_year`, `:created_month` и т.д.)
+- Прочие поля (`:quality_grade`, `:license` и т.д.)
+
+**Ограничения текущей реализации**: разбиение материализует полный список ключей при создании. Ленивое разбиение запланировано на будущее.
 
 ---
 
@@ -107,9 +128,22 @@ end
 | `list + other` | Объединение | По ключам: ключ присутствует, если есть в любом списке; датасеты для общих ключей объединяются |
 | `list * other` | Пересечение | По ключам: ключ присутствует, если есть в обоих списках; датасеты для общих ключей также объединяются |
 | `list - other` | Разность | По ключам: ключи из other удаляются вместе с датасетами |
-| `list.to_ds` | Свертка | Объединяет все датасеты списка в один через ИЛИ |
+| `list.to_dataset` | Свертка | Объединяет все датасеты списка в один через ИЛИ |
 
 Требование однородности ключей: операции над списками с несовпадающими типами ключей вызывают исключение.
+
+### Методы List
+
+| Метод | Описание |
+|-------|----------|
+| `list.keys` | Массив ключей |
+| `list[key]` | Датасет по ключу или `nil` |
+| `list.count`, `list.size` | Количество ключей |
+| `list.empty?` | Проверка на пустоту |
+| `list.filter { \|ds\| ... }` | Фильтрация по условию на датасет |
+| `list.filter_keys { \|key\| ... }` | Фильтрация по условию на ключ |
+| `list.sort { \|ds\| ... }` | Сортировка по блоку |
+| `list.sort!` | Сортировка по ключу (in-place) |
 
 ---
 
@@ -150,7 +184,7 @@ end
 | `ds.update!` | Форсирует проверку необходимости обновления данных. Не всегда приводит к API-запросу — только если данные устарели по правилам кэширования |
 | `ds.reset!` | Сбрасывает состояние материализации датасета. Следующая итерация снова вызовет `update!` |
 
-Нет способа принудительно игнорировать локальный кэск. Для отладки или получения "чистых" данных следует использовать `--db-reset` или удалить файл БД.
+Нет способа принудительно игнорировать локальный кэш. Для отладки или получения "чистых" данных следует использовать `--db-reset` или удалить файл БД.
 
 ---
 
@@ -168,7 +202,7 @@ iNaturalist API имеет ограниченный набор фильтров.
 Пример:
 ```ruby
 # Загружаются все наблюдения птиц, при итерации фильтруются
-observations(taxon: taxon_birds) - observations(user: current_user)
+select_observations(taxon: taxon_birds) - select_observations(user: current_user)
 ```
 
 ### Критическое ограничение: неограниченные запросы
@@ -177,13 +211,13 @@ observations(taxon: taxon_birds) - observations(user: current_user)
 
 Недопустимые конструкции:
 ```ruby
-observations()  # пустой запрос
-observations(taxon: taxon_birds) + observations()  # OR с чем угодно = что угодно
+select_observations  # пустой запрос
+select_observations(taxon: taxon_birds) + select_observations  # OR с чем угодно = что угодно
 ```
 
 Допустимые пустые результаты:
 ```ruby
-observations(taxon: taxon_birds) * observations(taxon: taxon_mammals)  # NOTHING
+select_observations(taxon: taxon_birds) * select_observations(taxon: taxon_mammals)  # NOTHING
 ```
 Результат — пустой датасет, ошибки нет.
 
@@ -191,57 +225,159 @@ observations(taxon: taxon_birds) * observations(taxon: taxon_mammals)  # NOTHING
 
 ## Примеры использования
 
-### Базовая фильтрация
+### Пример 1: Простой отчёт по пользователю
+
+Из `share/inat-get/demo/01_user_stat.rb`:
 
 ```ruby
-# Наблюдения птиц в России
-birds_in_russia = observations(taxon: taxon_birds, place: place_russia)
+year = today.year
+user = get_user 'shikhalev'
 
-# Исследовательского качества
-research_grade = birds_in_russia * observations(quality_grade: :research)
+# Получаем наблюдения
+observations = select_observations user: user, observed: time_range(year: year), quality_grade: 'research'
 
-# За последний год
-recent = research_grade * observations(observed: (today - 365)..today)
+by_taxon = observations % :taxon
 
-recent.each do |obs|
-  puts "#{obs.taxon.name}: #{obs.observed}"
+File.open "#{name}.md", 'w' do |file|
+  file.puts '## Отчет для пользователя ' + user.login + (user.name ? " (#{user.name})" : '')
+  file.puts ''
+  by_taxon.each do |ds|
+    # ds.key — объект Taxon
+    file.puts "+ #{ds.key.common_name} *(#{ds.key.name})* — #{ds.count} набл."
+  end
+  file.puts ''
+  file.puts "Всего **#{observations.count}** наблюдений"
 end
 ```
 
-### Разбиение и агрегация
+### Пример 2: Вычитание списков
+
+Из `share/inat-get/demo/02_underfound.rb`:
 
 ```ruby
-# Топ-10 пользователей по количеству наблюдений птиц
-by_user = observations(taxon: taxon_birds) % :user
+user = get_user 'shikhalev'
+place = get_place 'artinskiy-gorodskoy-okrug-osm-2023-sv-ru'
 
-counts = by_user.map { |user, ds| [user, ds.count] }
-top10 = counts.sort_by { |_, count| -count }.first(10)
+all_observations = select_observations place: place, quality_grade: 'research', rank: (.. Rank.complex)
+full_list = all_observations % :taxon
 
-top10.each do |user, count|
-  puts "#{user.login}: #{count}"
+user_observations = select_observations place: place, quality_grade: "research", rank: (.. Rank.complex), user: user
+user_list = user_observations % :taxon
+
+others_list = full_list - user_list
+others_list.sort! { |ds| -ds.count }
+
+File.open "#{name}.md", 'w' do |file|
+  file.puts '## Недонайденные'
+  file.puts ''
+  others_list.each do |ds|
+    file.puts "+ #{ds.key.common_name} *(#{ds.key.name})* — #{ds.count} набл."
+  end
+  file.puts ''
+  file.puts "Всего **#{others_list.count}** таксонов."
 end
 ```
 
-### Комбинирование условий
+### Пример 3: Фильтрация по времени
+
+Из `share/inat-get/demo/03_newcomers.rb`:
+
+```ruby
+project = get_project 'bioraznoobrazie-rayonov-sverdlovskoy-oblasti'
+
+month = today.month - 1
+year = if month == 0
+  month = 12
+  today.year - 1
+else
+  today.year
+end
+
+period = time_range year: year, month: month
+observations = select_observations project: project, created: period
+
+list = observations % :user
+list.filter! { |ds| period === ds.key.created }
+list.sort! { |ds| ds.key.created }
+
+File.open "#{name}.md", 'w' do |file|
+  file.puts "## Новички проекта «#{project.title}»"
+  file.puts "*#{period.begin.to_date} — #{period.end.to_date - 1}*"
+  file.puts ''
+  list.each do |ds|
+    file.puts "+ #{ds.key.login} (#{ds.key.created.to_date}) — #{ds.count} набл."
+  end
+  file.puts ''
+  file.puts "Всего #{list.count} пользователей"
+end
+```
+
+### Пример 4: Комбинирование условий
 
 ```ruby
 # Птицы или млекопитающие, но только исследовательского качества
-birds = observations(taxon: taxon_birds)
-mammals = observations(taxon: taxon_mammals)
-research = observations(quality_grade: :research)
+birds = select_observations(taxon: get_taxon(3))      # Aves
+mammals = select_observations(taxon: get_taxon(40151)) # Mammalia
+research = select_observations(quality_grade: 'research')
 
 target = (birds + mammals) * research
 ```
 
+### Пример 5: Разбиение и агрегация
+
+```ruby
+# Топ-10 пользователей по количеству наблюдений птиц в проекте
+project = get_project 'some-project'
+taxon_birds = get_taxon(3)  # Aves
+
+by_user = select_observations(project: project, taxon: taxon_birds) % :user
+
+# Сортировка по убыванию количества
+sorted = by_user.sort { |ds| -ds.count }
+
+sorted.first(10).each do |ds|
+  puts "#{ds.key.login}: #{ds.count}"
+end
+```
+
 ---
 
-## Открытые вопросы и планы
+## Дополнительные возможности DSL
 
-| Функциональность | Статус | Примечание |
-|------------------|--------|------------|
-| Ленивое разбиение (`%`) | Запланировано | Текущая реализация материализует ключи |
-| Категория "всё остальное" в разбиении | Не рассмотрено | Нет ясного use-case |
-| Агрегации без materialize | Не требуется | Обход через `% + map` достаточен |
-| Параллельное выполнение OR-веток | Отклонено | Rate limits API не позволяют |
-| Изоляция DSL для встраивания в другие Ruby-скрипты | Требует проработки | Зависимость от окружения Task |
-| Тестирование скриптов `.inat` | Не планируется | Вне scope проекта |
+### Утилиты времени
+
+| Метод | Описание |
+|-------|----------|
+| `today` | Текущая дата (`Date.today`) |
+| `now` | Текущее время (`Time.now`) |
+| `time_range(...)` | Диапазон времени по различным параметрам |
+| `start_time(...)`, `finish_time(...)` | Начало и конец периода |
+
+Поддерживаемые параметры для `time_range`: `date`, `century`, `decade`, `year`, `quarter`, `season` (`:winter`, `:spring`, `:summer`, `:autumn`), `month`, `week`, `day`.
+
+### Версия
+
+| Метод | Описание |
+|-------|----------|
+| `version` | Версия гема (`Gem::Version`) |
+| `version_alias` | Кодовое имя версии |
+| `version?(*requirements)` | Проверка соответствия требованиям |
+| `version!(*requirements)` | Проверка или исключение |
+
+### Перечисления
+
+`Rank` и `Iconic` доступны напрямую в DSL:
+
+```ruby
+# Ранги таксонов
+Rank.species      # вид
+Rank.genus       # род
+Rank.family      # семейство
+# ... и др., см. lib/inat-get/data/types/rank.rb
+
+# Иконичные таксоны
+Iconic.Aves           # птицы
+Iconic.Mammalia       # млекопитающие
+Iconic.Plantae        # растения
+# ... и др., см. lib/inat-get/data/types/iconic.rb
+```
