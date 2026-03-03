@@ -3,7 +3,6 @@
 require "sequel"
 
 require_relative "../../info"
-require_relative '../parsers/tag'
 
 class INatGet::Data::Model::Tag < INatGet::Data::Model
 
@@ -16,10 +15,9 @@ class INatGet::Data::Model::Tag < INatGet::Data::Model
   def owner = self.observation
 
   class << self
-    
-    # @return [Parser::Tag]
-    def parser = INatGet::Data::Parser::Tag::instance
 
+    def inner_key() = :tags
+    
   end
 
 end

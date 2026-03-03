@@ -24,13 +24,13 @@ require_relative 'defs/verifiable'
 require_relative 'defs/licensed'
 require_relative 'defs/licenses'
 require_relative 'defs/iconic'
+require_relative '../models/user'
 
 class INatGet::Data::Helper::Observations < INatGet::Data::Helper
 
   include Singleton
 
-  # @return [INatGet::Data::Manager::Observations]
-  def manager() = INatGet::Data::Manager::Observations::instance
+  def endpoint() = :observations
 
   field :id,               INatGet::Data::Helper::Field::Ids
   field :uuid,             INatGet::Data::Helper::Field::Ids

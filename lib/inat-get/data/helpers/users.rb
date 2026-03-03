@@ -9,11 +9,10 @@ class INatGet::Data::Helper::Users < INatGet::Data::Helper
 
   include Singleton
 
+  def endpoint() = :users
+
   field :id,    INatGet::Data::Helper::Field::Ids
   field :login, INatGet::Data::Helper::Field::Ids
-
-  # @return [INatGet::Data::Manager::Users]
-  def manager() = INatGet::Data::Manager::Users::instance
 
   # @return [Array<Hash>]
   def query_to_api **query

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../models/user'
-require_relative '../helpers/users'
-require_relative '../parsers/user'
-require_relative '../updaters/users'
+# require_relative '../models/user'
+# require_relative '../helpers/users'
+# require_relative '../parsers/user'
+# require_relative '../updaters/users'
 
 class INatGet::Data::Manager::Users < INatGet::Data::Manager
 
@@ -15,20 +15,8 @@ class INatGet::Data::Manager::Users < INatGet::Data::Manager
   # @return [:users]
   def endpoint = :users
 
-  # @return [INatGet::Data::Model::User]
-  def model = INatGet::Data::Model::User
-
   # @return [:login]
   def sid = :login
-
-  # @return [INatGet::Data::Helper::Users]
-  def helper = INatGet::Data::Helper::Users::instance
-
-  # @return [INatGet::Data::Parser::User]
-  def parser = INatGet::Data::Parser::User::instance
-
-  # @return [INatGet::Data::Updater::Users]
-  def updater = INatGet::Data::Updater::Users::instance
 
   # @endgroup
 

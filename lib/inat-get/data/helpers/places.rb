@@ -9,8 +9,7 @@ class INatGet::Data::Helper::Places < INatGet::Data::Helper
 
   include Singleton
 
-  # @return [INatGet::Data::Manager::Places]
-  def manager() = INatGet::Data::Manager::Places::instance
+  def endpoint() = :places
 
   field :id, INatGet::Data::Helper::Field::Ids
   field :slug, INatGet::Data::Helper::Field::Ids

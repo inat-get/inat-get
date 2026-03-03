@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'models'
+require_relative '../../models/project'
 
 class INatGet::Data::Helper::Field::Project < INatGet::Data::Helper::Field::Models
 

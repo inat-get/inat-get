@@ -11,8 +11,6 @@ class INatGet::Data::DSL::Condition::Special::ProjectUsers < INatGet::Data::DSL:
     @project_id = project_id
   end
 
-  # def model() = INatGet::Data::Model::User
-
   def api_query
     [ { endpoint: "projects/#{ @project_id }/members", query: {} } ]
   end

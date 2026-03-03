@@ -21,8 +21,6 @@ class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
   class << self
 
-    def manager = INatGet::Data::Manager::Taxa::instance
-
     # @group Taxonomy
 
     def compact_set *values

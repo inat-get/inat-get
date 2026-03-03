@@ -14,6 +14,8 @@ class INatGet::Data::Helper::Projects < INatGet::Data::Helper
 
   include Singleton
 
+  def endpoint() = :projects
+
   field :id,        INatGet::Data::Helper::Field::Ids
   field :slug,      INatGet::Data::Helper::Field::Ids
   field :type,      INatGet::Data::Helper::Field::Set, String
@@ -22,8 +24,5 @@ class INatGet::Data::Helper::Projects < INatGet::Data::Helper
   field :longitude, INatGet::Data::Helper::Field::ScalarCoord
   field :radius,    INatGet::Data::Helper::Field::Scalar, Float
   field :location,  INatGet::Data::Helper::Field::ScalarLocation
-
-  # @return [INatGet::Data::Manager::Projects]
-  def manager() = INatGet::Data::Manager::Projects::instance
 
 end

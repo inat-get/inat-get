@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../models/taxon'
-require_relative '../helpers/taxa'
-require_relative '../parsers/taxon'
-require_relative '../updaters/taxa'
+# require_relative '../models/taxon'
+# require_relative '../helpers/taxa'
+# require_relative '../parsers/taxon'
+# require_relative '../updaters/taxa'
 
 class INatGet::Data::Manager::Taxa < INatGet::Data::Manager
 
@@ -14,18 +14,6 @@ class INatGet::Data::Manager::Taxa < INatGet::Data::Manager
 
   # @return [:taxa]
   def endpoint = :taxa
-
-  # @return [INatGet::Data::Model::Taxon]
-  def model = INatGet::Data::Model::Taxon
-
-  # @return [INatGet::Data::Helper::Taxa]
-  def helper = INatGet::Data::Helper::Taxa::instance
-
-  # @return [INatGet::Data::Parser::Taxon]
-  def parser = INatGet::Data::Parser::Taxon::instance
-
-  # @return [INatGet::Data::Updater::Taxa]
-  def updater = INatGet::Data::Updater::Taxa::instance
 
   # @endgroup
 

@@ -19,10 +19,4 @@ class INatGet::Data::Model::Identification < INatGet::Data::Model
 
   def owner = self.observation
 
-  class << self
-
-    def manager = INatGet::Data::Manager::Identifications::instance
-
-  end
-
 end

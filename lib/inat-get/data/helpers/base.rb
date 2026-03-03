@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../info'
+require_relative '../../utils/simple_singular'
 
 module INatGet::Data; end
 
@@ -12,10 +13,20 @@ class INatGet::Data::Helper
   # @group Must be implemented in descendants
 
   # @return [INatGet::Data::Manager]
-  def manager() = raise NotImplementedError, "Not implemented method 'manager' in abstract class #{ self }", caller_locations
+  def manager
+    @manager ||= get_manager
+  end
+
+  # @private
+  private def get_manager
+    name = endpoint.to_s
+    require_relative "../managers/#{ name }"
+    cls = INatGet::Data::Manager.const_get name.capitalize
+    cls.instance
+  end
 
   # @return [Symbol]
-  def endpoint() = self.manager.endpoint
+  def endpoint() = raise NotImplementedError, "Not implemented methods 'endpoint' for abstract Helper", caller_locations
 
   # @endgroup
 

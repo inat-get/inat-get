@@ -8,8 +8,7 @@ class INatGet::Data::Updater::Taxa < INatGet::Data::Updater
 
   include Singleton
 
-  # @return [INatGet::Data::Manager::Taxa]
-  def manager() = INatGet::Data::Manager::Taxa::instance
+  def endpoint() = :taxa
 
   private
 

@@ -3,6 +3,7 @@
 require 'singleton'
 
 require_relative '../../info'
+require_relative '../../utils/simple_singular'
 require_relative '../dsl/dataset'
 
 module INatGet::Data; end
@@ -77,10 +78,58 @@ class INatGet::Data::Manager
   # @group Descendant Specificators
 
   # @return [Symbol]
-  def endpoint = raise NotImplementedError, "Not implemented 'endpoint' in abstract base class", caller_locations
+  def endpoint = raise NotImplementedError, "Not implemented 'endpoint' in abstract base Manager", caller_locations
 
   # @return [class of Sequel::Model]
-  def model = raise NotImplementedError, "Not implemented 'model' is abstract base class", caller_locations
+  def model
+    @model ||= get_model
+  end
+
+  # @private
+  private def get_model
+    name = endpoint.to_s.singular
+    require_relative "../models/#{ name }"
+    INatGet::Data::Model.const_get name.capitalize
+  end
+
+  # @return [INatGet::Data::Updater]
+  def updater
+    @updater ||= get_updater
+  end
+
+  # @private
+  private def get_updater
+    name = endpoint.to_s
+    require_relative "../updaters/#{ name }"
+    cls = INatGet::Data::Updater.const_get name.capitalize
+    cls.instance
+  end
+
+  # @return [INatGet::Data::Helper]
+  def helper
+    @helper ||= get_helper
+  end
+
+  # @private
+  private def get_helper
+    name = endpoint.to_s
+    require_relative "../helpers/#{ name }"
+    cls = INatGet::Data::Helper.const_get name.capitalize
+    cls.instance
+  end
+
+  # @return [INatGet::Data::Parser]
+  def parser
+    @parser ||= get_parser
+  end
+
+  # @private
+  private def get_parser
+    name = endpoint.to_s.singular
+    require_relative "../parsers/#{ name }"
+    cls = INatGet::Data::Parser.const_get name.capitalize
+    cls.instance
+  end
 
   # Name of `String` field that can be used as identifier or `nil`.
   # @return [Symbol, nil]
@@ -89,15 +138,6 @@ class INatGet::Data::Manager
   # `true` if UUID supported.
   # @return [Boolean]
   def uuid? = false
-
-  # @return [INatGet::Data::Updater]
-  def updater = raise NotImplementedError, "Not implemented 'updater' is abstract base class", caller_locations
-
-  # @return [INatGet::Data::Helper]
-  def helper = raise NotImplementedError, "Not implemented 'helper' is abstract base class", caller_locations
-
-  # @return [INatGet::Data::Parser]
-  def parser = raise NotImplementedError, "Not implemented 'parser' is abstract base class", caller_locations
 
   # @endgroup
 

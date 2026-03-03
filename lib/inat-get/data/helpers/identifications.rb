@@ -9,9 +9,8 @@ class INatGet::Data::Helper::Identifications < INatGet::Data::Helper
 
   include Singleton
 
-  # TODO: fields, Must be implemented before v1.0
+  def endpoint() = :identifications
 
-  # @return [INatGet::Data::Manager::Identifications]
-  def manager() = INatGet::Data::Manager::Identifications::instance
+  # TODO: fields, Must be implemented before v1.0
 
 end

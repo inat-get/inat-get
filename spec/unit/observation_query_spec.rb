@@ -1,4 +1,5 @@
 require 'unit_helper'
+require_relative '../../lib/inat-get/data/helpers/observations'
 
 RSpec::describe INatGet::Data::Helper::Observations do
 

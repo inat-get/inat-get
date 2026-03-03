@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../models/identification'
-require_relative '../helpers/identifications'
-require_relative '../parsers/identification'
-require_relative '../updaters/identifications'
+# require_relative '../models/identification'
+# require_relative '../helpers/identifications'
+# require_relative '../parsers/identification'
+# require_relative '../updaters/identifications'
 
 class INatGet::Data::Manager::Identifications < INatGet::Data::Manager
 
@@ -15,20 +15,8 @@ class INatGet::Data::Manager::Identifications < INatGet::Data::Manager
   # @return [:identifications]
   def endpoint = :identifications
 
-  # @return [class INatGet::Data::Model::Identification]
-  def model = INatGet::Data::Model::Identification
-
   # @return [true]
   def uuid? = true
-
-  # @return [INatGet::Data::Helper::Identifications]
-  def helper = INatGet::Data::Helper::Identifications::instance
-
-  # @return [INatGet::Data::Parser::Identification]
-  def parser = INatGet::Data::Parser::Identification::instance
-
-  # @return [INatGet::Data::Updater::Identifications]
-  def updater = INatGet::Data::Updater::Identifications::instance
 
   # @endgroup
 

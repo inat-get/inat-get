@@ -58,9 +58,6 @@ class INatGet::App::Task
             super(value)
           end
         end
-        # def literal_date(value)
-        #   "'#{value.xmlschema}'"
-        # end
       end
       @db.execute 'PRAGMA journal_mode=WAL'
       @db.execute 'PRAGMA synchronous=NORMAL'

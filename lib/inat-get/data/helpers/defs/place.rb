@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'models'
+require_relative '../../models/place'
 
 class INatGet::Data::Helper::Field::Place < INatGet::Data::Helper::Field::Models
 

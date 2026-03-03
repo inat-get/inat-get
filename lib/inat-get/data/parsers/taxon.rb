@@ -21,7 +21,7 @@ class INatGet::Data::Parser::Taxon < INatGet::Data::Parser
   part Part::AssModel, :parent, model: INatGet::Data::Model::Taxon
   part Part::AssModel, :iconic_taxon, model: INatGet::Data::Model::Taxon
 
-  def model() = INatGet::Data::Model::Taxon
+  def inner_key() = :taxa
 
   def fake id
     self.model.create id: id, name: "Fake #{ id }", is_active: false, cached: Time::now

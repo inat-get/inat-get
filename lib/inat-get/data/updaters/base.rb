@@ -42,7 +42,16 @@ class INatGet::Data::Updater
   def parser() = self.manager.parser
 
   # @return [INatGet::Data::Manager]
-  def manager() = raise NotImplementedError, "Not implemented method 'manager' for abstract class", caller_locations
+  def manager
+    @manager ||= get_manager
+  end
+
+  private def get_manager
+    name = endpoint.to_s
+    require_relative "../managers/#{ name }"
+    cls = INatGet::Data::Manager.const_get name.capitalize
+    cls.instance
+  end
 
   # @return [INatGet::Data::Model]
   def model() = self.manager.model
@@ -51,7 +60,7 @@ class INatGet::Data::Updater
   def helper() = self.manager.helper
 
   # @return [Symbol]
-  def endpoint() = self.manager.endpoint
+  def endpoint() = raise NotImplementedError, "Not implemented method 'endpoint' for abstract Updater", caller_locations
 
   # @endgroup
 

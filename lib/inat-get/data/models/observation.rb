@@ -44,12 +44,6 @@ class INatGet::Data::Model::Observation < INatGet::Data::Model
     tags.map(&:tag)
   end
 
-  class << self
-
-    def manager = INatGet::Data::Manager::Observations::instance
-
-  end
-
   include Comparable
 
   def <=> other

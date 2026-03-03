@@ -16,7 +16,6 @@ class INatGet::Data::Parser::Identification < INatGet::Data::Parser
   part Part::Model, :user,  model: INatGet::Data::Model::User
   part Part::Cached
 
-  # @return [Model::Identification]
-  def model = INatGet::Data::Model::Identification
+  def inner_key() = :identifications
 
 end

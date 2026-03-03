@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../info'
+require_relative '../../utils/simple_singular'
 
 # @api private
 class INatGet::Data::Parser
@@ -28,7 +29,19 @@ class INatGet::Data::Parser
   def manager() = self.model.manager
 
   # @return [class of Model]
-  def model() = raise NotImplementedError, "Not implemented method 'model' for abstract class", caller_locations
+  def model()
+    @model ||= get_model
+  end
+
+  private def get_model
+    name = inner_key.to_s.singular
+    require_relative "../models/#{ name }"
+    INatGet::Data::Model.const_get name.capitalize
+  end
+
+  private 
+  
+  def inner_key() = raise NotImplementedError, "Not implemented method 'inner_key' for abstract Parser", caller_locations
 
   # @endgroup
 

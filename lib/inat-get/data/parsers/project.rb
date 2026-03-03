@@ -16,7 +16,6 @@ require_relative 'defs/prjrules'
 require_relative 'defs/prjsearch'
 require_relative 'defs/subprojects'
 require_relative 'defs/prjmembers'
-require_relative '../models/project'
 
 class INatGet::Data::Parser::Project < INatGet::Data::Parser
 
@@ -37,7 +36,7 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
   part Part::PrjSearch
   part Part::Subprojects
 
-  def model() = INatGet::Data::Model::Project
+  def inner_key() = :projects
 
   def fake id
     self.model.create id: id, slug: "fake-#{ id }", title: "Fake \##{ id }", description: "Fake project \##{ id }", project_type: '',

@@ -3,7 +3,7 @@
 require 'sequel'
 
 require_relative '../../info'
-require_relative '../parsers/annotation'
+# require_relative '../parsers/annotation'
 
 class INatGet::Data::Model::Annotation < INatGet::Data::Model
 
@@ -24,7 +24,7 @@ class INatGet::Data::Model::Annotation < INatGet::Data::Model
   class << self
 
     # @return [Parser::Annotation]
-    def parser = INatGet::Data::Parser::Annotation::instance
+    # def parser = INatGet::Data::Parser::Annotation::instance
 
   end
 

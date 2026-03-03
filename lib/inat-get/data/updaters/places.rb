@@ -8,7 +8,6 @@ class INatGet::Data::Updater::Places < INatGet::Data::Updater
 
   include Singleton
 
-  # @return [INatGet::Data::Manager::Places]
-  def manager() = INatGet::Data::Manager::Places::instance
+  def endpoint() = :places
 
 end

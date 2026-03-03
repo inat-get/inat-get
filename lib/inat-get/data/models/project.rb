@@ -88,12 +88,6 @@ class INatGet::Data::Model::Project < INatGet::Data::Model
     INatGet::Data::Model::Observation.where(self.to_sequel)
   end
 
-  class << self
-
-    def manager = INatGet::Data::Manager::Projects::instance
-
-  end
-
   include Comparable
 
   def <=> other

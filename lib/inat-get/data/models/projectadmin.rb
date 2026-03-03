@@ -3,7 +3,7 @@
 require 'sequel'
 
 require_relative '../../info'
-require_relative '../parsers/projectadmin'
+require_relative '../parsers/projectadmin'         # TODO: Унифицировать lazy require
 
 class INatGet::Data::Model::ProjectAdmin < INatGet::Data::Model
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'base'
-require_relative '../models/observation'
-require_relative '../helpers/observations'
-require_relative '../parsers/observation'
-require_relative '../updaters/observations'
+# require_relative '../models/observation'
+# require_relative '../helpers/observations'
+# require_relative '../parsers/observation'
+# require_relative '../updaters/observations'
 
 class INatGet::Data::Manager::Observations < INatGet::Data::Manager
 
@@ -15,20 +15,8 @@ class INatGet::Data::Manager::Observations < INatGet::Data::Manager
   # @return [:observations]
   def endpoint = :observations
 
-  # @return [class INatGet::Data::Model::Observation]
-  def model = INatGet::Data::Model::Observation
-
   # @return [true]
   def uuid? = true
-
-  # @return [INatGet::Data::Helper::Observations]
-  def helper = INatGet::Data::Helper::Observations::instance
-
-  # @return [INatGet::Data::Parser::Observation]
-  def parser = INatGet::Data::Parser::Observation::instance
-
-  # @return [INatGet::Data::Updater::Observations]
-  def updater = INatGet::Data::Updater::Observations::instance
 
   # @endgroup
 
