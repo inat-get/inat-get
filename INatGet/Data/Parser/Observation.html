@@ -159,7 +159,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#model-instance_method" title="#model (instance method)">#<strong>model</strong>  &#x21d2; class Model::Observation </a>
+      <a href="#inner_key-instance_method" title="#inner_key (instance method)">#<strong>inner_key</strong>  &#x21d2; Object </a>
     
 
     
@@ -192,7 +192,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Parser.html" title="INatGet::Data::Parser (class)">INatGet::Data::Parser</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Parser.html#entry!-instance_method" title="INatGet::Data::Parser#entry! (method)">#entry!</a></span>, <span class='object_link'><a href="../Parser.html#manager-instance_method" title="INatGet::Data::Parser#manager (method)">#manager</a></span>, <span class='object_link'><a href="../Parser.html#parse!-instance_method" title="INatGet::Data::Parser#parse! (method)">#parse!</a></span>, <span class='object_link'><a href="../Parser.html#part-class_method" title="INatGet::Data::Parser.part (method)">part</a></span>, <span class='object_link'><a href="../Parser.html#parts-class_method" title="INatGet::Data::Parser.parts (method)">parts</a></span>, <span class='object_link'><a href="../Parser.html#parts-instance_method" title="INatGet::Data::Parser#parts (method)">#parts</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Parser.html#entry!-instance_method" title="INatGet::Data::Parser#entry! (method)">#entry!</a></span>, <span class='object_link'><a href="../Parser.html#get_model-instance_method" title="INatGet::Data::Parser#get_model (method)">#get_model</a></span>, <span class='object_link'><a href="../Parser.html#manager-instance_method" title="INatGet::Data::Parser#manager (method)">#manager</a></span>, <span class='object_link'><a href="../Parser.html#model-instance_method" title="INatGet::Data::Parser#model (method)">#model</a></span>, <span class='object_link'><a href="../Parser.html#parse!-instance_method" title="INatGet::Data::Parser#parse! (method)">#parse!</a></span>, <span class='object_link'><a href="../Parser.html#part-class_method" title="INatGet::Data::Parser.part (method)">part</a></span>, <span class='object_link'><a href="../Parser.html#parts-class_method" title="INatGet::Data::Parser.parts (method)">parts</a></span>, <span class='object_link'><a href="../Parser.html#parts-instance_method" title="INatGet::Data::Parser#parts (method)">#parts</a></span></p>
 
   
   
@@ -238,14 +238,14 @@
       <pre class="lines">
 
 
+49
 50
 51
 52
-53
-54</pre>
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/parsers/observation.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/parsers/observation.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fake'>fake</span> <span class='id identifier rubyid_id'>id</span>
   <span class='id identifier rubyid_now'>now</span> <span class='op'>=</span> <span class='const'>Time</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span>
@@ -258,9 +258,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="model-instance_method">
+  <h3 class="signature " id="inner_key-instance_method">
   
-    #<strong>model</strong>  &#x21d2; <tt>class <span class='object_link'><a href="../Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt> 
+    #<strong>inner_key</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -278,19 +278,6 @@
 </div>
 <div class="tags">
   
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>class <span class='object_link'><a href="../Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Model::Observation</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -298,12 +285,12 @@
       <pre class="lines">
 
 
-48</pre>
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/parsers/observation.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/parsers/observation.rb', line 47</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_model'>model</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model/Observation.html" title="INatGet::Data::Model::Observation (class)">Observation</a></span></span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_inner_key'>inner_key</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='symbol'>:observations</span></pre>
     </td>
   </tr>
 </table>
@@ -314,7 +301,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  3 10:48:16 2026 by
+  Generated on Tue Mar  3 18:46:16 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

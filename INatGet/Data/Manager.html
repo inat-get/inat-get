@@ -403,13 +403,13 @@
       <pre class="lines">
 
 
-70
 71
 72
-73</pre>
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span> <span class='id identifier rubyid_id'>id</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updater'>updater</span><span class='period'>.</span><span class='id identifier rubyid_update!'>update!</span> <span class='id identifier rubyid_id'>id</span>
@@ -474,12 +474,12 @@
       <pre class="lines">
 
 
-80</pre>
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 81</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_endpoint'>endpoint</span> <span class='op'>=</span> <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Not implemented &#39;endpoint&#39; in abstract base class</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_endpoint'>endpoint</span> <span class='op'>=</span> <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Not implemented &#39;endpoint&#39; in abstract base Manager</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span></pre>
     </td>
   </tr>
 </table>
@@ -534,7 +534,7 @@
         <span class='name'>ids</span>
       
       
-        <span class='type'>(<tt>Array&lt;Integer, String&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;Integer, <span class='object_link'>String</span>&gt;</tt>)</span>
       
       
       
@@ -674,7 +674,6 @@
       <pre class="lines">
 
 
-27
 28
 29
 30
@@ -694,10 +693,11 @@
 44
 45
 46
-47</pre>
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_kwargs'>kwargs</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -759,19 +759,6 @@
     </li>
   
 </ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>NotImplementedError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -779,12 +766,16 @@
       <pre class="lines">
 
 
-97</pre>
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 109</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_helper'>helper</span> <span class='op'>=</span> <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Not implemented &#39;helper&#39; is abstract base class</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_helper'>helper</span>
+  <span class='ivar'>@helper</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_helper'>get_helper</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -824,19 +815,6 @@
     </li>
   
 </ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>NotImplementedError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -844,12 +822,16 @@
       <pre class="lines">
 
 
-83</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 84</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_model'>model</span> <span class='op'>=</span> <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Not implemented &#39;model&#39; is abstract base class</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_model'>model</span>
+  <span class='ivar'>@model</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_model'>get_model</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -889,19 +871,6 @@
     </li>
   
 </ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>NotImplementedError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -909,12 +878,16 @@
       <pre class="lines">
 
 
-100</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 122</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Not implemented &#39;parser&#39; is abstract base class</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_parser'>parser</span>
+  <span class='ivar'>@parser</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_parser'>get_parser</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -962,10 +935,10 @@
       <pre class="lines">
 
 
-87</pre>
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sid'>sid</span> <span class='op'>=</span> <span class='kw'>nil</span></pre>
     </td>
@@ -1007,19 +980,6 @@
     </li>
   
 </ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>NotImplementedError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1027,12 +987,16 @@
       <pre class="lines">
 
 
-94</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 96</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_updater'>updater</span> <span class='op'>=</span> <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Not implemented &#39;updater&#39; is abstract base class</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_caller_locations'>caller_locations</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_updater'>updater</span>
+  <span class='ivar'>@updater</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_updater'>get_updater</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1080,10 +1044,10 @@
       <pre class="lines">
 
 
-91</pre>
+140</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/managers/base.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_uuid?'>uuid?</span> <span class='op'>=</span> <span class='kw'>false</span></pre>
     </td>
@@ -1096,7 +1060,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  3 10:48:14 2026 by
+  Generated on Tue Mar  3 18:46:14 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

@@ -543,37 +543,6 @@
 
   
     <h2>
-      Class Method Summary
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#manager-class_method" title="manager (class method)">.<strong>manager</strong>  &#x21d2; Manager::Places </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
       Instance Method Summary
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
@@ -616,7 +585,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">INatGet::Data::Model</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#parser-class_method" title="INatGet::Data::Model.parser (method)">parser</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Model.html#get_manager-instance_method" title="INatGet::Data::Model#get_manager (method)">#get_manager</a></span>, <span class='object_link'><a href="../Model.html#get_parser-instance_method" title="INatGet::Data::Model#get_parser (method)">#get_parser</a></span>, <span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#inner_key-instance_method" title="INatGet::Data::Model#inner_key (method)">#inner_key</a></span>, <span class='object_link'><a href="../Model.html#manager-class_method" title="INatGet::Data::Model.manager (method)">manager</a></span>, <span class='object_link'><a href="../Model.html#parser-class_method" title="INatGet::Data::Model.parser (method)">parser</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
 
   
   <div id="instance_attr_details" class="attr_details">
@@ -662,10 +631,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -713,10 +682,10 @@
       <pre class="lines">
 
 
-15</pre>
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 16</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:ancestors</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:place_ancestors</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:place_id</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:ancestor_id</span></pre>
     </td>
@@ -729,7 +698,7 @@
       <div class="method_details ">
   <h3 class="signature " id="bounding_box-instance_method">
   
-    #<strong>bounding_box</strong>  &#x21d2; <tt>String</tt><sup>?</sup> 
+    #<strong>bounding_box</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt><sup>?</sup> 
   
 
   
@@ -750,7 +719,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>, <tt>nil</tt>)</span>
       
       
       
@@ -764,10 +733,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -815,10 +784,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -866,10 +835,10 @@
       <pre class="lines">
 
 
-16</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 17</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:descendants</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:place_ancestors</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:ancestor_id</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:place_id</span></pre>
     </td>
@@ -882,7 +851,7 @@
       <div class="method_details ">
   <h3 class="signature " id="display_name-instance_method">
   
-    #<strong>display_name</strong>  &#x21d2; <tt>String</tt><sup>?</sup> 
+    #<strong>display_name</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt><sup>?</sup> 
   
 
   
@@ -903,7 +872,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>, <tt>nil</tt>)</span>
       
       
       
@@ -917,10 +886,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -933,7 +902,7 @@
       <div class="method_details ">
   <h3 class="signature " id="geometry-instance_method">
   
-    #<strong>geometry</strong>  &#x21d2; <tt>String</tt><sup>?</sup> 
+    #<strong>geometry</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt><sup>?</sup> 
   
 
   
@@ -954,7 +923,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>, <tt>nil</tt>)</span>
       
       
       
@@ -968,10 +937,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1019,10 +988,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1070,10 +1039,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1121,10 +1090,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1137,7 +1106,7 @@
       <div class="method_details ">
   <h3 class="signature " id="name-instance_method">
   
-    #<strong>name</strong>  &#x21d2; <tt>String</tt> 
+    #<strong>name</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt> 
   
 
   
@@ -1158,7 +1127,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>)</span>
       
       
       
@@ -1172,10 +1141,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1223,10 +1192,10 @@
       <pre class="lines">
 
 
-13</pre>
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 14</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:observations</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='symbol'>:&#39;INatGet::Data::Model::Observation&#39;</span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:observation_places</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:place_id</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:observation_id</span></pre>
     </td>
@@ -1274,10 +1243,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1325,10 +1294,10 @@
       <pre class="lines">
 
 
-18</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 19</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:projects</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='symbol'>:&#39;INatGet::Data::Model::Project&#39;</span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:project_included_places</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:place_id</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:project_id</span></pre>
     </td>
@@ -1341,7 +1310,7 @@
       <div class="method_details ">
   <h3 class="signature " id="slug-instance_method">
   
-    #<strong>slug</strong>  &#x21d2; <tt>String</tt> 
+    #<strong>slug</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt> 
   
 
   
@@ -1362,7 +1331,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>)</span>
       
       
       
@@ -1376,10 +1345,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1392,7 +1361,7 @@
       <div class="method_details ">
   <h3 class="signature " id="uuid-instance_method">
   
-    #<strong>uuid</strong>  &#x21d2; <tt>String</tt><sup>?</sup> 
+    #<strong>uuid</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt><sup>?</sup> 
   
 
   
@@ -1413,7 +1382,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>, <tt>nil</tt>)</span>
       
       
       
@@ -1427,10 +1396,10 @@
       <pre class="lines">
 
 
-11</pre>
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 12</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:places</span></pre>
     </td>
@@ -1440,60 +1409,6 @@
     
   </div>
 
-
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="manager-class_method">
-  
-    .<strong>manager</strong>  &#x21d2; <tt><span class='object_link'><a href="../Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Manager::Places</a></span></tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Manager::Places</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-23</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 23</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_manager'>manager</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Manager/Places.html" title="INatGet::Data::Manager::Places (class)">Places</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -1514,14 +1429,14 @@
       <pre class="lines">
 
 
-29
-30
-31
-32
-33</pre>
+23
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/place.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other'>other</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Place (class)">Place</a></span></span><span class='rparen'>)</span>
@@ -1538,7 +1453,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  3 10:48:13 2026 by
+  Generated on Tue Mar  3 18:46:13 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

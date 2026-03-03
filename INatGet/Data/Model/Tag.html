@@ -209,7 +209,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#parser-class_method" title="parser (class method)">.<strong>parser</strong>  &#x21d2; Parser::Tag </a>
+      <a href="#inner_key-class_method" title="inner_key (class method)">.<strong>inner_key</strong>  &#x21d2; Object </a>
     
 
     
@@ -278,7 +278,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">INatGet::Data::Model</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#manager-class_method" title="INatGet::Data::Model.manager (method)">manager</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Model.html#get_manager-instance_method" title="INatGet::Data::Model#get_manager (method)">#get_manager</a></span>, <span class='object_link'><a href="../Model.html#get_parser-instance_method" title="INatGet::Data::Model#get_parser (method)">#get_parser</a></span>, <span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#inner_key-instance_method" title="INatGet::Data::Model#inner_key (method)">#inner_key</a></span>, <span class='object_link'><a href="../Model.html#manager-class_method" title="INatGet::Data::Model.manager (method)">manager</a></span>, <span class='object_link'><a href="../Model.html#parser-class_method" title="INatGet::Data::Model.parser (method)">parser</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
 
   
   <div id="instance_attr_details" class="attr_details">
@@ -324,10 +324,10 @@
       <pre class="lines">
 
 
-12</pre>
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 11</span>
 
 <span class='id identifier rubyid_many_to_one'>many_to_one</span> <span class='symbol'>:observation</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='symbol'>:&#39;INatGet::Data::Model::Observation&#39;</span></pre>
     </td>
@@ -375,10 +375,10 @@
       <pre class="lines">
 
 
-10</pre>
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 9</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observation_tags</span></pre>
     </td>
@@ -391,7 +391,7 @@
       <div class="method_details ">
   <h3 class="signature " id="tag-instance_method">
   
-    #<strong>tag</strong>  &#x21d2; <tt>String</tt> 
+    #<strong>tag</strong>  &#x21d2; <tt><span class='object_link'>String</span></tt> 
   
 
   
@@ -412,7 +412,7 @@
     <li>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'>String</span></tt>)</span>
       
       
       
@@ -426,10 +426,10 @@
       <pre class="lines">
 
 
-10</pre>
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 9</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:observation_tags</span></pre>
     </td>
@@ -445,48 +445,26 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="parser-class_method">
+  <h3 class="signature first" id="inner_key-class_method">
   
-    .<strong>parser</strong>  &#x21d2; <tt><span class='object_link'><a href="../Parser/Tag.html" title="INatGet::Data::Parser::Tag (class)">Parser::Tag</a></span></tt> 
-  
-
+    .<strong>inner_key</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
 
-  </div>
-</div>
-<div class="tags">
   
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Parser/Tag.html" title="INatGet::Data::Parser::Tag (class)">Parser::Tag</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-21</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 19</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Parser.html" title="INatGet::Data::Parser (class)">Parser</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Parser/Tag.html" title="INatGet::Data::Parser::Tag (class)">Tag</a></span></span><span class='op'>::</span><span class='id identifier rubyid_instance'>instance</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_inner_key'>inner_key</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='symbol'>:tags</span></pre>
     </td>
   </tr>
 </table>
@@ -513,10 +491,10 @@
       <pre class="lines">
 
 
-16</pre>
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/tag.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_observation'>observation</span></pre>
     </td>
@@ -529,7 +507,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  3 10:48:12 2026 by
+  Generated on Tue Mar  3 18:46:13 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
