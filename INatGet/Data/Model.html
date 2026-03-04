@@ -220,81 +220,6 @@
       
     </ul>
   
-    <h2>
-      Instance Method Summary
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#get_manager-instance_method" title="#get_manager (instance method)">#<strong>get_manager</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#get_parser-instance_method" title="#get_parser (instance method)">#<strong>get_parser</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#inner_key-instance_method" title="#inner_key (instance method)">#<strong>inner_key</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
 
 
   
@@ -318,10 +243,10 @@
       <pre class="lines">
 
 
-44</pre>
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_helper'>helper</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_manager'>manager</span><span class='op'>&amp;.</span><span class='id identifier rubyid_helper'>helper</span></pre>
     </td>
@@ -344,12 +269,12 @@
       <pre class="lines">
 
 
-22
 23
-24</pre>
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_manager'>manager</span>
   <span class='ivar'>@manager</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_manager'>get_manager</span>
@@ -374,12 +299,12 @@
       <pre class="lines">
 
 
-33
-34
-35</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parser'>parser</span>
   <span class='ivar'>@parser</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_parser'>get_parser</span>
@@ -404,116 +329,12 @@
       <pre class="lines">
 
 
-46</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_updater'>updater</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_manager'>manager</span><span class='op'>&amp;.</span><span class='id identifier rubyid_updater'>updater</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="get_manager-instance_method">
-  
-    #<strong>get_manager</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-26
-27
-28
-29
-30
-31</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 26</span>
-
-<span class='id identifier rubyid_private'>private</span> <span class='kw'>def</span> <span class='id identifier rubyid_get_manager'>get_manager</span>
-  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_inner_key'>inner_key</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>../managers/</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_cls'>cls</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Manager.html" title="INatGet::Data::Manager (class)">Manager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span>
-  <span class='id identifier rubyid_cls'>cls</span><span class='op'>&amp;.</span><span class='id identifier rubyid_instance'>instance</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_parser-instance_method">
-  
-    #<strong>get_parser</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-37
-38
-39
-40
-41
-42</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 37</span>
-
-<span class='id identifier rubyid_private'>private</span> <span class='kw'>def</span> <span class='id identifier rubyid_get_parser'>get_parser</span>
-  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_inner_key'>inner_key</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_singular'>singular</span>
-  <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>../parsers/</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_name'>name</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_cls'>cls</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parser.html" title="INatGet::Data::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span>
-  <span class='id identifier rubyid_cls'>cls</span><span class='op'>&amp;.</span><span class='id identifier rubyid_instance'>instance</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="inner_key-instance_method">
-  
-    #<strong>inner_key</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-20</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/base.rb', line 20</span>
-
-<span class='id identifier rubyid_private'>private</span> <span class='kw'>def</span> <span class='id identifier rubyid_inner_key'>inner_key</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_table_name'>table_name</span></pre>
     </td>
   </tr>
 </table>
@@ -524,7 +345,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  3 18:46:13 2026 by
+  Generated on Wed Mar  4 04:48:53 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

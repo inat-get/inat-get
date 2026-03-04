@@ -630,7 +630,7 @@
     <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
     <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
       <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_path'>path</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>🗑️  \e[1mDatabase file removed:\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_path'>path</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>❌  \e[1mDatabase file removed:\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_path'>path</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>begin</span>
@@ -647,9 +647,9 @@
         <span class='kw'>if</span> <span class='id identifier rubyid_mysql_mode'>mysql_mode</span>
           <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SET FOREIGN_KEY_CHECKS = 1</span><span class='tstring_end'>&quot;</span></span>
         <span class='kw'>end</span>
-        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>🗑️  \e[1mAll tables dropped (</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_tables'>tables</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='embexpr_end'>}</span><span class='tstring_content'>):\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_tables'>tables</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>❌  \e[1mAll tables dropped (</span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_tables'>tables</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='embexpr_end'>}</span><span class='tstring_content'>):\e[0m </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_tables'>tables</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
       <span class='kw'>else</span>
-        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>⚠️  \e[1mNo tables found in database\e[0m</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>🚨  \e[1mNo tables found in database\e[0m</span><span class='tstring_end'>&quot;</span></span>
       <span class='kw'>end</span>
       <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_disconnect'>disconnect</span>
     <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
@@ -912,7 +912,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  3 18:46:12 2026 by
+  Generated on Wed Mar  4 04:48:53 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
