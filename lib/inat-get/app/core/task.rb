@@ -31,10 +31,10 @@ class INatGet::App::Task
     @console = opts[:console]
     @api = opts[:api]
     inner_code = File.read @path
-    outer_code = "define_singleton_method :execute do\n" +
+    outer_code = "def execute\n" +
                  "#{ inner_code }\n" +
                  "end\n"
-    instance_eval outer_code
+    instance_eval outer_code, File.basename(path), 0
   end
 
   attr_reader :db
