@@ -20,6 +20,20 @@ RSpec::describe INatGet::Data::Parser do
     expect(families.count).to eq(5)
     places = dataset % :places
     expect(places.count).to eq(11)
+
+    taxa_man = families.first.key.class.manager
+
+    poecile = taxa_man.get 144351
+    passeriformes = taxa_man.get 7251
+    ds_poecile = parser.manager.get taxon: poecile
+    ds_passeriformes = parser.manager.get taxon: passeriformes
+    ds_and = ds_poecile * ds_passeriformes
+    ds_or = ds_poecile + ds_passeriformes
+    expect(ds_and.count).to eq(ds_poecile.count)
+    expect(ds_or.count).to eq(ds_passeriformes.count)
+
+    sample = species.first.key
+    expect(sample.iconic).to eq(INatGet::Data::Enum::Iconic::Aves())
   end
 
 end

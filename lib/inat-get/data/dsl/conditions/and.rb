@@ -166,10 +166,10 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
     # Мержим с учетом таксономии
     result = ::Set[]
     left.each do |value|
-      result << value if right.exists? { |v| v === value }
+      result << value if right.any? { |v| v === value }
     end
     right.each do |value|
-      result << value if left.exists? { |v| v === value }
+      result << value if left.any? { |v| v === value }
     end
     INatGet::Data::Model::Taxon::compact_set(*result)
   end

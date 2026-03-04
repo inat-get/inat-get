@@ -64,7 +64,7 @@ class INatGet::Data::Model::Taxon < INatGet::Data::Model
            .where(id: Taxon.select(:taxon_id)
                            .from(:taxa_ancestors)
                            .where(ancestor_id: self.id))
-           .exists?
+           .any?
     when INatGet::Data::Model::Observation, INatGet::Data::Model::Identification
       self === value.taxon
     else
@@ -78,7 +78,7 @@ class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
   # @return [INatGet::Data::Enum::Iconic]
   def iconic
-    INatGet::Data::Enum::Iconic::by_id self.id
+    INatGet::Data::Enum::Iconic::by_id self.iconic_taxon_id
   end
 
   include Comparable
