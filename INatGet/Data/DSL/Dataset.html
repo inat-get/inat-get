@@ -535,12 +535,12 @@
       <pre class="lines">
 
 
-19
 20
-21</pre>
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_condition'>condition</span>
   <span class='ivar'>@condition</span>
@@ -589,12 +589,12 @@
       <pre class="lines">
 
 
-16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span>
   <span class='ivar'>@key</span>
@@ -648,7 +648,6 @@
       <pre class="lines">
 
 
-84
 85
 86
 87
@@ -656,16 +655,25 @@
 89
 90
 91
-92</pre>
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='op'>%</span> <span class='id identifier rubyid_field'>field</span>
-  <span class='id identifier rubyid_field'>field</span> <span class='op'>=</span> <span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
-  <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='id identifier rubyid_get_field_values'>get_field_values</span> <span class='id identifier rubyid_field'>field</span>
+  <span class='comment'># field = field.to_sym
+</span>  <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='id identifier rubyid_get_field_values'>get_field_values</span> <span class='id identifier rubyid_field'>field</span>
   <span class='id identifier rubyid_dss'>dss</span> <span class='op'>=</span> <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
-    <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../DSL.html#Q-instance_method" title="INatGet::Data::DSL#Q (method)">Q</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> <span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model/Taxon.html" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../DSL.html#Q-instance_method" title="INatGet::Data::DSL#Q (method)">Q</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='symbol'>:taxon</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> <span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../DSL.html#Q-instance_method" title="INatGet::Data::DSL#Q (method)">Q</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_singular'>singular</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> <span class='rparen'>)</span>
+    <span class='kw'>end</span>
     <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_query'>query</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="List.html" title="INatGet::Data::DSL::List (class)">List</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_dss'>dss</span><span class='rparen'>)</span>
@@ -712,12 +720,12 @@
       <pre class="lines">
 
 
-74
 75
-76</pre>
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span>
   <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span> <span class='op'>||</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span><span class='rparen'>)</span>
@@ -764,12 +772,12 @@
       <pre class="lines">
 
 
-69
 70
-71</pre>
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='op'>+</span> <span class='id identifier rubyid_other'>other</span>
   <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span> <span class='op'>|</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span><span class='rparen'>)</span>
@@ -816,12 +824,12 @@
       <pre class="lines">
 
 
-79
 80
-81</pre>
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span>
   <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../DSL.html" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::DSL::Dataset (class)">Dataset</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span> <span class='op'>&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_updated?'>updated?</span><span class='rparen'>)</span>
@@ -868,15 +876,15 @@
       <pre class="lines">
 
 
-50
 51
 52
 53
 54
-55</pre>
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connect!'>connect!</span>
   <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_connected?'>connected?</span>
@@ -926,12 +934,12 @@
       <pre class="lines">
 
 
-45
 46
-47</pre>
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connected?'>connected?</span>
   <span class='op'>!</span><span class='op'>!</span><span class='ivar'>@dataset</span>
@@ -978,13 +986,13 @@
       <pre class="lines">
 
 
-120
-121
-122
-123</pre>
+125
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span>
   <span class='id identifier rubyid_connect!'>connect!</span>
@@ -1051,17 +1059,17 @@
       <pre class="lines">
 
 
-110
-111
-112
-113
-114
 115
 116
-117</pre>
+117
+118
+119
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1113,14 +1121,14 @@
       <pre class="lines">
 
 
-58
 59
 60
 61
-62</pre>
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset!'>reset!</span>
   <span class='ivar'>@updated</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1169,16 +1177,16 @@
       <pre class="lines">
 
 
-37
 38
 39
 40
 41
 42
-43</pre>
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update!'>update!</span>
   <span class='kw'>return</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='ivar'>@updated</span>
@@ -1229,12 +1237,12 @@
       <pre class="lines">
 
 
-32
 33
-34</pre>
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_updated?'>updated?</span>
   <span class='ivar'>@updated</span>
@@ -1281,14 +1289,14 @@
       <pre class="lines">
 
 
-95
-96
-97
-98
-99</pre>
+100
+101
+102
+103
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dataset.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_where'>where</span> <span class='id identifier rubyid_condition'>condition</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_query'>query</span>
   <span class='id identifier rubyid_condition'>condition</span> <span class='op'>||=</span> <span class='const'>ANYTHING</span>
@@ -1305,7 +1313,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar  4 04:48:53 2026 by
+  Generated on Wed Mar  4 10:17:45 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>

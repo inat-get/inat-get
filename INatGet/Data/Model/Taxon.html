@@ -648,6 +648,37 @@
       
     </ul>
   
+    <h2>
+      Fixed Taxon Levels
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_rank-instance_method" title="#on_rank (instance method)">#<strong>on_rank</strong>(*ranks)  &#x21d2; Taxon </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
 
 
   
@@ -1892,12 +1923,66 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="on_rank-instance_method">
+  
+    #<strong>on_rank</strong>(*ranks)  &#x21d2; <tt><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_rank'>on_rank</span> <span class='op'>*</span><span class='id identifier rubyid_ranks'>ranks</span>
+  <span class='id identifier rubyid_ranks'>ranks</span> <span class='op'>=</span> <span class='id identifier rubyid_ranks'>ranks</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_s</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ancestors_dataset'>ancestors_dataset</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>rank:</span> <span class='id identifier rubyid_ranks'>ranks</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed Mar  4 04:48:54 2026 by
+  Generated on Wed Mar  4 10:17:46 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
