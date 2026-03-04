@@ -15,6 +15,7 @@ class INatGet::Data::Parser::Annotation < INatGet::Data::Parser
   part Part::Copy, :uuid, :vote_score
   part Part::Model, :user, model: INatGet::Data::Model::User
 
+  # @private
   def inner_key() = :annotations
 
 end

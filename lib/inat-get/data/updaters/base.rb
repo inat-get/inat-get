@@ -46,6 +46,7 @@ class INatGet::Data::Updater
     @manager ||= get_manager
   end
 
+  # @private
   private def get_manager
     name = endpoint.to_s
     require_relative "../managers/#{ name }"
@@ -101,6 +102,7 @@ class INatGet::Data::Updater
     @config.dig(:api, :pager) || 200
   end
 
+  # @private
   HARD_STOP = 2 * 24 * 60 * 60
 
   # @private

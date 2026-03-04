@@ -10,6 +10,7 @@ class INatGet::Data::Parser::Tag < INatGet::Data::Parser
 
   part Part::PK, :observation_id => :owner_id, :tag => :value
 
+  # @private
   def inner_key() = :tags
 
 end

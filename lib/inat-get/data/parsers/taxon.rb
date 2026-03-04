@@ -21,6 +21,7 @@ class INatGet::Data::Parser::Taxon < INatGet::Data::Parser
   part Part::AssModel, :parent, model: INatGet::Data::Model::Taxon
   part Part::AssModel, :iconic_taxon, model: INatGet::Data::Model::Taxon
 
+  # @private
   def inner_key() = :taxa
 
   def fake id

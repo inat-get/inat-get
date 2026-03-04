@@ -22,6 +22,7 @@ class INatGet::Data::Model::Fave < INatGet::Data::Model
 
   class << self
 
+    # @private
     private def inner_key() = :faves
 
   end

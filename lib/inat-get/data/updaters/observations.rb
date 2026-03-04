@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Observations < INatGet::Data::Updater
 
   include Singleton
 
+  # @return [:observations]
   def endpoint() = :observations
 
   private

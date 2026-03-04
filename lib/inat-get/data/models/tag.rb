@@ -16,6 +16,7 @@ class INatGet::Data::Model::Tag < INatGet::Data::Model
 
   class << self
 
+    # @private
     def inner_key() = :tags
     
   end

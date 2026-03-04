@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Users < INatGet::Data::Updater
 
   include Singleton
 
+  # @return [:users]
   def endpoint() = :users
 
   # @return [Integer]
@@ -15,6 +16,7 @@ class INatGet::Data::Updater::Users < INatGet::Data::Updater
 
 end
 
+# @private
 class INatGet::Data::Updater::ProjectUsers < INatGet::Data::Updater::Users
 
   include Singleton

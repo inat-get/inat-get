@@ -33,6 +33,7 @@ class INatGet::Data::Parser
     @model ||= get_model
   end
 
+  # @private
   private def get_model
     name = inner_key.to_s.singular
     require_relative "../models/#{ name }"
@@ -41,6 +42,7 @@ class INatGet::Data::Parser
 
   private 
   
+  # @private
   def inner_key() = raise NotImplementedError, "Not implemented method 'inner_key' for abstract Parser", caller_locations
 
   # @endgroup

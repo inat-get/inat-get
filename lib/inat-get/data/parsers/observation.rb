@@ -44,6 +44,7 @@ class INatGet::Data::Parser::Observation < INatGet::Data::Parser
   part Part::Links, :places,          model: INatGet::Data::Model::Place
   part Part::Links, :manual_projects, model: INatGet::Data::Model::Project, source_ids: :project_ids
 
+  # @private
   def inner_key() = :observations
 
   def fake id

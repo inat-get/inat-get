@@ -17,12 +17,14 @@ module INatGet::Data
     # @api private
     class << self
 
+      # @private
       private def inner_key() = self.table_name
 
       def manager
         @manager ||= get_manager
       end
 
+      # @private
       private def get_manager
         name = inner_key.to_s
         require_relative "../managers/#{ name }"
@@ -34,6 +36,7 @@ module INatGet::Data
         @parser ||= get_parser
       end
 
+      # @private
       private def get_parser
         name = inner_key.to_s.singular
         require_relative "../parsers/#{ name }"

@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Identifications < INatGet::Data::Updater
 
   include Singleton
 
+  # @return [:identifications]
   def endpoint() = :identifications
 
   private

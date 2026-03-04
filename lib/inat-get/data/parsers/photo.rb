@@ -12,8 +12,10 @@ class INatGet::Data::Parser::Photo < INatGet::Data::Parser
   part Part::PK
   part Part::Copy, :url, :license => :license_code
 
-  # @return [class Model::Photo]
-  def model() = INatGet::Data::Model::Photo
+  # def model() = INatGet::Data::Model::Photo
+
+  # @private
+  def inner_key() = :photos
 
   def fake id
     self.model.create id: id, url: ''

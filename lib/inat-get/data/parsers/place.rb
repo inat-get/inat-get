@@ -22,6 +22,7 @@ class INatGet::Data::Parser::Place < INatGet::Data::Parser
 
   part Part::Ancestry, :ancestors, source_ids: :ancestor_place_ids
 
+  # @private
   def inner_key() = :places
 
   def fake id

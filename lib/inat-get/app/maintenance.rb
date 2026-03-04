@@ -129,7 +129,7 @@ module INatGet::App::Maintenance
         path = File.expand_path uri.path
         if File.exist?(path)
           File.delete path
-          puts "🗑️  \e[1mDatabase file removed:\e[0m #{ path }"
+          puts "❌  \e[1mDatabase file removed:\e[0m #{ path }"
         end
       else
         begin
@@ -146,9 +146,9 @@ module INatGet::App::Maintenance
             if mysql_mode
               db.execute "SET FOREIGN_KEY_CHECKS = 1"
             end
-            puts "🗑️  \e[1mAll tables dropped (#{ tables.size }):\e[0m #{ tables.join(", ") }"
+            puts "❌  \e[1mAll tables dropped (#{ tables.size }):\e[0m #{ tables.join(", ") }"
           else
-            puts "⚠️  \e[1mNo tables found in database\e[0m"
+            puts "🚨  \e[1mNo tables found in database\e[0m"
           end
           db.disconnect
         rescue => e

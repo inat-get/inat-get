@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Projects < INatGet::Data::Updater
 
   include Singleton
 
+  # @return [:projects]
   def endpoint() = :projects
   
 end

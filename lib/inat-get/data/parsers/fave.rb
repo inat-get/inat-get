@@ -16,6 +16,7 @@ class INatGet::Data::Parser::Fave < INatGet::Data::Parser
   part Part::Time, :created => :created_at
   part Part::Model, :user, model: INatGet::Data::Model::User
 
+  # @private
   def inner_key() = :faves
 
 end

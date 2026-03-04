@@ -8,6 +8,7 @@ class INatGet::Data::Updater::Places < INatGet::Data::Updater
 
   include Singleton
 
+  # @return [:places]
   def endpoint() = :places
 
 end

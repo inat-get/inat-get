@@ -17,6 +17,7 @@ class INatGet::Data::Parser::User < INatGet::Data::Parser
   part Part::Time, :created => :created_at
   part Part::Cached
 
+  # @private
   def inner_key() = :users
 
   def fake id

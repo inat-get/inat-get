@@ -36,6 +36,7 @@ class INatGet::Data::Parser::Project < INatGet::Data::Parser
   part Part::PrjSearch
   part Part::Subprojects
 
+  # @private
   def inner_key() = :projects
 
   def fake id
