@@ -1859,7 +1859,7 @@
          <span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='symbol'>:taxon_id</span><span class='rparen'>)</span>
                          <span class='period'>.</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='symbol'>:taxa_ancestors</span><span class='rparen'>)</span>
                          <span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>ancestor_id:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span>
-         <span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span>
+         <span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
   <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Observation.html" title="INatGet::Data::Model::Observation (class)">Observation</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Identification.html" title="INatGet::Data::Model::Identification (class)">Identification</a></span></span>
     <span class='kw'>self</span> <span class='op'>===</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_taxon'>taxon</span>
   <span class='kw'>else</span>
@@ -1916,7 +1916,7 @@
       <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_iconic'>iconic</span>
-  <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Enum.html" title="INatGet::Data::Enum (module)">Enum</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Enum/Iconic.html" title="INatGet::Data::Enum::Iconic (class)">Iconic</a></span></span><span class='op'>::</span><span class='id identifier rubyid_by_id'><span class='object_link'><a href="../Enum/Iconic.html#by_id-class_method" title="INatGet::Data::Enum::Iconic.by_id (method)">by_id</a></span></span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Enum.html" title="INatGet::Data::Enum (module)">Enum</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Enum/Iconic.html" title="INatGet::Data::Enum::Iconic (class)">Iconic</a></span></span><span class='op'>::</span><span class='id identifier rubyid_by_id'><span class='object_link'><a href="../Enum/Iconic.html#by_id-class_method" title="INatGet::Data::Enum::Iconic.by_id (method)">by_id</a></span></span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_iconic_taxon_id'>iconic_taxon_id</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1982,7 +1982,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar  4 10:17:46 2026 by
+  Generated on Wed Mar  4 10:57:36 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
