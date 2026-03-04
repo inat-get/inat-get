@@ -4,6 +4,7 @@ require 'sequel'
 
 require_relative '../../info'
 require_relative 'base'
+require_relative 'sub'
 
 module INatGet::Data; end
 

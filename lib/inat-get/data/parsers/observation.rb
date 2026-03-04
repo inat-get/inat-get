@@ -16,6 +16,16 @@ require_relative 'defs/links'
 require_relative 'defs/assmodel'
 require_relative 'defs/observed'
 require_relative 'defs/fromtaxon'
+require_relative '../models/user'
+require_relative '../models/identification'
+require_relative '../models/annotation'
+require_relative '../models/fave'
+require_relative '../models/tag'
+require_relative '../models/taxon'
+require_relative '../models/photo'
+require_relative '../models/sound'
+require_relative '../models/place'
+require_relative '../models/project'
 
 class INatGet::Data::Parser::Observation < INatGet::Data::Parser
 

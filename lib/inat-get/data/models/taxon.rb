@@ -91,4 +91,14 @@ class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
   # @endgroup
 
+  # @group Fixed Taxon Levels
+
+  # @return [Taxon]
+  def on_rank *ranks
+    ranks = ranks.map(&:to_s)
+    self.ancestors_dataset.where(rank: ranks).first
+  end
+
+  # @endgroup
+
 end

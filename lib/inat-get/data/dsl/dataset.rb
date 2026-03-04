@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../info'
+require_relative '../../utils/simple_singular'
 require_relative 'conditions'
 require_relative '../../sys/context'
 require_relative 'list'
@@ -82,10 +83,14 @@ class INatGet::Data::DSL::Dataset
 
   # @return [List]
   def % field
-    field = field.to_sym
+    # field = field.to_sym
     values = get_field_values field
     dss = values.map do |value|
-      query = Q(self.condition.model, field => value )
+      if value.is_a?(INatGet::Data::Model::Taxon)
+        query = Q(self.condition.model, :taxon => value )
+      else
+        query = Q(self.condition.model, field.to_s.singular.to_sym => value )
+      end
       INatGet::Data::DSL::Dataset::new(value, self.condition & query, self.updated?)
     end
     INatGet::Data::DSL::List::new(*dss)
@@ -127,12 +132,46 @@ class INatGet::Data::DSL::Dataset
   private
 
   # @private
+  def taxon_id_at_ranks *ranks
+    ranks = Array(ranks).map(&:to_s)
+    DB.from(Sequel[:taxa_ancestors].as(:ta))
+      .join(Sequel[:taxa].as(:anc), id: :ancestor_id)
+      .where(
+        Sequel[:ta][:taxon_id] => Sequel[:observations][:taxon_id],
+        Sequel[:anc][:rank] => ranks,
+      )
+      .select(Sequel[:anc][:id])
+      .limit(1)
+  end
+
+  # @private
   def get_field_values(field)
     update!
     model = @condition.model
     query = model.where(@condition.sequel_query)
 
-    if model.associations.include?(field)
+    prefer = [
+      :kingdom,
+      :phylum,
+      :class,
+      :order,
+      :superfamily,
+      :family,
+      :genus,
+      :species,
+      :subspecies,
+      :variety,
+    ]
+    if prefer.include?(field)
+      field = INatGet::Data::Enum::Rank::of(field)
+    end
+
+    if field.is_a?(INatGet::Data::Enum::Rank)
+      ranks = INatGet::Data::Enum::Rank::select { |r| r.level == field.level }
+      subquery = taxon_id_at_ranks(*ranks)
+      ids = query.distinct.select_map(subquery.as(:taxon_at_rank)).compact
+      INatGet::Data::Model::Taxon.where(id: ids).all
+    elsif model.associations.include?(field)
       reflection = model.association_reflection(field)
       target = reflection.associated_class
 
