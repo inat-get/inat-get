@@ -155,10 +155,10 @@ class INatGet::Data::DSL::Dataset
       :phylum,
       :class,
       :order,
-      :superfamily,
       :family,
       :genus,
       :species,
+      :hybrid,
       :subspecies,
       :variety,
     ]
