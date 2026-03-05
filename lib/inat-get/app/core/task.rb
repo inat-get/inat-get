@@ -30,11 +30,11 @@ class INatGet::App::Task
     @opts = opts
     @console = opts[:console]
     @api = opts[:api]
-    inner_code = File.read @path
-    outer_code = "def execute\n" +
-                 "#{ inner_code }\n" +
-                 "end\n"
-    instance_eval outer_code, path, 0
+    @code = File.read @path
+  end
+
+  def execute
+    instance_eval @code, @path
   end
 
   attr_reader :db
