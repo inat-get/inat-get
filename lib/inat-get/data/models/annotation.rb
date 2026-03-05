@@ -3,7 +3,8 @@
 require 'sequel'
 
 require_relative '../../info'
-# require_relative '../parsers/annotation'
+require_relative 'base'
+require_relative 'sub'
 
 class INatGet::Data::Model::Annotation < INatGet::Data::Model
 

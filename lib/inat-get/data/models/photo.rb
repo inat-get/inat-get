@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require "sequel"
+require 'sequel'
 
-require_relative "../../info"
+require_relative '../../info'
+require_relative 'base'
 
 module INatGet::Data; end
 

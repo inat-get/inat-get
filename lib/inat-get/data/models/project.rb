@@ -8,6 +8,9 @@ require_relative 'annotation'
 require_relative 'projectadmin'
 require_relative 'projectqualitygrade'
 require_relative 'projectterm'
+require_relative 'projectplace'
+require_relative 'projecttaxon'
+require_relative 'projectuser'
 
 module INatGet::Data; end
 

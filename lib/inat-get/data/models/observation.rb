@@ -3,6 +3,7 @@
 require 'sequel'
 
 require_relative '../../info'
+require_relative 'base'
 require_relative 'fave'
 require_relative 'photo'
 require_relative 'sound'

@@ -68,13 +68,8 @@ class INatGet::App::Task
     Sequel::Model.raise_on_save_failure = true
     Sequel::Model.db = @db
     # Sequel::Model.db.loggers << ::Logger::new("common.log", level: :info)
-    require_relative '../../data/models/observation'
-    require_relative '../../data/managers/places'
-    require_relative '../../data/managers/projects'
-    require_relative '../../data/managers/users'
-    require_relative '../../data/managers/taxa'
-    require_relative '../../data/managers/observations'
-    require_relative '../../data/managers/identifications'
+    require_relative '../../data/models'
+    require_relative '../../data/managers'
     # # ... etc
   end
 
