@@ -34,7 +34,7 @@ class INatGet::App::Task
     outer_code = "def execute\n" +
                  "#{ inner_code }\n" +
                  "end\n"
-    instance_eval outer_code, File.basename(path), 0
+    instance_eval outer_code, path, 0
   end
 
   attr_reader :db
