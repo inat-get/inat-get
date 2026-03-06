@@ -20,8 +20,8 @@ class INatGet::App::Worker
     @task.prepare
     @task.execute
     @console.update _active: false, status: 'done'
-  rescue => e
-    @logger.error e.message
+  # rescue => e
+  #   @logger.error e.message
   end
 
   class << self
@@ -39,9 +39,14 @@ class INatGet::App::Worker
 
     private :new
 
+    private def pid_alive? pid
+      _, status = Process::waitpid(pid, Process::WNOHANG)
+      status.nil?
+    end
+
     def count
       @detachers ||= []
-      @detachers.reject { |dt| !dt.alive? }
+      @detachers.reject! { |dt| !dt.alive? }
       @detachers.size
     end
 
