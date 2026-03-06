@@ -133,8 +133,9 @@ class INatGet::Data::DSL::Dataset
 
   # @private
   def taxon_id_at_ranks *ranks
+    db = @condition.model.db
     ranks = Array(ranks).map(&:to_s)
-    DB.from(Sequel[:taxa_ancestors].as(:ta))
+    db.from(Sequel[:taxa_ancestors].as(:ta))
       .join(Sequel[:taxa].as(:anc), id: :ancestor_id)
       .where(
         Sequel[:ta][:taxon_id] => Sequel[:observations][:taxon_id],
