@@ -96,7 +96,7 @@ class INatGet::Data::Model::Project < INatGet::Data::Model
   def <=> other
     return nil unless other.is_a?(INatGet::Data::Model::Project)
     return 0 if self.id == other.id
-    self.slug <=> other.slug
+    (self.title || self.slug) <=> (other.title || other.slug)
   end
 
 end

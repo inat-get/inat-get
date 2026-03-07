@@ -23,7 +23,7 @@ class INatGet::Data::Model::Place < INatGet::Data::Model
   def <=> other
     return nil unless other.is_a?(INatGet::Data::Model::Place)
     return 0 if self.id == other.id
-    self.slug <=> other.slug
+    (self.display_name || self.name || self.slug) <=> (other.display_name || other.name || other.slug)
   end
 
 end
