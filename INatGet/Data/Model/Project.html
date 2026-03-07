@@ -2376,7 +2376,7 @@
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other'>other</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Project (class)">Project</a></span></span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span>
+  <span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span> <span class='op'>||</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span> <span class='op'>&lt;=&gt;</span> <span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span> <span class='op'>||</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_slug'>slug</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2562,7 +2562,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Mar  7 15:11:16 2026 by
+  Generated on Sat Mar  7 18:38:13 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
