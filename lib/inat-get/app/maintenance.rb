@@ -69,7 +69,7 @@ module INatGet::App::Maintenance
     end
 
     def db_update config
-      run_migration config
+      run_migrations config
       exit Errno::NOERROR::Errno
     end
 
@@ -79,7 +79,7 @@ module INatGet::App::Maintenance
         $stderr.puts "❌ \e[1mVersion must be an integer\e[0m"
         exit Errno::ECANCELED::Errno
       end
-      run_migration config, target: target
+      run_migrations config, target: target
       exit Errno::NOERROR::Errno
     end
 
