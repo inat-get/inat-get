@@ -48,6 +48,8 @@ module INatGet::Data
 
       def updater() = self.manager&.updater
 
+      def endpoint() = self.manager&.endpoint
+
     end
 
   end

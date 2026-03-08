@@ -48,6 +48,7 @@ class INatGet::Data::DSL::List
 
   # @return [self]
   def add! other
+    other = [ other ] if other.is_a?(INatGet::Data::DSL::Dataset)
     other.each do |ds|
       if @datasets.has_key?(ds.key)
         @datasets[ds.key] += ds
