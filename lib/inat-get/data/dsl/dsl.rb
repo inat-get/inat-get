@@ -41,8 +41,15 @@ module INatGet::Data::DSL
     true
   end
 
+  # @private
+  class DummyConsole
+    def update(**kwargs)
+      # do nothing
+    end
+  end
+
   def console
-    @console ||= Thread::current[:console]
+    @console ||= Thread::current[:console] || DummyConsole::new
   end
 
   # @endgroup
