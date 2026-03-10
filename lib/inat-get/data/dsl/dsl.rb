@@ -41,6 +41,10 @@ module INatGet::Data::DSL
     true
   end
 
+  def console
+    @console ||= Thread::current[:console]
+  end
+
   # @endgroup
 
   # @group Date Utils

@@ -83,11 +83,30 @@ class INatGet::Data::Updater
   # @private
   def update_by_ids! *ids
     return [] if ids.empty?
-    interval = parse_duration(@config.dig(:caching, :refs, self.manager.endpoint) || @config.dig(:caching, :refs, :default))
+    interval = parse_duration(@config.dig(:caching, :refs, self.manager&.endpoint) || @config.dig(:caching, :refs, :default))
     if interval
       point = (Time::now.to_time - interval).to_time
-      # TODO: учесть slugs и uuids
-      fresh = self.model.where(id: ids, cached: (point .. )).select_map(:id)
+      ints = uuids = slugs = []
+      if self.manager&.uuid? || self.manager&.sid
+        ints, other = ids.compact.partition { |i| i.is_a?(Integer) }
+        if !self.manager&.uuid?
+          slugs = other
+        elsif !self.manager&.sid
+          uuids = other
+        else
+          uuids, slugs = other.partition { |i| i.is_a?(String) && i =~ INatGet::Data::Helper::UUID_PATTERN }
+        end
+      else
+        ints = ids
+      end
+      condition = { id: ints }
+      # condition = Sequel.|(condition, { id: ints }) unless ints.empty?
+      condition = Sequel.|(condition, { uuid: uuids }) unless uuids.empty?
+      condition = Sequel.|(condition, { self.manager&.sid => slugs }) unless slugs.empty?
+      condition = Sequel.&(condition, { cached: (point ..  ) })
+      fresh = self.model.where(condition).select_map(:id)
+      fresh += self.model.where(condition).select_map(:uuid) unless uuids.empty?
+      fresh += self.model.where(condition).select_map(self.manager&.sid) unless slugs.empty?
       ids -= fresh
     end
     ids.each_slice(self.slice_size) do |slice|

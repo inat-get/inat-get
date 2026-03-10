@@ -85,7 +85,20 @@ class INatGet::Data::DSL::Dataset
   def % field
     # field = field.to_sym
     values = get_field_values field
+    total = if values.respond_to?(:count)
+      values.count
+    else
+      values.size
+    end
+    Thread::current[:total] ||= 0
+    Thread::current[:total] += total
+    console.update status: "grouping by #{ field }...", total: Thread::current[:total]
+    current = 0
+    Thread::current[:current] ||= 0
     dss = values.map do |value|
+      current += 1
+      Thread::current[:current] += 1
+      console.update status: "grouping by #{ field }...", current: Thread::current[:current]
       if value.is_a?(INatGet::Data::Model::Taxon)
         query = Q(self.condition.model, :taxon => value )
       else
@@ -94,6 +107,12 @@ class INatGet::Data::DSL::Dataset
       INatGet::Data::DSL::Dataset::new(value, self.condition & query, self.updated?)
     end
     INatGet::Data::DSL::List::new(*dss)
+  ensure
+    if current < total
+      Thread::current[:total] -= total - current
+      console.update total: Thread::current[:total]
+    end
+    console.update status: 'grouped'
   end
 
   # @return [Dataset]
@@ -112,13 +131,29 @@ class INatGet::Data::DSL::Dataset
   # @yield Block
   # @yieldparam [Sequel::Model] obj
   # @return [void]
-  def each &block
+  def each
     return to_enum(__method__) unless block_given?
     connect!
+    total = @dataset.count
+    Thread::current[:total] ||= 0
+    Thread::current[:total] += total
+    console.update status: 'processing...', total: Thread::current[:total]
+    current = 0
+    Thread::current[:current] ||= 0
     @dataset.each do |item|
       check_shutdown!
-      block.call item
+      current += 1
+      Thread::current[:current] += 1
+      console.update status: 'processing...', current: Thread::current[:current]
+      yield item
     end
+  ensure
+    # Цикл может быть прерван досрочно, тогда нам нужно уменьшить total, чтобы результат сходился
+    if current < total
+      Thread::current[:total] -= total - current
+      console.update total: Thread::current[:total]
+    end
+    console.update status: 'processed'
   end
 
   # @return [Integer]
@@ -171,7 +206,7 @@ class INatGet::Data::DSL::Dataset
       ranks = INatGet::Data::Enum::Rank::select { |r| r.level == field.level }
       subquery = taxon_id_at_ranks(*ranks)
       ids = query.distinct.select_map(subquery.as(:taxon_at_rank)).compact
-      INatGet::Data::Model::Taxon.where(id: ids).all
+      INatGet::Data::Model::Taxon.where(id: ids)
     elsif model.associations.include?(field)
       reflection = model.association_reflection(field)
       target = reflection.associated_class
@@ -179,14 +214,14 @@ class INatGet::Data::DSL::Dataset
       case reflection[:type]
       when :many_to_one
         ids = query.distinct.select_map(reflection[:key])
-        target.where(id: ids).all
+        target.where(id: ids)
       when :one_to_many, :many_to_many
         # Для всех типов "много" используем ассоциативный датасет
         # association_join делает join на основе метаданных связи
         ids = query.association_join(field)
                    .distinct
                    .select_map(reflection.qualified_right_key)
-        target.where(id: ids).all
+        target.where(id: ids)
       end
     else
       # field может быть как символом :column, так и Sequel.function(:month, :created_at)

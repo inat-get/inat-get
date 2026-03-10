@@ -136,12 +136,30 @@ class INatGet::Data::DSL::List
   # @yieldparam [Dataset] ds
   def each
     return to_enum(__method__) unless block_given?
-    if @sorter
-      @datasets.values.sort_by(&@sorter).each { |ds| yield ds }
+    sorted = if @sorter
+      @datasets.values.sort_by(&@sorter)
     else
-      @datasets.each { |_, ds| yield ds }
+      @datasets.values
+    end
+    total = sorted.size
+    Thread::current[:total] ||= 0
+    Thread::current[:total] += total
+    console.update status: 'listing...', total: Thread::current[:total]
+    current = 0
+    Thread::current[:current] ||= 0
+    sorted.each do |ds|
+      current += 1
+      Thread::current[:current] += 1
+      console.update status: 'listing...', current: Thread::current[:current]
+      yield ds
     end
     self
+  ensure
+    if current < total
+      Thread::current[:total] -= total - current
+      console.update total: Thread::current[:total]
+    end
+    console.update status: 'listed'
   end
 
   # @return [Integer]
