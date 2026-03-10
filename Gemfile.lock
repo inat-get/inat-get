@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    inat-get (0.9.0.8)
+    inat-get (0.9.0.10)
       faraday (~> 2.14)
       faraday-retry (~> 2.3)
       is-deep (~> 0.8)
@@ -37,7 +37,7 @@ GEM
       is-boolean (~> 0.8)
       is-duration (~> 0.8.4)
       tty-screen (~> 0.8)
-    json (2.18.1)
+    json (2.19.1)
     logger (1.7.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -111,7 +111,7 @@ CHECKSUMS
   faraday (2.14.1) sha256=a43cceedc1e39d188f4d2cdd360a8aaa6a11da0c407052e426ba8d3fb42ef61c
   faraday-net_http (3.4.2) sha256=f147758260d3526939bf57ecf911682f94926a3666502e24c69992765875906c
   faraday-retry (2.4.0) sha256=7b79c48fb7e56526faf247b12d94a680071ff40c9fda7cf1ec1549439ad11ebe
-  inat-get (0.9.0.8)
+  inat-get (0.9.0.10)
   is-boolean (0.8.0) sha256=a470c0407307fc3e71e785ac3847d500abd157e8874e94747a713050572afdb3
   is-deep (0.8.0) sha256=49b4bef09b6520fedf4620c50878b1f04d8fb78a51352fac0591d6d605f7fe04
   is-dsl (0.8.0) sha256=fc66508e85da3c9f4cdcdc31e9bb078f2aef791dfe432db1db931c69c97020e6
@@ -119,7 +119,7 @@ CHECKSUMS
   is-enum (0.8.8.6) sha256=5c86b7abef5fba11bc9525dd8a01aad01d15ce9070c9a055050b0ec20e80a6b9
   is-range (0.8.2) sha256=81a761cd6ac30a61352b267644178691a517ba1b02ef402ca319dcf86e45d43a
   is-term (0.8.4.10) sha256=953f4b45c8cec8cf0e1ab0508142aa620480bee681bf0d58b2cf1125a453ff14
-  json (2.18.1) sha256=fe112755501b8d0466b5ada6cf50c8c3f41e897fa128ac5d263ec09eedc9f986
+  json (2.19.1) sha256=dd94fdc59e48bff85913829a32350b3148156bc4fd2a95a2568a78b11344082d
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
