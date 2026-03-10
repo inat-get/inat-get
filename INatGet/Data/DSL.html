@@ -905,15 +905,15 @@
       <pre class="lines">
 
 
-44
-45
-46</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_console'>console</span>
-  <span class='ivar'>@console</span> <span class='op'>||=</span> <span class='const'>Thread</span><span class='op'>::</span><span class='id identifier rubyid_current'>current</span><span class='lbracket'>[</span><span class='symbol'>:console</span><span class='rbracket'>]</span>
+  <span class='ivar'>@console</span> <span class='op'>||=</span> <span class='const'>Thread</span><span class='op'>::</span><span class='id identifier rubyid_current'>current</span><span class='lbracket'>[</span><span class='symbol'>:console</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DummyConsole</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1415,13 +1415,6 @@
       <pre class="lines">
 
 
-190
-191
-192
-193
-194
-195
-196
 197
 198
 199
@@ -1458,10 +1451,17 @@
 230
 231
 232
-233</pre>
+233
+234
+235
+236
+237
+238
+239
+240</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 190</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_finish_time'>finish_time</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_date'>date</span>
@@ -3993,13 +3993,6 @@
       <pre class="lines">
 
 
-118
-119
-120
-121
-122
-123
-124
 125
 126
 127
@@ -4032,10 +4025,17 @@
 154
 155
 156
-157</pre>
+157
+158
+159
+160
+161
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_start_time'>start_time</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_date'>date</span>
@@ -4581,12 +4581,12 @@
       <pre class="lines">
 
 
-83
-84
-85</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/dsl.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_time_range'>time_range</span> <span class='label'>date:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='kw'>nil</span>
   <span class='lparen'>(</span><span class='id identifier rubyid_start_time'>start_time</span><span class='lparen'>(</span><span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='id identifier rubyid_decade'>decade</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='id identifier rubyid_quarter'>quarter</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='id identifier rubyid_season'>season</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='id identifier rubyid_day'>day</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='id identifier rubyid_week'>week</span><span class='rparen'>)</span> <span class='op'>...</span> <span class='id identifier rubyid_finish_time'>finish_time</span><span class='lparen'>(</span><span class='label'>date:</span> <span class='id identifier rubyid_date'>date</span><span class='comma'>,</span> <span class='label'>century:</span> <span class='id identifier rubyid_century'>century</span><span class='comma'>,</span> <span class='label'>decade:</span> <span class='id identifier rubyid_decade'>decade</span><span class='comma'>,</span> <span class='label'>year:</span> <span class='id identifier rubyid_year'>year</span><span class='comma'>,</span> <span class='label'>quarter:</span> <span class='id identifier rubyid_quarter'>quarter</span><span class='comma'>,</span> <span class='label'>season:</span> <span class='id identifier rubyid_season'>season</span><span class='comma'>,</span> <span class='label'>month:</span> <span class='id identifier rubyid_month'>month</span><span class='comma'>,</span> <span class='label'>day:</span> <span class='id identifier rubyid_day'>day</span><span class='comma'>,</span> <span class='label'>week:</span> <span class='id identifier rubyid_week'>week</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -4871,7 +4871,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar 10 18:47:04 2026 by
+  Generated on Tue Mar 10 18:55:55 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.8).
 </div>
