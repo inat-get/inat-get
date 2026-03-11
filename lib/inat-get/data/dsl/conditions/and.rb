@@ -107,7 +107,7 @@ class INatGet::Data::DSL::Condition::AND < INatGet::Data::DSL::Condition
 
   # @private
   def simplify
-    AND[ *@operands.map(&:simplify) ].normalize
+    AND[ *@operands.map { it.send :simplify } ].normalize
   end
 
   # @private

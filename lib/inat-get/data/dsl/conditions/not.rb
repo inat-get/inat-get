@@ -102,11 +102,11 @@ class INatGet::Data::DSL::Condition::NOT < INatGet::Data::DSL::Condition
   def push_not_down
     case @operand
     when AND
-      OR[ *@operand.operands.map { |o| NOT[ o.push_not_down ] } ]
+      OR[ *@operand.operands.map { |o| NOT[ o.send :push_not_down ] } ]
     when OR
-      AND[ *@operand.operands.map { |o| NOT[ o.push_not_down ] } ]
+      AND[ *@operand.operands.map { |o| NOT[ o.send :push_not_down ] } ]
     when NOT
-      @operand.operand.push_not_down
+      @operand.operand.send :push_not_down
     else
       self
     end
