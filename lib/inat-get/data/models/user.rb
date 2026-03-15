@@ -7,6 +7,8 @@ require_relative 'base'
 
 class INatGet::Data::Model::User < INatGet::Data::Model
 
+  include INatGet::Data::Model::Identified
+
   set_dataset :users
 
   one_to_many :observations

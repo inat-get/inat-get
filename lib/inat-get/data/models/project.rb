@@ -16,6 +16,8 @@ module INatGet::Data; end
 
 class INatGet::Data::Model::Project < INatGet::Data::Model
 
+  include INatGet::Data::Model::Identified
+
   set_dataset :projects
 
   many_to_one :user, class: :'INatGet::Data::Model::User'

@@ -52,6 +52,19 @@ module INatGet::Data
 
     end
 
+    module Identified
+
+      def eql? other
+        return false unless other.is_a?(self.class)
+        self.id == other.id
+      end
+
+      def hash
+        [Identified, self.class, self.id].hash
+      end
+
+    end
+
   end
 
 end

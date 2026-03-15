@@ -10,6 +10,8 @@ module INatGet::Data; end
 
 class INatGet::Data::Model::Identification < INatGet::Data::Model
 
+  include INatGet::Data::Model::Identified
+
   set_dataset :identifications
 
   many_to_one :observation, class: :'INatGet::Data::Model::Observation'

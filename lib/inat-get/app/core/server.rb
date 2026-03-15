@@ -66,6 +66,7 @@ class INatGet::App::Server
   end
 
   def on_error exception
+    warn exception.class
     warn exception
     warn exception.backtrace
   end
@@ -92,7 +93,7 @@ class INatGet::App::Server
     end
 
     def method_missing sym, *args, **kwargs
-      kwargs[:_sender_pid] = ::Process::pid
+      kwargs[:_sender_pid] ||= ::Process::pid
       msg = {
         method: sym,
         args: args,
@@ -104,8 +105,8 @@ class INatGet::App::Server
       socket.close
       result
     rescue => e
-      pp e
-      false
+      # pp e
+      { status: :error, error: e.message }
     end
 
   end

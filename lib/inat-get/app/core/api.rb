@@ -2,10 +2,14 @@
 
 require 'faraday'
 require 'faraday/retry'
+require 'faraday/typhoeus'
+# require 'faraday/gzip'
+# require 'faraday-http-cache'
 require 'is-duration'
 
 require_relative 'server'
 require_relative 'console_logger'
+require_relative 'api_cache'
 
 class INatGet::App::Server::API < INatGet::App::Server
 
@@ -21,6 +25,7 @@ class INatGet::App::Server::API < INatGet::App::Server
 
   def get query, **opts
     endpoint = @config.dig(:api, :root) + query[:endpoint].to_s
+    @logger.info query[:endpoint].to_s
     timepoint = Time::now
     if @last_request
       delta = timepoint - @last_request
@@ -33,6 +38,7 @@ class INatGet::App::Server::API < INatGet::App::Server
       rq.params.merge! query[:query]
       rq.headers["User-Agent"] = "iNatGet v#{INatGet::Info::VERSION} (#{ INatGet::Info::VERSION_ALIAS })"
     end
+    @logger.clear
     if response.success?
       begin
         data = JSON.parse response.body, symbolize_names: true
@@ -45,6 +51,8 @@ class INatGet::App::Server::API < INatGet::App::Server
       @logger.error "Error in response: #{response.status}"
       return { status: :error, error: response.status }.freeze
     end
+  # rescue => e
+  #   return { status: :error, error: e.message }.freeze
   end
 
   def faraday
@@ -55,10 +63,19 @@ class INatGet::App::Server::API < INatGet::App::Server
                 interval: IS::Duration::parse(@config.dig(:api, :retry, :interval)),
                 interval_randomness: @config.dig(:api, :retry, :randomness),
                 backoff_factor: @config.dig(:api, :retry, :backoff),
+                retry_block: lambda { |env:, options:, retry_count:, exception:, will_retry_in:| @logger.warn "retry... : #{ retry_count } : #{ exception.class }" },
                 exceptions: [Faraday::TimeoutError, Faraday::ConnectionFailed, Faraday::SSLError, Faraday::ClientError]
       f.request :url_encoded
-      # f.response :logger, tmp_logger, bodies: true, headers: true
-      f.adapter Faraday::default_adapter
+      # f.response :logger, tmp_logger, { headers: true, bodies: false }
+
+      # f.use :http_cache, store: INatGet::App::Server::API::Cache::new(@config.dig(:caching, :api) || 100)
+
+      f.adapter :typhoeus do |typhoeus|
+        typhoeus.options[:connecttimeout] = 10 
+        typhoeus.options[:timeout] = 20
+        typhoeus.options[:low_speed_limit] = 10
+        typhoeus.options[:low_speed_time] = 10
+      end
     end
   end
 

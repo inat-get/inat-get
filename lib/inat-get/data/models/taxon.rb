@@ -8,6 +8,8 @@ require_relative 'base'
 
 class INatGet::Data::Model::Taxon < INatGet::Data::Model
 
+  include INatGet::Data::Model::Identified
+
   set_dataset :taxa
 
   one_to_many :observations

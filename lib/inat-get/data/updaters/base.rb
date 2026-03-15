@@ -146,25 +146,30 @@ class INatGet::Data::Updater
     rq_model = INatGet::Data::Model::Request
     record = nil
     found = false
-    rq_model.db.transaction(isolation: :committed, mode: :immediate) do
+    # rq_model.db.transaction(isolation: :committed, mode: :immediate) do
       record = rq_model.with_pk(rq_hash)
       if record
         while record.busy
           raise "Too old business" if start_point - record.busy > HARD_STOP
+          console.update status: 'waiting...'
           sleep 0.1
           record.reload
         end
         return :fresh if record.finished > actual_point
-        record.update busy: start_point
+        rq_model.db.transaction(isolation: :committed, mode: :immediate) do
+          record.update busy: start_point
+        end
         found = true
       else
-        record = rq_model.create full: rq_hash, endless: el_hash, endpoint: endpoint.to_s, query: rq_json, started: start_point, freshed: start_point, busy: start_point
-        set_request_projects record, query[:project_id] if query[:project_id]
-        set_request_places   record, query[:place_id]   if query[:place_id]
-        set_request_taxa     record, query[:taxon_id]   if query[:taxon_id]
-        set_request_users    record, query[:user_id]    if query[:user_id]
+        rq_model.db.transaction(isolation: :committed, mode: :immediate) do
+          record = rq_model.create full: rq_hash, endless: el_hash, endpoint: endpoint.to_s, query: rq_json, started: start_point, freshed: start_point, busy: start_point
+          set_request_projects record, query[:project_id] if query[:project_id]
+          set_request_places   record, query[:place_id]   if query[:place_id]
+          set_request_taxa     record, query[:taxon_id]   if query[:taxon_id]
+          set_request_users    record, query[:user_id]    if query[:user_id]
+        end
       end
-    end
+    # end
 
     # Устанавливаем updated_since
     if allow_updated_since?
@@ -307,6 +312,7 @@ class INatGet::Data::Updater
       until result
         query[:id_above] = id_above if id_above
         check_shutdown!
+        console.update status: 'querying...'
         response = api.get({ endpoint: endpoint, query: query })
         if response[:status] == :error
           result = :error
@@ -335,6 +341,7 @@ class INatGet::Data::Updater
       until result
         query[:page] = page if page
         check_shutdown!
+        console.update status: 'querying...'
         response = api.get({ endpoint: endpoint, query: query })
         if response[:status] == :error
           result = :error

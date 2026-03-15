@@ -18,6 +18,8 @@ module INatGet::Data; end
 
 class INatGet::Data::Model::Observation < INatGet::Data::Model
 
+  include INatGet::Data::Model::Identified
+
   set_dataset :observations
 
   one_to_many :faves,           class: INatGet::Data::Model::Fave

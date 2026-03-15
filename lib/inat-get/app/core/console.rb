@@ -65,6 +65,16 @@ class INatGet::App::Server::Console < INatGet::App::Server
     true
   end
 
+  def clear progname, **opts
+    key = prog_key progname
+    pid = opts[:_sender_pid]
+    if key == :wrk
+      @table.update _sender_pid: pid, message: ''
+    else
+      @table.summary message: ''
+    end
+  end
+
   private
 
   def prog_key progname

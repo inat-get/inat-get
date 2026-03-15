@@ -24,4 +24,8 @@ class INatGet::App::ConsoleLogger < Logger
     @console.log severity, msg, (progname || self.progname)
   end
 
+  def clear progname = nil
+    @console.clear(progname || self.progname)
+  end
+
 end

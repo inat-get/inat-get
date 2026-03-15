@@ -9,6 +9,8 @@ module INatGet::Data; end
 
 class INatGet::Data::Model::Place < INatGet::Data::Model
 
+  include INatGet::Data::Model::Identified
+
   set_dataset :places
 
   many_to_many :observations, class: :'INatGet::Data::Model::Observation', join_table: :observation_places, left_key: :place_id, right_key: :observation_id

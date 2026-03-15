@@ -16,8 +16,8 @@ module INatGet::App::Setup
   DEFAULTS = {
     logs: {
       screen: {
-        api: 'warn',
-        sys: 'warn',
+        api: 'info',
+        sys: 'info',
         wrk: 'info'
       },
       file: {
@@ -34,6 +34,7 @@ module INatGet::App::Setup
       password: nil
     },
     caching: {
+      api: 100,
       update: '4h',
       refresh: { 
         interval: '4d',
@@ -62,7 +63,7 @@ module INatGet::App::Setup
       preferred_place: 7161,
       translate_projects: 'umbrella',    # all | umbrella | none
       retry: {
-        max: 5,
+        max: 25,
         interval: '1s',
         randomness: 0.5,
         backoff: 2
