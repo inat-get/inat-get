@@ -258,14 +258,14 @@
       <pre class="lines">
 
 
-75
 76
 77
 78
-79</pre>
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_detacher'>detacher</span><span class='comma'>,</span> <span class='id identifier rubyid_socket_path'>socket_path</span><span class='comma'>,</span> <span class='id identifier rubyid_wait_answer'>wait_answer</span> <span class='op'>=</span> <span class='kw'>true</span>
   <span class='ivar'>@detacher</span> <span class='op'>=</span> <span class='id identifier rubyid_detacher'>detacher</span>
@@ -300,7 +300,6 @@
       <pre class="lines">
 
 
-94
 95
 96
 97
@@ -315,13 +314,14 @@
 106
 107
 108
-109</pre>
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span> <span class='id identifier rubyid_sym'>sym</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:_sender_pid</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Process</span><span class='op'>::</span><span class='id identifier rubyid_pid'>pid</span>
+  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:_sender_pid</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='op'>::</span><span class='const'>Process</span><span class='op'>::</span><span class='id identifier rubyid_pid'>pid</span>
   <span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='lbrace'>{</span>
     <span class='label'>method:</span> <span class='id identifier rubyid_sym'>sym</span><span class='comma'>,</span>
     <span class='label'>args:</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span>
@@ -333,8 +333,8 @@
   <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
   <span class='id identifier rubyid_result'>result</span>
 <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-  <span class='id identifier rubyid_pp'>pp</span> <span class='id identifier rubyid_e'>e</span>
-  <span class='kw'>false</span>
+  <span class='comment'># pp e
+</span>  <span class='lbrace'>{</span> <span class='label'>status:</span> <span class='symbol'>:error</span><span class='comma'>,</span> <span class='label'>error:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -385,12 +385,12 @@
       <pre class="lines">
 
 
-90
 91
-92</pre>
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_alive?'>alive?</span>
   <span class='ivar'>@detacher</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span>
@@ -415,13 +415,13 @@
       <pre class="lines">
 
 
-81
 82
 83
-84</pre>
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_quit'>quit</span>
@@ -447,12 +447,12 @@
       <pre class="lines">
 
 
-86
 87
-88</pre>
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pid'>pid</span>
   <span class='ivar'>@detacher</span><span class='period'>.</span><span class='id identifier rubyid_pid'>pid</span>
@@ -467,9 +467,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 11 11:50:44 2026 by
+  Generated on Sun Mar 15 00:07:23 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.8).
+  0.9.37 (ruby-3.4.9).
 </div>
 
     </div>

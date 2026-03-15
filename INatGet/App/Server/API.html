@@ -96,11 +96,23 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/inat-get/app/core/api.rb</dd>
+    <dd>lib/inat-get/app/core/api_cache.rb<span class="defines">,<br />
+  lib/inat-get/app/core/api.rb</span>
+</dd>
   </dl>
   
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="API/Cache.html" title="INatGet::App::Server::API::Cache (class)">Cache</a></span>
+    
+  
+</p>
 
 
 
@@ -232,16 +244,16 @@
       <pre class="lines">
 
 
-12
-13
-14
-15
 16
 17
-18</pre>
+18
+19
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_socket_path'>socket_path</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_params'>params</span>
   <span class='ivar'>@console</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='symbol'>:console</span>
@@ -277,23 +289,32 @@
       <pre class="lines">
 
 
-50
-51
-52
-53
-54
-55
-56
-57
 58
 59
 60
 61
 62
-63</pre>
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_faraday'>faraday</span>
   <span class='comment'># tmp_logger = ::Logger::new &#39;common.log&#39;, level: :info
@@ -303,10 +324,19 @@
               <span class='label'>interval:</span> <span class='const'>IS</span><span class='op'>::</span><span class='const'>Duration</span><span class='op'>::</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:interval</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span>
               <span class='label'>interval_randomness:</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:randomness</span><span class='rparen'>)</span><span class='comma'>,</span>
               <span class='label'>backoff_factor:</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:backoff</span><span class='rparen'>)</span><span class='comma'>,</span>
+              <span class='label'>retry_block:</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='label'>env:</span><span class='comma'>,</span> <span class='label'>options:</span><span class='comma'>,</span> <span class='label'>retry_count:</span><span class='comma'>,</span> <span class='label'>exception:</span><span class='comma'>,</span> <span class='label'>will_retry_in:</span><span class='op'>|</span> <span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>retry... : </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_retry_count'>retry_count</span> <span class='embexpr_end'>}</span><span class='tstring_content'> : </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
               <span class='label'>exceptions:</span> <span class='lbracket'>[</span><span class='const'>Faraday</span><span class='op'>::</span><span class='const'>TimeoutError</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>ConnectionFailed</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>SSLError</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>ClientError</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:url_encoded</span>
-    <span class='comment'># f.response :logger, tmp_logger, bodies: true, headers: true
-</span>    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_default_adapter'>default_adapter</span>
+    <span class='comment'># f.response :logger, tmp_logger, { headers: true, bodies: false }
+</span>
+    <span class='comment'># f.use :http_cache, store: INatGet::App::Server::API::Cache::new(@config.dig(:caching, :api) || 100)
+</span>
+    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='symbol'>:typhoeus</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='op'>|</span>
+      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connecttimeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>10</span> 
+      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:timeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>20</span>
+      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:low_speed_limit</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>10</span>
+      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:low_speed_time</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>10</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -329,10 +359,6 @@
       <pre class="lines">
 
 
-22
-23
-24
-25
 26
 27
 28
@@ -355,13 +381,22 @@
 45
 46
 47
-48</pre>
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span> <span class='id identifier rubyid_query'>query</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
   <span class='id identifier rubyid_endpoint'>endpoint</span> <span class='op'>=</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:root</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_query'>query</span><span class='lbracket'>[</span><span class='symbol'>:endpoint</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='id identifier rubyid_query'>query</span><span class='lbracket'>[</span><span class='symbol'>:endpoint</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_timepoint'>timepoint</span> <span class='op'>=</span> <span class='const'>Time</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span>
   <span class='kw'>if</span> <span class='ivar'>@last_request</span>
     <span class='id identifier rubyid_delta'>delta</span> <span class='op'>=</span> <span class='id identifier rubyid_timepoint'>timepoint</span> <span class='op'>-</span> <span class='ivar'>@last_request</span>
@@ -374,6 +409,7 @@
     <span class='id identifier rubyid_rq'>rq</span><span class='period'>.</span><span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span> <span class='id identifier rubyid_query'>query</span><span class='lbracket'>[</span><span class='symbol'>:query</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_rq'>rq</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User-Agent</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>iNatGet v</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Info.html#VERSION-constant" title="INatGet::Info::VERSION (constant)">VERSION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Info.html" title="INatGet::Info (module)">Info</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Info.html#VERSION_ALIAS-constant" title="INatGet::Info::VERSION_ALIAS (constant)">VERSION_ALIAS</a></span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
+  <span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span>
     <span class='kw'>begin</span>
       <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='label'>symbolize_names:</span> <span class='kw'>true</span>
@@ -386,7 +422,9 @@
     <span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error in response: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>return</span> <span class='lbrace'>{</span> <span class='label'>status:</span> <span class='symbol'>:error</span><span class='comma'>,</span> <span class='label'>error:</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='comment'># rescue =&gt; e
+</span><span class='comment'>#   return { status: :error, error: e.message }.freeze
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -397,9 +435,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 11 11:50:44 2026 by
+  Generated on Sun Mar 15 00:07:22 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.8).
+  0.9.37 (ruby-3.4.9).
 </div>
 
     </div>

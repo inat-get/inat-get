@@ -93,7 +93,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>Comparable</dd>
+      <dd>Comparable, <span class='object_link'><a href="Identified.html" title="INatGet::Data::Model::Identified (module)">Identified</a></span></dd>
   </dl>
   
   
@@ -690,6 +690,17 @@
   
   
   
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Identified.html" title="INatGet::Data::Model::Identified (module)">Identified</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Identified.html#eql%3F-instance_method" title="INatGet::Data::Model::Identified#eql? (method)">#eql?</a></span>, <span class='object_link'><a href="Identified.html#hash-instance_method" title="INatGet::Data::Model::Identified#hash (method)">#hash</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">INatGet::Data::Model</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../Model.html#endpoint-class_method" title="INatGet::Data::Model.endpoint (method)">endpoint</a></span>, <span class='object_link'><a href="../Model.html#helper-class_method" title="INatGet::Data::Model.helper (method)">helper</a></span>, <span class='object_link'><a href="../Model.html#manager-class_method" title="INatGet::Data::Model.manager (method)">manager</a></span>, <span class='object_link'><a href="../Model.html#parser-class_method" title="INatGet::Data::Model.parser (method)">parser</a></span>, <span class='object_link'><a href="../Model.html#updater-class_method" title="INatGet::Data::Model.updater (method)">updater</a></span></p>
 
@@ -737,10 +748,10 @@
       <pre class="lines">
 
 
-19</pre>
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 21</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:ancestors</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:taxa_ancestors</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:taxon_id</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:ancestor_id</span></pre>
     </td>
@@ -788,10 +799,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -839,10 +850,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -890,10 +901,10 @@
       <pre class="lines">
 
 
-20</pre>
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 22</span>
 
 <span class='id identifier rubyid_many_to_many'>many_to_many</span> <span class='symbol'>:descendants</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span><span class='comma'>,</span> <span class='label'>join_table:</span> <span class='symbol'>:taxa_ancestors</span><span class='comma'>,</span> <span class='label'>left_key:</span> <span class='symbol'>:ancestor_id</span><span class='comma'>,</span> <span class='label'>right_key:</span> <span class='symbol'>:taxon_id</span></pre>
     </td>
@@ -941,10 +952,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -992,10 +1003,10 @@
       <pre class="lines">
 
 
-16</pre>
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 18</span>
 
 <span class='id identifier rubyid_many_to_one'>many_to_one</span> <span class='symbol'>:iconic_taxon</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span></pre>
     </td>
@@ -1043,10 +1054,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1094,10 +1105,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1145,10 +1156,10 @@
       <pre class="lines">
 
 
-14</pre>
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 16</span>
 
 <span class='id identifier rubyid_one_to_many'>one_to_many</span> <span class='symbol'>:identifications</span></pre>
     </td>
@@ -1196,10 +1207,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1247,10 +1258,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1298,10 +1309,10 @@
       <pre class="lines">
 
 
-13</pre>
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 15</span>
 
 <span class='id identifier rubyid_one_to_many'>one_to_many</span> <span class='symbol'>:observations</span></pre>
     </td>
@@ -1349,10 +1360,10 @@
       <pre class="lines">
 
 
-17</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 19</span>
 
 <span class='id identifier rubyid_many_to_one'>many_to_one</span> <span class='symbol'>:parent</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span></pre>
     </td>
@@ -1400,10 +1411,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1451,10 +1462,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1502,10 +1513,10 @@
       <pre class="lines">
 
 
-11</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 13</span>
 
 <span class='id identifier rubyid_set_dataset'>set_dataset</span> <span class='symbol'>:taxa</span></pre>
     </td>
@@ -1535,8 +1546,6 @@
       <pre class="lines">
 
 
-26
-27
 28
 29
 30
@@ -1545,10 +1554,12 @@
 33
 34
 35
-36</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compact_set'>compact_set</span> <span class='op'>*</span><span class='id identifier rubyid_values'>values</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Set</span><span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1587,14 +1598,14 @@
       <pre class="lines">
 
 
-86
-87
 88
 89
-90</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other'>other</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Model.html" title="INatGet::Data::Model (class)">Model</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::Model::Taxon (class)">Taxon</a></span></span><span class='rparen'>)</span>
@@ -1828,8 +1839,6 @@
       <pre class="lines">
 
 
-57
-58
 59
 60
 61
@@ -1844,10 +1853,12 @@
 70
 71
 72
-73</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='op'>===</span> <span class='id identifier rubyid_other'>other</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_other'>other</span>
@@ -1908,12 +1919,12 @@
       <pre class="lines">
 
 
-80
-81
-82</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_iconic'>iconic</span>
   <span class='const'><span class='object_link'><a href="../../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Enum.html" title="INatGet::Data::Enum (module)">Enum</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Enum/Iconic.html" title="INatGet::Data::Enum::Iconic (class)">Iconic</a></span></span><span class='op'>::</span><span class='id identifier rubyid_by_id'><span class='object_link'><a href="../Enum/Iconic.html#by_id-class_method" title="INatGet::Data::Enum::Iconic.by_id (method)">by_id</a></span></span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_iconic_taxon_id'>iconic_taxon_id</span>
@@ -1960,13 +1971,13 @@
       <pre class="lines">
 
 
-97
-98
 99
-100</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/models/taxon.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_rank'>on_rank</span> <span class='op'>*</span><span class='id identifier rubyid_ranks'>ranks</span>
   <span class='id identifier rubyid_ranks'>ranks</span> <span class='op'>=</span> <span class='id identifier rubyid_ranks'>ranks</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_s</span><span class='rparen'>)</span>
@@ -1982,9 +1993,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 11 11:50:45 2026 by
+  Generated on Sun Mar 15 00:07:24 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.8).
+  0.9.37 (ruby-3.4.9).
 </div>
 
     </div>

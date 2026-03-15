@@ -98,8 +98,8 @@
         <dd><pre class="code"><span class='lbrace'>{</span>
   <span class='label'>logs:</span> <span class='lbrace'>{</span>
     <span class='label'>screen:</span> <span class='lbrace'>{</span>
-      <span class='label'>api:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>warn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-      <span class='label'>sys:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>warn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>api:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>sys:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
       <span class='label'>wrk:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>info</span><span class='tstring_end'>&#39;</span></span>
     <span class='rbrace'>}</span><span class='comma'>,</span>
     <span class='label'>file:</span> <span class='lbrace'>{</span>
@@ -116,6 +116,7 @@
     <span class='label'>password:</span> <span class='kw'>nil</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='label'>caching:</span> <span class='lbrace'>{</span>
+    <span class='label'>api:</span> <span class='int'>100</span><span class='comma'>,</span>
     <span class='label'>update:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4h</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
     <span class='label'>refresh:</span> <span class='lbrace'>{</span> 
       <span class='label'>interval:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4d</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
@@ -144,7 +145,7 @@
     <span class='label'>preferred_place:</span> <span class='int'>7161</span><span class='comma'>,</span>
     <span class='label'>translate_projects:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>umbrella</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>    <span class='comment'># all | umbrella | none
 </span>    <span class='label'>retry:</span> <span class='lbrace'>{</span>
-      <span class='label'>max:</span> <span class='int'>5</span><span class='comma'>,</span>
+      <span class='label'>max:</span> <span class='int'>25</span><span class='comma'>,</span>
       <span class='label'>interval:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
       <span class='label'>randomness:</span> <span class='float'>0.5</span><span class='comma'>,</span>
       <span class='label'>backoff:</span> <span class='int'>2</span>
@@ -354,12 +355,12 @@
       <pre class="lines">
 
 
-96
 97
-98</pre>
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_config'>config</span>
   <span class='ivar'>@config</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="#DEFAULTS-constant" title="INatGet::App::Setup::DEFAULTS (constant)">DEFAULTS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deep_dup'>deep_dup</span>
@@ -384,7 +385,6 @@
       <pre class="lines">
 
 
-82
 83
 84
 85
@@ -396,10 +396,11 @@
 91
 92
 93
-94</pre>
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_config!'>config!</span> <span class='op'>**</span><span class='id identifier rubyid_opts'>opts</span>
   <span class='ivar'>@config</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#DEFAULTS-constant" title="INatGet::App::Setup::DEFAULTS (constant)">DEFAULTS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_deep_dup'>deep_dup</span>
@@ -434,7 +435,6 @@
       <pre class="lines">
 
 
-102
 103
 104
 105
@@ -450,10 +450,11 @@
 115
 116
 117
-118</pre>
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inject_env!'>inject_env!</span> <span class='id identifier rubyid_data'>data</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_data'>data</span>
@@ -492,7 +493,6 @@
       <pre class="lines">
 
 
-244
 245
 246
 247
@@ -500,10 +500,11 @@
 249
 250
 251
-252</pre>
+252
+253</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 244</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 245</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_config'>load_config</span> <span class='id identifier rubyid_filename'>filename</span>
   <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span> <span class='id identifier rubyid_filename'>filename</span>
@@ -534,7 +535,6 @@
       <pre class="lines">
 
 
-120
 121
 122
 123
@@ -656,10 +656,11 @@
 239
 240
 241
-242</pre>
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_options!'>parse_options!</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
@@ -804,7 +805,6 @@
       <pre class="lines">
 
 
-260
 261
 262
 263
@@ -829,10 +829,11 @@
 282
 283
 284
-285</pre>
+285
+286</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 260</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 261</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_file_list'>unwrap_file_list</span> <span class='id identifier rubyid_list'>list</span>
   <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
@@ -880,14 +881,14 @@
       <pre class="lines">
 
 
-254
 255
 256
 257
-258</pre>
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 254</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/setup.rb', line 255</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unwrap_files!'>unwrap_files!</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='ivar'>@config</span><span class='lbracket'>[</span><span class='symbol'>:tasks</span><span class='rbracket'>]</span>
@@ -904,9 +905,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 11 11:50:44 2026 by
+  Generated on Sun Mar 15 00:07:22 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.8).
+  0.9.37 (ruby-3.4.9).
 </div>
 
     </div>

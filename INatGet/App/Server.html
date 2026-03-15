@@ -94,7 +94,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/inat-get/app/core/server.rb</dd>
+    <dd>lib/inat-get/app/core/server.rb<span class="defines">,<br />
+  lib/inat-get/app/core/api_cache.rb</span>
+</dd>
   </dl>
   
 </div>
@@ -512,7 +514,6 @@
       <pre class="lines">
 
 
-115
 116
 117
 118
@@ -523,10 +524,11 @@
 123
 124
 125
-126</pre>
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span> <span class='id identifier rubyid_socket_path'>socket_path</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_params'>params</span>
   <span class='ivar'>@proxies</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -582,15 +584,15 @@
       <pre class="lines">
 
 
-128
 129
 130
 131
 132
-133</pre>
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_used?'>used?</span> <span class='id identifier rubyid_socket_path'>socket_path</span>
   <span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../App.html" title="INatGet::App (module)">App</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::App::Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Proxy.html" title="INatGet::App::Server::Proxy (class)">Proxy</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server/Proxy.html#initialize-instance_method" title="INatGet::App::Server::Proxy#initialize (method)">new</a></span></span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_socket_path'>socket_path</span><span class='comma'>,</span> <span class='kw'>true</span>
@@ -640,12 +642,12 @@
       <pre class="lines">
 
 
-139
 140
-141</pre>
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 139</span>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait_answer?'>wait_answer?</span>
   <span class='kw'>true</span>
@@ -739,12 +741,14 @@
 68
 69
 70
-71</pre>
+71
+72</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/server.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_error'>on_error</span> <span class='id identifier rubyid_exception'>exception</span>
+  <span class='id identifier rubyid_warn'>warn</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>
   <span class='id identifier rubyid_warn'>warn</span> <span class='id identifier rubyid_exception'>exception</span>
   <span class='id identifier rubyid_warn'>warn</span> <span class='id identifier rubyid_exception'>exception</span><span class='period'>.</span><span class='id identifier rubyid_backtrace'>backtrace</span>
 <span class='kw'>end</span></pre>
@@ -872,9 +876,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 11 11:50:44 2026 by
+  Generated on Sun Mar 15 00:07:23 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.8).
+  0.9.37 (ruby-3.4.9).
 </div>
 
     </div>

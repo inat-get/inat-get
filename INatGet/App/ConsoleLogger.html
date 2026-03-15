@@ -141,6 +141,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#clear-instance_method" title="#clear (instance method)">#<strong>clear</strong>(progname = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(console, **options)  &#x21d2; ConsoleLogger </a>
     
 
@@ -263,14 +285,44 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="clear-instance_method">
+  
+    #<strong>clear</strong>(progname = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/console_logger.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span> <span class='id identifier rubyid_progname'>progname</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@console</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span><span class='lparen'>(</span><span class='id identifier rubyid_progname'>progname</span> <span class='op'>||</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_progname'>progname</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 11 11:50:46 2026 by
+  Generated on Sun Mar 15 00:07:25 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.8).
+  0.9.37 (ruby-3.4.9).
 </div>
 
     </div>
