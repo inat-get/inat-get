@@ -155,7 +155,7 @@ class INatGet::Data::Updater
           sleep 0.1
           record.reload
         end
-        return :fresh if record.finished > actual_point
+        return :fresh if record.finished && record.finished > actual_point
         rq_model.db.transaction(isolation: :committed, mode: :immediate) do
           record.update busy: start_point
         end
