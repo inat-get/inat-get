@@ -66,7 +66,7 @@ module INatGet::App::Setup
         max: 25,
         interval: '1s',
         randomness: 0.5,
-        backoff: 2
+        backoff: 1
       },
       delay: '1s',
       pager: 200

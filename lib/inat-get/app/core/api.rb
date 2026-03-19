@@ -66,15 +66,19 @@ class INatGet::App::Server::API < INatGet::App::Server
                 retry_block: lambda { |env:, options:, retry_count:, exception:, will_retry_in:| @logger.warn "retry... : #{ retry_count } : #{ exception.class }" },
                 exceptions: [Faraday::TimeoutError, Faraday::ConnectionFailed, Faraday::SSLError, Faraday::ClientError]
       f.request :url_encoded
+
+      f.response :raise_error
       # f.response :logger, tmp_logger, { headers: true, bodies: false }
 
       # f.use :http_cache, store: INatGet::App::Server::API::Cache::new(@config.dig(:caching, :api) || 100)
 
       f.adapter :typhoeus do |typhoeus|
-        typhoeus.options[:connecttimeout] = 10 
-        typhoeus.options[:timeout] = 20
-        typhoeus.options[:low_speed_limit] = 10
-        typhoeus.options[:low_speed_time] = 10
+        typhoeus.options[:connecttimeout] = 5
+        typhoeus.options[:timeout] = 10
+        typhoeus.options[:nosignal] = 1
+        typhoeus.options[:dns_cache_timeout] = 0
+        # typhoeus.options[:low_speed_limit] = 10
+        # typhoeus.options[:low_speed_time] = 10
       end
     end
   end
