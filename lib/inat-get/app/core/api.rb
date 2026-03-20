@@ -51,12 +51,11 @@ class INatGet::App::Server::API < INatGet::App::Server
       @logger.error "Error in response: #{response.status}"
       return { status: :error, error: response.status }.freeze
     end
-  # rescue => e
-  #   return { status: :error, error: e.message }.freeze
+  rescue => e
+    return { status: :error, error: e.message }.freeze
   end
 
   def faraday
-    # tmp_logger = ::Logger::new 'common.log', level: :info
     @faraday ||= Faraday::new do |f|
       f.request :retry,
                 max: @config.dig(:api, :retry, :max),
@@ -68,17 +67,12 @@ class INatGet::App::Server::API < INatGet::App::Server
       f.request :url_encoded
 
       f.response :raise_error
-      # f.response :logger, tmp_logger, { headers: true, bodies: false }
-
-      # f.use :http_cache, store: INatGet::App::Server::API::Cache::new(@config.dig(:caching, :api) || 100)
 
       f.adapter :typhoeus do |typhoeus|
         typhoeus.options[:connecttimeout] = 5
         typhoeus.options[:timeout] = 10
         typhoeus.options[:nosignal] = 1
         typhoeus.options[:dns_cache_timeout] = 0
-        # typhoeus.options[:low_speed_limit] = 10
-        # typhoeus.options[:low_speed_time] = 10
       end
     end
   end
