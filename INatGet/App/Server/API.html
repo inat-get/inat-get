@@ -309,20 +309,13 @@
 75
 76
 77
-78
-79
-80
-81
-82
-83
-84</pre>
+78</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_faraday'>faraday</span>
-  <span class='comment'># tmp_logger = ::Logger::new &#39;common.log&#39;, level: :info
-</span>  <span class='ivar'>@faraday</span> <span class='op'>||=</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+  <span class='ivar'>@faraday</span> <span class='op'>||=</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:retry</span><span class='comma'>,</span>
               <span class='label'>max:</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:max</span><span class='rparen'>)</span><span class='comma'>,</span>
               <span class='label'>interval:</span> <span class='const'>IS</span><span class='op'>::</span><span class='const'>Duration</span><span class='op'>::</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:interval</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span>
@@ -333,18 +326,13 @@
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:url_encoded</span>
 
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span> <span class='symbol'>:raise_error</span>
-    <span class='comment'># f.response :logger, tmp_logger, { headers: true, bodies: false }
-</span>
-    <span class='comment'># f.use :http_cache, store: INatGet::App::Server::API::Cache::new(@config.dig(:caching, :api) || 100)
-</span>
+
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='symbol'>:typhoeus</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='op'>|</span>
       <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connecttimeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>5</span>
       <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:timeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>10</span>
       <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:nosignal</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>1</span>
       <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:dns_cache_timeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
-      <span class='comment'># typhoeus.options[:low_speed_limit] = 10
-</span>      <span class='comment'># typhoeus.options[:low_speed_time] = 10
-</span>    <span class='kw'>end</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -430,9 +418,9 @@
     <span class='ivar'>@logger</span><span class='period'>.</span><span class='id identifier rubyid_error'>error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error in response: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>return</span> <span class='lbrace'>{</span> <span class='label'>status:</span> <span class='symbol'>:error</span><span class='comma'>,</span> <span class='label'>error:</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
   <span class='kw'>end</span>
-<span class='comment'># rescue =&gt; e
-</span><span class='comment'>#   return { status: :error, error: e.message }.freeze
-</span><span class='kw'>end</span></pre>
+<span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='kw'>return</span> <span class='lbrace'>{</span> <span class='label'>status:</span> <span class='symbol'>:error</span><span class='comma'>,</span> <span class='label'>error:</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -443,7 +431,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Mar 19 13:13:44 2026 by
+  Generated on Fri Mar 20 20:03:29 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.9).
 </div>
