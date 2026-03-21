@@ -8,6 +8,7 @@ Sequel.application_timezone = :local
 
 require_relative '../../info'
 require_relative '../../data/dsl/dsl'
+require_relative '../../data/dsl/reports'
 require_relative 'console_logger'
 
 class INatGet::App::Task

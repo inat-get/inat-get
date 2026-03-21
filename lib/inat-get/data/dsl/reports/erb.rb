@@ -32,3 +32,11 @@ class INatGet::Data::DSL::Report::ERB < INatGet::Data::DSL::Report
   end
 
 end
+
+module INatGet::Data::DSL
+
+  def erb_report code = nil, file: nil, ext: nil, trim_mode: nil, suffix: nil, **data, &block
+    INatGet::Data::DSL::Report::ERB::new(code, file: file, ext: ext, trim_mode: trim_mode, suffix: suffix, **data, &block)
+  end
+
+end
