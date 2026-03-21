@@ -89,7 +89,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/inat-get/data/dsl/dsl.rb<span class="defines">,<br />
-  lib/inat-get/data/managers/taxa.rb,<br /> lib/inat-get/data/managers/users.rb,<br /> lib/inat-get/data/managers/places.rb,<br /> lib/inat-get/data/managers/projects.rb,<br /> lib/inat-get/data/dsl/conditions/base.rb,<br /> lib/inat-get/data/dsl/conditions/base.rb,<br /> lib/inat-get/data/dsl/conditions/query.rb,<br /> lib/inat-get/data/managers/observations.rb,<br /> lib/inat-get/data/managers/identifications.rb,<br /> lib/inat-get/data/dsl/conditions/not.rb,<br /> lib/inat-get/data/dsl/conditions/and.rb,<br /> lib/inat-get/data/dsl/conditions/or.rb</span>
+  lib/inat-get/data/managers/taxa.rb,<br /> lib/inat-get/data/managers/users.rb,<br /> lib/inat-get/data/managers/places.rb,<br /> lib/inat-get/data/managers/projects.rb,<br /> lib/inat-get/data/dsl/conditions/base.rb,<br /> lib/inat-get/data/dsl/conditions/base.rb,<br /> lib/inat-get/data/dsl/conditions/query.rb,<br /> lib/inat-get/data/managers/observations.rb,<br /> lib/inat-get/data/managers/identifications.rb,<br /> lib/inat-get/data/dsl/conditions/not.rb,<br /> lib/inat-get/data/dsl/conditions/and.rb,<br /> lib/inat-get/data/dsl/conditions/or.rb,<br /> lib/inat-get/data/dsl/reports/erb.rb</span>
 </dd>
   </dl>
   
@@ -766,6 +766,37 @@
       
     </ul>
   
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#erb_report-instance_method" title="#erb_report (instance method)">#<strong>erb_report</strong>(code = nil, file: nil, ext: nil, trim_mode: nil, suffix: nil, **data, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
 
 
   
@@ -914,6 +945,36 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_console'>console</span>
   <span class='ivar'>@console</span> <span class='op'>||=</span> <span class='const'>Thread</span><span class='op'>::</span><span class='id identifier rubyid_current'>current</span><span class='lbracket'>[</span><span class='symbol'>:console</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DummyConsole</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="erb_report-instance_method">
+  
+    #<strong>erb_report</strong>(code = nil, file: nil, ext: nil, trim_mode: nil, suffix: nil, **data, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/inat-get/data/dsl/reports/erb.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_erb_report'>erb_report</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>file:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>ext:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>trim_mode:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>suffix:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span>
+  <span class='const'><span class='object_link'><a href="../../INatGet.html" title="INatGet (module)">INatGet</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Data.html" title="INatGet::Data (module)">Data</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="INatGet::Data::DSL (module)">DSL</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DSL/Report.html" title="INatGet::Data::DSL::Report (class)">Report</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DSL/Report/ERB.html" title="INatGet::Data::DSL::Report::ERB (class)">ERB</a></span></span><span class='op'>::</span><span class='id identifier rubyid_new'><span class='object_link'><a href="DSL/Report/ERB.html#initialize-instance_method" title="INatGet::Data::DSL::Report::ERB#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='label'>file:</span> <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='label'>ext:</span> <span class='id identifier rubyid_ext'>ext</span><span class='comma'>,</span> <span class='label'>trim_mode:</span> <span class='id identifier rubyid_trim_mode'>trim_mode</span><span class='comma'>,</span> <span class='label'>suffix:</span> <span class='id identifier rubyid_suffix'>suffix</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4871,7 +4932,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Mar 21 01:43:07 2026 by
+  Generated on Sat Mar 21 02:36:52 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.9).
 </div>
