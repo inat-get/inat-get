@@ -5,7 +5,7 @@ module INatGet; end
 module INatGet::Info
 
   NAME = 'inat-get'
-  VERSION = '0.9.0.18'
+  VERSION = '0.9.1'
   VERSION_ALIAS = 'Carduelis carduelis'
 
   AUTHOR = 'Ivan Shikhalev'

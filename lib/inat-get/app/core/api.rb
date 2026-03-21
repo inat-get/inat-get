@@ -9,7 +9,7 @@ require 'is-duration'
 
 require_relative 'server'
 require_relative 'console_logger'
-require_relative 'api_cache'
+# require_relative 'api_cache'
 
 class INatGet::App::Server::API < INatGet::App::Server
 
