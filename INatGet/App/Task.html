@@ -664,8 +664,8 @@
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_strict_param_setting'>strict_param_setting</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_raise_on_save_failure'>raise_on_save_failure</span> <span class='op'>=</span> <span class='kw'>true</span>
   <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='ivar'>@db</span>
-  <span class='comment'># Sequel::Model.db.loggers &lt;&lt; ::Logger::new(&quot;common.log&quot;, level: :info)
-</span>  <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/models</span><span class='tstring_end'>&#39;</span></span>
+  <span class='const'>Sequel</span><span class='op'>::</span><span class='const'>Model</span><span class='period'>.</span><span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_loggers'>loggers</span> <span class='op'>&lt;&lt;</span> <span class='op'>::</span><span class='const'>Logger</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sequel.log</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>level:</span> <span class='symbol'>:info</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/models</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_require_relative'>require_relative</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../data/managers</span><span class='tstring_end'>&#39;</span></span>
   <span class='comment'># # ... etc
 </span><span class='kw'>end</span></pre>
@@ -679,7 +679,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Mar 22 13:47:48 2026 by
+  Generated on Sun Mar 22 23:06:58 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.9).
 </div>
