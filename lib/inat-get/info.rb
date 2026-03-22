@@ -6,7 +6,7 @@ module INatGet::Info
 
   NAME = 'inat-get'
   VERSION = '0.9.1'
-  VERSION_ALIAS = 'Carduelis carduelis'
+  VERSION_ALIAS = 'Parus major'
 
   AUTHOR = 'Ivan Shikhalev'
   AUTHOR_URL = 'https://github.com/shikhalev'
