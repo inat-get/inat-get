@@ -34,7 +34,13 @@ class INatGet::App::Main
     api = nil
     api = INatGet::App::Server::API::create api_socket, console: console if !@config[:offline]
 
-    tasks = @config[:tasks].map { |path| INatGet::App::Task::new path, @config, console: console, api: api }
+    tasks = @config[:tasks].map do |path|
+      if path.end_with?('.erb')
+        INatGet::App::Task::ERB::new path, @config, console: console, api: api
+      else
+        INatGet::App::Task::new path, @config, console: console, api: api
+      end
+    end
     Process::warmup
     INatGet::App::Worker::enqueue @config, *tasks, console: console, api: api
     console.quit

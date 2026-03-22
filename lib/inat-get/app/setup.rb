@@ -277,6 +277,14 @@ module INatGet::App::Setup
             "#{ file }.inat"
           elsif File.exist?("#{ file }.rb")
             "#{ file }.rb"
+          elsif File.exist?("#{ file }.erb")
+            "#{ file }.erb"
+          elsif File.exist?("#{ file }.md.erb")
+            "#{ file }.md.erb"
+          elsif File.exist?("#{ file }.html.erb")
+            "#{ file }.html.erb"
+          elsif File.exist?("#{ file }.htm.erb")
+            "#{ file }.htm.erb"
           else
             $stderr.puts "❌ \e[1mTask file not found:\e[0m #{ file }\e[1m. Stopped!\e[0m"
             exit Errno::ENOENT::Errno
