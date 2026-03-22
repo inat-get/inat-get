@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'erb'
+
 require 'sequel'
 Sequel.extension :core_extensions
 Sequel.datetime_class = Time
@@ -78,6 +80,18 @@ class INatGet::App::Task
 
   def logger
     @logger ||= INatGet::App::ConsoleLogger::new @console, progname: self.name
+  end
+
+end
+
+
+class INatGet::App::Task::ERB < INatGet::App::Task
+
+  TRIM_MODE = ''
+
+  def execute
+    report = INatGet::Data::DSL::Report::ERB::new file: @path, trim_mode: TRIM_MODE
+    report.save
   end
 
 end
