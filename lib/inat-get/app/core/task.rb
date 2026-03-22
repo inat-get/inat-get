@@ -70,7 +70,7 @@ class INatGet::App::Task
     Sequel::Model.strict_param_setting = false
     Sequel::Model.raise_on_save_failure = true
     Sequel::Model.db = @db
-    # Sequel::Model.db.loggers << ::Logger::new("common.log", level: :info)
+    Sequel::Model.db.loggers << ::Logger::new("sequel.log", level: :info)
     require_relative '../../data/models'
     require_relative '../../data/managers'
     # # ... etc

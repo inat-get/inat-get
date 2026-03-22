@@ -213,7 +213,7 @@ class INatGet::Data::DSL::Dataset
 
       case reflection[:type]
       when :many_to_one
-        ids = query.distinct.select_map(reflection[:key])
+        ids = query.select(reflection[:key]).distinct.select_map(reflection[:key])
         target.where(id: ids)
       when :one_to_many, :many_to_many
         # Для всех типов "много" используем ассоциативный датасет
