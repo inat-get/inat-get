@@ -46,7 +46,7 @@ comply with the restrictions imposed by the iNaturalist API itself, and not get 
   Outdated versions. Due to poorly thought-out architecture, it works very slowly and caches very poorly.
   Can be used, but shouldn't be.
 
-+ **[v0.9.0](https://github.com/inat-get/inat-get/milestone/4)** *(current development)*
++ **[v0.9.0](https://github.com/inat-get/inat-get/milestone/4)**
 
   Architectural problems are solved, but because of them the project had to be rewritten almost from scratch, and a lot remains
   to be done.
@@ -62,7 +62,7 @@ comply with the restrictions imposed by the iNaturalist API itself, and not get 
   Planning to add ERB support for reports. It's not a huge step forward compared to
   direct file writing, but it will add some convenience.
 
-+ **[v0.9.4](https://github.com/inat-get/inat-get/milestone/6)**
++ **[v0.9.4](https://github.com/inat-get/inat-get/milestone/6)** *(current development)*
 
   Planning to conduct extensive load testing on different DBMS (at least SQLite and PostgreSQL),
   followed by corrections and optimizations.
