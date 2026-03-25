@@ -1,5 +1,28 @@
 name: Generate Roadmap
 on:
+  issues:
+    types:
+      - opened
+      - edited
+      - closed
+      - reopened
+      - assigned
+      - unassigned
+      - labeled
+      - unlabeled
+      - milestoned
+      - demilestoned
+  milestone:
+    types:
+      - created
+      - edited
+      - deleted
+      - opened
+      - closed
+  push:
+    paths:
+      - '.github/roadmap-styles.yml'
+      - '.github/workflows/roadmap.yml'
   workflow_dispatch:
 jobs:
   roadmap:
