@@ -1,4 +1,7 @@
 name: Generate Roadmap
+concurrency:
+  group: roadmap-generation
+  cancel-in-progress: true
 on:
   issues:
     types:
