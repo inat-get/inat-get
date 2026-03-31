@@ -319,13 +319,23 @@
 75
 76
 77
-78</pre>
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/inat-get/app/core/api.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_faraday'>faraday</span>
-  <span class='ivar'>@faraday</span> <span class='op'>||=</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+  <span class='id identifier rubyid_logger'>logger</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Logger</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>api.log</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>level:</span> <span class='symbol'>:debug</span>
+  <span class='comment'># logger.info
+</span>  <span class='ivar'>@faraday</span> <span class='op'>||=</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:retry</span><span class='comma'>,</span>
               <span class='label'>max:</span> <span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:max</span><span class='rparen'>)</span><span class='comma'>,</span>
               <span class='label'>interval:</span> <span class='const'>IS</span><span class='op'>::</span><span class='const'>Duration</span><span class='op'>::</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='ivar'>@config</span><span class='period'>.</span><span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='symbol'>:api</span><span class='comma'>,</span> <span class='symbol'>:retry</span><span class='comma'>,</span> <span class='symbol'>:interval</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span>
@@ -335,15 +345,21 @@
               <span class='label'>exceptions:</span> <span class='lbracket'>[</span><span class='const'>Faraday</span><span class='op'>::</span><span class='const'>TimeoutError</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>ConnectionFailed</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>SSLError</span><span class='comma'>,</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>ClientError</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:url_encoded</span>
 
-    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span> <span class='symbol'>:raise_error</span>
+    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span> <span class='symbol'>:logger</span><span class='comma'>,</span> <span class='id identifier rubyid_logger'>logger</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='label'>bodies:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>headers:</span> <span class='kw'>true</span> <span class='rbrace'>}</span>
 
-    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='symbol'>:typhoeus</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='op'>|</span>
-      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:connecttimeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>5</span>
-      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:timeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>10</span>
-      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:nosignal</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>1</span>
-      <span class='id identifier rubyid_typhoeus'>typhoeus</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:dns_cache_timeout</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
+    <span class='comment'># f.response :gzip
+</span>    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span> <span class='symbol'>:raise_error</span>
+
+    <span class='comment'># f.adapter Faraday.default_adapter
+</span>
+    <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_adapter'>adapter</span> <span class='symbol'>:typhoeus</span> 
+    <span class='comment'># do |typhoeus|
+</span>    <span class='comment'>#   typhoeus.options[:connecttimeout] = 5
+</span>    <span class='comment'>#   typhoeus.options[:timeout] = 10
+</span>    <span class='comment'>#   typhoeus.options[:nosignal] = 1
+</span>    <span class='comment'>#   typhoeus.options[:dns_cache_timeout] = 0
+</span>    <span class='comment'># end
+</span>  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -441,7 +457,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 25 17:51:37 2026 by
+  Generated on Tue Mar 31 01:39:15 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.9).
 </div>
