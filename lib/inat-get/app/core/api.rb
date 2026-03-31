@@ -3,7 +3,7 @@
 require 'faraday'
 require 'faraday/retry'
 require 'faraday/typhoeus'
-# require 'faraday/gzip'
+require 'faraday/gzip'
 # require 'faraday-http-cache'
 require 'is-duration'
 
@@ -56,6 +56,8 @@ class INatGet::App::Server::API < INatGet::App::Server
   end
 
   def faraday
+    logger = ::Logger::new 'api.log', level: :debug
+    # logger.info
     @faraday ||= Faraday::new do |f|
       f.request :retry,
                 max: @config.dig(:api, :retry, :max),
@@ -66,14 +68,20 @@ class INatGet::App::Server::API < INatGet::App::Server
                 exceptions: [Faraday::TimeoutError, Faraday::ConnectionFailed, Faraday::SSLError, Faraday::ClientError]
       f.request :url_encoded
 
+      f.response :logger, logger, { bodies: false, headers: true }
+
+      # f.response :gzip
       f.response :raise_error
 
-      f.adapter :typhoeus do |typhoeus|
-        typhoeus.options[:connecttimeout] = 5
-        typhoeus.options[:timeout] = 10
-        typhoeus.options[:nosignal] = 1
-        typhoeus.options[:dns_cache_timeout] = 0
-      end
+      # f.adapter Faraday.default_adapter
+
+      f.adapter :typhoeus 
+      # do |typhoeus|
+      #   typhoeus.options[:connecttimeout] = 5
+      #   typhoeus.options[:timeout] = 10
+      #   typhoeus.options[:nosignal] = 1
+      #   typhoeus.options[:dns_cache_timeout] = 0
+      # end
     end
   end
 

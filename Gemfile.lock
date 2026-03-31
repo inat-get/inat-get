@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    inat-get (0.9.2)
+    inat-get (0.9.3)
       faraday (~> 2.14)
+      faraday-gzip
       faraday-http-cache (~> 2.6)
       faraday-retry (~> 2.3)
       faraday-typhoeus (~> 2.0)
@@ -27,6 +28,9 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-gzip (3.1.0)
+      faraday (>= 2.0, < 3)
+      zlib (~> 3.0)
     faraday-http-cache (2.6.1)
       faraday (>= 0.8)
     faraday-net_http (3.4.2)
@@ -103,6 +107,7 @@ GEM
       sequel (~> 5.100)
       sqlite3 (~> 2.9)
       yard (~> 0.9)
+    zlib (3.2.3)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -132,6 +137,7 @@ CHECKSUMS
   docile (1.4.1) sha256=96159be799bfa73cdb721b840e9802126e4e03dfc26863db73647204c727f21e
   ethon (0.18.0) sha256=b598afc9f30448cb068b850714b7d6948e941476095d04f90a4ac65b8d6efcb2
   faraday (2.14.1) sha256=a43cceedc1e39d188f4d2cdd360a8aaa6a11da0c407052e426ba8d3fb42ef61c
+  faraday-gzip (3.1.0) sha256=320783690be169f9b7ddde11598b77156951343753f66a9ab98b1f6694433ff8
   faraday-http-cache (2.6.1) sha256=7772ae61c5fe1c0243452dec1f069b15bcc3304e9436e4f8545ccdb5963c4285
   faraday-net_http (3.4.2) sha256=f147758260d3526939bf57ecf911682f94926a3666502e24c69992765875906c
   faraday-retry (2.4.0) sha256=7b79c48fb7e56526faf247b12d94a680071ff40c9fda7cf1ec1549439ad11ebe
@@ -146,7 +152,7 @@ CHECKSUMS
   ffi (1.17.3-x86_64-darwin) sha256=1f211811eb5cfaa25998322cdd92ab104bfbd26d1c4c08471599c511f2c00bb5
   ffi (1.17.3-x86_64-linux-gnu) sha256=3746b01f677aae7b16dc1acb7cb3cc17b3e35bdae7676a3f568153fb0e2c887f
   ffi (1.17.3-x86_64-linux-musl) sha256=086b221c3a68320b7564066f46fed23449a44f7a1935f1fe5a245bd89d9aea56
-  inat-get (0.9.2)
+  inat-get (0.9.3)
   is-boolean (0.8.0) sha256=a470c0407307fc3e71e785ac3847d500abd157e8874e94747a713050572afdb3
   is-deep (0.8.0) sha256=49b4bef09b6520fedf4620c50878b1f04d8fb78a51352fac0591d6d605f7fe04
   is-dsl (0.8.0) sha256=fc66508e85da3c9f4cdcdc31e9bb078f2aef791dfe432db1db931c69c97020e6
@@ -183,6 +189,7 @@ CHECKSUMS
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   yard (0.9.37) sha256=a6e910399e78e613f80ba9add9ba7c394b1a935f083cccbef82903a3d2a26992
   yard-is-sequel (0.8.0) sha256=485c00a5c62e8e23cbc5bbe0630c698d31356c56b11242dc952cae35a0ef3175
+  zlib (3.2.3) sha256=5bd316698b32f31a64ab910a8b6c282442ca1626a81bbd6a1674e8522e319c20
 
 BUNDLED WITH
   4.0.7

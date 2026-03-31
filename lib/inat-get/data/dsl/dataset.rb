@@ -85,6 +85,7 @@ class INatGet::Data::DSL::Dataset
   def % field
     # field = field.to_sym
     values = get_field_values field
+    current = 0
     total = if values.respond_to?(:count)
       values.count
     else
@@ -93,7 +94,6 @@ class INatGet::Data::DSL::Dataset
     Thread::current[:total] ||= 0
     Thread::current[:total] += total
     console.update status: "grouping by #{ field }...", total: Thread::current[:total]
-    current = 0
     Thread::current[:current] ||= 0
     dss = values.map do |value|
       current += 1

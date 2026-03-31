@@ -20,6 +20,7 @@ Gem::Specification::new do |spec|
   spec.add_dependency 'sequel', '~> 5.101'
   spec.add_dependency 'faraday', '~> 2.14'
   spec.add_dependency 'faraday-retry', '~> 2.3'
+  spec.add_dependency 'faraday-gzip'
   spec.add_dependency 'faraday-http-cache', '~> 2.6'
   spec.add_dependency 'faraday-typhoeus', '~> 2.0'
   spec.add_dependency 'is-dsl', '~> 0.8'
