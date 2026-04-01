@@ -105,7 +105,8 @@ class INatGet::Data::Parser
     end
     associations, attributes = rest.partition { |p| p.is_a?(Part::Assoc) }
     attributes.each do |a|
-      fields.merge! a.parse(source)
+      attr = a.parse source
+      fields.merge! attr if attr
     end
     record = nil
     model.db.transaction(isolation: :committed, mode: :immediate) do
