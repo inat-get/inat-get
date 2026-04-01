@@ -6,12 +6,12 @@ class INatGet::Data::Parser::Part::FromTaxon < INatGet::Data::Parser::Part::Copy
     taxon = value[:taxon]
     if taxon
       if @name == :introduced
-        @taxon[:native]
+        !taxon[:native]
       else
         super(taxon)
       end
     else
-      nil
+      {}
     end
   end
 
