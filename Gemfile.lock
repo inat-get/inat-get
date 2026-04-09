@@ -102,7 +102,7 @@ GEM
     typhoeus (1.6.0)
       ethon (>= 0.18.0)
     uri (1.1.1)
-    yard (0.9.37)
+    yard (0.9.39)
     yard-is-sequel (0.8.0)
       sequel (~> 5.100)
       sqlite3 (~> 2.9)
@@ -128,7 +128,7 @@ DEPENDENCIES
   rspec (~> 3.13)
   simplecov (~> 0.22)
   sqlite3 (~> 2.9)
-  yard (= 0.9.37)
+  yard (= 0.9.39)
   yard-is-sequel
 
 CHECKSUMS
@@ -187,7 +187,7 @@ CHECKSUMS
   tty-screen (0.8.2) sha256=c090652115beae764336c28802d633f204fb84da93c6a968aa5d8e319e819b50
   typhoeus (1.6.0) sha256=bacc41c23e379547e29801dc235cd1699b70b955a1ba3d32b2b877aa844c331d
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
-  yard (0.9.37) sha256=a6e910399e78e613f80ba9add9ba7c394b1a935f083cccbef82903a3d2a26992
+  yard (0.9.39) sha256=0bbbcd87ffd132824c3f89bbd39deef1ffb3877259090849bd49e48daeaf7b56
   yard-is-sequel (0.8.0) sha256=485c00a5c62e8e23cbc5bbe0630c698d31356c56b11242dc952cae35a0ef3175
   zlib (3.2.3) sha256=5bd316698b32f31a64ab910a8b6c282442ca1626a81bbd6a1674e8522e319c20
 
