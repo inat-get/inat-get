@@ -31,7 +31,7 @@ GEM
     faraday-gzip (3.1.0)
       faraday (>= 2.0, < 3)
       zlib (~> 3.0)
-    faraday-http-cache (2.6.1)
+    faraday-http-cache (2.7.0)
       faraday (>= 0.8)
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
@@ -61,7 +61,7 @@ GEM
       is-boolean (~> 0.8)
       is-duration (~> 0.8.4)
       tty-screen (~> 0.8)
-    json (2.19.2)
+    json (2.19.3)
     logger (1.7.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -138,7 +138,7 @@ CHECKSUMS
   ethon (0.18.0) sha256=b598afc9f30448cb068b850714b7d6948e941476095d04f90a4ac65b8d6efcb2
   faraday (2.14.1) sha256=a43cceedc1e39d188f4d2cdd360a8aaa6a11da0c407052e426ba8d3fb42ef61c
   faraday-gzip (3.1.0) sha256=320783690be169f9b7ddde11598b77156951343753f66a9ab98b1f6694433ff8
-  faraday-http-cache (2.6.1) sha256=7772ae61c5fe1c0243452dec1f069b15bcc3304e9436e4f8545ccdb5963c4285
+  faraday-http-cache (2.7.0) sha256=cd7ac4bbe6c08592ea7af6655f98b2f76c4db0bad31bf40340df5aad719f0d89
   faraday-net_http (3.4.2) sha256=f147758260d3526939bf57ecf911682f94926a3666502e24c69992765875906c
   faraday-retry (2.4.0) sha256=7b79c48fb7e56526faf247b12d94a680071ff40c9fda7cf1ec1549439ad11ebe
   faraday-typhoeus (2.0.0) sha256=7a459529d782994caf8ce89ca181df3adb89dd471b8ab0b3851936ab566b4dd1
@@ -160,7 +160,7 @@ CHECKSUMS
   is-enum (0.8.10) sha256=7f962fce7ac34409fd211a7c53b6ebb4a666337a6137f97226f22189969c45e2
   is-range (0.8.2) sha256=81a761cd6ac30a61352b267644178691a517ba1b02ef402ca319dcf86e45d43a
   is-term (0.8.4.10) sha256=953f4b45c8cec8cf0e1ab0508142aa620480bee681bf0d58b2cf1125a453ff14
-  json (2.19.2) sha256=e7e1bd318b2c37c4ceee2444841c86539bc462e81f40d134cf97826cb14e83cf
+  json (2.19.3) sha256=289b0bb53052a1fa8c34ab33cc750b659ba14a5c45f3fcf4b18762dc67c78646
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
