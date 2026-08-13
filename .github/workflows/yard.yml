@@ -25,7 +25,7 @@ jobs:
           bundle exec yardoc
           touch doc/.nojekyll
       - name: Publish
-        uses: jekyll-is/action-jekyll-is-publish@v1
+        uses: jekyll-is/action-jekyll-is-publish@v2
         with:
           label: 'YARD Docs Pages'
           sync-dir: 'doc'
